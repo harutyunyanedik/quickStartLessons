@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.lessonnine
+package com.example.quickstartlessons.kotlin.lessonnine
 
 import java.util.Locale
 import kotlin.reflect.KProperty

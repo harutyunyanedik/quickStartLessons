@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.lessonthree;
+package com.example.quickstartlessons.kotlin.lessonthree;
 
 public class Car implements EngineStartListener {
     private String name;

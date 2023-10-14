@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.lessonSeven
+package com.example.quickstartlessons.kotlin.lessonSeven
 
 fun main() {
     val list1: MutableList<Car> = mutableListOf(Car("bmw", 2001), Car("bmw", 2010), Car("mercedes", 10), Car("mercedes", 19))

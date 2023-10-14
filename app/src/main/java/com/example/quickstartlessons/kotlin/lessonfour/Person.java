@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.lessonfour;
+package com.example.quickstartlessons.kotlin.lessonfour;
 
 public class Person {
 

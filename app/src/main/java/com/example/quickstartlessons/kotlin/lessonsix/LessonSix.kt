@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.lessonsix
+package com.example.quickstartlessons.kotlin.lessonsix
 
 fun main() {
     val array = arrayOf("name", "surname")

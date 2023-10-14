@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.lessonnfive
+package com.example.quickstartlessons.kotlin.lessonnfive
 
 fun main() {
 

@@ -1,6 +1,6 @@
-package com.example.quickstartlessons.lessoneight
+package com.example.quickstartlessons.kotlin.lessoneight
 
-import com.example.quickstartlessons.lessonSeven.createNewList
+import com.example.quickstartlessons.kotlin.lessonSeven.createNewList
 
 fun main() {
 
