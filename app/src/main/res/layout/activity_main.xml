@@ -27,7 +27,7 @@
             android:layout_below="@id/text4"
             android:layout_centerInParent="true"
             android:layout_marginTop="200dp"
-            android:background="#F4870B"
+            android:background="#FF5722"
             android:text="@string/update"
             android:textColor="@color/white"
             android:textStyle="bold" />
