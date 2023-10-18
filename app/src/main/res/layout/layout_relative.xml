@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9E9A9A">
+
+<TextView
+    android:id="@+id/text1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="32sp"
+    android:textColor="#F1EBEB"
+    android:layout_marginStart="40dp"
+    android:layout_marginTop="280dp"
+    android:textStyle="bold"
+    android:text="New Version Available"/>
+<LinearLayout
+    android:id="@+id/linear"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_below="@id/text1">
+<TextView
+    android:id="@+id/text2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="40dp"
+    android:layout_marginTop="10dp"
+    android:text="There is a new version available for\n download Please update the ap  by \n
+            visiting the App Store "
+    android:textColor="#F6F0F0"
+    android:textSize="20sp" />
+
+</LinearLayout>
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="670dp"
+        android:background="#FF9800"
+        android:textColorHighlight="#FFC107"
+        android:text="Update"
+        style="@style/CardView"
+        android:textStyle="bold"
+        android:textColor="#F3F1F1"
+        android:textSize="22sp"
+        />
+    </RelativeLayout>
+
