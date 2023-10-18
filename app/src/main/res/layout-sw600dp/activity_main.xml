@@ -1,58 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
-        android:layout_width="1073dp"
-        android:layout_height="1884dp"
-        android:background="#878C88">
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="@color/main_background">
 
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New version Available"
-            android:textSize="80sp"
-            android:textColor="#F1EBEB"
-            android:layout_centerInParent="true"
-            />
+         <TextView
+             android:id="@+id/text1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/text_1_title"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintBottom_toBottomOf="parent"
+             android:layout_marginBottom="350dp"
+             android:gravity="center"
+             android:textSize="70sp"
+             android:textColor="#EDF3EE"
+             />
 
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="There is a new version avaliable for"
-            android:textSize="40sp"
-            android:textColor="#F1EBEB"
-            android:layout_marginTop="16dp"
-            android:layout_below="@id/text1"
-            android:layout_centerInParent="true"/>
+         <TextView
+             android:id="@+id/text2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/text_2_title"
+             app:layout_constraintTop_toBottomOf="@id/text1"
+             app:layout_constraintStart_toStartOf="@id/text1"
+             app:layout_constraintEnd_toEndOf="@id/text1"
+             android:gravity="center"
+             android:textSize="35sp"
+             android:textColor="@color/text_background"
+             />
+         <TextView
+             android:id="@+id/text3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/text_3_title"
+             app:layout_constraintTop_toBottomOf="@id/text2"
+             app:layout_constraintStart_toStartOf="@id/text1"
+             app:layout_constraintEnd_toEndOf="@id/text1"
+             android:gravity="center"
+             android:textSize="35sp"
+             android:textColor="@color/text_background"
+             />
+         <TextView
+             android:id="@+id/text4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/text_4_title"
+             app:layout_constraintTop_toBottomOf="@id/text3"
+             app:layout_constraintStart_toStartOf="@id/text1"
+             app:layout_constraintEnd_toEndOf="@id/text1"
+             android:gravity="center"
+             android:textSize="35sp"
+             android:textColor="@color/text_background"
+             />
 
-        <TextView
-            android:id="@+id/text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="download.Please update the app"
-            android:textSize="40sp"
-            android:textColor="#F1EBEB"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_below="@id/text2"
-            android:layout_centerInParent="true"
-            />
-        <TextView
-            android:id="@+id/text4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="visiting the App Store."
-            android:textSize="40sp"
-            android:textColor="#F1EBEB"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_below="@id/text3"
-            android:layout_centerInParent="true"
-
-            />
+         <Button
+             android:id="@+id/button"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="800dp"
+             tools:ignore="MissingConstraints"
+             app:layout_constraintTop_toBottomOf="@id/text4"
+             app:layout_constraintStart_toStartOf="@id/text4"
+             app:layout_constraintEnd_toEndOf="@id/text4"
+             android:layout_marginLeft="60dp"
+             android:layout_marginRight="60dp"
+             android:text="Update"
+             android:textSize="40sp"
+             android:textColor="@color/text_background"
+             android:background="@color/button_background"
+             android:textAllCaps="false"
 
 
-    </RelativeLayout>
+
+
+             />
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
