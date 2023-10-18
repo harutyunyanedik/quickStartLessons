@@ -2,4 +2,10 @@
     <string name="app_name">QuickStartLessons</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_vertion_available">New Vertion Available</string>
+    <string name="ccx_mkjh_hjgfr_fdfdfdf_kjlkuiuo_gfhf">ccx mkjh hjgfr fdfdfdf kjlkuiuo gfhf</string>
+    <string name="there_is_a_new_version_available_for">There is a new version available for</string>
+    <string name="download_please_update_the_app_by">download. Please update the app by</string>
+    <string name="visiting_the_app_store">visiting the App Store</string>
+    <string name="update">Update</string>
 </resources>
