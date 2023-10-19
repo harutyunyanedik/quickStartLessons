@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_1_title">New Version Available</string>
     <string name="test_2_title">There is a new version available for\n download Please update the ap  by\n visiting the App Store </string>
+    <string name="button_test_title">Update</string>
 </resources>
