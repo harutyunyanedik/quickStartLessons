@@ -2,7 +2,23 @@
     <string name="app_name">QuickStartLessons</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="new_version_available">New Version Available</string>
-    <string name="text_view_download">There is a new version available for download. Please update the app by visiting the App Store</string>
-    <string name="button_update">Update</string>
+    <string name="button_0">0</string>
+    <string name="button_dot">.</string>
+    <string name="button_equal">=</string>
+    <string name="button_1">1</string>
+    <string name="button_2">2</string>
+    <string name="button_3">3</string>
+    <string name="button_sum">+</string>
+    <string name="button_4">4</string>
+    <string name="button_5">5</string>
+    <string name="button_6">6</string>
+    <string name="button_minus">-</string>
+    <string name="button_7">7</string>
+    <string name="button_8">8</string>
+    <string name="button_9">9</string>
+    <string name="button_multiplication">*</string>
+    <string name="button_c">C</string>
+    <string name="button_back"><![CDATA[<-]]></string>
+    <string name="button_division">/</string>
+    <string name="the_number_is_not_divisible_by_zero">The number is not divisible by zero</string>
 </resources>
