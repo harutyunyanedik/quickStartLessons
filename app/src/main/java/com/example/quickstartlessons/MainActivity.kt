@@ -2,7 +2,6 @@ package com.example.quickstartlessons
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btn_dot: Button
     private lateinit var btn_back: Button
     private lateinit var btn_equals: Button
-    private lateinit var btn_math_operation: Button
     private lateinit var btn_result_text: Button
     private lateinit var btn_brackets: Button
     private lateinit var btn_brackets_close: Button
@@ -103,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun operashion() {
+    fun operashion() {
         btn_0 = findViewById(R.id.btn_zero)
         btn_1 = findViewById(R.id.btn_one)
         btn_2 = findViewById(R.id.btn_two)
@@ -127,18 +125,21 @@ class MainActivity : AppCompatActivity() {
         btn_AC = findViewById(R.id.btn_AC)
     }
 
-    private fun numberClick(number: String) {
+    fun numberClick(number: String) {
         val currentText = btn_result_text.text.toString()
-        btn_result_text.text = currentText + number
+        btn_result_text.text = buildString {
+            append(currentText)
+            append(number)
+        }
     }
 
-    private fun operatorClick(operator: String) {
+    fun operatorClick(operator: String) {
         currentOperator = operator
         currentOperand = btn_result_text.text.toString().toDouble()
         btn_result_text.text = ""
     }
 
-    private fun clearCalculator() {
+    fun clearCalculator() {
         btn_result_text.text = ""
         currentOperand = 0.0
         currentOperator = ""
