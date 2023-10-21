@@ -91,16 +91,13 @@ class MainActivity : AppCompatActivity() {
                 btn_result_text.text = str.substring(0, str.length - 1)
             }
         }
-
         btn_equals.setOnClickListener {
             calculateResult()
         }
         btn_AC.setOnClickListener {
             clearCalculator()
         }
-
     }
-
     fun operashion() {
         btn_0 = findViewById(R.id.btn_zero)
         btn_1 = findViewById(R.id.btn_one)
@@ -138,13 +135,11 @@ class MainActivity : AppCompatActivity() {
         currentOperand = btn_result_text.text.toString().toDouble()
         btn_result_text.text = ""
     }
-
     fun clearCalculator() {
         btn_result_text.text = ""
         currentOperand = 0.0
         currentOperator = ""
     }
-
     fun calculateResult() {
         val operand = btn_result_text.toString().toDouble()
         var result = 0.0
