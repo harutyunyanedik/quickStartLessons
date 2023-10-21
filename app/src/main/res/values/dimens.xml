@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name = "padding_size">16dp</dimen>
+    <dimen name = "my_text_size">50sp</dimen>
+    <dimen name = "weight_size">1</dimen>
+
+
+
+</resources>
