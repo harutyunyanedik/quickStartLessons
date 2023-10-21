@@ -1,10 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#0CAF30">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/afc115"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="119dp">
+
+            <TextView
+                android:id="@+id/homework"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Version Available"
+                android:textColor="@color/homework_text"
+                android:textSize="32sp"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/homework2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There is a new verion available for"
+                android:textColor="@color/homework_2text"
+                android:textSize="20sp"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/homework"/>
+
+            <TextView
+                android:id="@+id/homework3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="download. Please update the app by"
+                android:textColor="@color/homework_3text"
+                android:textSize="20sp"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/homework2"/>
+
+            <TextView
+            android:id="@+id/homework4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="visiting the app store."
+            android:textColor="@color/homework_4text"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/homework3"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200sp"
+                android:layout_below="@id/homework4"
+                android:layout_marginHorizontal="70dp"
+                android:text="Update"
+                android:textAllCaps="false"
+                android:textSize="22sp"
+                android:background="@color/button_background"
+                android:textColor="@color/button_text_color"/>
+
+        </RelativeLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

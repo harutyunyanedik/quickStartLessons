@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="afc115">#7A7A73</color>
+
+    <color name="homework_text">#FDFBFB</color>
+    <color name="homework_2text">#FDFBFB</color>
+    <color name="homework_3text">#FDFBFB</color>
+    <color name="homework_4text">#FDFBFB</color>
+    <color name="button_background">#FF9800</color>
+    <color name="button_text_color">#F6F5F2</color>
 </resources>
