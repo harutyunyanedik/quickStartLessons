@@ -8,4 +8,21 @@
     <string name="download_please_update_the_app_by">download. Please update the app by</string>
     <string name="visiting_the_app_store">visiting the App Store</string>
     <string name="update">Update</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_1">1</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="c">C</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="plus_minus">+/-</string>
+    <string name="equals">=</string>
+    <string name="multiple">*</string>
+    <string name="separation">/</string>
+    <string name="button0">0</string>
 </resources>

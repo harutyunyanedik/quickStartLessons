@@ -15,18 +15,18 @@
             android:text="@string/new_vertion_available"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:textStyle="bold"
              />
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text4"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="200dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
             android:background="#FF5722"
             android:text="@string/update"
             android:textColor="@color/white"
@@ -34,31 +34,14 @@
 
         <TextView
             android:id="@+id/text2"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/there_is_a_new_version_available_for"
-            android:layout_marginTop="10dp"
             android:layout_below="@id/text1"
-            android:layout_centerHorizontal="true"/>
-        <TextView
-            android:id="@+id/text3"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/download_please_update_the_app_by"
-            android:layout_marginTop="1dp"
-            android:layout_below="@id/text2"
-            android:layout_centerHorizontal="true"/>
-        <TextView
-            android:id="@+id/text4"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/visiting_the_app_store"
-            android:layout_marginTop="1dp"
-            android:layout_below="@id/text3"
-            android:layout_centerHorizontal="true"/>
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="There is a new version available for download.Please update the app by visiting the app store."
+            android:textColor="@color/white" />
+
 
     </RelativeLayout>
 
