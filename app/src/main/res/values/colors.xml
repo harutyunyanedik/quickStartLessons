@@ -10,4 +10,8 @@
     <color name="red">#F44336</color>
     <color name="gr">#4CAF50</color>
     <color name="white">#EDE8E8</color>
+    <color name="white1">#80EDE8E8</color>
+    <color name="dark">#3A3D51</color>
+    <color name="darkblue">#343A5C</color>
+    <color name="green">#16F33C</color>
 </resources>

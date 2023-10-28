@@ -25,4 +25,16 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     <string name="zero">0</string>
+    <string name="password">Password</string>
+    <string name="email">Email/Username</string>
+    <string name="signup">SIGN IN</string>
+    <string name="checkbox">Remember me</string>
+    <string name="textview">SIGN IN , WE ARE WAITING FOR YOU</string>
+    <string name="passwordtextforget">FORGOT YOUR PASSWORD</string>
+    <string name="resetpassword">RESET PASSWORD</string>
+    <string name="sms">SMS</string>
+    <string name="e_mail">E-mail</string>
+    <string name="e_mail2">E-mail</string>
+    <string name="reset">Reset</string>
+    <string name="phone">Enter your phone</string>
 </resources>
