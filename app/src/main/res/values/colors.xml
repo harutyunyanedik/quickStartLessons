@@ -7,5 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="constraint_background">#B1AFAF</color>
+    <color name="calculate_color">#2C2626</color>
+    <color name="constraint_background">#9C9696</color>
+    <color name="green">#04970A</color>
+    <color name="login_background">#0E1332</color>
+    <color name="light_gray">#858181</color>
+    <color name="light_blue">#3F4563</color>
+    <color name="blue_reset">#4E5266</color>
+    <color name="magenta">#C11287</color>
+    <color name="dark_white">#F0E9E9</color>
 </resources>

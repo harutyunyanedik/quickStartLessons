@@ -5,4 +5,33 @@
     <string name="test_1_title">New Version Available</string>
     <string name="test_2_title">There is a new version available for\n download Please update the ap  by\n visiting the App Store </string>
     <string name="button_test_title">Update</string>
+    <string name="name_app">Calculator</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="zero">0</string>
+    <string name="plus">+</string>
+    <string name="equal">=</string>
+    <string name="minus">-</string>
+    <string name="division">/</string>
+    <string name="multiply">*</string>
+    <string name="delete_number">x</string>
+    <string name="first_text">Already have an account?</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="box_text">Remember me</string>
+    <string name="login_page_two">SIGN IN, WE ARE WAITING FOR YOU</string>
+    <string name="forgot_password">FORGOT YOUR PASSWORD?</string>
+    <string name="password">Password</string>
+    <string name="Username">Email/Username</string>
+    <string name="reset_sms">Enter phone number</string>
+    <string name="reset_Email">Email</string>
+    <string name="reset_text">Reset</string>
+    <string name="sms_text">SMS</string>
+    <string name="_email_text">E-mail</string>
 </resources>

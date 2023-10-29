@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Calculator">
+        <item name="android:background">@drawable/calculate_button_shape</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:padding">@dimen/padding_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Calculator_operator" parent="Calculator">
+        <item name="android:textColor">@color/green</item>
+    </style>
+    <style name="login_page">
+        <item name="android:textColor">@color/dark_white</item>
+        <item name="android:background">@drawable/ic_login_password</item>
+    </style>
+    <style name="Sign_in">
+        <item name="android:background">@drawable/sign_in</item>
+        <item name="android:textColor">@color/dark_white</item>
+    </style>
+    <style name="reset">
+        <item name="android:background">@drawable/reset</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="radiobutton" parent= "Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+</resources>

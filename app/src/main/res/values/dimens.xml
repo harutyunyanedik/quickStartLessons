@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_size">16sp</dimen>
+    <dimen name="padding_size">1dp</dimen>
+    <dimen name="button_text_size">24sp</dimen>
+    <dimen name="result_text_size">50sp</dimen>
+    <dimen name="login_firstText_size">24sp</dimen>
+    <dimen name="text_signIn_size">40p</dimen>
+    <dimen name="name_lastname_size">24sp</dimen>
+    <dimen name="forgot_password">32</dimen>
+</resources>
