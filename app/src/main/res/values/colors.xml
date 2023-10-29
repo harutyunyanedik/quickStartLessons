@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#939090</color>
     <color name="background_2c2c2c">#2C2C2C</color>
+    <color name="background_sign_in">#04032C</color>
+    <color name="color_question">#99FFFFFF</color>
+    <color name="edit_text_background">#373150</color>
+    <color name="button_color">#14CC00</color>
 </resources>
