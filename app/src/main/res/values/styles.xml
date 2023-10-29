@@ -24,5 +24,8 @@
     <style name="radiobutton" parent= "Widget.AppCompat.CompoundButton.RadioButton">
         <item name="colorAccent">@color/white</item>
     </style>
+   <style name="checkbox">
+       <item name="colorAccent">@color/light_blue</item>
 
+   </style>
 </resources>
