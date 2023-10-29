@@ -16,7 +16,7 @@
             android:name=".Activitythree"
             android:exported="false" />
         <activity
-            android:name=".ActivityTwo"
+            android:name=".ActivityLogin"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

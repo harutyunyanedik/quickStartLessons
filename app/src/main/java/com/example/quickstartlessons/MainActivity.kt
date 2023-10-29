@@ -2,15 +2,9 @@ package com.example.quickstartlessons
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.databinding.DataLayoutBinding
-import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
 private lateinit var binding: DataLayoutBinding
@@ -41,7 +35,7 @@ private lateinit var binding: DataLayoutBinding
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.data_layout)
         binding.password.setOnClickListener{
-           val intent=Intent(this,ActivityTwo::class.java)
+           val intent=Intent(this,ActivityLogin::class.java)
             startActivity(intent)
         }
 

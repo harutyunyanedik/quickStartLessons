@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ActivityTwo"
+        tools:context=".ActivityLogin"
         android:background="@color/darkblue">
         <TextView
             android:id="@+id/resetpassword"
@@ -45,7 +45,7 @@
             tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/activ2edittext"
+            android:id="@+id/activiedittext"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="60dp"
@@ -71,7 +71,7 @@
             android:textColorHint="@color/white1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/activ2edittext"
+            app:layout_constraintTop_toTopOf="@id/activiedittext"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
