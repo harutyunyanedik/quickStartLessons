@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2C2C2C"
+    android:background="@color/background_2c2c2c"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/textViewScreen"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/dim_0dp"
+        android:layout_height="@dimen/dim_0dp"
         android:layout_marginBottom="16dp"
-        android:background="#2C2C2C"
+        android:background="@color/background_2c2c2c"
         android:gravity="bottom|end"
-        android:padding="16dp"
+        android:padding="@dimen/dim_16dp"
         android:text="@string/button_0"
         android:textColor="#E8E0E0"
-        android:textSize="64sp"
+        android:textSize="@dimen/dim_64sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,10 +25,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout0"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dim_0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="4dp"
+        android:padding="@dimen/dim_4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -36,16 +36,16 @@
         <Button
             android:id="@+id/button0"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.1"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:text="@string/button_0" />
 
         <Button
             android:id="@+id/buttonDot"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/button_dot" />
@@ -53,9 +53,9 @@
         <Button
             android:id="@+id/buttonEqual"
             style="@style/myStyleOperators"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_equal" />
 
@@ -63,10 +63,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dim_0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="4dp"
+        android:padding="@dimen/dim_4dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -74,34 +74,34 @@
         <Button
             android:id="@+id/button1"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_1" />
 
         <Button
             android:id="@+id/button2"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_2" />
 
         <Button
             android:id="@+id/button3"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_3" />
 
         <Button
             android:id="@+id/buttonSum"
             style="@style/myStyleOperators"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/button_sum" />
@@ -110,10 +110,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dim_0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="4dp"
+        android:padding="@dimen/dim_4dp"
         app:layout_constraintBottom_toTopOf="@id/linearLayout1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -121,34 +121,34 @@
         <Button
             android:id="@+id/button4"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_4" />
 
         <Button
             android:id="@+id/button5"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_5" />
 
         <Button
             android:id="@+id/button6"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_6" />
 
         <Button
             android:id="@+id/buttonMinus"
             style="@style/myStyleOperators"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/button_minus" />
@@ -157,10 +157,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dim_0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="4dp"
+        android:padding="@dimen/dim_4dp"
         app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -168,34 +168,34 @@
         <Button
             android:id="@+id/button7"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_7" />
 
         <Button
             android:id="@+id/button8"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_8" />
 
         <Button
             android:id="@+id/button9"
             style="@style/myStyleNumbers"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_9" />
 
         <Button
             android:id="@+id/buttonMultiplication"
             style="@style/myStyleOperators"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/button_multiplication" />
@@ -204,10 +204,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dim_0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="4dp"
+        android:padding="@dimen/dim_4dp"
         app:layout_constraintBottom_toTopOf="@id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -215,7 +215,7 @@
         <Button
             android:id="@+id/buttonC"
             style="@style/myStyleOperators"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.1"
             android:text="@string/button_c" />
@@ -223,9 +223,9 @@
         <Button
             android:id="@+id/buttonBack"
             style="@style/myStyleOperators"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_back" />
 
@@ -233,9 +233,9 @@
         <Button
             android:id="@+id/buttonDivision"
             style="@style/myStyleOperators"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/dim_8dp"
             android:layout_weight="1"
             android:text="@string/button_division" />
 

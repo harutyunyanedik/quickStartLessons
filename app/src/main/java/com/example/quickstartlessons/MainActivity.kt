@@ -1,6 +1,7 @@
 package com.example.quickstartlessons
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -29,91 +30,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonBack: Button
     private lateinit var buttonC: Button
 
-    private var screenText = StringBuilder("")
-    private var number1 = ""
-    private var number2 = ""
+
+    private var number1 = 0.0
+    private var number2 = 0.0
     private var result = 0.0
-    private var lastOperator = ""
+    private var lastOperator: Operator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculator_layout)
         initViews()
-        button0.setOnClickListener {
-            printText(it)
-        }
-        button1.setOnClickListener {
-            printText(it)
-        }
-        button2.setOnClickListener {
-            printText(it)
-        }
-        button3.setOnClickListener {
-            printText(it)
-        }
-        button4.setOnClickListener {
-            printText(it)
-        }
-        button5.setOnClickListener {
-            printText(it)
-        }
-        button6.setOnClickListener {
-            printText(it)
-        }
-        button7.setOnClickListener {
-            printText(it)
-        }
-        button8.setOnClickListener {
-            printText(it)
-        }
-        button9.setOnClickListener {
-            printText(it)
-        }
-        buttonDot.setOnClickListener {
-            printText(it)
-        }
-        buttonSum.setOnClickListener {
-            printText(it)
-            checkResult(it)
-            lastOperator = "+"
-        }
-        buttonMinus.setOnClickListener {
-            printText(it)
-            checkResult(it)
-            lastOperator = "-"
-        }
-        buttonMultiplication.setOnClickListener {
-            printText(it)
-            checkResult(it)
-            lastOperator = "*"
-        }
+        initListeners()
 
-        buttonDivision.setOnClickListener {
-            printText(it)
-            checkResult(it)
-            lastOperator = "/"
-        }
-        buttonC.setOnClickListener {
-            screenText.clear()
-            number1 = ""
-            number2 = ""
-            result = 0.0
-            lastOperator = ""
-            textViewScreen.text = result.toString()
-        }
-        buttonEqual.setOnClickListener {
-            printText(it)
-            checkResult(it)
-            number1 = ""
-            number2 = ""
-            lastOperator = ""
-        }
-        buttonBack.setOnClickListener {
-            if (screenText.isNotBlank()){
-                screenText = screenText.deleteCharAt(screenText.length - 1)
-                textViewScreen.text = screenText
-            }
-        }
     }
 
     private fun initViews() {
@@ -138,69 +66,232 @@ class MainActivity : AppCompatActivity() {
         buttonC = findViewById(R.id.buttonC)
     }
 
-    private fun printText(view: View) {
-        val button = view as Button
-        val text = button.text.toString()
-        screenText.append(text)
-        textViewScreen.text = screenText
+    private fun initListeners() {
+        button0.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+            }
+            printText(getString(R.string.button_0))
+        }
+        button1.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_1))
+        }
+        button2.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_2))
+        }
+        button3.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_3))
+        }
+        button4.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_4))
+        }
+        button5.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_5))
+        }
+        button6.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_6))
+        }
+        button7.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_7))
+        }
+        button8.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_8))
+        }
+        button9.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
+            }
+            printText(getString(R.string.button_9))
+        }
+        buttonDot.setOnClickListener {
+            if (lastOperator == Operator.EQUAL) {
+                textViewScreen.text = "0"
+                lastOperator = null
 
+            }
+            printText(getString(R.string.button_dot))
+        }
+        buttonSum.setOnClickListener {
+            printText(Operator.PLUS.str)
+            checkResult(Operator.PLUS.str)
+            lastOperator = Operator.PLUS
+        }
+        buttonMinus.setOnClickListener {
+            printText(Operator.MINUS.str)
+            checkResult(Operator.MINUS.str)
+            lastOperator = Operator.MINUS
+        }
+        buttonMultiplication.setOnClickListener {
+            printText(Operator.MULTIPLICATION.str)
+            checkResult(Operator.MULTIPLICATION.str)
+            lastOperator = Operator.MULTIPLICATION
+        }
 
+        buttonDivision.setOnClickListener {
+            printText(Operator.DIVISION.str)
+            checkResult(Operator.DIVISION.str)
+            lastOperator = Operator.DIVISION
+        }
+        buttonC.setOnClickListener {
+            textViewScreen.text = "0"
+            number1 = 0.0
+            number2 = 0.0
+            result = 0.0
+            lastOperator = null
+        }
+        buttonEqual.setOnClickListener {
+            printText(Operator.EQUAL.str)
+            checkResult("")
+            lastOperator = Operator.EQUAL
+        }
+        buttonBack.setOnClickListener {
+            val number = textViewScreen.text.toString()
+            if (number.contains("+") ||
+                number.contains("-") ||
+                number.contains("*") ||
+                number.contains("/")
+            ) {
+                lastOperator = null
+            }
+            if (number != "0") {
+                if (number.length == 1) {
+                    textViewScreen.text = "0"
+                } else {
+                    textViewScreen.text = number.substring(0, number.length - 1)
+                }
+            }
+        }
     }
 
-    private fun checkResult(view: View) {
-        val button = view as Button
-        val operator = button.text.toString()
+    private fun printText(text: String) {
+        val screenText = textViewScreen.text.toString()
+        if (screenText == "0" && text != ".") {
+            textViewScreen.text = text
+        } else if (screenText.contains("+") ||
+            screenText.contains("-") ||
+            screenText.contains("*") ||
+            screenText.contains("/")
+        ) {
+            textViewScreen.text = text
+        } else {
+            textViewScreen.text = screenText + text
+        }
+    }
+
+    private fun checkResult(operator: String) {
         try {
-            with(screenText) {
-                if (contains("+") || contains("-") || contains("*") || contains("/") || contains("=")) {
-                    if (number1.isBlank()) {
-                        number1 = deleteCharAt(toString().length - 1).toString()
-                        clear()
-                    } else {
-                        number2 = deleteCharAt(toString().length - 1).toString()
-                        clear()
-                        when (lastOperator) {
-                            "+" -> {
-                                result = number1.toDouble() + number2.toDouble()
-                                number1 = result.toString()
-                                textViewScreen.text = "$number1$operator"
+            with(textViewScreen.text.toString()) {
+                when (lastOperator) {
+                    Operator.PLUS -> {
+                        number2 = substring(0, length - 1).toDouble()
+                        result = number1 + number2
+                        number1 = result
+                        if (result % 1 == 0.0) {
+                            textViewScreen.text = "${result.toInt()}$operator"
+                        } else {
+                            textViewScreen.text = "$result$operator"
+                        }
+
+                    }
+
+                    Operator.MINUS -> {
+                        number2 = substring(0, length - 1).toDouble()
+                        result = number1 - number2
+                        number1 = result
+                        if (result % 1 == 0.0) {
+                            textViewScreen.text = "${result.toInt()}$operator"
+                        } else {
+                            textViewScreen.text = "$result$operator"
+                        }
+                    }
+
+                    Operator.MULTIPLICATION -> {
+                        number2 = substring(0, length - 1).toDouble()
+                        result = number1 * number2
+                        number1 = result
+                        if (result % 1 == 0.0) {
+                            textViewScreen.text = "${result.toInt()}$operator"
+                        } else {
+                            textViewScreen.text = "$result$operator"
+                        }
+                    }
+
+                    Operator.DIVISION -> {
+                        try {
+                            number2 = substring(0, length - 1).toDouble()
+                            result = number1 / number2
+                            number1 = result
+                            if (result % 1 == 0.0) {
+                                textViewScreen.text = "${result.toInt()}$operator"
+                            } else {
+                                textViewScreen.text = "$result$operator"
                             }
+                        } catch (e: Exception){
+                            textViewScreen.text = getString(R.string.cannot_divide_by_zero)
+                            number1 = 0.0
+                            number2 = 0.0
+                            lastOperator = null
+                        }
 
-                            "-" -> {
-                                result = number1.toDouble() - number2.toDouble()
-                                number1 = result.toString()
+
+                    }
+
+                    else -> {
+                        if (this == "+" || this == "-" || this == "*" || this == "/" || this == "=") {
+                            textViewScreen.text = "0$operator"
+                        } else {
+                            number1 = substring(0, length - 1).toDouble()
+                            if (number1 % 1 == 0.0) {
+                                textViewScreen.text = "${number1.toInt()}$operator"
+                            } else {
                                 textViewScreen.text = "$number1$operator"
-                            }
-
-                            "*" -> {
-                                result = number1.toDouble() * number2.toDouble()
-                                number1 = result.toString()
-                                textViewScreen.text = "$number1$operator"
-                            }
-
-                            "/" -> {
-                                try {
-                                    result = number1.toDouble() / number2.toDouble()
-                                    number1 = result.toString()
-                                    textViewScreen.text = "$number1$operator"
-
-                                } catch (e: Exception){
-                                    Toast.makeText(
-                                        this@MainActivity,
-                                        e.toString(),
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-
-
                             }
                         }
                     }
                 }
             }
 
-        } catch (e: Exception){
-            textViewScreen.text = "$number1$operator"
+        }
+        catch (e: Exception) {
+            if (number1 % 1 == 0.0) {
+                textViewScreen.text = "${number1.toInt()}$operator"
+            } else {
+                textViewScreen.text = "$number1$operator"
+            }
+
         }
 
     }
