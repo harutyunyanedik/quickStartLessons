@@ -19,7 +19,13 @@ class ActivityLogin : AppCompatActivity() {
         checkbox.setOnCheckedChangeListener { view, isChecked ->
             if (view.isChecked) {
                 editTextHello.hint = "E-mail"
-             //   checkboxemail.isPressed
+            } else {
+                editTextHello.hint = "Enter phone number"
+            }
+        }
+        checkboxemail.setOnCheckedChangeListener { view, isChecked ->
+            if (view.isChecked) {
+                editTextHello.hint = "E-mail"
             } else {
                 editTextHello.hint = "Enter phone number"
             }
