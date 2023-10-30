@@ -10,4 +10,5 @@
     <dimen name="body_text_size">18sp</dimen>
     <dimen name="body_width">300dp</dimen>
     <dimen name="body_margin_top">15dp</dimen>
+    <dimen name="body_padding">70dp</dimen>
 </resources>

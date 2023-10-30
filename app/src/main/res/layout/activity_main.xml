@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey">
 
-
-        <LinearLayout
-            android:id="@+id/relative"
+        <TextView
+            android:id="@+id/header"
+            style="@style/title_text_style"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#858585"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:text="@string/header"
+            app:layout_constraintStart_toTopOf="parent"
+            tools:layout_editor_absoluteY="@dimen/title_margin_top" />
 
-                <TextView
+        <TextView
+            android:id="@+id/body"
+            style="@style/body_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/body_margin_top"
+            android:paddingHorizontal="@dimen/body_padding"
+            android:text="@string/body"
+            app:layout_constraintTop_toBottomOf="@id/header" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            style="@style/button_style"
+            android:layout_marginStart="@dimen/margin_button"
+            android:layout_marginEnd="@dimen/margin_button"
 
-                    android:id="@+id/header"
-                    android:text="@string/header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/title_margin_top"
-                    android:layout_gravity="center"
-                    style="@style/title_text_style"
-                    />
+            android:layout_marginBottom="@dimen/margin_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/button"
+            />
 
-                <TextView
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    android:id="@+id/body"
-                    android:text="@string/body"
-                    android:layout_width="@dimen/body_width"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/body_margin_top"
-                    style="@style/body_text_style"/>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_marginStart="@dimen/margin_button"
-                    android:layout_marginBottom="@dimen/margin_button"
-                    android:text="@string/button"
-                    style="@style/button_style"/>
-
-
-        </LinearLayout>
 </layout>
