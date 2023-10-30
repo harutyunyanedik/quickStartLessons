@@ -2,4 +2,19 @@
     <string name="app_name">QuickStartLessons</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text1">Already have an account?</string>
+    <string name="text2">SIGN IN ,WE ARE WAITING FOR YOU</string>
+    <string name="text3">Email/Username</string>
+    <string name="text4">Password</string>
+    <string name="text5">Remember me</string>
+    <string name="text6">SIGN IN</string>
+    <string name="text7">FORGOT YOUR PASSWORD?</string>
+    <string name="text8">Contect support</string>
+    <string name="text9">REST PASSWORD</string>
+    <string name="text10">Enter phone number</string>
+    <string name="text11">RESET</string>
+    <string name="text12">Email</string>
+    <string name="e_mail">E-mail</string>
+    <string name="text13">SMS</string>
+
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="sms">
+        <item name="android:hint">@string/text10</item>
+        <item name="android:inputType">numberDecimal</item>
+    </style>
+    <style name="mail">
+        <item name="android:hint">@string/text12</item>
+        <item name="android:inputType">textEmailSubject</item>
+    </style>
+</resources>
