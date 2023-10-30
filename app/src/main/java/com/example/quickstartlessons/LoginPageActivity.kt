@@ -14,7 +14,7 @@ class LoginPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
        login=DataBindingUtil.setContentView(this,R.layout.activity_login_page)
         login.password.setOnClickListener {
-            Log.d("password","Incorrectly entered password")
+            //Log.d("password","Incorrectly entered password")
             Toast.makeText(this,"Password must contain at least 8 characters: one uppercase letter, one lowercase letter, one number and one symbol.",Toast.LENGTH_LONG).show()
 
         }

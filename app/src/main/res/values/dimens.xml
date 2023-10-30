@@ -13,4 +13,5 @@
     <dimen name="reset_top_margin">24dp</dimen>
     <dimen name="radiobutton_top">36dp</dimen>
     <dimen name="reset_button">48dp</dimen>
+
 </resources>

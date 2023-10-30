@@ -30,6 +30,7 @@ xmlns:tools="http://schemas.android.com/tools">
         android:textSize="@dimen/button_text_size"
         android:layout_marginTop="@dimen/start_end_margin"
         android:layout_marginStart="@dimen/start_end_margin"
+        android:layout_marginEnd="@dimen/start_end_margin"
         android:text="@string/login_page_two"
         android:textColor="@color/white"/>
     <EditText

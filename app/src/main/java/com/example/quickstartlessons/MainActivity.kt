@@ -8,6 +8,7 @@ import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.quickstartlessons.databinding.LayoutCalculateBinding
@@ -21,41 +22,51 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         calculate = DataBindingUtil.setContentView(this, R.layout.layout_calculate)
-        calculate.numberEntering.text = StringBuilder(0)
+        val editText = mutableListOf<Any>()
         var number1 = 0
         var number2 = 0
-        var operator=" "
+        var operator = " "
         calculate.oneButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.oneButton.text)
+            editText.add(calculate.oneButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.twoButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.twoButton.text)
+            editText.add(calculate.twoButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.threeButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.threeButton.text)
+            editText.add(calculate.threeButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.fourButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.fourButton.text)
+            editText.add(calculate.fourButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.fiveButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.fiveButton.text)
+            editText.add(calculate.fourButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.sixButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.sixButton.text)
+            editText.add(calculate.sixButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
 
         calculate.sevenButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.sevenButton.text)
+            editText.add(calculate.sevenButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
 
         calculate.eightButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.eightButton.text)
+            editText.add(calculate.eightButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.nineButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.nineButton.text)
+            editText.add(calculate.nineButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.zeroButton.setOnClickListener {
-            calculate.numberEntering.append(calculate.zeroButton.text)
+            editText.add(calculate.zeroButton.text)
+            calculate.numberEntering.text = editText.toString()
         }
         calculate.delete.setOnClickListener {
             val newText = calculate.numberEntering.text.toString()
@@ -66,40 +77,73 @@ class MainActivity : AppCompatActivity() {
         }
 
         calculate.operatorPlus.setOnClickListener {
-            val p=calculate.numberEntering.append(calculate.operatorPlus.text)
-            operator=p.toString()
+            val p = editText.add(calculate.operatorPlus.text)
+            calculate.numberEntering.text = editText.toString()
+            operator = p.toString()
         }
         calculate.multiply.setOnClickListener {
-            val l=calculate.numberEntering.append(calculate.multiply.text)
-            operator=l.toString()
+            val l = editText.add(calculate.multiply.text)
+            calculate.numberEntering.text = editText.toString()
+            operator = l.toString()
 
         }
         calculate.operatorMinus.setOnClickListener {
-            val m=calculate.numberEntering.append(calculate.operatorMinus.text)
-            operator=m.toString()
+            val m = editText.add(calculate.operatorMinus.text)
+            calculate.numberEntering.text = editText.toString()
+            operator = m.toString()
         }
         calculate.divisionButton.setOnClickListener {
-            val d= calculate.numberEntering.append(calculate.divisionButton.text)
-            operator=d.toString()
+            val d = editText.add(calculate.divisionButton.text)
+            calculate.numberEntering.text = editText.toString()
+            operator = d.toString()
         }
-        number1
-        number2=calculate.numberEntering.text.lastIndex
-        calculate.equalButton.setOnClickListener {
-            when (operator) {
-                calculate.operatorPlus.text -> calculate.result.text=(number1 + number2).toString()
 
-                calculate.operatorMinus.text -> calculate.result.text =
-                    (number1 - number2).toString()
+        fun newList():MutableList<Any> {
+            val list = mutableListOf<Any>()
+            var currentNumber = ""
+            for (i in calculate.numberEntering.text) {
+                if (i.isDigit()) {
+                    currentNumber += i
+                } else {
+                    list.add(currentNumber)
+                    currentNumber = ""
+                    list.add(i)
+                }
+            }
+            if (currentNumber != "") {
+                list.add(currentNumber)
+            }
+            return list
+        }
+            number1= newList()[0] as Int
+            number2 = newList()[3] as Int
+            calculate.equalButton.setOnClickListener {
+                when (operator) {
+                    calculate.operatorPlus.text -> calculate.result.text =
+                        (number1 + number2).toString()
 
-                calculate.divisionButton.text -> calculate.result.text =
-                    (number1.toDouble() / number2.toDouble()).toString()
+                    calculate.operatorMinus.text -> calculate.result.text =
+                        (number1 - number2).toString()
 
-                calculate.multiply.text -> calculate.result.text = (number1 * number2).toString()
+                    calculate.divisionButton.text ->
+                        if (number2 != 0) {
+                            calculate.result.text =
+                                (number1.toDouble() / number2.toDouble()).toString()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                " number could not be divided by zero",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
+                    calculate.multiply.text -> calculate.result.text =
+                        (number1 * number2).toString()
+
+                }
             }
         }
     }
-}
 
 
 
