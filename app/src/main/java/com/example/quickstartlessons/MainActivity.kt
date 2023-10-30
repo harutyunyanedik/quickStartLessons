@@ -1,88 +1,48 @@
 package com.example.quickstartlessons
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import net.objecthunter.exp4j.ExpressionBuilder
+import androidx.databinding.DataBindingUtil
+import com.example.quickstartlessons.android.ResetPassword
+import com.example.quickstartlessons.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
+
+    lateinit var checkbox1: CheckBox
+    lateinit var checkbox2: CheckBox
+    lateinit var enterButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.calculator)
+        setContentView(R.layout.reset_password)
+
+        val intent = Intent(this, ResetPassword::class.java)
+        startActivity(intent)
 
 
-        val button0 = findViewById<Button>(R.id.button0)
-        val button1 = findViewById<Button>(R.id.button1)
-        val button2 = findViewById<Button>(R.id.button2)
-        val button3 = findViewById<Button>(R.id.button3)
-        val button4 = findViewById<Button>(R.id.button4)
-        val button5 = findViewById<Button>(R.id.button5)
-        val button6 = findViewById<Button>(R.id.button6)
-        val button7 = findViewById<Button>(R.id.button7)
-        val button8 = findViewById<Button>(R.id.button8)
-        val button9 = findViewById<Button>(R.id.button9)
-        val calculation = findViewById<TextView>(R.id.calculation)
-        val result = findViewById<TextView>(R.id.result)
-        val clear = findViewById<Button>(R.id.clear)
-        val backspace = findViewById<Button>(R.id.backspace)
-        val addition = findViewById<Button>(R.id.addition)
-        val minus = findViewById<Button>(R.id.minus)
-        val multiplication = findViewById<Button>(R.id.multiplication)
-        val division = findViewById<Button>(R.id.division)
-        val equal = findViewById<Button>(R.id.buttonEqual)
+        val checkbox1 = findViewById<CheckBox>(R.id.checkbox1)
+        val checkbox2 = findViewById<CheckBox>(R.id.checkbox2)
+        val enterButton = findViewById<Button>(R.id.enter_button)
 
-
-
-        button0.setOnClickListener { setTextFields("0") }
-        button1.setOnClickListener { setTextFields("1") }
-        button2.setOnClickListener { setTextFields("2") }
-        button3.setOnClickListener { setTextFields("3") }
-        button4.setOnClickListener { setTextFields("4") }
-        button5.setOnClickListener { setTextFields("5") }
-        button6.setOnClickListener { setTextFields("6") }
-        button7.setOnClickListener { setTextFields("7") }
-        button8.setOnClickListener { setTextFields("8") }
-        button9.setOnClickListener { setTextFields("9") }
-
-
-        addition.setOnClickListener { setTextFields("+") }
-        minus.setOnClickListener { setTextFields("-") }
-        multiplication.setOnClickListener { setTextFields("*") }
-        division.setOnClickListener { setTextFields("/") }
-
-
-        clear.setOnClickListener {
-            calculation.text = ""
-            result.text = ""
+        if (checkbox1.isChecked) {
+            enterButton.text = "Enter phone number"
+        } else {
+            enterButton.text = " "
         }
 
-        backspace.setOnClickListener {
-            val str = calculation.text.toString()
-            if (str.isNotEmpty()) {
-                calculation.text = str.substring(0, str.length - 1)
-                result.text = ""
-            }
-
+        if (checkbox2.isChecked) {
+            enterButton.text = "E-mail"
+        } else {
+            enterButton.text = " "
         }
-        equal.setOnClickListener {
-            try {
-                val ex = ExpressionBuilder(calculation.text.toString()).build()
-                val result = ex.evaluate()
-            } catch (e: Exception) {
 
-            }
-
-        }
 
     }
-
-    private fun setTextFields(s: String) {
-        val calculation = findViewById<TextView>(R.id.calculation)
-        calculation.append(s)
-    }
-
-
 }
-//

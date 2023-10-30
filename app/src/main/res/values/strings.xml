@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">QuickStartLessons</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="text1">12:12</string>
-    <string name="text2">New Version Available</string>
-    <string name="text3"> \There is a new version available for download.
-        Please update the app by visiting the App store.</string>
-    <string name="text4">Update</string>
+    <string name="header1">Already have an account?</string>
+    <string name="header2">SIGN IN, WE ARE WAITING FOR YOU</string>
+    <string name="hint1">Email / Username </string>
+    <string name="hint2">Password </string>
+    <string name="checkbox">Remember me</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="forgot_password">FORGOT YOUR PASSWORD?</string>
+    <string name="reset_password">RESET PASSWORD</string>
+    <string name="checkbox1">SMS</string>
+    <string name="checkbox2">E-Mail</string>
+    <string name="reset">RESET</string>
+
+
 </resources>
