@@ -72,7 +72,7 @@ xmlns:tools="http://schemas.android.com/tools">
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintStart_toStartOf="parent"
         android:buttonTint="@color/light_blue"
-        android:buttonTintMode="screen"
+
         />
     <Button
         android:id="@+id/button"

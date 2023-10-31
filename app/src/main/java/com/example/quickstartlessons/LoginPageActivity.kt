@@ -13,10 +13,12 @@ class LoginPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        login=DataBindingUtil.setContentView(this,R.layout.activity_login_page)
-        login.password.setOnClickListener {
-            //Log.d("password","Incorrectly entered password")
-            Toast.makeText(this,"Password must contain at least 8 characters: one uppercase letter, one lowercase letter, one number and one symbol.",Toast.LENGTH_LONG).show()
 
+        login.button.setOnClickListener {
+            if(login.name.text.isEmpty() || login.password.text.isEmpty()){
+                Toast.makeText(this,"Username and password must be filled in",Toast.LENGTH_LONG).show()
+            }
+            Log.d("password","Incorrectly entered")
         }
 
         login.forgotPassword.setOnClickListener {
