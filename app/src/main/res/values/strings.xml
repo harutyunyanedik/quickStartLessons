@@ -33,8 +33,22 @@
     <string name="reset_password">RESET PASSWORD</string>
     <string name="sms">SMS</string>
     <string name="email">E-mail</string>
-    <string name="enter_phone_number">Enter phone number</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
     <string name="reset">RESET</string>
     <string name="sms_has_been_sent_to_your_phone_number">SMS has been sent to your phone number</string>
     <string name="the_email_has_been_sent_to_your_email_address">The email has been sent to your email address</string>
+    <string name="sign_up">Sign up</string>
+    <string name="registration">Sign Up</string>
+    <string name="it_s_quick_and_easy">It’s quick and easy.</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="new_password">New Password</string>
+    <string name="repeat_new_password">Repeat New Password</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="username_or_password_is_incorrect">Username or password is incorrect</string>
+    <string name="the_email_address_is_incorrect">The email address is incorrect</string>
+    <string name="the_phone_number_is_incorrect">The phone number is incorrect</string>
+    <string name="password_successfully_changed">Password successfully changed</string>
 </resources>

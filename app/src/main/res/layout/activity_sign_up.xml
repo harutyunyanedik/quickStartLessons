@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dim_8dp"
+        android:background="@color/background_sign_in"
+        tools:context=".SignUpActivity">
+
+        <TextView
+            android:id="@+id/textViewRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registration"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/it_s_quick_and_easy"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_24sp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewRegistration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/editTextEnterUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/edit_text_background"
+            android:hint="@string/enter_username"
+            android:textColor="@color/color_question"
+            android:textColorHint="@color/color_question"
+            android:padding="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/editTextEnterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/edit_text_background"
+            android:hint="@string/enter_email"
+            android:textColor="@color/color_question"
+            android:textColorHint="@color/color_question"
+            android:padding="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/editTextEnterUserName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/editTextEnterPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/edit_text_background"
+            android:hint="@string/enter_phone_number"
+            android:textColor="@color/color_question"
+            android:textColorHint="@color/color_question"
+            android:padding="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@id/editTextEnterEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/editTextEnterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/edit_text_background"
+            android:hint="@string/enter_password"
+            android:textColor="@color/color_question"
+            android:textColorHint="@color/color_question"
+            android:padding="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/editTextEnterPhoneNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/editTextRepeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/edit_text_background"
+            android:hint="@string/repeat_password"
+            android:textColor="@color/color_question"
+            android:textColorHint="@color/color_question"
+            android:padding="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/editTextEnterPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:text="@string/sign_up"
+            android:textColor="@color/color_question"
+            android:layout_marginTop="@dimen/dim_16dp"
+            app:layout_constraintTop_toBottomOf="@id/editTextRepeatPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
