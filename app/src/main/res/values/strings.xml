@@ -37,4 +37,6 @@
     <string name="e_mail2">E-mail</string>
     <string name="reset">Reset</string>
     <string name="phone">Enter your phone</string>
+    <string name="login">You are successfully log in</string>
+    <string name="you_are_successfully_log_in">You are successfully log in</string>
 </resources>

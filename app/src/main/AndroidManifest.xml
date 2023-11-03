@@ -13,10 +13,13 @@
         android:theme="@style/Theme.QuickStartLessons"
         tools:targetApi="31">
         <activity
+            android:name=".android.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activitythree"
             android:exported="false" />
         <activity
-            android:name=".ActivityLogin"
+            android:name=".SharedPreferences"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
