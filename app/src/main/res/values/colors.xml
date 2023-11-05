@@ -13,4 +13,5 @@
     <color name="color_question">#99FFFFFF</color>
     <color name="edit_text_background">#373150</color>
     <color name="button_color">#14CC00</color>
+    <color name="background_shop_item">#FFBB86FC</color>
 </resources>
