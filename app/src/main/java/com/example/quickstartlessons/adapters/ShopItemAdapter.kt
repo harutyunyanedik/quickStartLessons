@@ -1,9 +1,10 @@
-package com.example.quickstartlessons
+package com.example.quickstartlessons.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quickstartlessons.ShopItem
 import com.example.quickstartlessons.databinding.ItemShopBinding
 
 class ShopItemAdapter : RecyclerView.Adapter<ShopItemAdapter.ShopItemViewHolder>() {

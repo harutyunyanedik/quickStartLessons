@@ -1,9 +1,12 @@
-package com.example.quickstartlessons
+package com.example.quickstartlessons.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quickstartlessons.R
+import com.example.quickstartlessons.ShopItem
+import com.example.quickstartlessons.adapters.ShopItemAdapter
 import com.example.quickstartlessons.databinding.ActivityShoppingListBinding
 
 class ShopListActivity : AppCompatActivity() {
@@ -11,7 +14,7 @@ class ShopListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        biding = DataBindingUtil.setContentView(this,R.layout.activity_shopping_list)
+        biding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_list)
         setUpRecyclerView()
     }
 
