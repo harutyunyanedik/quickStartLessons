@@ -3,5 +3,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="newVersionAvaibale_title">New Version Avaibale</string>
     <string name="update_title">Update</string>
+    <string name="one_title">1</string>
+    <string name="two_title">2</string>
+    <string name="tree_title">3</string>
+    <string name="four_title">4</string>
+    <string name="five_title">5</string>
+    <string name="six_title">6</string>
+    <string name="seven_title">7</string>
+    <string name="eight_title">8</string>
+    <string name="nine_title">9</string>
+    <string name="zero_title">0</string>
+    <string name="AC_title">AC</string>
+    <string name="on_title">ON</string>
+    <string name="off_title">OFF</string>
+    <string name="dilate_title">X</string>
+    <string name="comma_title">,</string>
     <string name="thereIsANewVersionAvaibaleForDownload.PleaseUpdateTheAppByVisitingTheAppStore_description">There is a new version avaibale for download. Please update the app by visiting the app store.</string>
 </resources>
