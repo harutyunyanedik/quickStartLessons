@@ -1,13 +1,8 @@
 package com.example.quickstartlessons.android.adapters
 
-import android.content.ClipData.Item
 import android.content.Context
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.android.models.RvModels
 import com.example.quickstartlessons.databinding.ItemRecyclarViewBinding
@@ -31,13 +26,11 @@ class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecy
 
     override fun getItemCount(): Int = items.size
 
-
-
     override fun onBindViewHolder(holder: FirstRecyclerViewHolder, position: Int) {
 holder.bind(items[position])
     }
 
-    fun updateData(items:List<RvModels>?){
+  fun updateData(items:List<RvModels>?){
         this.items.clear()
        items?.let{
            this.items.addAll(items)
@@ -47,7 +40,7 @@ holder.bind(items[position])
 
     inner class FirstRecyclerViewHolder(private val binding:ItemRecyclarViewBinding):RecyclerView.ViewHolder(binding.root){
 
-        fun bind(items: RvModels){
+         fun bind(items: RvModels){
             binding.titleTextView.text=items.title
             binding.descriptionTextView.text=items.description
         }
