@@ -8,7 +8,7 @@ import com.example.quickstartlessons.databinding.FavoriteItemBinding
 
 class FavoriteItemsAdapter: RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteItemViewHolder>() {
 
-    val list = mutableListOf<String>()
+    private val items = mutableListOf<String>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
@@ -23,22 +23,20 @@ class FavoriteItemsAdapter: RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteIt
     }
 
     override fun onBindViewHolder(holder: FavoriteItemViewHolder, position: Int) {
-        holder.bind(position)
+        holder.view.textViewTitle.text = items[position]
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return items.size
     }
 
-    fun addList(list: List<String>){
-        this.list.clear()
-        this.list.addAll(list)
+    fun updateData(list: List<String>){
+        items.clear()
+        items.addAll(list)
         notifyDataSetChanged()
     }
 
     inner class FavoriteItemViewHolder(val view: FavoriteItemBinding): RecyclerView.ViewHolder(view.root){
-        fun bind(position: Int) {
-            view.textViewTitle.text = list[position]
-        }
+
     }
 }

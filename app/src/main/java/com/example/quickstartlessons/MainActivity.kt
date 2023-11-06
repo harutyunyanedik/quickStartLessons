@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = FavoriteItemsAdapter()
         biding.recyclerViewFavoriteItems.adapter = adapter
         biding.recyclerViewFavoriteItems.layoutManager = LinearLayoutManager(this)
-        adapter.addList(setList())
+        adapter.updateData(setList())
 
 
     }
