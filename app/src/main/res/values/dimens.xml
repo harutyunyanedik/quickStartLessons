@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name = "my_activity_margin">16dp</dimen>
+    <dimen name="my_text_size">32sp</dimen>
+</resources>
