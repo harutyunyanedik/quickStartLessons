@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="@integer/material_motion_duration_long_1"
+        android:background="@color/blue"
+        android:gravity="right|bottom"
+        android:inputType="textPersonName"
+        android:hint="0"
+        android:textSize="48sp" />
+<TableLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    />
+    <Button
+        android:id="@+id/AC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@color/orange"
+        android:text="@string/AC_title"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/SEVEN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@color/gray"
+        android:text="@string/seven_title"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/FOUR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@color/gray"
+        android:text="@string/four_title"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/ONE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@color/gray"
+        android:text="@string/one_title"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/COMMA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@color/gray"
+        android:paddingBottom="16dp"
+        android:text="@string/comma_title"
+        android:textSize="32sp"
+        />
+</LinearLayout>
