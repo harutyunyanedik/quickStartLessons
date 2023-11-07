@@ -46,7 +46,7 @@ class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecy
     inner class FirstRecyclerViewHolder(private val binding: ItemRecycleViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Model) {
-            binding.title.text = item.title
+            binding.textrecycler.text = item.title
 
         }
 

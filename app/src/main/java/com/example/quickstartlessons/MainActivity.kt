@@ -1,39 +1,40 @@
 package com.example.quickstartlessons
 
-import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quickstartlessons.android.ActivityTwo
-import com.example.quickstartlessons.android.FirstRecyclerAdapter
+
 import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = FirstRecyclerAdapter()
+    private val adapter = AdaptorRecycler{
+        Toast.makeText(this,it.toString(),Toast.LENGTH_LONG).show()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         setupRecycleView()
+
     }
 
-    fun setupRecycleView() {
+  private  fun setupRecycleView() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
-
-        adapter.updateData(createData())
+        adapter.apdateData(createNewList())
     }
+        private fun createNewList(): List<RvModel> {
+             val list= mutableListOf<RvModel>()
+             for(i in 0..100){
+                 list.add(RvModel(false,"Arsenal FS Specials",false))
 
-    fun createData(): List<Model> {
-        val list = mutableListOf<Model>()
-        for (i in 0..100) {
-            list.add(Model("Arsenal FS Specials"))
-        }
-        return list
-    }
+             }
+             return list
+         }
+
 }

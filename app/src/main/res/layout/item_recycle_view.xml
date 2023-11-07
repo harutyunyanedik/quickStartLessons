@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -11,7 +12,7 @@
         >
 
         <CheckBox
-            android:id="@+id/imageView"
+            android:id="@+id/buttonView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -20,24 +21,46 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:id="@+id/textrecycler"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:shadowColor="@color/white"
+            android:layout_marginStart="8dp"
             android:text="@string/title_text"
             android:textColor="@color/white_10"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/imageView"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/buttonView"
+            app:layout_constraintEnd_toStartOf="@id/next"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/navigate_next"
+            android:id="@+id/textnovisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:src="@drawable/ic_launcher_foreground"
+            tools:ignore="MissingConstraints" />
+
+
+        <ImageView
+            android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_navigate_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
