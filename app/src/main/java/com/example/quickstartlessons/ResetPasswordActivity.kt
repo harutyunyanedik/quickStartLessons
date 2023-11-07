@@ -1,10 +1,9 @@
-package com.example.quickstartlessons.resetpage
+package com.example.quickstartlessons
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ActivityResetPasswordBinding
 
 class ResetPasswordActivity : AppCompatActivity() {

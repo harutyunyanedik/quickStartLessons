@@ -26,6 +26,8 @@
     </style>
    <style name="checkbox">
        <item name="colorAccent">@color/light_blue</item>
-
    </style>
+    <style name="lesson_android">
+
+    </style>
 </resources>

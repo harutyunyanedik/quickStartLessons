@@ -16,4 +16,6 @@
     <color name="blue_reset">#4E5266</color>
     <color name="magenta">#C11287</color>
     <color name="dark_white">#F0E9E9</color>
+    <color name="White_10">#1AF0E9E9</color>
+    <color name="app_background">#000c24</color>
 </resources>

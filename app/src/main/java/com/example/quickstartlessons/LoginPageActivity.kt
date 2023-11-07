@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.resetpage
+package com.example.quickstartlessons
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ActivityLoginPageBinding
 
 

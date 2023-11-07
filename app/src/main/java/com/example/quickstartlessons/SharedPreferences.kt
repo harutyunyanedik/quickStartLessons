@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.resetpage
+package com.example.quickstartlessons
 
 import android.app.Activity
 import android.content.Context.MODE_PRIVATE
