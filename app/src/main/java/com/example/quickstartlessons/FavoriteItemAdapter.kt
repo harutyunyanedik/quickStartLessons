@@ -23,7 +23,7 @@ class FavoriteItemsAdapter: RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteIt
     }
 
     override fun onBindViewHolder(holder: FavoriteItemViewHolder, position: Int) {
-        holder.view.textViewTitle.text = items[position]
+        holder.bind(items[position])
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +37,8 @@ class FavoriteItemsAdapter: RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteIt
     }
 
     inner class FavoriteItemViewHolder(val view: FavoriteItemBinding): RecyclerView.ViewHolder(view.root){
-
+        fun bind(str: String){
+            view.textViewTitle.text = str
+        }
     }
 }

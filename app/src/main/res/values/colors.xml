@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="title_color">#E6FFFFFF</color>
-    <color name="favorite_item_color">#CC000C24</color>
+    <color name="favorite_item_background">#1AFFFFFF</color>
+    <color name="view_color">#4DFFFFFF</color>
+    <color name="layout_background">#000c24</color>
 </resources>

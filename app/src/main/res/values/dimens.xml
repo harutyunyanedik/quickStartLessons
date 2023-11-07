@@ -2,4 +2,8 @@
 <resources>
     <dimen name="padding_item">16dp</dimen>
     <dimen name="_8dp">8dp</dimen>
+    <dimen name="view_height">1dp</dimen>
+    <dimen name="constraint_padding">16dp</dimen>
+    <dimen name="views_margin">16dp</dimen>
+    <dimen name="title_text_size">18sp</dimen>
 </resources>

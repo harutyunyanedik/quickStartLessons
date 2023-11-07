@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setList(): List<String>{
         val list = mutableListOf<String>()
-        for (i in 1.. 15){
+        for (i in 1.. 100){
             list.add("Arsenal FC Specials")
         }
         return list

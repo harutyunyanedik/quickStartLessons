@@ -6,8 +6,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#B3000C24"
-        android:padding="@dimen/padding_item"
+        android:background="@color/favorite_item_background"
+        android:paddingStart="@dimen/constraint_padding"
+        android:paddingTop="@dimen/constraint_padding"
         android:orientation="horizontal">
 
         <CheckBox
@@ -15,6 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@drawable/checked_box"
+            android:layout_marginBottom="@dimen/views_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,19 +25,33 @@
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8dp"
             android:text="@string/arsenal_fc_specials"
+            android:textSize="@dimen/title_text_size"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginBottom="@dimen/views_margin"
             android:textColor="@color/title_color"
             app:layout_constraintStart_toEndOf="@id/imageViewFavorite"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
             android:id="@+id/imageViewNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_navigate_next"
+            android:layout_marginEnd="@dimen/_8dp"
+            android:layout_marginBottom="@dimen/views_margin"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/view_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/textViewTitle"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
