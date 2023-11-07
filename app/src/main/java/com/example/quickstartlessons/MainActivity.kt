@@ -1,11 +1,12 @@
 package com.example.quickstartlessons
 
 import android.content.Intent
+import android.graphics.ColorSpace
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quickstartlessons.android.ActivityTwo
+
 import com.example.quickstartlessons.android.FirstRecyclerAdapter
 import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ActivityMainBinding
