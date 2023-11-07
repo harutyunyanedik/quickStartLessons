@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/imageViewFavorite"
+            android:id="@+id/checkboxFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@drawable/checked_box"
@@ -30,7 +30,7 @@
             android:layout_marginStart="@dimen/_8dp"
             android:layout_marginBottom="@dimen/views_margin"
             android:textColor="@color/title_color"
-            app:layout_constraintStart_toEndOf="@id/imageViewFavorite"
+            app:layout_constraintStart_toEndOf="@id/checkboxFavorite"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
