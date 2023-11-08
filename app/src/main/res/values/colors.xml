@@ -13,4 +13,6 @@
     <color name="text_background">#EDF3EE</color>
     <color name="button_background">#D39130</color>
 
+    <color name="app_background">#000c24</color>
+
 </resources>
