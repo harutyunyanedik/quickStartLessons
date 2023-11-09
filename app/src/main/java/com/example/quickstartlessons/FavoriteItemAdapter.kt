@@ -2,16 +2,18 @@ package com.example.quickstartlessons
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FavoriteItemBinding
 
-class FavoriteItemsAdapter : RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteItemViewHolder>() {
+class FavoriteItemsAdapter(val onFavoriteItemClick: (Int) -> Unit,
+    ) : RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteItemViewHolder>() {
 
     private val items = mutableListOf<FavoriteItemModel>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
+    var onFavoriteTextViewClick: ((Int) -> Unit)? = null
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -25,12 +27,7 @@ class FavoriteItemsAdapter : RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteI
 
     override fun onBindViewHolder(holder: FavoriteItemViewHolder, position: Int) {
         holder.bind(items[position])
-        holder.view.checkboxFavorite.setOnClickListener {
-            val checkbox = it as CheckBox
-            val isChecked = checkbox.isChecked
-            items[position].checkedStatus = isChecked
-            notifyDataSetChanged()
-        }
+
     }
 
 
@@ -45,11 +42,31 @@ class FavoriteItemsAdapter : RecyclerView.Adapter<FavoriteItemsAdapter.FavoriteI
         notifyDataSetChanged()
     }
 
-    inner class FavoriteItemViewHolder(val view: FavoriteItemBinding) :
-        RecyclerView.ViewHolder(view.root) {
+    inner class FavoriteItemViewHolder(val binding: FavoriteItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.checkboxFavorite.setOnCheckedChangeListener { buttonView, isChecked ->
+                items[adapterPosition].isFavorite = isChecked
+            }
+            binding.rootLayout.setOnClickListener {
+                onFavoriteItemClick.invoke(adapterPosition)
+            }
+            binding.textViewTitle.setOnClickListener {
+                when(items[adapterPosition].isVisible){
+                    1 -> items[adapterPosition].isVisible = 0
+                    0 -> items[adapterPosition].isVisible = 1
+                }
+                notifyDataSetChanged()
+            }
+        }
         fun bind(model: FavoriteItemModel) {
-            view.textViewTitle.text = model.title
-            view.checkboxFavorite.isChecked = model.checkedStatus
+            binding.textViewTitle.text = model.title
+            binding.checkboxFavorite.isChecked = model.isFavorite
+            when(model.isVisible){
+                0 -> binding.imageView.visibility = View.GONE
+                1 -> binding.imageView.visibility = View.VISIBLE
+            }
         }
     }
 }
