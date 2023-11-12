@@ -16,7 +16,6 @@ class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountriesViewHold
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val countriesList = mutableListOf<CountryModel>()
-    private val viewPool = RecyclerView.RecycledViewPool()
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -71,8 +70,6 @@ class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountriesViewHold
                 adapter.updateList(model.championship)
                 val linearLayoutManager = LinearLayoutManager(binding.recyclerViewChampionships.context)
                 recyclerViewChampionships.layoutManager = linearLayoutManager
-                linearLayoutManager.initialPrefetchItemCount = model.championship.size
-                recyclerViewChampionships.setRecycledViewPool(viewPool)
 
 
             }
