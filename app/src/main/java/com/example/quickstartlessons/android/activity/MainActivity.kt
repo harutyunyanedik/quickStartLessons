@@ -1,7 +1,7 @@
 package com.example.quickstartlessons.android.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,37 +9,27 @@ import com.example.quickstartlessons.R
 import com.example.quickstartlessons.android.Models
 import com.example.quickstartlessons.android.adapter.AdapterRecyclerView
 import com.example.quickstartlessons.databinding.ActivityMainBinding
-import com.example.quickstartlessons.databinding.ItemReciclerViewBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
-  //private lateinit var binding1: ItemReciclerViewBinding
-
-    private val adapter = AdapterRecyclerView()
-
-    @SuppressLint("SuspiciousIndentation")
+    private val adapter :AdapterRecyclerView = AdapterRecyclerView{
+        Toast.makeText(this,it.toString(),Toast.LENGTH_SHORT).show()}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-       // binding1.imageUnchecked.setOnClickListener(){
-          //  binding1.imageUnchecked.isClickable
-       // }
         setUpRecyclerView()
     }
-
     private fun setUpRecyclerView() {
-        val layoutManager = LinearLayoutManager(this)
-        binding.arsenalFCSpecials.adapter = adapter
-        binding.arsenalFCSpecials.layoutManager = layoutManager
-        adapter.updateData(createDemoData())
+        binding.arsenalFCSpecials.apply {
+            adapter = this@MainActivity.adapter
+           layoutManager = LinearLayoutManager(this@MainActivity)
+        }
+        adapter.updateData(createList())
     }
-
-    private fun createDemoData(): List<Models> {
+    private fun createList(): List<Models> {
         val list = mutableListOf<Models>()
         for (i in 0..10) {
-            list.add(Models(resources.getString(R.string.FCSpecials)))
+            list.add(Models("Arsenal FC Specials",false,false))
         }
         return list
     }
