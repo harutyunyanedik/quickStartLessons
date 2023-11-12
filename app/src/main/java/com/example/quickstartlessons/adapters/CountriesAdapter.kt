@@ -47,7 +47,9 @@ class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountriesViewHold
 
     inner class CountriesViewHolder(private val binding: CountryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private val adapter = ChampionshipsAdapter()
         init {
+            binding.recyclerViewChampionships.adapter = adapter
 
             binding.layoutCountry.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
@@ -66,13 +68,12 @@ class CountriesAdapter : RecyclerView.Adapter<CountriesAdapter.CountriesViewHold
                 val rotation = if (model.isExpanded) 180f else 0f
                 imageViewArrowDown.rotation = rotation
                 recyclerViewChampionships.isVisible = model.isExpanded
-                val adapter = ChampionshipsAdapter()
-                recyclerViewChampionships.adapter = adapter
                 adapter.updateList(model.championship)
                 val linearLayoutManager = LinearLayoutManager(binding.recyclerViewChampionships.context)
                 recyclerViewChampionships.layoutManager = linearLayoutManager
                 linearLayoutManager.initialPrefetchItemCount = model.championship.size
                 recyclerViewChampionships.setRecycledViewPool(viewPool)
+
 
             }
         }
