@@ -13,7 +13,7 @@
             android:id="@+id/checkboxFavourite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/ic_star"
+            android:button="@drawable/selector_favourite_checked_box"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
