@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.adapters.CountryAdapter
 import com.example.quickstartlessons.databinding.ActivityMainBinding
+import com.example.quickstartlessons.models.ChildModel
 import com.example.quickstartlessons.models.CountryModel
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun createList(): List<CountryModel> {
         val list = mutableListOf<CountryModel>()
         for (i in 0..20) {
-            list.add(CountryModel("USA", "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_the_United_States_%281795-1818%29.jpg"))
+            list.add(CountryModel("USA", "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_the_United_States_%281795-1818%29.jpg", listOf(ChildModel("MLS",false))))
         }
         return list
     }

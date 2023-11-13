@@ -4,6 +4,6 @@ data class CountryModel(
     val title: String,
     val image: String,
     val childItemList: List<ChildModel> = mutableListOf(),
-    val isExpandable: Boolean = false
+    var isExpanded: Boolean = false
 
 )

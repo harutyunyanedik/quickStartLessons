@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.ItemCountryBinding
@@ -38,10 +39,26 @@ class CountryAdapter : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() 
     }
 
     inner class CountryViewHolder(private val binding: ItemCountryBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val childAdapter: ChildAdapter = ChildAdapter()
+
+        init {
+            binding.subItem.adapter = childAdapter
+            binding.root.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    items[adapterPosition].isExpanded = !items[adapterPosition].isExpanded
+                    notifyItemChanged(adapterPosition)
+                }
+            }
+        }
+
         fun bind(item: CountryModel) {
             binding.countryName.text = item.title
             Glide.with(context).load(item.image).into(binding.flagImage)
-        }
+            childAdapter.updateData(item.childItemList)
+            val rotation = if (item.isExpanded) 180f else 0f
+            binding.arrowDownImage.rotation = rotation
+            binding.subItem.isVisible = item.isExpanded
 
+        }
     }
 }
