@@ -5,36 +5,37 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/child_background">
+        android:layout_height="wrap_content">
 
-        <CheckBox
-            android:id="@+id/checkboxFavourite"
+        <ImageView
+            android:id="@+id/flagImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/childTitle"
+            android:id="@+id/countryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            tools:text="sub item"
-            android:textColor="@color/white"
+            android:padding="8dp"
+            tools:text="country"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/checkboxFavourite"
+            app:layout_constraintStart_toEndOf="@id/flagImage"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/arrow"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/subItem"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_down"
-            app:layout_constraintBottom_toBottomOf="@id/childTitle"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:padding="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/countryName"
+            tools:listitem="@layout/child_item"
+            tools:itemCount="3"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
 
