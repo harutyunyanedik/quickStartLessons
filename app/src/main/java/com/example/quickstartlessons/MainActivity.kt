@@ -1,40 +1,54 @@
 package com.example.quickstartlessons
 
-import android.content.Intent
-import android.graphics.ColorSpace
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-import com.example.quickstartlessons.android.FirstRecyclerAdapter
-import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = FirstRecyclerAdapter()
+    private val adaptor = AdaptorRecyclerView()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         setupRecycleView()
-    }
+
+        }
+
 
     fun setupRecycleView() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adaptor
+        adaptor.updateData(createData())
 
-        adapter.updateData(createData())
     }
 
-    fun createData(): List<Model> {
-        val list = mutableListOf<Model>()
-        for (i in 0..100) {
-            list.add(Model("Arsenal FS Specials"))
+     fun createChildData():List<Model>{
+         val listChild= mutableListOf<Model>()
+         for(i in 0..11){
+             listChild.add(Model(false,"MLS",2))
+             listChild.add(Model(false,"ULS Championship",3))
+         }
+         return  listChild
+     }
+    fun createData(): List<RvModel> {
+        val list = mutableListOf<RvModel>()
+        for (i in 0..10) {
+            list.add(RvModel("https://www.pngall.com/wp-content/uploads/2016/05/Australia-Flag-PNG.png","Australia", 11, false, createChildData()))
+            list.add(RvModel("https://en.wikipedia.org/wiki/Flag_of_South_Korea#/media/File:Flag_of_South_Korea.png","Korea(South)", 12, false,createChildData()))
+            list.add(RvModel("https://upload.wikimedia.org/wikipedia/commons/f/f2/Argentina_Flag.png","Argentina", 20, false,createChildData()))
+            list.add(RvModel("https://upload.wikimedia.org/wikipedia/commons/0/01/Brazil_flag_300.png","Brazil", 28, false,createChildData()))
+            list.add(RvModel("https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of_the_United_States.png\"","USA", 20, false,createChildData()))
         }
         return list
     }
+
 }
+
+
