@@ -15,6 +15,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="4dp"
+            android:layout_margin="8dp"
             app:layout_constraintEnd_toStartOf="@id/countryname"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,10 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="16dp"
             android:textColor="@color/white_10"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/countryflag"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,6 @@
             android:layout_marginEnd="8dp"
             android:textColor="@color/white_10"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/arrowDown"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
@@ -48,86 +47,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/lc_arrow_down"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/lc_open_close"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <View
             android:id="@+id/viewBlue"
             android:layout_width="0dp"
             android:layout_height="4dp"
             android:background="@color/app_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-            />
-
-
-           <androidx.constraintlayout.widget.ConstraintLayout
-               android:id="@+id/childroot"
-               android:visibility="gone"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:layout_constraintTop_toBottomOf="@+id/viewBlue"
-               tools:ignore="MissingConstraints">
-
-
-        <CheckBox
-            android:id="@+id/checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:button="@drawable/custom_checkbox"
-            app:layout_constraintTop_toBottomOf="@id/viewBlue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="NotSibling" />
-
-        <TextView
-            android:id="@+id/titlename"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/white_10"
-            android:textSize="20sp"
-           app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintStart_toEndOf="@id/checkbox"
-            app:layout_constraintTop_toBottomOf="@id/viewBlue"
-            tools:ignore="NotSibling" />
-
-    <TextView
-        android:id="@+id/number"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/white_10"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/next"
-        tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_navigate_next"
+            app:layout_constraintTop_toBottomOf="@id/countryname"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="20dp"/>
 
-        <View
 
-            android:layout_width="0dp"
-            android:layout_height="4dp"
-            android:background="@color/white_10"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-           />
-
-           </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/childRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/countryname"
+            android:layout_marginTop="24dp"
+            android:background="#B3132345"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/activity_two"
+            android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
