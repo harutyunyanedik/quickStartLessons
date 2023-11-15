@@ -1,40 +1,38 @@
 package com.example.quickstartlessons
 
-import android.content.Intent
-import android.graphics.ColorSpace
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.example.quickstartlessons.android.FirstRecyclerAdapter
-import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ActivityMainBinding
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = FirstRecyclerAdapter()
+    private val adapter = AdapterImageRecyclerView()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setupRecycleView()
+         setupRecyclerView()
     }
+     fun setupRecyclerView(){
+         val manager=GridLayoutManager(this,2)
+         binding.recyclerView.layoutManager=manager
+         binding.recyclerView.adapter=adapter
+         adapter.updateData(createNewList())
+     }
 
-    fun setupRecycleView() {
-        val layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = adapter
+     fun createNewList():List<ImageModel>{
+         val list = mutableListOf<ImageModel>()
+         for(i in 0..30){
+             list.add(ImageModel("https://upload.wikimedia.org/wikipedia/commons/f/f2/Argentina_Flag.png"))
+              list.add(ImageModel("https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png"))
+             list.add(ImageModel("https://upload.wikimedia.org/wikipedia/commons/e/e7/Flag_of_Armenia.png"))
+         }
+              return  list
+     }
 
-        adapter.updateData(createData())
-    }
-
-    fun createData(): List<Model> {
-        val list = mutableListOf<Model>()
-        for (i in 0..100) {
-            list.add(Model("Arsenal FS Specials"))
-        }
-        return list
-    }
 }
