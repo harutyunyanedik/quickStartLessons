@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,11 +27,10 @@ class AppRecycleAdapter() : RecyclerView.Adapter<AppRecycleAdapter.AppRecycleAda
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(items: List<AppModel>?) {
         this.items.clear()
-        items?.let {
-            this.items.addAll(items)
-        }
+        items?.let { this.items.addAll(items) }
         notifyDataSetChanged()
     }
 
