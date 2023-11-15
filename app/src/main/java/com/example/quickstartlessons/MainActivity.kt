@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun createList(): List<ImageModel> {
         val list = mutableListOf<ImageModel>()
-        for (i in 0..10) {
-            list.add(ImageModel(items[Random.nextInt(1, items.size)]))
+        for (i in 0..20) {
+            list.add(ImageModel(items[Random.nextInt(0, items.size)]))
         }
         return list
     }
