@@ -41,8 +41,7 @@ class AppRecycleAdapter() : RecyclerView.Adapter<AppRecycleAdapter.AppRecycleAda
     inner class AppRecycleAdapterViewHolder(private val binding: ItemRecyclerBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: AppModel) {
-            Glide.with(context).load(item.url).into(binding.image1)
-            Glide.with(context).load(item.url).into(binding.image2)
+            Glide.with(context).load(item.imageUrl).into(binding.imageView)
         }
     }
 }

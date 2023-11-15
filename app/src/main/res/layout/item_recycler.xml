@@ -8,23 +8,13 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/image1"
+            android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="7dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/image2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toEndOf="@id/image1"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

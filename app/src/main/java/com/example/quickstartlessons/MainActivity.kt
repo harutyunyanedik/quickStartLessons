@@ -12,13 +12,12 @@ import com.example.quickstartlessons.model.AppModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = AppRecycleAdapter()
-
+    private val adapter = AppRecycleAdapter().
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setupRecycleView()
-
+        createDemoData()
     }
 
     private fun setupRecycleView() {
