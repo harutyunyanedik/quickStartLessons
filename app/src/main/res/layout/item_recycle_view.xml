@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:background="#B31F3B73"
-        >
+        android:padding="10dp">
 
-        <CheckBox
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:button="@drawable/custom_checkbox"
+        <ImageView
+            android:id="@+id/imageView_flag"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/title"
@@ -25,11 +25,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:shadowColor="@color/white"
-            android:text="@string/title_text"
             android:textColor="@color/white_10"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/imageView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/title_number"
+            app:layout_constraintStart_toEndOf="@id/imageView_flag"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/title_text1" />
+
+        <TextView
+            android:id="@+id/title_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/white"
+            android:text="1"
+            android:textColor="@color/white_10"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/navigate_next"
+            app:layout_constraintStart_toEndOf="@id/title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:id="@+id/navigate_next"
@@ -38,6 +52,19 @@
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_navigate_next"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/expendedImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/rootLayout"
+            app:layout_constraintStart_toStartOf="@id/rootLayout"
+            app:layout_constraintTop_toBottomOf="@+id/rootLayout"
+            tools:itemCount="3"
+            tools:listitem="@layout/country_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

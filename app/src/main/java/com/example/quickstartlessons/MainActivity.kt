@@ -3,9 +3,11 @@ package com.example.quickstartlessons
 import android.content.Intent
 import android.graphics.ColorSpace
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quickstartlessons.android.CountryModel
 
 import com.example.quickstartlessons.android.FirstRecyclerAdapter
 import com.example.quickstartlessons.android.Model
@@ -14,26 +16,30 @@ import com.example.quickstartlessons.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = FirstRecyclerAdapter()
+    private val adapter :FirstRecyclerAdapter = FirstRecyclerAdapter{
+        Toast.makeText(this,it.toString(), Toast.LENGTH_SHORT).show()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        setupRecycleView()
+        setUpRecyclerView()
     }
 
-    fun setupRecycleView() {
-        val layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = adapter
-
-        adapter.updateData(createData())
+    private fun setUpRecyclerView() {
+        binding.recyclerView.apply {
+            adapter = this@MainActivity.adapter
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
+        adapter.updateData(createList())
     }
 
-    fun createData(): List<Model> {
+    private fun createList(): List<Model> {
         val list = mutableListOf<Model>()
-        for (i in 0..100) {
-            list.add(Model("Arsenal FS Specials"))
+        for (i in 0..10) {
+            list.add(Model("https://cdn-icons-png.flaticon.com/512/330/330426.png", "Europian Union","3",
+                listOf(CountryModel("https://cdn-icons-png.flaticon.com/512/330/330426.png"))
+            ))
         }
         return list
     }
