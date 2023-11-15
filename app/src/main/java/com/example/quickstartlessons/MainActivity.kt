@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun createImages() {
-        items.add("https://img.pikbest.com/origin/08/99/61/20mpIkbEsTV9C.jpg!bwr800")
-        items.add("https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
-        items.add("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/1121098-pink-nature-wallpaper-1920x1080-lockscreen.jpg/800px-1121098-pink-nature-wallpaper-1920x1080-lockscreen.jpg?20200908180259")
+        items.add("https://i.pinimg.com/564x/a3/b8/11/a3b811159ef5e4c783bea04cc76c94a7.jpg")
+        items.add("https://i.pinimg.com/564x/a3/b8/11/a3b811159ef5e4c783bea04cc76c94a7.jpg")
+        items.add("https://i.pinimg.com/564x/a3/b8/11/a3b811159ef5e4c783bea04cc76c94a7.jpg")
     }
 
 }
