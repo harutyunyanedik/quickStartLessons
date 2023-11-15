@@ -22,9 +22,8 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageRecyclerViewHolder>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageRecyclerViewHolder {
-       return ImageRecyclerViewHolder(ImageLayoutBinding.inflate(inflater, parent, false))
+        return ImageRecyclerViewHolder(ImageLayoutBinding.inflate(inflater))
     }
-
 
     override fun getItemCount() = items.size
 
@@ -35,16 +34,16 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageRecyclerViewHolder>(
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(items: List<ImageModel>) {
         this.items.clear()
-        this.items.addAll(items)
-        notifyDataSetChanged()
-
+        items?.let {
+            this.items.addAll(it)
+        }
     }
 
     inner class ImageRecyclerViewHolder(private val binding: ImageLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ImageModel) {
-            Glide.with(context)
+            Glide.with(binding.image)
                 .load(item.imageUrl)
                 .into(binding.image)
         }
