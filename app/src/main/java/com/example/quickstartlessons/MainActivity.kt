@@ -1,40 +1,47 @@
 package com.example.quickstartlessons
 
-import android.content.Intent
-import android.graphics.ColorSpace
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 
-import com.example.quickstartlessons.android.FirstRecyclerAdapter
+import com.example.quickstartlessons.android.ImagesAdapter
 import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = FirstRecyclerAdapter()
+    private val adapter = ImagesAdapter()
+    private val imageList = listOf(
+        R.drawable.photo1,
+        R.drawable.photo2,
+        R.drawable.photo3,
+        R.drawable.photo4,
+    )
+
+    private var index = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         setupRecycleView()
     }
 
     fun setupRecycleView() {
-        val layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = layoutManager
+        binding.recyclerView.layoutManager = GridLayoutManager(this@MainActivity, 2)
         binding.recyclerView.adapter = adapter
-
-        adapter.updateData(createData())
+            adapter.updateData(createList())
     }
 
-    fun createData(): List<Model> {
+    fun createList(): List<Model> {
         val list = mutableListOf<Model>()
-        for (i in 0..100) {
-            list.add(Model("Arsenal FS Specials"))
-        }
+            for (i in 0..10) {
+                if(index > 3) index = 0
+                val model = Model(imageList[index])
+                   list.add(model)
+                index++
+            }
         return list
     }
 }
