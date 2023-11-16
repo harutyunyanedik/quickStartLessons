@@ -8,12 +8,11 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.ItemImageBinding
 import com.example.quickstartlessons.models.ImageModel
 
-class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.ImageGalleryViewHolder>() {
+class GalleryAdapter(val onItemClick: (ImageModel) -> Unit) : RecyclerView.Adapter<GalleryAdapter.ImageGalleryViewHolder>() {
 
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val items = mutableListOf<ImageModel>()
-    var onClickImage: ((ImageModel) -> Unit)? = null
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -44,7 +43,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.ImageGalleryViewHolde
         init {
             binding.imageViewPicture.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onClickImage?.invoke(items[adapterPosition])
+                    onItemClick.invoke(items[adapterPosition])
                 }
             }
         }

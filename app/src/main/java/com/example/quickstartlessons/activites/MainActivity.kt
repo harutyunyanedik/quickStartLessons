@@ -14,7 +14,11 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = GalleryAdapter()
+    private val adapter = GalleryAdapter {
+        val intent = Intent(this, ImageActivity::class.java)
+        intent.putExtra(EXTRA_IMAGE_URL, it.imageUrl)
+        startActivity(intent)
+    }
     private val images = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +31,6 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerviewGallery.adapter = adapter
         binding.recyclerviewGallery.layoutManager = GridLayoutManager(this, 2)
         adapter.updateAdapter(createGallery())
-        adapter.onClickImage = {
-            val intent = Intent(this@MainActivity, ImageActivity::class.java)
-            intent.putExtra(EXTRA_IMAGE_URL, it.imageUrl)
-            startActivity(intent)
-        }
     }
 
     private fun createGallery(): List<ImageModel> {
@@ -42,9 +41,7 @@ class MainActivity : AppCompatActivity() {
         return list
     }
 
-    companion object {
-        const val EXTRA_IMAGE_URL = "ImageUrl"
-    }
+
 
     private fun createImages(){
         images.add("https://media.istockphoto.com/id/1317323736/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B2%D0%B8%D0%B4-%D0%BD%D0%B0-%D0%BD%D0%B5%D0%B1%D0%BE-%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D1%8C%D0%B5%D0%B2.webp?b=1&s=612x612&w=0&k=20&c=eH48yZPJZRbXkaNpeKJ5xaLcws-oeas3Ox1nppvbAWU=")
@@ -58,4 +55,8 @@ class MainActivity : AppCompatActivity() {
         images.add("https://cdn.pixabay.com/photo/2018/04/06/00/25/trees-3294681_1280.jpg")
         images.add("https://cdn.pixabay.com/photo/2016/09/07/11/37/sunset-1651426_1280.jpg")
     }
+    companion object {
+        const val EXTRA_IMAGE_URL = "ImageUrl"
+    }
+
 }
