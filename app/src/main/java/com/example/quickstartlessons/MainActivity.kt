@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        binding.recyclerView.adapter = ImageAdapter()
+        binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
         adapter.updateData(createList())
     }

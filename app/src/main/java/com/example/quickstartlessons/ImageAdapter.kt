@@ -1,5 +1,6 @@
 package com.example.quickstartlessons
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -32,11 +33,13 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageRecyclerViewHolder>(
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(items: List<ImageModel>) {
         this.items.clear()
         items.let {
             this.items.addAll(it)
         }
+        notifyDataSetChanged()
     }
 
     inner class ImageRecyclerViewHolder(private val binding: ImageItemBinding) :
