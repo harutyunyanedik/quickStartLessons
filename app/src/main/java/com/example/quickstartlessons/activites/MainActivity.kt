@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.activites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -26,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerviewGallery.adapter = adapter
         binding.recyclerviewGallery.layoutManager = GridLayoutManager(this, 2)
         adapter.updateAdapter(createGallery())
+        adapter.onClickImage = {
+            val intent = Intent(this@MainActivity, ImageActivity::class.java)
+            intent.putExtra(EXTRA_IMAGE_URL, it.imageUrl)
+            startActivity(intent)
+        }
     }
 
     private fun createGallery(): List<ImageModel> {
@@ -34,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             list.add(ImageModel(images[Random.nextInt(0, images.size)]))
         }
         return list
+    }
+
+    companion object {
+        const val EXTRA_IMAGE_URL = "ImageUrl"
     }
 
     private fun createImages(){

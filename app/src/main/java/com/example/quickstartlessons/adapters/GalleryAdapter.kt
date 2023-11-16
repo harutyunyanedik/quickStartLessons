@@ -8,11 +8,12 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.ItemImageBinding
 import com.example.quickstartlessons.models.ImageModel
 
-class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.ImageGalleryViewHolder>() {
+class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.ImageGalleryViewHolder>() {
 
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val items = mutableListOf<ImageModel>()
+    var onClickImage: ((ImageModel) -> Unit)? = null
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -30,15 +31,25 @@ class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.ImageGalleryViewHolder
 
     override fun getItemCount(): Int = items.size
 
-    fun updateAdapter(items: List<ImageModel>?){
+    fun updateAdapter(items: List<ImageModel>?) {
         this.items.clear()
         items?.let {
             this.items.addAll(it)
         }
     }
 
-    inner class ImageGalleryViewHolder(private val binding: ItemImageBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(item: ImageModel){
+    inner class ImageGalleryViewHolder(private val binding: ItemImageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.imageViewPicture.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onClickImage?.invoke(items[adapterPosition])
+                }
+            }
+        }
+
+        fun bind(item: ImageModel) {
             Glide.with(binding.imageViewPicture).load(item.imageUrl).into(binding.imageViewPicture)
         }
     }
