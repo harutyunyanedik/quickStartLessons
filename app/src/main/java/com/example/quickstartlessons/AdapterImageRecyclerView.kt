@@ -2,15 +2,16 @@ package com.example.quickstartlessons
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.quickstartlessons.databinding.ActivityImageBinding
 
 import com.example.quickstartlessons.databinding.ItemRecycleViewBinding
 
-class AdapterImageRecyclerView : RecyclerView.Adapter<AdapterImageRecyclerView.ImageViewHolder>() {
+class AdapterImageRecyclerView (private val itemClick:(String)->Unit): RecyclerView.Adapter<AdapterImageRecyclerView.ImageViewHolder>() {
     val items: MutableList<ImageModel> = mutableListOf()
     lateinit var context: Context
     lateinit var inflater: LayoutInflater
@@ -41,24 +42,20 @@ class AdapterImageRecyclerView : RecyclerView.Adapter<AdapterImageRecyclerView.I
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     inner class ImageViewHolder(private val item: ItemRecycleViewBinding) :
         RecyclerView.ViewHolder(item.root) {
-        val childAdapter=AdapterChildRecyclerView()
-        init {
-            item.recyclerViewChild.adapter=childAdapter
-            item.imageItem.setOnClickListener{
-                if(adapterPosition!=RecyclerView.NO_POSITION){
-                    items[adapterPosition].isExpanded=!items[adapterPosition].isExpanded
+
+
+        fun bind(binding: ImageModel) {
+            Glide.with(context).load(binding.imageModel).into(item.imageItem)
+            item.imageItem.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                   itemClick.invoke(items[adapterPosition].imageModel)
                     notifyDataSetChanged()
+
                 }
             }
         }
-        fun bind(binding: ImageModel) {
-             item.recyclerViewChild.isVisible=binding.isExpanded
-            Glide.with(context).load(binding.imageModel).into(item.imageItem)
-            childAdapter.updateData(binding.list)
-        }
     }
 }
-data class ImageModel(val imageModel:String, var isExpanded:Boolean,val list: List<ChildModel>)
+data class ImageModel(val imageModel:String)
