@@ -10,11 +10,10 @@ import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.databinding.ItemRecyclerBinding
 import com.example.quickstartlessons.model.AppModel
 
-class AppRecycleAdapter() : RecyclerView.Adapter<AppRecycleAdapter.AppRecycleAdapterViewHolder>() {
+class AppRecycleAdapter( val onClickImage:((AppModel)->Unit)?=null) : RecyclerView.Adapter<AppRecycleAdapter.AppRecycleAdapterViewHolder>() {
     private lateinit var inflate: LayoutInflater
     private lateinit var context: Context
     private val items: MutableList<AppModel> = mutableListOf()
-
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
@@ -40,6 +39,13 @@ class AppRecycleAdapter() : RecyclerView.Adapter<AppRecycleAdapter.AppRecycleAda
 
     inner class AppRecycleAdapterViewHolder(private val binding: ItemRecyclerBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init{
+            binding.imageView.setOnClickListener{
+                if(adapterPosition !=RecyclerView.NO_POSITION){
+                    onClickImage?.invoke(items[adapterPosition])
+                }
+            }
+        }
         fun bind(item: AppModel) {
             Glide.with(context).load(item.imageUrl).into(binding.imageView)
         }

@@ -1,6 +1,7 @@
 package com.example.quickstartlessons
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,7 +13,16 @@ import com.example.quickstartlessons.model.AppModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = AppRecycleAdapter().
+    private val imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTD5-__NLkUyWMGGkFvsFMBehz7pBRzXvCKA&usqp=CAU"
+    private val adapter = AppRecycleAdapter {
+        val intent = Intent(this, ImageActivity::class.java)
+        intent.putExtra(
+            imageUrl,
+            it.imageUrl
+        )
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -22,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecycleView() {
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = GridLayoutManager(this,2)
+        binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
         adapter.updateData(createDemoData())
     }
 
