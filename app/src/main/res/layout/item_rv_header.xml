@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_background">
+        android:background="@color/white_10">
 
         <TextView
             android:id="@+id/header_text"
@@ -13,8 +13,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:paddingVertical="8dp"
-            android:text="@string/events"
-            android:textColor="@color/white"
+            android:text="@string/countries"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

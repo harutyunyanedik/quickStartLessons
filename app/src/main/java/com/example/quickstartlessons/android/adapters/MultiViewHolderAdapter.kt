@@ -57,7 +57,8 @@ class MultiViewHolderAdapter : RecyclerView.Adapter<MultiViewHolderAdapter.BaseV
         BaseViewHolder(binding.root) {
 
         override fun bind(item: ModelStandard) {
-            binding.standardText.text = item.title
+            binding.standardText.text = item.header
+            binding.eventDescription.text = item.title
         }
 
     }

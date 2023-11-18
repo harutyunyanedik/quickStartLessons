@@ -12,7 +12,7 @@ import com.example.quickstartlessons.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter: MultiViewHolderAdapter = MultiViewHolderAdapter()
+    private var adapter: MultiViewHolderAdapter = MultiViewHolderAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,4 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
         return list
     }
+
+
+
 }
