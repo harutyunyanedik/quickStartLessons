@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="start_end">16dp</dimen>
+    <dimen name="country_textSize">30sp</dimen>
+    <dimen name="header_size">24sp</dimen>
+    <dimen name="standard_size">16sp</dimen>
+</resources>
