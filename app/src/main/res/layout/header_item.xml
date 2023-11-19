@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardView_margin"
+        app:cardCornerRadius="@dimen/cardView_corner_radius"
+        app:cardElevation="@dimen/cardView_elevation"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/textViewHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/header_padding"
+            android:textSize="@dimen/header_text_size"
+            tools:text="London" />
+
+    </androidx.cardview.widget.CardView>
+</layout>
