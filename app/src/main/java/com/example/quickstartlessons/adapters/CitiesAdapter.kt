@@ -26,9 +26,10 @@ class CitiesAdapter : RecyclerView.Adapter<CitiesAdapter.BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType) {
-            0 -> HeaderViewHolder(HeaderItemBinding.inflate(inflater, parent, false))
-            1 -> TitleViewHolder(TitleItemBinding.inflate(inflater, parent, false))
-            else -> DescriptionViewHolder(DescriptionItemBinding.inflate(inflater, parent, false))
+            HEADER -> HeaderViewHolder(HeaderItemBinding.inflate(inflater, parent, false))
+            TITLE -> TitleViewHolder(TitleItemBinding.inflate(inflater, parent, false))
+            DESCRIPTION -> DescriptionViewHolder(DescriptionItemBinding.inflate(inflater, parent, false))
+            else -> HeaderViewHolder(HeaderItemBinding.inflate(inflater, parent, false))
         }
     }
 
