@@ -16,9 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter = AdapterImageRecyclerView{
         val intent=Intent(this, ImageActivity::class.java)
-        intent.putExtra("image1","https://upload.wikimedia.org/wikipedia/commons/f/f2/Argentina_Flag.png")
-        intent.putExtra("image2", " https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png")
-        intent.putExtra("image2","https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png")
+        intent.putExtra(EXTRA_IMAGE_URL_KEY,it)
         startActivity(intent)
     }
 
@@ -44,5 +42,8 @@ class MainActivity : AppCompatActivity() {
          }
               return  list
      }
+    companion object{
+        const val EXTRA_IMAGE_URL_KEY="extra_image_url"
+    }
 
 }

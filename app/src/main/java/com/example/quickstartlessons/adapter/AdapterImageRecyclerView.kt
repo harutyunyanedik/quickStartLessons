@@ -44,16 +44,18 @@ class AdapterImageRecyclerView(private val itemClick: (String) -> Unit) :
 
     inner class ImageViewHolder(private val item: ItemRecycleViewBinding) :
         RecyclerView.ViewHolder(item.root) {
-
-
-        fun bind(binding: ImageModel) {
-            Glide.with(context).load(binding.imageModel).into(item.imageItem)
+        init {
             item.imageItem.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    itemClick.invoke(items[adapterPosition].imageModel)
+                    itemClick.invoke(items[adapterPosition].imageUrl)
 
                 }
             }
+        }
+
+        fun bind(binding: ImageModel) {
+            Glide.with(context).load(binding.imageUrl).into(item.imageItem)
+
         }
     }
 }

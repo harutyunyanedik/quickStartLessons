@@ -1,2 +1,2 @@
 package com.example.quickstartlessons.model
-data class ImageModel(val imageModel:String)
+data class ImageModel(val imageUrl:String)
