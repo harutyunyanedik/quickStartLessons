@@ -8,11 +8,13 @@ import com.example.quickstartlessons.adapter.MultiViewHolderAdapter
 
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.model.RecyclerViewModel
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val adapter: MultiViewHolderAdapter = MultiViewHolderAdapter()
+   private val cities= mutableListOf<String>("Yrevan","Berlin","London")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -28,12 +30,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun createDemoList(): List<RecyclerViewModel> {
         val list = mutableListOf<RecyclerViewModel>()
-        for (i in 0..20) {
-            val header = if (i % 3 == 0) "header ${i / 3}" else null
-            list.add(RecyclerViewModel("$header"))
-            list.add(RecyclerViewModel("Droidcon"))
-            list.add(RecyclerViewModel("Droidcon in $i"))
+        for (i in cities) {
+            list.add(RecyclerViewModel(i))
+            val to = Random.nextInt(0, 3)
+            for (j in 0..to) {
+                list.add(RecyclerViewModel("Droidcon"))
+                list.add(RecyclerViewModel("Droidcon in $i"))
+            }
         }
         return list
     }
+
 }

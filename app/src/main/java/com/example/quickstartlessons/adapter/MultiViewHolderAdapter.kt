@@ -37,19 +37,15 @@ class MultiViewHolderAdapter : RecyclerView.Adapter<MultiViewHolderAdapter.BaseV
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (items[position].header == null) {
-            DESCRIPTION
-        } else if (items[position].header == null && items[position].description == null) {
-            STANDART
-        } else {
-            HEADER
+        return when {
+            items[position].header == null && items[position].title == null -> DESCRIPTION
+            items[position].header == null && items[position].description == null -> STANDART
+            else -> HEADER
         }
     }
-
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(items[position])
     }
-
 
     override fun getItemCount(): Int = items.size
 
