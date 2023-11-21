@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
             list.add(RecyclerViewModel(i))
             val to = Random.nextInt(0, 3)
             for (j in 0..to) {
-                list.add(RecyclerViewModel("Droidcon"))
-                list.add(RecyclerViewModel("Droidcon in $i"))
+                list.add(RecyclerViewModel(title = "Droidcon"))
+                list.add(RecyclerViewModel(description = "Droidcon in $i"))
             }
         }
         return list

@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ class MultiViewHolderAdapter : RecyclerView.Adapter<MultiViewHolderAdapter.BaseV
         inflate = LayoutInflater.from(recyclerView.context)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(items: List<RecyclerViewModel>?) {
         this.items.clear()
         items?.let { this.items.addAll(items) }
@@ -30,8 +32,8 @@ class MultiViewHolderAdapter : RecyclerView.Adapter<MultiViewHolderAdapter.BaseV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType) {
-            HEADER -> ViewHolderStandard(ItemRvStandardBinding.inflate(inflate, parent, false))
-            STANDART -> HeaderViewHolder(ItemRvHeaderBinding.inflate(inflate, parent, false))
+            HEADER -> HeaderViewHolder(ItemRvHeaderBinding.inflate(inflate, parent, false))
+            STANDART -> ViewHolderStandard(ItemRvStandardBinding.inflate(inflate, parent, false))
             else -> DescriptionViewHolder(DescriptionItemBinding.inflate(inflate, parent, false))
         }
     }
