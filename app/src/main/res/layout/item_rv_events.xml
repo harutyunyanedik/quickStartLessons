@@ -19,16 +19,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/event_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/events_desc"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:padding="16dp"
-            app:layout_constraintStart_toStartOf="@id/standard_text"
-            app:layout_constraintTop_toBottomOf="@id/standard_text" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

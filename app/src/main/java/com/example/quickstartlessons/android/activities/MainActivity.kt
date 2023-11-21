@@ -5,36 +5,46 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
-import com.example.quickstartlessons.android.adapters.MultiViewHolderAdapter
-import com.example.quickstartlessons.android.models.ModelStandard
+import com.example.quickstartlessons.android.adapters.CitiesAdapter
+import com.example.quickstartlessons.android.models.CitiesModel
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var adapter: MultiViewHolderAdapter = MultiViewHolderAdapter()
+    private var adapter: CitiesAdapter = CitiesAdapter()
+    private val cities: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        binding.recyclerView.apply {
-            adapter = this@MainActivity.adapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
-        }
-        adapter.updateData(createDemoList())
+        createCities()
+        setAdapter()
     }
 
-    private fun createDemoList(): List<ModelStandard> {
-        val list = mutableListOf<ModelStandard>()
+    private fun setAdapter() {
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter.updateData(createModels())
 
-        for (i in 0..20) {
-            val header = if (i % 3 == 0) "header ${i / 3}" else null
-            list.add(ModelStandard("title $i", header))
+    }
+
+    private fun createModels(): MutableList<CitiesModel> {
+        val list = mutableListOf<CitiesModel>()
+        for (i in cities) {
+            list.add(CitiesModel(i))
+            for (j in 0..2) {
+                list.add(CitiesModel(title = "Droidcon"))
+                list.add(CitiesModel(description = "Droidcon in $i"))
+            }
         }
         return list
     }
 
-
+    private fun createCities() {
+        cities.add("London")
+        cities.add("Amsterdam")
+        cities.add("Berlin")
+    }
 
 }

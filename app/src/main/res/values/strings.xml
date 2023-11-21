@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">QuickStartLessons</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="countries">countries</string>
+    <string name="countries">cities</string>
     <string name="events">events</string>
     <string name="events_desc">event description</string>
 
