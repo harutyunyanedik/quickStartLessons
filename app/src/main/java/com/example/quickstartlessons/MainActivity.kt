@@ -2,22 +2,24 @@ package com.example.quickstartlessons
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quickstartlessons.databinding.ActivityImageBinding
+import com.example.quickstartlessons.adapter.AdapterImageRecyclerView
+
 
 import com.example.quickstartlessons.databinding.ActivityMainBinding
+import com.example.quickstartlessons.model.ImageModel
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val adapter = AdapterImageRecyclerView{
-        //Toast.makeText(this,it,Toast.LENGTH_LONG).show()
-        val intent=Intent(this, ActivityImageBinding::class.java)
+        val intent=Intent(this, ImageActivity::class.java)
+        intent.putExtra("image1","https://upload.wikimedia.org/wikipedia/commons/f/f2/Argentina_Flag.png")
+        intent.putExtra("image2", " https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png")
+        intent.putExtra("image2","https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png")
         startActivity(intent)
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.quickstartlessons
+package com.example.quickstartlessons.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.ActivityTwoBinding
-import com.example.quickstartlessons.databinding.ItemRecycleViewBinding
+import com.example.quickstartlessons.model.ChildModel
 
 class AdapterChildRecyclerView: RecyclerView.Adapter<AdapterChildRecyclerView.ChildViewHolder>() {
     private  val items:MutableList<ChildModel> = mutableListOf()
@@ -44,10 +44,9 @@ class AdapterChildRecyclerView: RecyclerView.Adapter<AdapterChildRecyclerView.Ch
                 }
             }
         }
-       fun bind(binding:ChildModel){
+       fun bind(binding: ChildModel){
            item.childText.text=binding.countryText
 
        }
     }
 }
-data class  ChildModel(val countryText:String, val button:Boolean)

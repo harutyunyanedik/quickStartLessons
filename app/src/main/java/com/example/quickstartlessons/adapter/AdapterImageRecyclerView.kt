@@ -1,20 +1,20 @@
-package com.example.quickstartlessons
+package com.example.quickstartlessons.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.databinding.ActivityImageBinding
 
 import com.example.quickstartlessons.databinding.ItemRecycleViewBinding
+import com.example.quickstartlessons.model.ImageModel
 
-class AdapterImageRecyclerView (private val itemClick:(String)->Unit): RecyclerView.Adapter<AdapterImageRecyclerView.ImageViewHolder>() {
-    val items: MutableList<ImageModel> = mutableListOf()
-    lateinit var context: Context
-    lateinit var inflater: LayoutInflater
+class AdapterImageRecyclerView(private val itemClick: (String) -> Unit) :
+    RecyclerView.Adapter<AdapterImageRecyclerView.ImageViewHolder>() {
+    private val items: MutableList<ImageModel> = mutableListOf()
+    private lateinit var context: Context
+    private lateinit var inflater: LayoutInflater
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -50,12 +50,10 @@ class AdapterImageRecyclerView (private val itemClick:(String)->Unit): RecyclerV
             Glide.with(context).load(binding.imageModel).into(item.imageItem)
             item.imageItem.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                   itemClick.invoke(items[adapterPosition].imageModel)
-                    notifyDataSetChanged()
+                    itemClick.invoke(items[adapterPosition].imageModel)
 
                 }
             }
         }
     }
 }
-data class ImageModel(val imageModel:String)
