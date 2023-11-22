@@ -47,16 +47,10 @@ class RecyclerViewAdapter :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (position) {
-            0 -> COUNTRY
-            1 -> HEADER
-            2 -> STANDARD
-            else -> {
-                if (position % 2 != 0) COUNTRY
-                else {
-                    HEADER
-                }
-            }
+        return when {
+            items[position].textCardView==null &&items[position].textOne==null && items[position].textTwo==null-> STANDARD
+            items[position].textCardView==null && items[position].oneTimeStandard==null && items[position].oneTimeHeader==null-> HEADER
+            else-> COUNTRY
         }
     }
 

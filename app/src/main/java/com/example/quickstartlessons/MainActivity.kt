@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
    lateinit var binding:ActivityMainBinding
     private  val adapter=RecyclerViewAdapter()
+    val listCountry = mutableListOf("London","Amsterdam","Berlin")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +27,12 @@ class MainActivity : AppCompatActivity() {
     }
     fun createNewList():List<RvFirstModel>{
         val list = mutableListOf<RvFirstModel>()
-        for(i in 1..30){
-            val header: String? =if(i %3==0) "Some event" else null
-            val standard:String?=if(i%3==0) "Some event in London" else null
-            list.add(RvFirstModel("London","Droidcon","Droidcon in London",header,standard))
-           list.add(RvFirstModel("Amsterdam", "Droidcon", "Droidcon in Amsterdam"))
-           list.add(RvFirstModel("Berlin", "Droidcon", "Droidcon in Berlin"))
+        for(i in 1..30) {
+            for (j in listCountry) {
+                val item1=if(i%3==0) " some event" else null
+                val item2=if(i%3==0) " some event in $j" else null
+                list.add(RvFirstModel(j, "Droidcon",  "Droidcon in $j",item1,item2))
+            }
         }
         return list
     }

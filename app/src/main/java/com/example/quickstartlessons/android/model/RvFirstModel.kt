@@ -1,7 +1,7 @@
 package com.example.quickstartlessons.android.model
 
 data class RvFirstModel(
-    var textCardView:String,
-    val textOne:String, val textTwo:String, val oneTimeHeader:String?=null,
+    var textCardView:String?=null,
+    val textOne:String?=null, val textTwo:String?=null, val oneTimeHeader:String?=null,
     val oneTimeStandard: String?=null
 )
