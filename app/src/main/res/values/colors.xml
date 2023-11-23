@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_10">#81FFFFFF</color>
     <color name="app_background">#000c24</color>
+    <color name="number_button_color">#FF1B3873</color>
+    <color name="action_button_color">#FF0449D6</color>
 
 </resources>
