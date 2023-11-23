@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.android.model.RvFirstModel
-import com.example.quickstartlessons.databinding.ActivityThreeBinding
 import com.example.quickstartlessons.databinding.ActivityTwoBinding
 import com.example.quickstartlessons.databinding.ItemRecycleViewBinding
-import java.time.chrono.HijrahEra
+
 
 class RecyclerViewAdapter :
     RecyclerView.Adapter<RecyclerViewAdapter.BaseViewHolder>() {
@@ -34,25 +33,19 @@ class RecyclerViewAdapter :
             )
 
             HEADER -> SecondRecyclerViewHolder(ActivityTwoBinding.inflate(inflater, parent, false))
-            STANDARD -> ThirdRecyclerViewHolder(
-                ActivityThreeBinding.inflate(
-                    inflater,
-                    parent,
-                    false
-                )
-            )
 
             else -> FirstRecyclerViewHolder(ItemRecycleViewBinding.inflate(inflater, parent, false))
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when {
-            items[position].textCardView==null &&items[position].textOne==null && items[position].textTwo==null-> STANDARD
-            items[position].textCardView==null && items[position].oneTimeStandard==null && items[position].oneTimeHeader==null-> HEADER
-            else-> COUNTRY
+        return  if(items[position].header==null && items[position].standard==null) {
+       COUNTRY
+        } else {
+            HEADER
         }
     }
+
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(items[position])
@@ -76,31 +69,23 @@ class RecyclerViewAdapter :
     inner class FirstRecyclerViewHolder(private val binding: ItemRecycleViewBinding) :
         BaseViewHolder(binding.root) {
         override fun bind(item: RvFirstModel) {
-            binding.country.text = item.textCardView
+            binding.country.text = item.country
         }
     }
 
     inner class SecondRecyclerViewHolder(private val binding: ActivityTwoBinding) :
         BaseViewHolder(binding.root) {
         override fun bind(item: RvFirstModel) {
-            binding.textOne.text = item.textOne
-            binding.textTwo.text = item.textTwo
+            binding.droidcon.text = item.header
+            binding.droidconInCountry.text = item.standard
         }
     }
 
-    inner class ThirdRecyclerViewHolder(private val binding: ActivityThreeBinding) :
-        BaseViewHolder(binding.root) {
-        override fun bind(item: RvFirstModel) {
-            binding.OneTimeHeader.text = item.oneTimeHeader
-            binding.oneTimeStandard.text = item.oneTimeStandard
-        }
-
-    }
 
     companion object {
         const val COUNTRY: Int = 0
         const val HEADER: Int = 1
-        const val STANDARD: Int = 2
+        const val STANDARD:Int=2
 
     }
 }

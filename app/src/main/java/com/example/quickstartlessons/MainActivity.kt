@@ -12,9 +12,9 @@ import com.example.quickstartlessons.databinding.ItemRecycleViewBinding
 
 class MainActivity : AppCompatActivity() {
 
-   lateinit var binding:ActivityMainBinding
+   private lateinit var binding:ActivityMainBinding
     private  val adapter=RecyclerViewAdapter()
-    val listCountry = mutableListOf("London","Amsterdam","Berlin")
+    private val listCountry = mutableListOf("London","Amsterdam","Berlin")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +25,14 @@ class MainActivity : AppCompatActivity() {
          }
         adapter.updateData(createNewList())
     }
-    fun createNewList():List<RvFirstModel>{
+    private fun createNewList():List<RvFirstModel>{
         val list = mutableListOf<RvFirstModel>()
-        for(i in 1..30) {
-            for (j in listCountry) {
-                val item1=if(i%3==0) " some event" else null
-                val item2=if(i%3==0) " some event in $j" else null
-                list.add(RvFirstModel(j, "Droidcon",  "Droidcon in $j",item1,item2))
+        for (j in listCountry) {
+        for(i in 1..10) {
+               val header=if(i%2==0) "Droidcon " else null
+               val standard=if(i%3==0) "Droidcon in  $j" else null
+                list.add(RvFirstModel(j,header,standard))
+
             }
         }
         return list
