@@ -39,8 +39,8 @@ class RecyclerViewAdapter :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return  if(items[position].header==null && items[position].standard==null) {
-       COUNTRY
+        return if (items[position].header == null && items[position].standard == null) {
+            COUNTRY
         } else {
             HEADER
         }
@@ -85,7 +85,5 @@ class RecyclerViewAdapter :
     companion object {
         const val COUNTRY: Int = 0
         const val HEADER: Int = 1
-        const val STANDARD:Int=2
-
     }
 }
