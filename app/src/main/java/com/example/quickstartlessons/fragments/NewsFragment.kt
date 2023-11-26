@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentNewsBinding
 
 class NewsFragment : Fragment() {
@@ -19,10 +19,12 @@ class NewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnadd.setOnClicklistener{
-            (requireActivity() as MainActivity).addFragment(DescriptionFragment))
+        binding.newsImage.setOnClickListener{
+           childFragmentManager.beginTransaction().add(R.id.action_container, DescriptionFragment.newInstance()).commit()
         }
+
     }
+
 
     companion object {
         @JvmStatic
