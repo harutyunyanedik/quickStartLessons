@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.databinding.FirsyRecyclerViewBinding
+import com.example.quickstartlessons.databinding.SecondRecycleViewBinding
 
 
-class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecyclerViewHolder>() {
+class SecondRecyclerAdapter : RecyclerView.Adapter<SecondRecyclerAdapter.SecondRecyclerViewHolder>() {
     lateinit var inFlater: LayoutInflater
     lateinit var context: Context
-    private val item: MutableList<ModelOne> = mutableListOf<ModelOne>()
+    private val item: MutableList<Model> = mutableListOf<Model>()
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -23,12 +23,12 @@ class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecy
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FirstRecyclerAdapter.FirstRecyclerViewHolder {
-        return FirstRecyclerViewHolder(FirsyRecyclerViewBinding.inflate(inFlater, parent, false))
+    ): SecondRecyclerAdapter.SecondRecyclerViewHolder {
+        return SecondRecyclerViewHolder(SecondRecycleViewBinding.inflate(inFlater, parent, false))
     }
 
     override fun onBindViewHolder(
-        holder: FirstRecyclerAdapter.FirstRecyclerViewHolder,
+        holder: SecondRecyclerAdapter.SecondRecyclerViewHolder,
         position: Int
     ) {
         holder.bind(item[position])
@@ -37,7 +37,7 @@ class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecy
     override fun getItemCount(): Int = item.size
 
 
-    fun updateData(event: List<ModelOne>?) {
+    fun updateData(event: List<Model>?) {
         this.item.clear()
         event?.let {
             item.addAll(event)
@@ -45,11 +45,11 @@ class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecy
 
     }
 
-    inner class FirstRecyclerViewHolder(private val binding: FirsyRecyclerViewBinding) :
+    inner class SecondRecyclerViewHolder(private val binding: SecondRecycleViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ModelOne) {
-            binding.iconText.text = item.text
-            Glide.with(context).load(item.image).into(binding.icon)
+        fun bind(item: Model) {
+            binding.title.text = item.title
+        Glide.with(context).load(item.image).into(binding.blankImage)
         }
 
     }
