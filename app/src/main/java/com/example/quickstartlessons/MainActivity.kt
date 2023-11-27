@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.android.ftagments.NewsFragment
+import com.example.quickstartlessons.android.ftagments.ResetPasswordViewPagerFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        addFragment(NewsFragment.newInstance())
+        addFragment(ResetPasswordViewPagerFragment.newInstance())
     }
 
     fun addFragment(fragment: Fragment) {
