@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.databinding.SecondRecycleViewBinding
+import com.example.quickstartlessons.ftagments.SecondFragment
 
 
-class SecondRecyclerAdapter : RecyclerView.Adapter<SecondRecyclerAdapter.SecondRecyclerViewHolder>() {
+class SecondRecyclerAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<SecondRecyclerAdapter.SecondRecyclerViewHolder>() {
     lateinit var inFlater: LayoutInflater
     lateinit var context: Context
     private val item: MutableList<Model> = mutableListOf<Model>()
@@ -45,11 +47,17 @@ class SecondRecyclerAdapter : RecyclerView.Adapter<SecondRecyclerAdapter.SecondR
 
     }
 
-    inner class SecondRecyclerViewHolder(private val binding: SecondRecycleViewBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class SecondRecyclerViewHolder(private val binding: SecondRecycleViewBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.recyclerViewTwo.setOnClickListener {
+                onItemClick.invoke(item[adapterPosition].title)
+            }
+        }
+
         fun bind(item: Model) {
             binding.title.text = item.title
-        Glide.with(context).load(item.image).into(binding.blankImage)
+            Glide.with(context).load(item.image).into(binding.blankImage)
         }
 
     }
