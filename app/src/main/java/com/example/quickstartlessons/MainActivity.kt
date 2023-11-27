@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 
 import com.example.quickstartlessons.databinding.ActivityMainBinding
-import com.example.quickstartlessons.ftagments.FirstFragment
+import com.example.quickstartlessons.android.ftagments.NewsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,14 +15,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        addFragments(FirstFragment.newInstance())
-
+        addFragment(NewsFragment.newInstance())
     }
-fun addFragments(fragment:Fragment){
-    supportFragmentManager.beginTransaction().add(R.id.container, fragment,fragment::class.java.simpleName).commit()
-}
 
-    fun replaceFragments(fragment:Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.container,fragment,fragment::class.java.simpleName) .commit()
+    fun addFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container, fragment, fragment::class.java.simpleName)
+            .addToBackStack(fragment::class.java.simpleName).commit()
+    }
+
+    fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment, fragment::class.java.simpleName)
+            .addToBackStack(fragment::class.java.simpleName).commit()
+    }
+
+    fun popFragment() {
+        supportFragmentManager.popBackStack()
     }
 }

@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.ftagments
+package com.example.quickstartlessons.android.ftagments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.android.base.BaseFragment
 import com.example.quickstartlessons.databinding.FragmentSecondBinding
 
-class SecondFragment : Fragment() {
+class NewsDescriptionFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSecondBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -24,13 +22,13 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.backClick.setOnClickListener {
-            (requireActivity() as? MainActivity)?.replaceFragments(FirstFragment.newInstance())
+            goBack()
         }
         Glide.with(this).load("https://news.am/img/news/79/41/14/220x220.jpg").into(binding.imageSecondFragment)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() = SecondFragment()
+        fun newInstance() = NewsDescriptionFragment()
     }
 }

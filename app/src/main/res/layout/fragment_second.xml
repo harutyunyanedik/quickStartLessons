@@ -7,7 +7,7 @@
         android:id="@+id/conainerTwo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ftagments.SecondFragment">
+        tools:context=".android.ftagments.NewsDescriptionFragment">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
