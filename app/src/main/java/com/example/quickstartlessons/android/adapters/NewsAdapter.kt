@@ -1,15 +1,17 @@
-package com.example.quickstartlessons.android
+package com.example.quickstartlessons.android.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.quickstartlessons.android.models.NewsModel
 import com.example.quickstartlessons.databinding.ItemRecycleViewBinding
 
-class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecyclerViewHolder>() {
+class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     lateinit var inFlater: LayoutInflater
     lateinit var contex: Context
-    private val item: MutableList<Model> = mutableListOf<Model>()
+    private val item: MutableList<NewsModel> = mutableListOf<NewsModel>()
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -21,12 +23,12 @@ class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecy
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FirstRecyclerAdapter.FirstRecyclerViewHolder {
-        return FirstRecyclerViewHolder(ItemRecycleViewBinding.inflate(inFlater, parent, false))
+    ): NewsViewHolder {
+        return NewsViewHolder(ItemRecycleViewBinding.inflate(inFlater, parent, false))
     }
 
     override fun onBindViewHolder(
-        holder: FirstRecyclerAdapter.FirstRecyclerViewHolder,
+        holder: NewsViewHolder,
         position: Int
     ) {
         holder.bind(item[position])
@@ -35,20 +37,21 @@ class FirstRecyclerAdapter : RecyclerView.Adapter<FirstRecyclerAdapter.FirstRecy
     override fun getItemCount(): Int = item.size
 
 
-    fun updateData(event: List<Model>?) {
+    fun updateData(event: List<NewsModel>?) {
         this.item.clear()
         event?.let {
             item.addAll(event)
         }
-
     }
 
-    inner class FirstRecyclerViewHolder(private val binding: ItemRecycleViewBinding) :
+    inner class NewsViewHolder(private val binding: ItemRecycleViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Model) {
-            binding.title.text = item.title
+        fun bind(item: NewsModel) {
+            binding.iconText.text=item.text
+            Glide.with(contex).load(item.image).into(binding.image)
 
         }
-
     }
+
+
 }

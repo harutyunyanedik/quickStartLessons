@@ -3,4 +3,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_text">"Arsenal FS Specials"</string>
+    <string name="Blank_name">"Top News"</string>
+    <string name="header_secondFragment">"Mercedes-Benz traces its origins to Karl Benz's first internal combustion engine in a car"</string>
+    <string name="text_secondFragment">"Mercedes-Benz traces its origins to Karl Benz's first internal
+        combustion engine in a car, seen in the Benz Patent Motorwagen – financed by Bertha Benz's
+        dowry[10] and patented in January 1886[11] – and Gottlieb Daimler and their engineer Wilhelm
+        Maybach's conversion of a stagecoach, with the addition of a petrol engine, introduced laterthat year.
+        The Mercedes automobile was first marketed in 1901 by Daimler Motoren Gesellschaft (DMG)."</string>
 </resources>
