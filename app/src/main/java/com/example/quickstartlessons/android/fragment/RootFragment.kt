@@ -57,7 +57,7 @@ class RootFragment : Fragment() {
     private fun createImageList():List<RvModelImage>{
         val list= mutableListOf<RvModelImage>()
         for (i in 0..10){
-            list.add(RvModelImage(""))
+            list.add(RvModelImage("https://ru.wikipedia.org/wiki/JPEG#/media/%D0%A4%D0%B0%D0%B9%D0%BB:JPEG_example_down.jpg"))
         }
         return list
     }
