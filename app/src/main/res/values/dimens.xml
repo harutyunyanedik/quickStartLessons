@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="constraint_layout_paddin">16dp</dimen>
+    <dimen name="text_view_24">24sp</dimen>
+</resources>
