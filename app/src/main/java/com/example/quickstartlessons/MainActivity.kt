@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity() {
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).commit()
     }
-
+      fun popFragment(){
+          supportFragmentManager.popBackStack()
+      }
 
 }
 

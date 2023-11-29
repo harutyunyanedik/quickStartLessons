@@ -10,16 +10,17 @@ import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.android.adapter.AdapterFirstImageView
 import com.example.quickstartlessons.android.adapter.AdapterNewsImage
+import com.example.quickstartlessons.android.base.BaseFragment
 import com.example.quickstartlessons.android.model.RvModelImage
 import com.example.quickstartlessons.databinding.FragmentFirsPageNewsBinding
 import com.example.quickstartlessons.databinding.FragmentRootBinding
 import com.example.quickstartlessons.android.model.RvNewsModel
 
-class RootFragment : Fragment() {
+class RootFragment : BaseFragment(){
     private lateinit var binding: FragmentRootBinding
     private val adapterImage = AdapterFirstImageView()
     private val adapterNews = AdapterNewsImage {
-        (requireActivity() as? MainActivity)?.replaceFragment(FragmentSecondPage.newInstance())
+        replaceFragment(FragmentSecondPage.newInstance())
     }
 
 

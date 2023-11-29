@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.android.base.BaseFragment
 import com.example.quickstartlessons.databinding.FragmentSecondPageBinding
-class FragmentSecondPage : Fragment() {
+class FragmentSecondPage : BaseFragment() {
     private lateinit var binding:FragmentSecondPageBinding
 
     override fun onCreateView(
@@ -21,7 +22,7 @@ class FragmentSecondPage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.arrowLeft.setOnClickListener{
-            (requireActivity() as? MainActivity)?.addFragment(RootFragment.newInstance())
+           goBack()
         }
     }
     companion object {
