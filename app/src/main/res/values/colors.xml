@@ -12,5 +12,6 @@
     <color name="blue_pager">#3F51B5</color>
      <color name="reset_password_editText">#3D425A</color>
     <color name="button_reset_password">#433E59</color>
+    <color name="tab_color">#000A1C</color>
 
 </resources>
