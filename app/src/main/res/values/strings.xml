@@ -3,4 +3,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_text">"Arsenal FS Specials"</string>
+    <string name="sms_title">Reset password via SMS</string>
+    <string name="enter_phone_number">Please enter phone number</string>
+    <string name="Send_sms">Send SMS</string>
+    <string name="email_title">Reset password via Email</string>
+    <string name="Email">Email</string>
+    <string name="button_text_email">Reset password</string>
+    <string name="phone_number_code">+374</string>
+    <string name="reset_password">Reset password</string>
 </resources>
