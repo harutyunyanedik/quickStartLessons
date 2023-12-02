@@ -18,7 +18,7 @@ class ResetPasswordViewPagerAdapter(fragmentManager: FragmentManager, lifecycle:
     fun updateData(items: List<BaseFragment>) {
         fragments.clear()
         items.let {
-            fragments.addAll(it)
+            fragments.addAll(items)
         }
         notifyDataSetChanged()
     }

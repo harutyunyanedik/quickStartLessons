@@ -4,14 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.quickstartlessons.R
+import android.widget.Toast
 import com.example.quickstartlessons.base.BaseFragment
+import com.example.quickstartlessons.databinding.FragmentEmailResetPasswordBinding
 
 class EmailResetPasswordFragment : BaseFragment() {
+    private lateinit var binding: FragmentEmailResetPasswordBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentEmailResetPasswordBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_email_reset_password, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.resetPasswordButton.setOnClickListener {
+            Toast.makeText(requireContext(), "Check your email", Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {

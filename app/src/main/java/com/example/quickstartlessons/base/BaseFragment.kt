@@ -13,8 +13,4 @@ abstract class BaseFragment : Fragment() {
     fun replaceFragment(fragment: Fragment) {
         mainActivity()?.replaceFragment(fragment)
     }
-
-    fun goBack() {
-        mainActivity()?.popFragment()
-    }
 }
