@@ -16,7 +16,7 @@ class ResetPasswordViewPagerFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentViewPagerBinding.inflate(inflater, container, false)
         return binding.root
-        addFragment(ResetPasswordViewPagerFragment.newInstance())
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
