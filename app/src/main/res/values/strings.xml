@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">QuickStartLessons</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_text">"Arsenal FS Specials"</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="sms_reset_password">Reset Password via SMS</string>
+    <string name="enter_phone_number">Please enter phone number</string>
+    <string name="country_code">+374</string>
+    <string name="phone_number">(XX) XXX-XXX</string>
+    <string name="send_sms">SEND SMS</string>
+
+    <string name="email_reset_password">Reset Password via Email</string>
+    <string name="enter_email">Email</string>
+    <string name="email_tint">sample@gmail.com</string>
+    <string name="reset_password_email">RESET PASSWORD</string>
+
+
 </resources>
