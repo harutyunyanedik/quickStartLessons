@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-
-import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.android.ftagments.NewsFragment
 import com.example.quickstartlessons.android.ftagments.ResetPasswordViewPagerFragment
+import com.example.quickstartlessons.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         addFragment(ResetPasswordViewPagerFragment.newInstance())
+        //addFragment(NewsFragment.newInstance())
     }
 
     fun addFragment(fragment: Fragment) {
@@ -34,4 +34,6 @@ class MainActivity : AppCompatActivity() {
     fun popFragment() {
         supportFragmentManager.popBackStack()
     }
+
+
 }

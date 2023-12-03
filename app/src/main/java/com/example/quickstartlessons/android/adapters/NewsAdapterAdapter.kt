@@ -9,7 +9,7 @@ import com.example.quickstartlessons.android.models.ModelOne
 import com.example.quickstartlessons.databinding.FirsyRecyclerViewBinding
 
 class NewsAdapterAdapter : RecyclerView.Adapter<NewsAdapterAdapter.NewsViewHolder>() {
-    lateinit var inflater: LayoutInflater
+    private lateinit var inflater: LayoutInflater
     lateinit var context: Context
     private val item: MutableList<ModelOne> = mutableListOf()
 
