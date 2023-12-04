@@ -11,6 +11,8 @@
     <string name="enter_email">Email</string>
     <string name="email_tint">sample@gmail.com</string>
     <string name="reset_password_email">RESET PASSWORD</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

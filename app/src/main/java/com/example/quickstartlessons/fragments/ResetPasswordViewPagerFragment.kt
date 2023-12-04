@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.quickstartlessons.adapters.ResetPasswordViewPagerAdapter
-import com.example.quickstartlessons.base.BaseFragment
-import com.example.quickstartlessons.databinding.FragmentViewPagerBinding
+import com.example.quickstartlessons.databinding.FragmentResetPasswordViewPagerBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-
-class ResetPasswordViewPagerFragment : BaseFragment() {
-    private lateinit var binding: FragmentViewPagerBinding
+class ResetPasswordViewPagerFragment : Fragment() {
+    private lateinit var binding: FragmentResetPasswordViewPagerBinding
     private lateinit var adapter: ResetPasswordViewPagerAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentViewPagerBinding.inflate(inflater, container, false)
+        binding = FragmentResetPasswordViewPagerBinding.inflate(inflater, container, false)
         return binding.root
 
     }
