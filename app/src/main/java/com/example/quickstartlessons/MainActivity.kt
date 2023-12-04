@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().add(R.id.container, fragment, fragment::class.java.simpleName).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
     }
 
     fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
     }
       fun popFragment(){
           supportFragmentManager.popBackStack()

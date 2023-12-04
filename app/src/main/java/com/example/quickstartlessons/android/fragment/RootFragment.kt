@@ -1,27 +1,33 @@
 package com.example.quickstartlessons.android.fragment
-
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.android.adapter.AdapterFirstImageView
 import com.example.quickstartlessons.android.adapter.AdapterNewsImage
 import com.example.quickstartlessons.android.base.BaseFragment
+import com.example.quickstartlessons.android.extension.mainActivity
 import com.example.quickstartlessons.android.model.RvModelImage
-import com.example.quickstartlessons.databinding.FragmentFirsPageNewsBinding
-import com.example.quickstartlessons.databinding.FragmentRootBinding
 import com.example.quickstartlessons.android.model.RvNewsModel
+import com.example.quickstartlessons.databinding.ItemRecyclerViewFragmentRootBinding
+
 
 class RootFragment : BaseFragment(){
-    private lateinit var binding: FragmentRootBinding
+    private lateinit var binding: ItemRecyclerViewFragmentRootBinding
     private val adapterImage = AdapterFirstImageView()
-    private val adapterNews = AdapterNewsImage {
+    private val  adapterNews = AdapterNewsImage {url,text->
+        val bundle=Bundle()
+       val argument= bundle.putString(PARAMS_ONE,url)
+        bundle.putString(PARAMS_TWO,text)
+
         replaceFragment(FragmentSecondPage.newInstance())
+
     }
+
 
 
 
@@ -29,36 +35,43 @@ class RootFragment : BaseFragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRootBinding.inflate(inflater, container, false)
-        return binding.root
 
+
+        binding = ItemRecyclerViewFragmentRootBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      setupRecyclerView()
+        setupRecyclerView()
+
+
     }
 
-    fun setupRecyclerView() {
+    private fun setupRecyclerView() {
         binding.recyclerViewNews.adapter = adapterNews
-        binding.recyclerViewNews.layoutManager=LinearLayoutManager(requireContext())
+        binding.recyclerViewNews.layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
         adapterNews.updateData(createNewsList())
         binding.recyclerViewImage.adapter=adapterImage
-        binding.recyclerViewImage.layoutManager=LinearLayoutManager(requireContext())
+        binding.recyclerViewImage.layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
         adapterImage.updateData(createImageList())
+
     }
     private fun createNewsList(): List<RvNewsModel> {
         val list = mutableListOf<RvNewsModel>()
         for (i in 0..10) {
-            list.add(RvNewsModel("https://ru.wikipedia.org/wiki/JPEG#/media/%D0%A4%D0%B0%D0%B9%D0%BB:JPEG_example_down.jpg", "hhhhhhhhh"))
-
+            list.add(RvNewsModel("https://e1.pxfuel.com/desktop-wallpaper/457/295/desktop-wallpaper-png-backgrounds-for-picsart-blur-picsart-editing.jpg", "Բնությունը մշտապես շարժվում է և զարգանում, ընդգրկում անօրգանական և օրգանական աշխարհները։ Անօրգանական աշխարհին են պատկանում տիեզերական մարմինները, ջուրը, հողը, օդը, ապարները, օգտակար հանածոները։ Բուսական և կենդանական օրգանիզմների ողջ բազմազանությունը կազմում է օրգանական աշխարհը։ Զարգացման ընթացքում անօրգանական բնությունը օրինաչափորեն առաջ է բերում օրգանական բնություն (կենսոլորտ)՝ մարդու կենսագործունեության համար բոլոր անհրաժեշտ պայմաններով։ Հասարակական կյանքը, արտադրությունը, մարդը և նրա բանականությունը գոյատևում են բնական նյութերի հենքի վրա, գործում բնական օրինաչափություններին համապատասխան։ Բնության ներդաշնակությունն ու հավասարակշռությունը պայմանավորված են բազմազան փոխադարձ կապերով, և 1 օղակի խախտումը կարող է կտրել երևույթների ամբողջ շղթան։ Ուստի բնության հետ հարաբերություններում անհրաժեշտ է ճանաչել ու ճիշտ կիրառել նրա օրինաչափությունները, տիրապետել բնության հետ ներդաշնակ ապրելու ..."))
+            list.add(RvNewsModel("https://e1.pxfuel.com/desktop-wallpaper/457/295/desktop-wallpaper-png-backgrounds-for-picsart-blur-picsart-editing.jpg",R.string.text_for_image.toString()))
+            list.add(RvNewsModel("https://e1.pxfuel.com/desktop-wallpaper/457/295/desktop-wallpaper-png-backgrounds-for-picsart-blur-picsart-editing.jpg",R.string.text_for_image.toString()))
         }
         return list
     }
     private fun createImageList():List<RvModelImage>{
         val list= mutableListOf<RvModelImage>()
         for (i in 0..10){
-            list.add(RvModelImage("https://ru.wikipedia.org/wiki/JPEG#/media/%D0%A4%D0%B0%D0%B9%D0%BB:JPEG_example_down.jpg"))
+           list.add(RvModelImage("https://e1.pxfuel.com/desktop-wallpaper/457/295/desktop-wallpaper-png-backgrounds-for-picsart-blur-picsart-editing.jpg"))
+           list.add(RvModelImage("https://e1.pxfuel.com/desktop-wallpaper/457/295/desktop-wallpaper-png-backgrounds-for-picsart-blur-picsart-editing.jpg"))
+           list.add(RvModelImage("https://e1.pxfuel.com/desktop-wallpaper/457/295/desktop-wallpaper-png-backgrounds-for-picsart-blur-picsart-editing.jpg"))
         }
         return list
     }
@@ -66,7 +79,7 @@ class RootFragment : BaseFragment(){
     companion object {
         @JvmStatic
         fun newInstance() = RootFragment()
-
-
+        const val PARAMS_ONE="params1"
+        const val PARAMS_TWO ="params2"
     }
 }

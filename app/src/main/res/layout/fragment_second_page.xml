@@ -12,19 +12,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@drawable/arrow_left"
-            tools:ignore="MissingConstraints" />
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <CheckBox
+            android:id="@+id/checkboxShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp"
+            android:button="@drawable/share_button"/>
         <ImageView
-            android:id="@+id/firstFragmentImage"
+            android:id="@+id/fragmentImage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           />
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/arrow_left"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/textImageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@+id/firstFragmentImage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragmentImage"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

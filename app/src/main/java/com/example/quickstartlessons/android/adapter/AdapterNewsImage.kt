@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.FragmentFirsPageNewsBinding
-import com.example.quickstartlessons.android.model.RvModelImage
 import com.example.quickstartlessons.android.model.RvNewsModel
 
-class AdapterNewsImage(val onClick:(String)->Unit):RecyclerView.Adapter<AdapterNewsImage.NewsImageHolder>(){
+class AdapterNewsImage(val onClick: (String,String) -> Unit):RecyclerView.Adapter<AdapterNewsImage.NewsImageHolder>(){
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     val items = mutableListOf<RvNewsModel>()
@@ -42,7 +41,7 @@ class AdapterNewsImage(val onClick:(String)->Unit):RecyclerView.Adapter<AdapterN
         init{
             binding.newsImage.setOnClickListener {
                 if(adapterPosition!=RecyclerView.NO_POSITION){
-                    onClick.invoke(items[adapterPosition].newsImage)
+                    onClick.invoke(items[adapterPosition].newsImage,items[adapterPosition].description)
                     notifyItemChanged(adapterPosition)
 
                 }
