@@ -20,17 +20,17 @@ import com.example.quickstartlessons.databinding.ItemBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.Calendar
 
-private fun AppCompatActivity.showAlertDialog() {
+fun AppCompatActivity.showAlertDialog(onItemClick: (Boolean) -> Unit) {
     val alertDialogBuilder = AlertDialog.Builder(this)
 
     alertDialogBuilder.setTitle("Alert Title")
     alertDialogBuilder.setMessage("This is an example alert message.")
 
     alertDialogBuilder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
-
+        onItemClick.invoke(true)
     }
     alertDialogBuilder.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
-
+        onItemClick.invoke(false)
     }
 
     val alertDialog: AlertDialog = alertDialogBuilder.create()
@@ -39,11 +39,11 @@ private fun AppCompatActivity.showAlertDialog() {
     }
 }
 
-private fun showProgressDialog() {
-    // create simple progress bar in layout and visible gone imitate
+fun showProgressDialog() {
+
 }
 
-private fun Activity.showDatePickerDialog(supportFragmentManager: FragmentManager) {
+ fun Activity.showDatePickerDialog() {
     val calendar = Calendar.getInstance()
     val year = calendar.get(Calendar.YEAR)
     val month = calendar.get(Calendar.MONTH)
@@ -61,7 +61,7 @@ private fun Activity.showDatePickerDialog(supportFragmentManager: FragmentManage
     datePickerDialog.show()
 }
 
-private fun Activity.showTimePickerDialog() {
+fun Activity.showTimePickerDialog() {
     val calendar = Calendar.getInstance()
     val hour = calendar.get(Calendar.HOUR_OF_DAY)
     val minute = calendar.get(Calendar.MINUTE)
@@ -79,13 +79,15 @@ private fun Activity.showTimePickerDialog() {
     timePickerDialog.show()
 }
 
-private fun AppCompatActivity.showDialogFragment() {
+fun AppCompatActivity.showDialogFragment() {
     val dialogFragment = MyDialogFragment()
     dialogFragment.show(supportFragmentManager, "MyDialogFragment")
 }
 
-private fun AppCompatActivity.showBottomSheetDialog() {
-    val bottomSheetFragment = BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetDialog() {
+    val bottomSheetFragment = BottomSheetFragment {
+        Toast.makeText(this, "Bottom sheet is closed", Toast.LENGTH_SHORT).show()
+    }
     bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
 }
 
@@ -100,7 +102,7 @@ class MyDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(requireContext())
             .setTitle("Dialog Title")
-            .setMessage("This is a custom DialogFragment.")
+            .setMultiChoiceItems(arrayOf("a", "b", "c"), null, null)
             .setPositiveButton("OK") { _, _ ->
                 // Handle positive button click
             }
@@ -111,7 +113,7 @@ class MyDialogFragment : DialogFragment() {
     }
 }
 
-class BottomSheetFragment : BottomSheetDialogFragment() {
+class BottomSheetFragment(private val onItemClick: () -> Unit) : BottomSheetDialogFragment() {
 
     private lateinit var binding: ItemBottomSheetBinding
 
@@ -121,6 +123,14 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     ): View {
         binding = ItemBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.bottomSheetButton.setOnClickListener {
+            onItemClick.invoke()
+            dismiss()
+        }
     }
 }
 
