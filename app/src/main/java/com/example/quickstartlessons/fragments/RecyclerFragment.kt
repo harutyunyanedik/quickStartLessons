@@ -30,6 +30,7 @@ class RecyclerFragment : Fragment() {
         binding.recyclerViewTitle.adapter = adapter
         binding.recyclerViewTitle.layoutManager = LinearLayoutManager(requireContext())
         adapter.updateAdapter(createList())
+
     }
 
     private fun createList(): List<ItemModel> {

@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 fun AppCompatActivity.showAlertDialog(onItemClick: (Boolean) -> Unit) {
     val alertDialogBuilder = AlertDialog.Builder(this)
-
-
     alertDialogBuilder.setTitle("Confirmation")
     alertDialogBuilder.setMessage("Are you want to delete this item")
 

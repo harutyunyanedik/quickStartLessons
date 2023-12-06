@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -44,6 +45,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun deleteItem(index: Int) {
         item.removeAt(index)
         notifyDataSetChanged()
