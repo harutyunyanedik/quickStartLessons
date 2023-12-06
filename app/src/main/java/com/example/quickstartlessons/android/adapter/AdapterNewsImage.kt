@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.FragmentFirsPageNewsBinding
 import com.example.quickstartlessons.android.model.RvNewsModel
 
-class AdapterNewsImage(val onClick: (String,String) -> Unit):RecyclerView.Adapter<AdapterNewsImage.NewsImageHolder>(){
+class AdapterNewsImage(val onClick: (String, String) -> Unit) : RecyclerView.Adapter<AdapterNewsImage.NewsImageHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     val items = mutableListOf<RvNewsModel>()
@@ -28,28 +28,31 @@ class AdapterNewsImage(val onClick: (String,String) -> Unit):RecyclerView.Adapte
         }
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsImageHolder {
-      return NewsImageHolder(FragmentFirsPageNewsBinding.inflate(inflater,parent,false))
+        return NewsImageHolder(FragmentFirsPageNewsBinding.inflate(inflater, parent, false))
     }
 
-    override fun getItemCount(): Int=items.size
+    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: NewsImageHolder, position: Int) {
-          holder.bind(items[position])
+        holder.bind(items[position])
     }
-    inner class NewsImageHolder(private val binding:FragmentFirsPageNewsBinding):RecyclerView.ViewHolder(binding.root){
-        init{
+
+    inner class NewsImageHolder(private val binding: FragmentFirsPageNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
             binding.newsImage.setOnClickListener {
-                if(adapterPosition!=RecyclerView.NO_POSITION){
-                    onClick.invoke(items[adapterPosition].newsImage,items[adapterPosition].description)
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onClick.invoke(items[adapterPosition].newsImage, items[adapterPosition].description)
                     notifyItemChanged(adapterPosition)
 
                 }
             }
         }
-      fun bind(item: RvNewsModel){
-          binding.newsText.text=item.description
-          Glide.with(context).load(item.newsImage).into(binding.newsImage)
-      }
+
+        fun bind(item: RvNewsModel) {
+            binding.newsText.text = item.description
+            Glide.with(context).load(item.newsImage).into(binding.newsImage)
+        }
     }
 }

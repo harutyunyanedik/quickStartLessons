@@ -10,7 +10,7 @@ import com.example.quickstartlessons.databinding.FragmentFirstPageImageBinding
 import com.example.quickstartlessons.android.model.RvModelImage
 
 
-class AdapterFirstImageView : RecyclerView.Adapter<AdapterFirstImageView.FirstImageViewHolder>() {
+class AdapterFirstImageView(private val onClick: (String) -> Unit) : RecyclerView.Adapter<AdapterFirstImageView.FirstImageViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val items = mutableListOf<RvModelImage>()
@@ -42,6 +42,15 @@ class AdapterFirstImageView : RecyclerView.Adapter<AdapterFirstImageView.FirstIm
     }
 
     inner class FirstImageViewHolder(private val binding: FragmentFirstPageImageBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.Image.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onClick.invoke(items[adapterPosition].image)
+                    notifyItemChanged(adapterPosition)
+                }
+            }
+        }
+
         fun bind(item: RvModelImage) {
             Glide.with(binding.Image).load(item.image).into(binding.Image)
         }
