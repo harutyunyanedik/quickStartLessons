@@ -14,8 +14,12 @@ import com.example.quickstartlessons.databinding.ItemFragmentRootBinding
 
 class RootFragment : Fragment() {
     private lateinit var binding: ItemFragmentRootBinding
-   private var adapter =AdapterRootFragment()
-    val list= mutableListOf<Model>()
+   private var adapter =AdapterRootFragment{
+       showAlertDialog {
+
+       }
+   }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,31 +31,16 @@ class RootFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
      setupRecyclerView()
-         binding.recyclerView.setOnLongClickListener {
-             showAlertDialog {
-
-
-             }
-         }
-    }
-    fun onItemClick(position:Int){
-         list.remove(list[position])
-
 
     }
+
+
     private  fun setupRecyclerView() {
         binding.recyclerView.adapter=adapter
         binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
         adapter.updateData(createNewList())
     }
 
-    private fun createDeleteList():List<Model>{
-        for (i in 0..20){
-            list.add(Model("Title  $i"))
-
-        }
-        return list
-    }
 
    private fun createNewList():List<Model>{
         val list = mutableListOf<Model>()
