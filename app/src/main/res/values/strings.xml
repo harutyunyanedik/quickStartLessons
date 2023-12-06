@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">QuickStartLessons</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_text">"Arsenal FS Specials"</string>
+    <string name="text1">Close app</string>
+
+
+
 </resources>
