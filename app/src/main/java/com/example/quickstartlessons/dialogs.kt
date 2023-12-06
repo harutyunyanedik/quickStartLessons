@@ -1,24 +1,22 @@
 package com.example.quickstartlessons
 
 import android.content.DialogInterface
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
-fun AppCompatActivity.showAlertDialog() {
+fun AppCompatActivity.showAlertDialog(onItemClick: (Boolean) -> Unit) {
     val alertDialogBuilder = AlertDialog.Builder(this)
 
 
-    alertDialogBuilder.setTitle("Alert Dialog")
-    alertDialogBuilder.setMessage("Do you want to close the application")
+    alertDialogBuilder.setTitle("Confirmation")
+    alertDialogBuilder.setMessage("Are you want to delete this item")
 
     alertDialogBuilder.setPositiveButton("YES") { _: DialogInterface, _: Int ->
-        Toast.makeText(applicationContext,"clicked yes",Toast.LENGTH_SHORT).show()
-
+        onItemClick.invoke(true)
 
     }
     alertDialogBuilder.setNegativeButton("NO") { _: DialogInterface, _: Int ->
-        Toast.makeText(applicationContext,"clicked no",Toast.LENGTH_SHORT).show()
+        onItemClick.invoke(false)
 
     }
 

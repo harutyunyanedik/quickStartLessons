@@ -15,19 +15,19 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         addFragment(RecyclerFragment.newInstance())
 
-//        binding.container.setOnLongClickListener {
-//            showAlertDialog()
-//            true
-//        }
- }
-
-    private fun addFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().add(R.id.container, fragment, fragment::class.java.simpleName).commit()
+        binding.container.setOnClickListener {
+            showAlertDialog {
+            }
+        }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).commit()
+       private fun addFragment(fragment: Fragment) {
+            supportFragmentManager.beginTransaction().add(R.id.container, fragment, fragment::class.java.simpleName).commit()
+        }
+
+       private fun replaceFragment(fragment: Fragment) {
+            supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).commit()
+        }
+
     }
 
-
-}

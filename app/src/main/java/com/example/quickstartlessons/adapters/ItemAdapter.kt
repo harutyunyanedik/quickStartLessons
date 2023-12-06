@@ -44,5 +44,10 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         }
     }
 
+    fun deleteItem(index: Int) {
+        item.removeAt(index)
+        notifyDataSetChanged()
+    }
+
 
 }
