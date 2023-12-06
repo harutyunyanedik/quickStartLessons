@@ -33,6 +33,11 @@ class RecyclerFragment : Fragment() {
         binding.rvTitle.adapter = adapter
         binding.rvTitle.layoutManager = LinearLayoutManager(requireContext())
         adapter.updateAdapter(createList())
+        adapter.onItemClick = {delete, item ->
+            if (delete){
+                adapter.deleteItem(item)
+            }
+        }
 
     }
 
