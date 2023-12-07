@@ -10,11 +10,12 @@ apply plugin: 'kotlin-android'
 android {
     namespace 'com.example.quickstartlessons'
     compileSdk 33
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.quickstartlessons"
-        minSdk 24
-        targetSdk 33
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -49,15 +50,30 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:4.9.3"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
 
-    // Gson (for JSON serialization/deserialization)
-    implementation 'com.google.code.gson:gson:2.9.0'
+    def koin_version = "3.3.0"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
 
-    // OkHttp (Retrofit uses OkHttp as the HTTP client)
-    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
+
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.1"
+
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
 
 }
 repositories {

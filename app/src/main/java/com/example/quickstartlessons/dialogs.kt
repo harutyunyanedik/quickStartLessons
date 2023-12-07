@@ -15,7 +15,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import com.example.quickstartlessons.databinding.ItemBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.Calendar
@@ -34,6 +33,7 @@ fun AppCompatActivity.showAlertDialog(onItemClick: (Boolean) -> Unit) {
     }
 
     val alertDialog: AlertDialog = alertDialogBuilder.create()
+    alertDialog.setCancelable(false)
     if (!alertDialog.isShowing) {
         alertDialog.show()
     }
