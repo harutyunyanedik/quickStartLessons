@@ -1,5 +1,7 @@
 package com.example.quickstartlessons.fragments
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,7 @@ class RecyclerFragment : Fragment() {
 
     private lateinit var binding: FragmentRecyclerBinding
     private val adapter = TitleAdapter()
+    private val list = mutableListOf<RecyclerModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,16 +36,30 @@ class RecyclerFragment : Fragment() {
         binding.rvTitle.adapter = adapter
         binding.rvTitle.layoutManager = LinearLayoutManager(requireContext())
         adapter.updateAdapter(createList())
-        adapter.onItemClick = {delete, item ->
-            if (delete){
-                adapter.deleteItem(item)
+        adapter.onItemClick = {
+            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+
+            alertDialogBuilder.setTitle("Confirmation")
+            alertDialogBuilder.setMessage("Are you want to delete this item?")
+
+            alertDialogBuilder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
+                list.remove(it)
+                adapter.updateAdapter(list)
+
+            }
+            alertDialogBuilder.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
+
+            }
+
+            val alertDialog: AlertDialog = alertDialogBuilder.create()
+            if (!alertDialog.isShowing) {
+                alertDialog.show()
             }
         }
 
     }
 
     private fun createList(): List<RecyclerModel>{
-        val list = mutableListOf<RecyclerModel>()
         for (i in 1..100){
             list.add(RecyclerModel("Title $i"))
         }
