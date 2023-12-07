@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.android.Model
@@ -14,11 +15,10 @@ import com.example.quickstartlessons.databinding.ItemFragmentRootBinding
 
 class RootFragment : Fragment() {
     private lateinit var binding: ItemFragmentRootBinding
-   private var adapter =AdapterRootFragment{
-       showAlertDialog {
+    private var adapter = AdapterRootFragment {
 
-       }
-   }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,26 +30,27 @@ class RootFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-     setupRecyclerView()
+        setupRecyclerView()
 
     }
 
 
-    private  fun setupRecyclerView() {
-        binding.recyclerView.adapter=adapter
-        binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
+    private fun setupRecyclerView() {
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter.updateData(createNewList())
     }
 
 
-   private fun createNewList():List<Model>{
+    private fun createNewList(): List<Model> {
         val list = mutableListOf<Model>()
-        for (i in 0..20){
+        for (i in 0..20) {
             list.add(Model("Title  $i"))
 
         }
         return list
     }
+
     companion object {
         fun newInstance() = RootFragment()
     }

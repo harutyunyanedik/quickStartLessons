@@ -10,10 +10,10 @@ fun Fragment.showAlertDialog(onItemClick:(Boolean)->Unit) {
     alertDialogBuilder.setMessage("Do you want to delete the text?")
 
     alertDialogBuilder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
-     onItemClick.invoke(true)
+        onItemClick.invoke(true)
     }
     alertDialogBuilder.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
-      onItemClick(false)
+        onItemClick(false)
     }
 
     val alertDialog: AlertDialog = alertDialogBuilder.create()

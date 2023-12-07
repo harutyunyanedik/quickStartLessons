@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         addFragment(RootFragment.newInstance())
     }
 
-    fun addFragment(fragment: Fragment) {
+    private fun addFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().add(R.id.container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
     }
 

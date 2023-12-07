@@ -1,17 +1,21 @@
 package com.example.quickstartlessons.android.adapter
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.LayoutInflater.*
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ViewFragmentRootBinding
 import java.util.zip.Inflater
 
-class AdapterRootFragment(private val onClick:(String)->Unit):RecyclerView.Adapter<AdapterRootFragment.RootFragmentViewHolder>() {
+class AdapterRootFragment(private val onClick: (String) -> Unit) :
+    RecyclerView.Adapter<AdapterRootFragment.RootFragmentViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val items = mutableListOf<Model>()
@@ -48,6 +52,24 @@ class AdapterRootFragment(private val onClick:(String)->Unit):RecyclerView.Adapt
         }
     }
 
+    fun showAlertDialog(onItemClick: (Boolean) -> Unit) {
+        val alertDialogBuilder = AlertDialog.Builder(context)
+        alertDialogBuilder.setTitle("Confirmation")
+        alertDialogBuilder.setMessage("Do you want to delete the text?")
+
+        alertDialogBuilder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
+            onItemClick.invoke(true)
+        }
+        alertDialogBuilder.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
+            onItemClick(false)
+        }
+
+        val alertDialog: AlertDialog = alertDialogBuilder.create()
+        if (!alertDialog.isShowing) {
+            alertDialog.show()
+        }
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     inner class RootFragmentViewHolder(private val binding: ViewFragmentRootBinding) :
         Base(binding.root) {
@@ -55,12 +77,16 @@ class AdapterRootFragment(private val onClick:(String)->Unit):RecyclerView.Adapt
             binding.description.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onClick.invoke(items[adapterPosition].title)
-                            items.remove(Model(items[adapterPosition].title))
-                            notifyDataSetChanged()
+                    showAlertDialog {
+                        when {
+                            true -> {
+                                items.remove(Model(items[adapterPosition].title))
+                                notifyDataSetChanged()
+                            }
 
+                            false -> notifyDataSetChanged()
 
-
-
+                        }
                     }
                 }
 
