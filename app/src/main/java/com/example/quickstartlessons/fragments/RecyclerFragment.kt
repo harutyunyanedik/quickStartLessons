@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.adapters.ItemAdapter
 import com.example.quickstartlessons.databinding.FragmentRecyclerBinding
@@ -13,7 +12,9 @@ import com.example.quickstartlessons.models.ItemModel
 
 class RecyclerFragment : BaseFragment() {
     private lateinit var binding: FragmentRecyclerBinding
-    private val adapter = ItemAdapter()
+    private val adapter = ItemAdapter{
+
+    }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.ItemTextBinding
 import com.example.quickstartlessons.models.ItemModel
 
-class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemFragmentViewHolder>() {
+class ItemAdapter(private val onClick: (String) -> Unit) :
+    RecyclerView.Adapter<ItemAdapter.ItemFragmentViewHolder>() {
 
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private var item = mutableListOf<ItemModel>()
+    private var items = mutableListOf<ItemModel>()
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -27,18 +28,17 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemFragmentViewHolder>() {
         return ItemFragmentViewHolder(ItemTextBinding.inflate(inflater, parent, false))
     }
 
-    override fun getItemCount(): Int = item.size
+    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ItemFragmentViewHolder, position: Int) {
-        holder.bind(item[position])
+        holder.bind(items[position])
     }
 
     fun updateAdapter(items: List<ItemModel>?) {
-        this.item.clear()
+        this.items.clear()
         items?.let {
-            this.item.addAll(it)
+            this.items.addAll(it)
         }
-
     }
 
     abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -67,17 +67,18 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemFragmentViewHolder>() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class ItemFragmentViewHolder(private val binding: ItemTextBinding) :
         BaseViewHolder(binding.root) {
 
         init {
             binding.itemText.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-//                    onClick.invoke(item[adapterPosition].title)
+                    onClick.invoke(items[adapterPosition].title)
                     showAlertDialog {
                         when {
                             true -> {
-                                item.remove(ItemModel(item[adapterPosition].title))
+                                items.remove(ItemModel(items[adapterPosition].title))
                                 notifyDataSetChanged()
                             }
 
@@ -92,12 +93,4 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemFragmentViewHolder>() {
             binding.itemText.text = items.title
         }
     }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun deleteItem(index: Int) {
-        item.removeAt(index)
-        notifyDataSetChanged()
-    }
-
-
 }
