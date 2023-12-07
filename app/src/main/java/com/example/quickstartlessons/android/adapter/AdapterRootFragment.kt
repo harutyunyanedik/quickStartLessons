@@ -78,13 +78,15 @@ class AdapterRootFragment(private val onClick: (String) -> Unit) :
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onClick.invoke(items[adapterPosition].title)
                     showAlertDialog {
-                        when {
+                        when (it) {
                             true -> {
                                 items.remove(Model(items[adapterPosition].title))
                                 notifyDataSetChanged()
                             }
 
-                            false -> notifyDataSetChanged()
+                            false ->
+
+                                notifyDataSetChanged()
 
                         }
                     }
