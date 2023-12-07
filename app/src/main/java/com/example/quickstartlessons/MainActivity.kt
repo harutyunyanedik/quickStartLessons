@@ -1,40 +1,38 @@
 package com.example.quickstartlessons
 
-import android.content.Intent
-import android.graphics.ColorSpace
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import com.example.quickstartlessons.android.fragment.FragmentEqualButton
+import com.example.quickstartlessons.android.fragment.FragmentPlusButton
 
-import com.example.quickstartlessons.android.FirstRecyclerAdapter
-import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter = FirstRecyclerAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setupRecycleView()
+      addFragment(FragmentPlusButton.newInstance())
+        addFragment(FragmentEqualButton.newInstance())
+    }
+    private fun addFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().add(R.id.firstFragmentContainer, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
+    }
+  // private fun addSecondFragment(fragment: Fragment){
+  //     supportFragmentManager.beginTransaction().add(R.id.secondFragmentContainer,fragment,fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
+  // }
+
+    fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
     }
 
-    fun setupRecycleView() {
-        val layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = adapter
-
-        adapter.updateData(createData())
+    fun popFragment() {
+        supportFragmentManager.popBackStack()
     }
 
-    fun createData(): List<Model> {
-        val list = mutableListOf<Model>()
-        for (i in 0..100) {
-            list.add(Model("Arsenal FS Specials"))
-        }
-        return list
-    }
 }
