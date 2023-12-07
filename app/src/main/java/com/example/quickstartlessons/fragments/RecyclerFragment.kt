@@ -11,7 +11,7 @@ import com.example.quickstartlessons.databinding.FragmentRecyclerBinding
 import com.example.quickstartlessons.models.ItemModel
 
 
-class RecyclerFragment : Fragment() {
+class RecyclerFragment : BaseFragment() {
     private lateinit var binding: FragmentRecyclerBinding
     private val adapter = ItemAdapter()
 

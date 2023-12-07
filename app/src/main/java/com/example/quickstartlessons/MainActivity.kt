@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-       private fun addFragment(fragment: Fragment) {
+        fun addFragment(fragment: Fragment) {
             supportFragmentManager.beginTransaction().add(R.id.container, fragment, fragment::class.java.simpleName).commit()
         }
 
-       private fun replaceFragment(fragment: Fragment) {
+       fun replaceFragment(fragment: Fragment) {
             supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).commit()
         }
 
