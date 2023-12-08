@@ -14,7 +14,7 @@ import com.example.quickstartlessons.android.Model
 import com.example.quickstartlessons.databinding.ViewFragmentRootBinding
 import java.util.zip.Inflater
 
-class AdapterRootFragment(private val onClick: (String) -> Unit) :
+class AdapterRootFragment(private val onClick: (Model) -> Unit) :
     RecyclerView.Adapter<AdapterRootFragment.RootFragmentViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
@@ -76,22 +76,10 @@ class AdapterRootFragment(private val onClick: (String) -> Unit) :
         init {
             binding.description.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onClick.invoke(items[adapterPosition].title)
-                    showAlertDialog {
-                        when (it) {
-                            true -> {
-                                items.remove(Model(items[adapterPosition].title))
-                                notifyDataSetChanged()
-                            }
+                    onClick.invoke(items[adapterPosition])
+                    notifyDataSetChanged()
 
-                            false ->
-
-                                notifyDataSetChanged()
-
-                        }
-                    }
                 }
-
             }
         }
 

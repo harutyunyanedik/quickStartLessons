@@ -15,8 +15,9 @@ import com.example.quickstartlessons.databinding.ItemFragmentRootBinding
 
 class RootFragment : Fragment() {
     private lateinit var binding: ItemFragmentRootBinding
+    private val list: MutableList<Model> = createNewList().toMutableList()
     private var adapter = AdapterRootFragment {
-
+        showData(it)
     }
 
 
@@ -38,9 +39,18 @@ class RootFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter.updateData(createNewList())
+        adapter.updateData(list)
     }
 
+    private fun showData(item: Model) {
+        showAlertDialog("Confirmation", "Are You delete this item?") { isDelete ->
+            if (isDelete) {
+                list.remove(item)
+                adapter.updateData(list)
+
+            }
+        }
+    }
 
     private fun createNewList(): List<Model> {
         val list = mutableListOf<Model>()

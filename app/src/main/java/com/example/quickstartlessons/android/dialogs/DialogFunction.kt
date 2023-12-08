@@ -2,12 +2,13 @@ package com.example.quickstartlessons.android.dialogs
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.icu.text.CaseMap.Title
 import androidx.fragment.app.Fragment
 
-fun Fragment.showAlertDialog(onItemClick:(Boolean)->Unit) {
+fun Fragment.showAlertDialog( title:String, massage:String,onItemClick:(Boolean)->Unit) {
     val alertDialogBuilder = AlertDialog.Builder(requireContext())
-    alertDialogBuilder.setTitle("Confirmation")
-    alertDialogBuilder.setMessage("Do you want to delete the text?")
+    alertDialogBuilder.setTitle(title)
+    alertDialogBuilder.setMessage(massage)
 
     alertDialogBuilder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
         onItemClick.invoke(true)
