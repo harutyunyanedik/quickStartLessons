@@ -12,20 +12,23 @@ import com.example.quickstartlessons.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val equalButton=FragmentEqualButton.newInstance()
+    private val fragmentPlusButton=FragmentPlusButton.newInstance{
+        equalButton.incrementCount()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-      addFragment(FragmentPlusButton.newInstance())
-        addFragment(FragmentEqualButton.newInstance())
+
+        addFragment(fragmentPlusButton,R.id.firstFragmentContainer)
+        addFragment(equalButton,R.id.equalFragmentContainer)
     }
-    private fun addFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().add(R.id.firstFragmentContainer, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
+    private fun addFragment(fragment: Fragment,container:Int) {
+        supportFragmentManager.beginTransaction().add(container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
     }
-  // private fun addSecondFragment(fragment: Fragment){
-  //     supportFragmentManager.beginTransaction().add(R.id.secondFragmentContainer,fragment,fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
-  // }
+
 
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()

@@ -8,13 +8,9 @@ import android.view.ViewGroup
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentEqualButtonBinding
 
-class FragmentEqualButton : Fragment() {
+class FragmentEqualButton(): Fragment() {
     private lateinit var binding: FragmentEqualButtonBinding
-    private var number: String? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        number=arguments?.getString(NUMBER_ONE)
-    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,19 +21,20 @@ class FragmentEqualButton : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       number= 1.toString()
+        binding.equalButton.text="0"
 
+    }
+    fun incrementCount(){
+        var count=binding.equalButton.text.toString().toInt()
+        val newCount=count+1
+        binding.equalButton.text=newCount.toString()
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(number: Int) = FragmentEqualButton().apply {
-            arguments = Bundle().apply {
-                putInt(NUMBER_ONE, number)
-            }
+        fun newInstance() = FragmentEqualButton()
 
-        }
 
-        private const val NUMBER_ONE = "number_one"
+
     }
 }

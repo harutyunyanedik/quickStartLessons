@@ -2,13 +2,29 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<FrameLayout
-    android:id="@+id/firstFragmentContainer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/app_background">
 
-</FrameLayout>
+ <FrameLayout
+     android:id="@+id/firstFragmentContainer"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="@color/app_background"/>
+
+  <androidx.constraintlayout.widget.Barrier
+      android:id="@+id/barrier"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:barrierDirection="start"
+      app:constraint_referenced_ids="firstFragmentContainer,equalFragmentContainer"
+      />
+
+  <FrameLayout
+      android:id="@+id/equalFragmentContainer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/white"/>
+
+
+
 
 
 

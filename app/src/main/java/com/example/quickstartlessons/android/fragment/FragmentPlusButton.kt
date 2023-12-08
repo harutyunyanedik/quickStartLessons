@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentPlusButtonBinding
 
-class FragmentPlusButton : Fragment() {
+class FragmentPlusButton (private val onClickButton:()->Unit): Fragment() {
 private lateinit var binding:FragmentPlusButtonBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,14 +18,16 @@ private lateinit var binding:FragmentPlusButtonBinding
         return binding.root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.plusButton.setOnClickListener {
-
+          onClickButton.invoke()
         }
     }
     companion object {
         @JvmStatic
-        fun newInstance() = FragmentPlusButton()
+        fun newInstance(onClickButton: () -> Unit) = FragmentPlusButton(onClickButton)
     }
 }
