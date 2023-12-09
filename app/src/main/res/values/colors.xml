@@ -9,5 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_10">#81FFFFFF</color>
     <color name="app_background">#000c24</color>
+    <color name="edit_text">#323C53</color>
+    <color name="sign_in_button">#FF0E8F23</color>
+    <color name="app_text">#FF778DBE</color>
+    <color name="btn_reset">#FF273042</color>
 
 </resources>
