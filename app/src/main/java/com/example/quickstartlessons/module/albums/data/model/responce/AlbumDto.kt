@@ -1,6 +1,7 @@
-package com.example.quickstartlessons.data.net.model
+package com.example.quickstartlessons.module.albums.data.model.responce
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class AlbumDto(
     @SerializedName("id")
@@ -9,4 +10,4 @@ data class AlbumDto(
     val title: String? = null,
     @SerializedName("userId")
     val userId: Int? = null
-)
+) : Serializable

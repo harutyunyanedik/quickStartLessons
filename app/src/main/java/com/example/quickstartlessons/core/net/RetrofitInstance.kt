@@ -1,5 +1,6 @@
-package com.example.quickstartlessons.data.net.api
+package com.example.quickstartlessons.core.net
 
+import com.example.quickstartlessons.module.albums.data.net.datasource.AlbumDataSource
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request

@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.data.net.api
+package com.example.quickstartlessons.core.net
 
 import androidx.annotation.Keep
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -25,7 +25,7 @@ suspend fun <T> getHttpResponse(
         val response = apiFunction()
         val responseBody = response.body()
 
-        GlobalScope.launch(
+        withContext(
             Dispatchers.Main + MyCoroutineExceptionHandler(
                 CoroutineExceptionHandler, resultCallBack
             )
@@ -50,10 +50,7 @@ suspend fun <T> getHttpResponse(
 interface ApiResultCallback<T> {
     fun onSuccess(response: T)
 
-    /**
-     * @return true if handled
-     */
-    fun onError(status: Any): Boolean = false
+    fun onError(): Boolean = false
 
     fun onNotHandledError(error: Any? = null) {}
 }

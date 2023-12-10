@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.data.net.api
+package com.example.quickstartlessons.core.net
 
 import android.util.Log
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -10,7 +10,7 @@ class MyCoroutineExceptionHandler(override val key: CoroutineContext.Key<*>, pri
         try {
             Log.e("Global error", exception.localizedMessage ?: "")
 //            BaseFragment.removeLoader()
-            resultCallBack?.onError(-1)
+            resultCallBack?.onError()
         } catch (ex: Exception) {
             Log.e("Coroutine Exception", ex.localizedMessage ?: "")
         }
