@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.quickstartlessons.databinding.ActivityMainBinding
-import com.example.quickstartlessons.module.albums.presentation.AlbumsFragment
+import com.example.quickstartlessons.module.albums.newpresenttation.HeaderPageFragment
+import com.example.quickstartlessons.module.albums.newpresenttation.PopUpFragment
+import org.koin.android.ext.android.get
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val fragment = AlbumsFragment.newInstance()
+        val fragment = HeaderPageFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.activity_container, fragment).commit()
     }
+
 }
