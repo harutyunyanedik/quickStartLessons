@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.quickstartlessons.databinding.ActivityMainBinding
-import com.example.quickstartlessons.module.albums.presentation.HttpFragment
+import com.example.quickstartlessons.module.albums.presentation.AlbumsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val fragment = HttpFragment.newInstance()
+        val fragment = AlbumsFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.activity_container, fragment).commit()
     }
 }

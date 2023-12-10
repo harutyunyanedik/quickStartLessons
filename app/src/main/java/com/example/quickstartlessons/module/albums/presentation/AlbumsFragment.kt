@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.quickstartlessons.databinding.FragmentHttpBinding
+import com.example.quickstartlessons.databinding.FragmentAlbumsBinding
 
-class HttpFragment : Fragment() {
+class AlbumsFragment : Fragment() {
 
-    private lateinit var binding: FragmentHttpBinding
-    private val albumViewModel: AlbumViewModel by viewModels()
+    private lateinit var binding: FragmentAlbumsBinding
+    private val viewModel: AlbumViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHttpBinding.inflate(inflater, container, false)
+        binding = FragmentAlbumsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,22 +29,22 @@ class HttpFragment : Fragment() {
 
     private fun setupListeners() {
         binding.httpRequestButton.setOnClickListener {
-            albumViewModel.getAlbums()
+            viewModel.getAlbums()
         }
     }
 
     private fun setupObservers() {
-        albumViewModel.albumLiveData.observe(viewLifecycleOwner) {
+        viewModel.albumLiveData.observe(viewLifecycleOwner) {
             binding.albumTitle.text = it?.title
         }
 
-        albumViewModel.albumErrorLiveData.observe(viewLifecycleOwner) {
+        viewModel.albumErrorLiveData.observe(viewLifecycleOwner) {
             // show dialog
         }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() = HttpFragment()
+        fun newInstance() = AlbumsFragment()
     }
 }
