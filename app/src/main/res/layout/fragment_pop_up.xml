@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".module.albums.representational.PopUpFragment">
+
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:hint="Edit title"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="normal"
+            tools:ignore="Autofill,HardcodedText,MissingConstraints" />
+
+        <EditText
+            android:id="@+id/edit_massage"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:hint="Edit massage"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@+id/edit_title"
+            tools:ignore="Autofill,HardcodedText,MissingConstraints,TextFields" />
+
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_style"
+            android:text="Save massages"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/edit_massage"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
