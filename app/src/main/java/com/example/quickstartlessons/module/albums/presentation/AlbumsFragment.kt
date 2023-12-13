@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentAlbumsBinding
 
 class AlbumsFragment : Fragment() {
@@ -31,6 +33,11 @@ class AlbumsFragment : Fragment() {
         binding.httpRequestButton.setOnClickListener {
             viewModel.getAlbums()
         }
+        binding.navigateDetailsFragment.setOnClickListener {
+            findNavController().navigate(AlbumsFragmentDirections.actionAlbumsFragmentToAlbumDetailsFragment("լկկ"))
+
+
+        }
     }
 
     private fun setupObservers() {
@@ -43,8 +50,4 @@ class AlbumsFragment : Fragment() {
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = AlbumsFragment()
-    }
 }
