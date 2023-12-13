@@ -18,7 +18,7 @@ class AlbumRepositoryImplementation(private val dataSource: AlbumDataSource) : A
 
     override suspend fun getAlbumsV2(resultCallback: ApiResultCallback<AlbumDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
-            dataSource.getAlbumsV2()
+            dataSource.getAlbumsV2(1)
         }
     }
 }
