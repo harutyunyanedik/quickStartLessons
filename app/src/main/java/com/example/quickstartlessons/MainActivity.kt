@@ -13,7 +13,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val fragment = AlbumsFragment.newInstance()
-        supportFragmentManager.beginTransaction().add(R.id.activity_container, fragment).commit()
     }
 }

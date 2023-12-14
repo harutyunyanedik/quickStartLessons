@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentAlbumsBinding
 
 class AlbumsFragment : Fragment() {
@@ -31,6 +32,10 @@ class AlbumsFragment : Fragment() {
         binding.httpRequestButton.setOnClickListener {
             viewModel.getAlbums()
         }
+
+        binding.navigateToDetailsButton.setOnClickListener {
+            findNavController().navigate(AlbumsFragmentDirections.actionAlbumsFragmentToAlbumDetailsFragment("10", "11"))
+        }
     }
 
     private fun setupObservers() {
@@ -41,10 +46,5 @@ class AlbumsFragment : Fragment() {
         viewModel.albumErrorLiveData.observe(viewLifecycleOwner) {
             // show dialog
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = AlbumsFragment()
     }
 }

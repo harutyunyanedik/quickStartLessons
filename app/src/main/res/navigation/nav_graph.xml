@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/albumsFragment">
+
+    <fragment
+        android:id="@+id/albumsFragment"
+        android:name="com.example.quickstartlessons.module.albums.presentation.AlbumsFragment"
+        android:label="AlbumsFragment"
+        tools:layout="@layout/fragment_albums">
+        <action
+            android:id="@+id/action_albumsFragment_to_albumDetailsFragment"
+            app:destination="@id/albumDetailsFragment" />
+        <action
+            android:id="@+id/action_albumsFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailsFragment"
+        android:name="com.example.quickstartlessons.module.albumdetails.AlbumDetailsFragment"
+        android:label="fragment_album_details"
+        tools:layout="@layout/fragment_album_details">
+
+        <argument
+            android:name="albumId"
+            app:argType="string" />
+
+        <argument
+            android:name="albumIdV2"
+            app:argType="string" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.example.quickstartlessons.module.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" />
+
+</navigation>
