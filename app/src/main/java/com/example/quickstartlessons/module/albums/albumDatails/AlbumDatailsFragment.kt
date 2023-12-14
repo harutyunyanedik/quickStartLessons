@@ -1,12 +1,10 @@
 package com.example.quickstartlessons.module.albums.albumDatails
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.adapters.ImagesRecyclerViewAdapter
