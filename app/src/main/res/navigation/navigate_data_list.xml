@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigate_data_list">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigate_data_list"
+    app:startDestination="@id/fragmentPhoto">
+
+    <fragment
+        android:id="@+id/fragmentPhoto"
+        android:name="com.example.quickstartlessons.homework.FragmentPhoto"
+        android:label="fragment_photo"
+        tools:layout="@layout/fragment_photo" >
+        <action
+            android:id="@+id/action_fragmentPhoto_to_fragmentNavigate"
+            app:destination="@id/fragmentNavigate" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNavigate"
+        android:name="com.example.quickstartlessons.homework.FragmentNavigate"
+        android:label="fragment_navigate"
+        tools:layout="@layout/fragment_navigate" >
+<argument
+    android:name="photoUrl"
+    app:argType="String"/>
+
+    </fragment>
 
 </navigation>
