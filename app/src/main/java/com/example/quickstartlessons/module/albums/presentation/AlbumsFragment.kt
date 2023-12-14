@@ -23,25 +23,25 @@ class AlbumsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupListeners()
-        setupObservers()
+//        setupListeners()
+//        setupObservers()
     }
 
-    private fun setupListeners() {
-        binding.httpRequestButton.setOnClickListener {
-            viewModel.getAlbums()
-        }
-    }
-
-    private fun setupObservers() {
-        viewModel.albumLiveData.observe(viewLifecycleOwner) {
-            binding.albumTitle.text = it?.title
-        }
-
-        viewModel.albumErrorLiveData.observe(viewLifecycleOwner) {
-            // show dialog
-        }
-    }
+//    private fun setupListeners() {
+//        binding.httpRequestButton.setOnClickListener {
+//            viewModel.getAlbums()
+//        }
+//    }
+//
+//    private fun setupObservers() {
+//        viewModel.albumLiveData.observe(viewLifecycleOwner) {
+//            binding.albumTitle.text = it?.title
+//        }
+//
+//        viewModel.albumErrorLiveData.observe(viewLifecycleOwner) {
+//            // show dialog
+//        }
+//    }
 
     companion object {
         @JvmStatic

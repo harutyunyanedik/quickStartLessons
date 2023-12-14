@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
+import com.example.quickstartlessons.module.albums.data.model.response.AlbumDto
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getApi
 import com.example.quickstartlessons.module.albums.repository.AlbumRepository
