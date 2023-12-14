@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.ItemPhotoFragmentBinding
 
-@Suppress("DEPRECATION")
 class FragmentPhoto : Fragment() {
+
     private lateinit var binding: ItemPhotoFragmentBinding
     private val adapter = AdapterPhoto {
         isOnline()
@@ -23,7 +23,7 @@ class FragmentPhoto : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = ItemPhotoFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,9 +35,7 @@ class FragmentPhoto : Fragment() {
 
     private fun setupView() {
         binding.recyclerViewPhoto.adapter = adapter
-        binding.recyclerViewPhoto.layoutManager = LinearLayoutManager(requireContext())
         adapter.updateData(createNewList())
-
     }
 
     private fun isOnline() {

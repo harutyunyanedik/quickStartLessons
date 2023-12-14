@@ -9,7 +9,7 @@
         android:id="@+id/fragmentPhoto"
         android:name="com.example.quickstartlessons.homework.FragmentPhoto"
         android:label="fragment_photo"
-        tools:layout="@layout/fragment_photo" >
+        tools:layout="@layout/fragment_photo">
         <action
             android:id="@+id/action_fragmentPhoto_to_fragmentNavigate"
             app:destination="@id/fragmentNavigate" />
@@ -18,11 +18,11 @@
         android:id="@+id/fragmentNavigate"
         android:name="com.example.quickstartlessons.homework.FragmentNavigate"
         android:label="fragment_navigate"
-        tools:layout="@layout/fragment_navigate" >
-<argument
-    android:name="photoUrl"
-    app:argType="String"/>
+        tools:layout="@layout/fragment_navigate">
 
+        <argument
+            android:name="photoUrl"
+            app:argType="string" />
     </fragment>
 
 </navigation>
