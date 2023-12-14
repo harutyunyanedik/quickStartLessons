@@ -32,5 +32,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="test" />
 
+        <Button
+            android:id="@+id/navigateToDetailsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/albumTitle"
+            android:text="navigate to detail"
+            tools:ignore="HardcodedText" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

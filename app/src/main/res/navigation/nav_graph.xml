@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/albumsFragment">
+
+    <fragment
+        android:id="@+id/albumsFragment"
+        android:name="com.example.quickstartlessons.module.albums.presentation.AlbumsFragment"
+        tools:layout="@layout/fragment_albums"
+        android:label="AlbumsFragment" >
+        <action
+            android:id="@+id/action_albumsFragment_to_albumDatailsFragment"
+            app:destination="@id/albumDatailsFragment" />
+        <action
+            android:id="@+id/action_albumsFragment_to_albumDatailsFragment2"
+            app:destination="@id/albumDatailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDatailsFragment"
+        android:name="com.example.quickstartlessons.module.albums.albumDatails.AlbumDatailsFragment"
+        android:label="fragment_album_datails"
+        tools:layout="@layout/fragment_album_datails" >
+
+        <argument
+            android:name ="albumId"
+            app:argType = "String"/>
+
+    </fragment>
+</navigation>
