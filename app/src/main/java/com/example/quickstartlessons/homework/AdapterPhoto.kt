@@ -1,16 +1,14 @@
 package com.example.quickstartlessons.homework
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.FragmentPhotoBinding
 
-class AdapterPhoto( private  val onClick:(String)->Unit) : RecyclerView.Adapter<AdapterPhoto.PhotoViewHolder>() {
+class AdapterPhoto(private val onClick: (String) -> Unit) : RecyclerView.Adapter<AdapterPhoto.PhotoViewHolder>() {
     val items = mutableListOf<Photo>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
@@ -25,9 +23,10 @@ class AdapterPhoto( private  val onClick:(String)->Unit) : RecyclerView.Adapter<
         return PhotoViewHolder(FragmentPhotoBinding.inflate(inflater, parent, false))
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(item: List<Photo>?) {
         items.clear()
-        val let = item?.let {
+        item?.let {
             items.addAll(item)
             notifyDataSetChanged()
         }
@@ -44,12 +43,13 @@ class AdapterPhoto( private  val onClick:(String)->Unit) : RecyclerView.Adapter<
     inner class PhotoViewHolder(private val binding: FragmentPhotoBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.photo.setOnClickListener {
-                if(adapterPosition!=RecyclerView.NO_POSITION){
+                if (adapterPosition != RecyclerView.NO_POSITION) {
                     items[adapterPosition].url?.let { it1 -> onClick.invoke(it1) }
                     notifyItemChanged(adapterPosition)
                 }
             }
         }
+
         fun bind(item: Photo) {
             Glide.with(context).load(item.url).into(binding.photo)
             binding.PhotoTitle.text = item.title

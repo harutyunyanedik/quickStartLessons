@@ -7,7 +7,7 @@ data class Photo(
     //@SerializedName("id")
     //val id: Int?= null,
     @SerializedName("title")
-    val title: String?=null,
+    val title: String? = null,
     @SerializedName("url")
-    val url: String?=null
-):Serializable
+    val url: String? = null
+) : Serializable

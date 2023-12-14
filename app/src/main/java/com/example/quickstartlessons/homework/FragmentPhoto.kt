@@ -1,9 +1,7 @@
 package com.example.quickstartlessons.homework
 
 import android.content.Context
-import android.content.Context.CONNECTIVITY_SERVICE
 import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,18 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.databinding.ItemPhotoFragmentBinding
 
 @Suppress("DEPRECATION")
 class FragmentPhoto : Fragment() {
     private lateinit var binding: ItemPhotoFragmentBinding
     private val adapter = AdapterPhoto {
-         isOnline()
+        isOnline()
     }
 
     override fun onCreateView(
@@ -44,15 +39,15 @@ class FragmentPhoto : Fragment() {
         adapter.updateData(createNewList())
 
     }
-   private fun isOnline() {
+
+    private fun isOnline() {
         val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val netInfo = cm.activeNetworkInfo
-            if ( netInfo?.isConnectedOrConnecting==true){
+            if (netInfo?.isConnectedOrConnecting == true) {
 
-            findNavController().navigate(FragmentPhotoDirections.actionFragmentPhotoToFragmentNavigate(""))
-            }
-            else {
+                findNavController().navigate(FragmentPhotoDirections.actionFragmentPhotoToFragmentNavigate(""))
+            } else {
                 Toast.makeText(context, "No internet connection", Toast.LENGTH_SHORT).show()
             }
         }
