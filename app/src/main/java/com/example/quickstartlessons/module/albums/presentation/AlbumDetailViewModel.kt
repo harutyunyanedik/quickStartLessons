@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getApi
+import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 import com.example.quickstartlessons.module.albums.repository.AlbumRepository
 import com.example.quickstartlessons.module.albums.repository.AlbumRepositoryImplementation
 import kotlinx.coroutines.launch
 
-class AlbumViewModel : ViewModel() {
+class AlbumDetailViewModel: ViewModel() {
 
     private val repo: AlbumRepository = AlbumRepositoryImplementation(getApi())
 
@@ -23,13 +23,13 @@ class AlbumViewModel : ViewModel() {
     val albumErrorLiveData: LiveData<String?>
         get() = _albumErrorLiveData
 
-    fun getAlbums(isShoLoader: Boolean = true) {
+    fun getAlbums(isShoLoader: Boolean = true, id: Int) {
         viewModelScope.launch {
-            repo.getAlbumsV2(object : ApiResultCallback<AlbumDto?> {
+            repo.getAlbumV2(object : ApiResultCallback<AlbumDto?> {
                 override fun onSuccess(response: AlbumDto?) {
                     _albumLiveData.value = response
                 }
-            }, isShoLoader)
+            }, isShoLoader, id)
         }
     }
 }

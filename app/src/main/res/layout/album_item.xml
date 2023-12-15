@@ -5,7 +5,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardElevation="8dp"
@@ -14,11 +14,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <ImageView
                 android:id="@+id/imageViewThumbnail"
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:src="@mipmap/ic_launcher"
                 android:adjustViewBounds="true"
@@ -30,8 +31,12 @@
                 android:id="@+id/textViewTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"
                 tools:text="Some text"
                 android:padding="4dp"
+                android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/imageViewThumbnail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

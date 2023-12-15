@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.AlbumItemBinding
 import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 
-class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.BaseViewHolder>() {
+class AlbumsAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapter<AlbumsAdapter.BaseViewHolder>() {
 
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
@@ -46,6 +46,14 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.BaseViewHolder>() {
     }
 
     inner class AlbumsViewHolder(private val binding : AlbumItemBinding) : BaseViewHolder(binding.root){
+
+        init {
+            binding.root.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION){
+                    onItemClick.invoke(items[adapterPosition].id)
+                }
+            }
+        }
         override
         fun bind(album: AlbumDto){
             binding.textViewTitle.text = album.title
