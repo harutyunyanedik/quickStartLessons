@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.adapters.ImagesRecyclerViewAdapter
 import com.example.quickstartlessons.adapters.Model
 import com.example.quickstartlessons.databinding.FragmentAlbumDatailsBinding
+import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
+import com.google.gson.JsonObject
 
 class AlbumDatailsFragment : Fragment() {
 
@@ -24,23 +26,35 @@ class AlbumDatailsFragment : Fragment() {
     ): View? {
         binding = FragmentAlbumDatailsBinding.inflate(inflater, container, false)
         return binding.root
-       args.albumId
+       //args.albumId
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupImages()
+        setupItems()
     }
 
-    private fun setupImages() {
+    private fun setupItems() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
-        adapter.updateData(createImages())
+        adapter.updateData(createItems())
     }
 
-    private fun createImages(): List<Model> {
+    private fun createItems(): List<Model> {
         for (i in 0..2) {
-            //item.add(Model("accusamus beatae ad facilis cum similique qui sunt","https://via.placeholder.com/150/92c952"))
+            item.add(Model("accusamus beatae ad facilis cum similique qui sunt","https://via.placeholder.com/150/92c952"))
         }
         return item
+    }
+
+    private fun parseData (fragmentObject:JsonObject) :List<AlbumDto> {
+        val list = ArrayList<AlbumDto>()
+        val userArray = fragmentObject.getAsJsonArray("id")
+        for (i in 0 until userArray.size()){
+            val user = userArray[i] as JsonObject
+          val items = AlbumDto(
+
+          )
+        }
+        return list
     }
 }

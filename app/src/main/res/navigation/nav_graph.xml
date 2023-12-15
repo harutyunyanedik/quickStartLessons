@@ -25,7 +25,7 @@
 
         <argument
             android:name ="albumId"
-            app:argType = "String"/>
+            app:argType = "string"/>
 
     </fragment>
 </navigation>

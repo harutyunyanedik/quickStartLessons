@@ -47,8 +47,8 @@ class ImagesRecyclerViewAdapter : RecyclerView.Adapter<ImagesRecyclerViewAdapter
     inner class ImagesRecyclerViewHolder(private val binding: ItemReciclerViewBinding) : BaseViewHolder(binding.root) {
 
         override fun bind(item: Model) {
-            //binding.title=item.title
-            //Glide.with(context).load(item.imageUrl).into(binding.imageUrl)
+            binding.title.text = item.title
+            Glide.with(context).load(item.imageUrl).into(binding.imageUrl)
         }
     }
 }
