@@ -1,16 +1,17 @@
 package com.example.quickstartlessons.module.albums.data.model.responce
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class AlbumDto(
-//    @SerializedName("albumId")
+    @SerializedName("albumId")
     val albumId: Int,
-//    @SerializedName("id")
+    @SerializedName("id")
     val id: Int,
-//    @SerializedName("title")
+    @SerializedName("title")
     val title: String,
-//    @SerializedName("url")
+    @SerializedName("url")
     val url: String,
-//    @SerializedName("thumbnailUrl")
+    @SerializedName("thumbnailUrl")
     val thumbnailUrl: String
 ) : Serializable
