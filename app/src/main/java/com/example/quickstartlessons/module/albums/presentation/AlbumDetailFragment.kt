@@ -30,8 +30,9 @@ class AlbumDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isNetworkAvailable()
-        setupObservers()
         viewModel.getAlbums(id = args.id)
+        setupObservers()
+
     }
 
     private fun setupObservers() {
