@@ -3,15 +3,12 @@ package com.example.quickstartlessons.core.net
 import androidx.annotation.Keep
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 
 suspend fun <T> getHttpResponse(
     resultCallBack: ApiResultCallback<T?>,
     isShowLoader: Boolean = true,
-    apiFunction: suspend () -> Response<T>
+    apiFunction: suspend () -> Unit
 ) {
     if (isShowLoader) {
 //        BaseFragment.addLoader()

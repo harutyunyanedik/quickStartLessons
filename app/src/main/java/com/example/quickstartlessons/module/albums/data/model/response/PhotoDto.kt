@@ -3,7 +3,7 @@ package com.example.quickstartlessons.module.albums.data.model.response
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class AlbumDto(
+data class PhotoDto(
     @SerializedName("albumId")
     val albumId : Int? = null,
     @SerializedName("id")
