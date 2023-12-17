@@ -12,8 +12,6 @@ interface AlbumDataSource {
     @GET("albums/1")
     fun getAlbums(): Call<AlbumDto>
     @GET("albums/{album_id}")
-    suspend fun getAlbumsV2(
-  @Path("album_id") albumId:Int
-    ): Response<AlbumDto>
+    suspend fun getAlbumsV2(): Response<AlbumDto>
 
 }

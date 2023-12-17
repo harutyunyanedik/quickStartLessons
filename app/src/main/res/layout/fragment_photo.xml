@@ -7,13 +7,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".homework.FragmentPhoto">
+        <TextView
+            android:id="@+id/idImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="10dp"
+            />
 
 
         <ImageView
-            android:id="@+id/photo"
+            android:id="@+id/photoIn600"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/idImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="10dp"/>
+
+
+        <ImageView
+            android:id="@+id/photoIn150"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/photoIn600"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="10dp"
@@ -22,7 +41,7 @@
             android:id="@+id/PhotoTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/photo"
+            app:layout_constraintTop_toBottomOf="@id/photoIn150"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="10dp"

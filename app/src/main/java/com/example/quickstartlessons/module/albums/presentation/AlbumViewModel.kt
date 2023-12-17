@@ -29,6 +29,7 @@ class AlbumViewModel : ViewModel() {
                 override fun onSuccess(response: AlbumDto?) {
                     _albumLiveData.value = response
                 }
+
             }, isShoLoader)
         }
     }

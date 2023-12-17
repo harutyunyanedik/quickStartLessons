@@ -28,7 +28,7 @@ class AlbumsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
         setupObservers()
-      setupListenerInternetConnection()
+
     }
 
     private fun setupListeners() {
@@ -40,21 +40,10 @@ class AlbumsFragment : Fragment() {
             findNavController().navigate(AlbumsFragmentDirections.actionAlbumsFragmentToAlbumDetailsFragment("10", "11"))
         }
     }
-    private fun setupListenerInternetConnection() {
-        QuickStartApplication.networkStateLiveData.observe(viewLifecycleOwner){
-            if(it){
-                Toast.makeText(requireContext(),"Connected", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(requireContext(),"Not connected", Toast.LENGTH_SHORT).show()
-            }
-        }
 
-
-    }
 
     private fun setupObservers() {
         viewModel.albumLiveData.observe(viewLifecycleOwner) {
-
             binding.albumTitle.text = it?.title
         }
 

@@ -42,7 +42,7 @@ class AdapterPhoto(private val onClick: (String) -> Unit) : RecyclerView.Adapter
 
     inner class PhotoViewHolder(private val binding: FragmentPhotoBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.photo.setOnClickListener {
+            binding.photoIn150.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     items[adapterPosition].url?.let { it1 -> onClick.invoke(it1) }
                     notifyItemChanged(adapterPosition)
@@ -51,9 +51,10 @@ class AdapterPhoto(private val onClick: (String) -> Unit) : RecyclerView.Adapter
         }
 
         fun bind(item: Photo) {
-            Glide.with(context).load(item.url).into(binding.photo)
+            Glide.with(context).load(item.url).into(binding.photoIn600)
+            Glide.with(context).load(item.thumbnailUrl).into(binding.photoIn150)
             binding.PhotoTitle.text = item.title
-
+            binding.idImageView.text= item.id.toString()
         }
     }
 }
