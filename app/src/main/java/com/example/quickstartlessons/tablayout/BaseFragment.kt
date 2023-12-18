@@ -31,10 +31,10 @@ class BaseFragmentView : Fragment() {
     fun setupView() {
         adapter = AdapterViewPager(childFragmentManager, viewLifecycleOwner.lifecycle)
         binding.viewPager.adapter = adapter
-       val fragment = mutableListOf(FragmentFirst,FragmentSecond)
+       val fragment = mutableListOf(FragmentFirst.newInstance(),FragmentSecond.newInstance())
         TabLayoutMediator(binding.tabLayout,binding.viewPager ){ tab, position->
             when(fragment[position]) {
-                is FragmentFirst -> tab.text = "մմմմ"
+                is FragmentFirst-> tab.text = "մմմմ"
                 is FragmentSecond -> tab.text = "ննննն "
             }
         }.attach()
