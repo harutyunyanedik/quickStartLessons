@@ -4,6 +4,7 @@ import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getHttpResponse
 import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 import com.example.quickstartlessons.module.albums.data.net.datasource.AlbumDataSource
+import com.example.quickstartlessons.module.albums.presentation.BaseFragment
 import retrofit2.Call
 
 interface AlbumRepository {

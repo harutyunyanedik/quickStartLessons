@@ -1,6 +1,7 @@
 package com.example.quickstartlessons.core.net
 
 import androidx.annotation.Keep
+import com.example.quickstartlessons.module.albums.presentation.BaseFragment
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -9,10 +10,10 @@ import retrofit2.Response
 suspend fun <T> getHttpResponse(
     resultCallBack: ApiResultCallback<T?>,
     isShowLoader: Boolean = true,
-    apiFunction: suspend () -> Response<T>
+    apiFunction: suspend () -> Response<T>,
 ) {
     if (isShowLoader) {
-//        BaseFragment.addLoader()
+        BaseFragment.addLoader()
     }
     withContext(
         Dispatchers.IO + MyCoroutineExceptionHandler(
@@ -29,14 +30,14 @@ suspend fun <T> getHttpResponse(
             )
         ) {
             if (isShowLoader) {
-//                BaseFragment.removeLoader()
+               BaseFragment.removeLoader()
             }
             if (response.isSuccessful) {
                 resultCallBack.onSuccess(responseBody)
             } else {
                 //Remove loader again for sequence calls
                 if (isShowLoader) {
-//                    BaseFragment.removeLoader()
+                    BaseFragment.removeLoader()
                 }
                 resultCallBack.onNotHandledError(response.errorBody())
             }
