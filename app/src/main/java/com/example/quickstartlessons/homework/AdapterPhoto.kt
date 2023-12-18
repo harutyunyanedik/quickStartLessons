@@ -28,9 +28,8 @@ class AdapterPhoto(private val onClick: (String) -> Unit) : RecyclerView.Adapter
         items.clear()
         item?.let {
             items.addAll(item)
-            notifyDataSetChanged()
         }
-
+        notifyDataSetChanged()
     }
 
 

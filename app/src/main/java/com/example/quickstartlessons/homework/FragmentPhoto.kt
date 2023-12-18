@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.quickstartlessons.QuickStartApplication
 import com.example.quickstartlessons.databinding.ItemPhotoFragmentBinding
 
@@ -16,7 +17,7 @@ class FragmentPhoto : Fragment() {
     private lateinit var binding: ItemPhotoFragmentBinding
     private val photoViewModel: ViewModelPhoto by viewModels()
     private val adapter = AdapterPhoto {
-      findNavController().navigate(FragmentPhotoDirections.actionFragmentPhotoToFragmentNavigate(it))
+        findNavController().navigate(FragmentPhotoDirections.actionFragmentPhotoToFragmentNavigate(it))
     }
 
     override fun onCreateView(
@@ -29,35 +30,38 @@ class FragmentPhoto : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupViews()
         setupListeners()
         setupObservers()
         setupListenerInternetConnection()
     }
 
+    private fun setupViews() {
+        binding.recyclerViewPhoto.adapter = adapter
+        binding.recyclerViewPhoto.layoutManager = GridLayoutManager(requireContext(), 2)
+    }
+
     private fun setupListeners() {
-        binding.recyclerViewPhoto.setRecyclerListener {
-            photoViewModel.getPhoto()
-        }
+        photoViewModel.getPhoto()
     }
 
     private fun setupObservers() {
         photoViewModel.photoLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }
-       photoViewModel.errorPhotoLiveData.observe(viewLifecycleOwner){
-           Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
-       }
+        photoViewModel.errorPhotoLiveData.observe(viewLifecycleOwner) {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+        }
     }
+
     private fun setupListenerInternetConnection() {
-        QuickStartApplication.networkStateLiveData.observe(viewLifecycleOwner){
-            if(it){
-                Toast.makeText(requireContext(),"Connected", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(requireContext(),"Not connected", Toast.LENGTH_SHORT).show()
+        QuickStartApplication.networkStateLiveData.observe(viewLifecycleOwner) {
+            if (it) {
+                Toast.makeText(requireContext(), "Connected", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Not connected", Toast.LENGTH_SHORT).show()
             }
         }
-
-
     }
 }
 
