@@ -19,5 +19,9 @@
         android:id="@+id/baseFragment"
         android:name="com.example.quickstartlessons.tablayout.BaseFragment"
         android:label="fragment_base"
-        tools:layout="@layout/fragment_base" />
+        tools:layout="@layout/fragment_base" >
+        <action
+            android:id="@+id/action_baseFragment_to_fragmentSecond"
+            app:destination="@id/fragmentSecond" />
+    </fragment>
 </navigation>

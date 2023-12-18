@@ -15,8 +15,9 @@ class FragmentFirst :Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding=FragmentFirstBinding.inflate(inflater, container,false)
 
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return binding.root
     }
     companion object {
         fun newInstance() = FragmentSecond()
