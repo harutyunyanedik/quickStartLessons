@@ -7,12 +7,12 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface AlbumDataSource {
-    @GET("albums/1")
-    fun getAlbums(): Call<AlbumDto>
+    @GET("photos")
+    fun getAlbums(): Call<ArrayList<AlbumDto>?>?
 
-    @GET("albums/{album_id}")
+    @GET("photos/{id}")
     suspend fun getAlbumsV2(
-        @Path("album_id")album_id:Int
+        @Path("id")id:Int
     ): Response<AlbumDto>
 
 }

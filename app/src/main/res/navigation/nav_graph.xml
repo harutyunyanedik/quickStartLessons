@@ -11,21 +11,35 @@
         tools:layout="@layout/fragment_albums"
         android:label="AlbumsFragment" >
         <action
-            android:id="@+id/action_albumsFragment_to_albumDatailsFragment"
-            app:destination="@id/albumDatailsFragment" />
-        <action
-            android:id="@+id/action_albumsFragment_to_albumDatailsFragment2"
-            app:destination="@id/albumDatailsFragment" />
+            android:id="@+id/action_albumsFragment_to_albumDetailsFragment"
+            app:destination="@id/albumDetailsFragment" />
+
     </fragment>
     <fragment
-        android:id="@+id/albumDatailsFragment"
-        android:name="com.example.quickstartlessons.module.albums.albumDatails.AlbumDatailsFragment"
-        android:label="fragment_album_datails"
-        tools:layout="@layout/fragment_album_datails" >
+        android:id="@+id/albumDetailsFragment"
+        android:name= "com.example.quickstartlessons.module.albums.albumDetails.AlbumDetailsFragment"
+        android:label="fragment_album_details"
+        tools:layout="@layout/fragment_album_details">
+
+        <argument
+            android:name ="albumId"
+            app:argType = "string"/>
+
+        <action
+            android:id="@+id/action_albumDetailsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.quickstartlessons.module.albums.albumDetails.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details">
 
         <argument
             android:name ="albumId"
             app:argType = "string"/>
 
     </fragment>
+
 </navigation>

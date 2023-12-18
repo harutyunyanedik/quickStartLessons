@@ -1,17 +1,16 @@
 package com.example.quickstartlessons.core.net
 
 import androidx.annotation.Keep
+import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 suspend fun <T> getHttpResponse(
-    resultCallBack: ApiResultCallback<T?>,
+    resultCallBack: ApiResultCallback<AlbumDto?>,
     isShowLoader: Boolean = true,
-    apiFunction: suspend () -> Response<T>
+    apiFunction: () -> Response<ArrayList<AlbumDto>?>?
 ) {
     if (isShowLoader) {
 //        BaseFragment.addLoader()
@@ -23,7 +22,7 @@ suspend fun <T> getHttpResponse(
         )
     ) {
         val response = apiFunction()
-        val responseBody = response.body()
+        val responseBody = response?.body()
 
         withContext(
             Dispatchers.Main + MyCoroutineExceptionHandler(
@@ -33,14 +32,14 @@ suspend fun <T> getHttpResponse(
             if (isShowLoader) {
 //                BaseFragment.removeLoader()
             }
-            if (response.isSuccessful) {
+            if (response?.isSuccessful == true) {
                 resultCallBack.onSuccess(responseBody)
             } else {
                 //Remove loader again for sequence calls
                 if (isShowLoader) {
 //                    BaseFragment.removeLoader()
                 }
-                resultCallBack.onNotHandledError(response.errorBody())
+                resultCallBack.onNotHandledError(response?.errorBody())
             }
         }
     }
@@ -48,7 +47,7 @@ suspend fun <T> getHttpResponse(
 
 @Keep
 interface ApiResultCallback<T> {
-    fun onSuccess(response: T)
+    fun onSuccess(response: Any?)
 
     fun onError(): Boolean = false
 

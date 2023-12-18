@@ -8,6 +8,9 @@ data class AlbumDto(
     val id: Int? = null,
     @SerializedName("title")
     val title: String? = null,
-    @SerializedName("userId")
-    val userId: Int? = null
+    @SerializedName("thumbnailUrl")
+    val imageUrl: String? = null
 ) : Serializable
+
+
+

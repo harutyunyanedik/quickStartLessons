@@ -16,7 +16,7 @@ class AlbumViewModel : ViewModel() {
     private val repo: AlbumRepository = AlbumRepositoryImplementation(getApi())
 
     private val _albumLiveData: MutableLiveData<AlbumDto?> = MutableLiveData()
-    val albumLiveData: LiveData<AlbumDto?>
+    val albumLiveData:  MutableLiveData<AlbumDto?>
         get() = _albumLiveData
 
     private val _albumErrorLiveData: MutableLiveData<String?> = MutableLiveData()
@@ -25,9 +25,9 @@ class AlbumViewModel : ViewModel() {
 
     fun getAlbums(isShoLoader: Boolean = true) {
         viewModelScope.launch {
-            repo.getAlbumsV2(object : ApiResultCallback<AlbumDto?> {
-                override fun onSuccess(response: AlbumDto?) {
-                    _albumLiveData.value = response
+            repo.getAlbumsV2(object : ApiResultCallback<AlbumDto?>{
+                override fun onSuccess(response: Any?) {
+                    _albumLiveData.value = response as AlbumDto?
                 }
             }, isShoLoader)
         }

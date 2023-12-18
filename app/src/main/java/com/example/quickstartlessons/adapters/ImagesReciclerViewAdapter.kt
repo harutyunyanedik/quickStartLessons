@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.ItemReciclerViewBinding
+import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 
-class ImagesRecyclerViewAdapter : RecyclerView.Adapter<ImagesRecyclerViewAdapter.BaseViewHolder>() {
+class ImagesRecyclerViewAdapter(private val onItemClick: (Boolean) -> Unit) : RecyclerView.Adapter<ImagesRecyclerViewAdapter.BaseViewHolder>() {
 
-    private val item: MutableList<Model> = mutableListOf()
+    private val item: MutableList<AlbumDto> = mutableListOf()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
@@ -32,7 +33,7 @@ class ImagesRecyclerViewAdapter : RecyclerView.Adapter<ImagesRecyclerViewAdapter
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(item: List<Model>?) {
+    fun updateData(item: List<AlbumDto>?) {
         this.item.clear()
         item?.let {
             this.item.addAll(it)
@@ -41,12 +42,19 @@ class ImagesRecyclerViewAdapter : RecyclerView.Adapter<ImagesRecyclerViewAdapter
     }
 
     abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        abstract fun bind(item: Model)
+        abstract fun bind(item: AlbumDto)
     }
 
     inner class ImagesRecyclerViewHolder(private val binding: ItemReciclerViewBinding) : BaseViewHolder(binding.root) {
 
-        override fun bind(item: Model) {
+        init {
+            binding.rvFragments.setOnClickListener {
+                onItemClick.invoke(true)
+            }
+        }
+
+        override fun bind(item: AlbumDto) {
+            binding.userId.text = item.id.toString()
             binding.title.text = item.title
             Glide.with(context).load(item.imageUrl).into(binding.imageUrl)
         }
