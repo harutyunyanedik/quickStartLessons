@@ -3,8 +3,11 @@ package com.example.quickstartlessons
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.module.albums.presentation.AlbumsFragment
+import com.example.quickstartlessons.tablayout.BaseFragmentView
+import com.example.quickstartlessons.tablayout.FragmentFirst
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,5 +16,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        addFragment(BaseFragmentView.newInstance())
+    }
+
+    fun addFragment(fragment: Fragment) {
+
+        supportFragmentManager.beginTransaction().add(R.id.container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
+    }
+
+    fun replaceFragment(fragment: Fragment) {
+
+        supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment::class.java.simpleName).addToBackStack(fragment::class.java.simpleName).commit()
+    }
+    fun popBackStake(){
+        supportFragmentManager.popBackStack()
     }
 }

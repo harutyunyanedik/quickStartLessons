@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSecondBinding
 
-class FragmentSecond : Fragment() {
+class FragmentSecond : Base() {
 
      private lateinit var binding:FragmentSecondBinding
 

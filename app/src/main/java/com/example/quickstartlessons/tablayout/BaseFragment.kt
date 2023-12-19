@@ -11,7 +11,7 @@ import com.example.quickstartlessons.databinding.FragmentAlbumsBinding
 import com.example.quickstartlessons.databinding.FragmentBaseBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class BaseFragmentView : Fragment() {
+class BaseFragmentView : Base() {
     private lateinit var binding:FragmentBaseBinding
     private lateinit var adapter:AdapterViewPager
     @SuppressLint("SuspiciousIndentation")
@@ -25,19 +25,25 @@ class BaseFragmentView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+     setupView()
     }
 
     fun setupView() {
         adapter = AdapterViewPager(childFragmentManager, viewLifecycleOwner.lifecycle)
         binding.viewPager.adapter = adapter
-       val fragment = mutableListOf(FragmentFirst.newInstance(),FragmentSecond.newInstance())
+
+       val fragment = mutableListOf(FragmentSecond.newInstance(),FragmentFirst.newInstance())
         TabLayoutMediator(binding.tabLayout,binding.viewPager ){ tab, position->
             when(fragment[position]) {
-                is FragmentFirst-> tab.text = "մմմմ"
-                is FragmentSecond -> tab.text = "ննննն "
+                is FragmentFirst -> tab.text = "Product"
+                is FragmentSecond -> tab.text = ""
             }
         }.attach()
+        adapter.updateData(fragment)
+    }
+    companion object {
+        fun newInstance() = BaseFragmentView()
+
     }
 
 }

@@ -9,7 +9,7 @@ import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentBaseBinding
 import com.example.quickstartlessons.databinding.FragmentFirstBinding
 
-class FragmentFirst :Fragment() {
+class FragmentFirst :Base() {
     private lateinit var binding: FragmentFirstBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,9 +18,15 @@ class FragmentFirst :Fragment() {
         binding=FragmentFirstBinding.inflate(inflater, container,false)
 
         return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
     companion object {
-        fun newInstance() = FragmentSecond()
+        fun newInstance() = FragmentFirst()
 
     }
 }
