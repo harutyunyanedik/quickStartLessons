@@ -3,6 +3,7 @@ package com.example.quickstartlessons
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.module.albums.presentation.AlbumsFragment
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,7 +15,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.activityContainer
 
     }
+    companion object {
+        fun addLoader() {
 
+
+        }
+    }
 }

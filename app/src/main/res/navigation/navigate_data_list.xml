@@ -24,5 +24,14 @@
             android:name="photoUrl"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/baseFragment"
+        android:name="com.example.quickstartlessons.homework.BaseFragment"
+        android:label="fragment_base"
+        tools:layout="@layout/fragment_base" >
+        <action
+            android:id="@+id/action_baseFragment_to_fragmentPhoto"
+            app:destination="@id/fragmentPhoto" />
+    </fragment>
 
 </navigation>

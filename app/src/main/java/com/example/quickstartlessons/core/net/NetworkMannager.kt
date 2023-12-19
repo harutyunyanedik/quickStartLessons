@@ -1,6 +1,7 @@
 package com.example.quickstartlessons.core.net
 
 import androidx.annotation.Keep
+import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.homework.Photo
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +14,7 @@ suspend fun <T> getHttpResponse(
     apiFunction: suspend () -> Response<T>
 ) {
     if (isShowLoader) {
+        MainActivity.addLoader()
 //        BaseFragment.addLoader()
     }
     withContext(
