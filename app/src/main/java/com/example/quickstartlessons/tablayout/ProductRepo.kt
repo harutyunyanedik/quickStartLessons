@@ -12,7 +12,7 @@ interface ProductRepo {
     suspend fun getProducts(resultCallback: ApiResultCallback<Product?>, isShowLoader: Boolean)
 }
 
-class AlbumRepositoryImplementation(private val dataSource: ProductDataSource) : ProductRepo {
+class ProductRepositoryImplementation(private val dataSource: ProductDataSource) : ProductRepo {
     override suspend fun getProducts(resultCallback: ApiResultCallback<Product?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback,isShowLoader){
             dataSource.getProduct()

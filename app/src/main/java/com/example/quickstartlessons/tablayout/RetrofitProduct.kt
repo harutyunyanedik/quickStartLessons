@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 
 
 
-    private const val baseUrl = "https://dummyjson.com/products/"
+    private const val baseUrl = "https://dummyjson.com/"
 
     val retrofitProduct by lazy { productRetrofit() }
 

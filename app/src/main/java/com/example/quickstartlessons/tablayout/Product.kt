@@ -12,6 +12,12 @@ data class Product(
     val description: String,
     @SerializedName("price")
     val price: Int,
+    @SerializedName(" discountPercentage")
+    val discountPercentage: Float,
+    @SerializedName("rating")
+    val rating: Float,
+    @SerializedName("stock")
+    val stock: Int,
     @SerializedName("brand")
     val brand: String,
     @SerializedName("category")
@@ -19,5 +25,5 @@ data class Product(
     @SerializedName("thumbnail")
     val thumbnail: String,
     @SerializedName("image")
-    val image: List<String>
-):Serializable
+    val image: String
+) : Serializable

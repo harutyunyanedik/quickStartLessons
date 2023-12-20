@@ -1,21 +1,20 @@
 package com.example.quickstartlessons.tablayout
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.quickstartlessons.R
-import com.example.quickstartlessons.databinding.FragmentBaseBinding
+import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.FragmentFirstBinding
 
-class FragmentFirst :Base() {
+class FragmentFirst : Base() {
     private lateinit var binding: FragmentFirstBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentFirstBinding.inflate(inflater, container,false)
+        binding = FragmentFirstBinding.inflate(inflater, container, false)
 
         return binding.root
 
@@ -23,8 +22,27 @@ class FragmentFirst :Base() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setupListener()
+        setupObservers()
     }
+
+    private fun setupObservers() {
+        viewModel.productLiveData.observe(viewLifecycleOwner) {
+            binding.productId.text = "Id :"+ it?.id.toString()
+            binding.title.text = "Title:"+  it?.title
+            binding.brand.text = "Brand:"+ it?.brand
+            binding.category.text = "Category:"+it?.category
+            binding.description.text = "Description:"+it?.description
+            binding.price.text = "Price:"+it?.price.toString()
+            binding.discountPercentage.text ="DiscountPercentage:"+ it?.discountPercentage.toString()
+            binding.rating.text = "Rating:"+it?.rating.toString()
+            binding.stock.text ="Stock:"+ it?.stock.toString()
+            Glide.with(requireContext()).load(it?.thumbnail).into(binding.thumbnail)
+
+
+        }
+    }
+
     companion object {
         fun newInstance() = FragmentFirst()
 
