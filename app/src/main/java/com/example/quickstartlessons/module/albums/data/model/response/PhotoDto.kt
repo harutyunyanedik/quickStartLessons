@@ -5,13 +5,13 @@ import java.io.Serializable
 
 data class PhotoDto(
     @SerializedName("albumId")
-    val albumId : Int? = null,
+    val albumId: Int,
     @SerializedName("id")
-    val id: Int? = null,
+    val id: Int,
     @SerializedName("title")
-    val title: String? = null,
+    val title: String,
     @SerializedName("url")
-    val url: String? = null,
+    val url: String,
     @SerializedName("thumbnailUrl")
-    val thumbnailUrl:String? = null
+    val thumbnailUrl: String
 ) : Serializable

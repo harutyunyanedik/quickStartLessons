@@ -11,25 +11,25 @@ import com.example.quickstartlessons.module.albums.repository.PhotosRepository
 import com.example.quickstartlessons.module.albums.repository.PhotosRepositoryImplementation
 import kotlinx.coroutines.launch
 
-class PhotosViewModel : ViewModel() {
+class PhotoDetailViewModel: ViewModel() {
 
     private val repo: PhotosRepository = PhotosRepositoryImplementation(getApi())
 
-    private val _albumLiveData: MutableLiveData<List<PhotoDto>?> = MutableLiveData()
-    val albumLiveData: LiveData<List<PhotoDto>?>
+    private val _albumLiveData: MutableLiveData<PhotoDto?> = MutableLiveData()
+    val albumLiveData: LiveData<PhotoDto?>
         get() = _albumLiveData
 
     private val _albumErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val albumErrorLiveData: LiveData<String?>
         get() = _albumErrorLiveData
 
-    fun getAlbums(isShoLoader: Boolean = true) {
+    fun getAlbums(isShoLoader: Boolean = true, id: Int) {
         viewModelScope.launch {
-            repo.getAlbumsV2(object : ApiResultCallback<List<PhotoDto>?> {
-                override fun onSuccess(response: List<PhotoDto>?) {
+            repo.getAlbumV2(object : ApiResultCallback<PhotoDto?> {
+                override fun onSuccess(response: PhotoDto?) {
                     _albumLiveData.value = response
                 }
-            }, isShoLoader)
+            }, isShoLoader, id)
         }
     }
 }
