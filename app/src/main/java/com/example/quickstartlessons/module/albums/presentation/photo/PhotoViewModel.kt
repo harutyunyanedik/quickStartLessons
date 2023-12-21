@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.albums.presentation
+package com.example.quickstartlessons.module.albums.presentation.photo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

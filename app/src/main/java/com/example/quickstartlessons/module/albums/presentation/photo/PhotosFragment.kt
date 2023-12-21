@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.albums.presentation
+package com.example.quickstartlessons.module.albums.presentation.photo
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.quickstartlessons.QuickStartApplication
 import com.example.quickstartlessons.databinding.FragmentPhotosBinding
+import com.example.quickstartlessons.module.albums.presentation.BaseFragment
 
 class PhotosFragment : BaseFragment() {
 

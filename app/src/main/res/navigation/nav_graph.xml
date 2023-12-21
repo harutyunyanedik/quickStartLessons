@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/photosFragment"
-        android:name="com.example.quickstartlessons.module.albums.presentation.PhotosFragment"
+        android:name="com.example.quickstartlessons.module.albums.presentation.photo.PhotosFragment"
         android:label="PhotosFragment" >
         <action
             android:id="@+id/action_photosFragment_to_photoDetailFragment"

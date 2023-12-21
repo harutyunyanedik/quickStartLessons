@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.albums.presentation
+package com.example.quickstartlessons.module.albums.presentation.photo
 
 import android.annotation.SuppressLint
 import android.content.Context
