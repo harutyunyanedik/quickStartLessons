@@ -25,5 +25,5 @@ data class Product(
     @SerializedName("thumbnail")
     val thumbnail: String,
     @SerializedName("image")
-    val image: String
-) : Serializable
+    val image: List<String>
+):Serializable

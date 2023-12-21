@@ -39,8 +39,8 @@ class BaseFragmentView : Base() {
         val fragment = mutableListOf(FragmentFirst.newInstance(), FragmentSecond.newInstance())
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (fragment[position]) {
-                is FragmentFirst -> tab.text = "ProductN1"
-                is FragmentSecond -> tab.text = "ProductN2"
+                is FragmentFirst -> tab.text = "Product 1"
+                is FragmentSecond -> tab.text = "Product 2"
             }
         }.attach()
         adapter.updateData(fragment)

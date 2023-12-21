@@ -11,6 +11,7 @@ open class Base:Fragment() {
         viewModel.getProduct()
 
     }
+
         fun replaceFragment(fragment: Fragment) {
             mainActivity().replaceFragment(fragment)
         }
