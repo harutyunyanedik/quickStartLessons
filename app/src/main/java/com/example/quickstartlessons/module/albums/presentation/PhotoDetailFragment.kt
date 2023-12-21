@@ -8,13 +8,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.FragmentPhotoDetailBinding
 
 class PhotoDetailFragment : BaseFragment() {
 
     private lateinit var binding: FragmentPhotoDetailBinding
-    private val args by navArgs<PhotoDetailFragmentArgs>()
-    private val viewModel: AlbumDetailViewModel by viewModels()
+    private val args by navArgs<P>()
+    private val viewModel: PhotosDetailViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -46,7 +47,7 @@ class PhotoDetailFragment : BaseFragment() {
 
 
     private fun isNetworkAvailable() {
-        QuickstartApplication.networkStateLiveData.observe(requireActivity()) {
+      networkStateLiveData.observe(requireActivity()) {
             if (it) {
                 Toast.makeText(requireContext(), "Internet is connected", Toast.LENGTH_LONG).show()
             } else {

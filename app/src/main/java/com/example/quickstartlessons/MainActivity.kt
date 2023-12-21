@@ -1,21 +1,29 @@
 package com.example.quickstartlessons
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import com.example.quickstartlessons.databinding.ActivityMainBinding
-import com.example.quickstartlessons.module.albums.presentation.PhotosFragment
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val fragment = PhotosFragment.newInstance()
-        supportFragmentManager.beginTransaction().add(R.id.activity_container, fragment).commit()
-
-
-
+        isShow.observe(this){
+            if (it){
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
     }
 
+    companion object {
+        val isShow = MutableLiveData<Boolean>()
+    }
 }

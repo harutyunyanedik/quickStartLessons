@@ -11,7 +11,7 @@ import com.example.quickstartlessons.module.albums.repository.PhotosRepository
 import com.example.quickstartlessons.module.albums.repository.PhotosRepositoryImplementation
 import kotlinx.coroutines.launch
 
-class PhotoDetailViewModel: ViewModel() {
+class PhotosDetailViewModel: ViewModel() {
 
     private val repo: PhotosRepository = PhotosRepositoryImplementation(getApi())
 

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.quickstartlessons.databinding.ItemPhotoBinding
 import com.example.quickstartlessons.module.albums.data.model.response.PhotoDto
 
 class AlbumsAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapter<AlbumsAdapter.BaseViewHolder>() {
@@ -21,7 +23,7 @@ class AlbumsAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return PhotoViewHolder(AlbumItemBinding.inflate(inflater, parent, false))
+        return PhotoViewHolder(ItemPhotoBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
@@ -43,7 +45,7 @@ class AlbumsAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapt
         abstract fun bind(album: PhotoDto)
     }
 
-    inner class PhotoViewHolder(private val binding : AlbumItemBinding) : BaseViewHolder(binding.root){
+    inner class PhotoViewHolder(private val binding : ItemPhotoBinding) : BaseViewHolder(binding.root){
 
         init {
             binding.root.setOnClickListener {
