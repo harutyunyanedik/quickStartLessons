@@ -25,26 +25,26 @@ class AlbumsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
-        setupObservers()
+       // setupObservers()
     }
 
     private fun setupListeners() {
         binding.httpRequestButton.setOnClickListener {
-            viewModel.getAlbums()
+           // viewModel.getAlbums()
         }
 
         binding.navigateToDetailsButton.setOnClickListener {
-            findNavController().navigate(AlbumsFragmentDirections.actionAlbumsFragmentToAlbumDetailsFragment("10", "11"))
+            //findNavController().navigate(AlbumsFragmentDirections.actionAlbumsFragmentToAlbumDetailsFragment("10", "11"))
         }
     }
 
-    private fun setupObservers() {
-        viewModel.albumLiveData.observe(viewLifecycleOwner) {
-            binding.albumTitle.text = it?.title
-        }
-
-        viewModel.albumErrorLiveData.observe(viewLifecycleOwner) {
-            // show dialog
-        }
-    }
+//    private fun setupObservers() {
+//        viewModel.albumLiveData.observe(viewLifecycleOwner) {
+//            binding.albumTitle.text = it?.title
+//        }
+//
+//        viewModel.albumErrorLiveData.observe(viewLifecycleOwner) {
+//            // show dialog
+//        }
+//    }
 }

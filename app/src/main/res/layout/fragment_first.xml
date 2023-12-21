@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:add="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".module.albumdetails.base./.FirstFragment">
+
+        <TextView
+            android:id="@+id/headerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/purple_200"
+            android:padding="5dp"
+            android:text="Save password Email"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+        <TextView
+            android:id="@+id/rememberText"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_style"
+            android:padding="5dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            add:layout_constraintTop_toBottomOf="@+id/headerEmail"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_style"
+            android:hint="Sample@email.com"
+            android:inputType="text"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            add:layout_constraintEnd_toEndOf="parent"
+            add:layout_constraintStart_toStartOf="parent"
+            add:layout_constraintTop_toBottomOf="@+id/rememberText"
+            tools:ignore="Autofill,HardcodedText,MissingConstraints,RtlHardcoded,TextFields" />
+
+        <Button
+            android:id="@+id/sendEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_style"
+            android:text="Save email password"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            add:layout_constraintEnd_toEndOf="parent"
+            add:layout_constraintStart_toStartOf="parent"
+            add:layout_constraintTop_toBottomOf="@+id/editEmail"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
