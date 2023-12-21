@@ -10,7 +10,7 @@
         tools:context=".module.albums.presentation.AlbumDetailFragment">
 
         <ImageView
-            android:id="@+id/imageViewDetail"
+            android:id="@+id/photoDetailsImage"
             android:layout_width="300dp"
             android:layout_height="300dp"
             tools:src="@mipmap/ic_launcher"
@@ -20,13 +20,13 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/textViewTitleDetail"
+            android:id="@+id/photoDetailsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textSize="24sp"
             tools:text="Some text"
-            app:layout_constraintTop_toBottomOf="@id/imageViewDetail"
+            app:layout_constraintTop_toBottomOf="@id/photoDetailsImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

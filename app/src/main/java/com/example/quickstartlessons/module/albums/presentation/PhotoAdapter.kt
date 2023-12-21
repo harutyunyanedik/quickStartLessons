@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.ItemPhotoBinding
 import com.example.quickstartlessons.module.albums.data.model.response.PhotoDto
 
-class AlbumsAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapter<AlbumsAdapter.BaseViewHolder>() {
+class PhotoAdapterAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapter<PhotoAdapterAdapter.BaseViewHolder>() {
 
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
@@ -56,8 +56,8 @@ class AlbumsAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapt
         }
         override
         fun bind(album: PhotoDto){
-            binding.textViewTitle.text = album.title
-            Glide.with(context).load(album.thumbnailUrl).into(binding.imageViewThumbnail)
+            binding.textTitle.text = album.title
+            Glide.with(context).load(album.thumbnailUrl).into(binding.imageView)
         }
     }
 }

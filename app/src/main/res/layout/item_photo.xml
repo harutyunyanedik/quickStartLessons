@@ -18,7 +18,7 @@
             >
 
             <ImageView
-                android:id="@+id/imageViewThumbnail"
+                android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:src="@mipmap/ic_launcher"
@@ -28,7 +28,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
-                android:id="@+id/textViewTitle"
+                android:id="@+id/textTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:maxLines="1"
@@ -37,7 +37,7 @@
                 tools:text="Some text"
                 android:padding="4dp"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/imageViewThumbnail"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/photosFragment">
 
     <fragment
         android:id="@+id/photosFragment"
         android:name="com.example.quickstartlessons.module.albums.presentation.PhotosFragment"
-        android:label="PhotosFragment"
-        tools:layout="@layout/fragment_photos">
+        android:label="PhotosFragment" >
         <action
             android:id="@+id/action_photosFragment_to_photoDetailFragment"
             app:destination="@id/photoDetailFragment" />
@@ -17,6 +15,6 @@
     <fragment
         android:id="@+id/photoDetailFragment"
         android:name="com.example.quickstartlessons.module.albums.presentation.PhotoDetailFragment"
-        android:label="PhotoDetailFragment"
-        tools:layout="@layout/fragment_photo_detail"/>
+        android:label="PhotoDetailFragment" />
+    
 </navigation>
