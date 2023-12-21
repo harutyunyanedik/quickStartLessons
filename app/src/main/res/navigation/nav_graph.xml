@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/photoDetailFragment"
-        android:name="com.example.quickstartlessons.module.albums.presentation.PhotoDetailFragment"
+        android:name="com.example.quickstartlessons.module.albums.presentation.PhotoDetails.PhotoDetailFragment"
         android:label="PhotoDetailFragment" />
-    
+
 </navigation>
