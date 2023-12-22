@@ -17,8 +17,8 @@ class FragmentAddText : Fragment() {
     private lateinit var container: ViewGroup
     private lateinit var binding: ItemAddTextBinding
     private val items: MutableList<AddTextData> = mutableListOf()
-    private val adapter = AdapterAddText {
-        createNewText()
+    private val adapter = AdapterAddText {it->
+        createNewText(AddTextData(it))
     }
 
 
@@ -42,7 +42,7 @@ class FragmentAddText : Fragment() {
 
     }
 
-    private fun createNewText() {
+    private fun createNewText(item:AddTextData) {
         showAlertDialog {
             if (it) adapter.updateAdapter(items)
         }
