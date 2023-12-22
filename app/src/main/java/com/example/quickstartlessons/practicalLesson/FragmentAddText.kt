@@ -1,5 +1,4 @@
 package com.example.quickstartlessons.practicalLesson
-
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
@@ -14,13 +13,13 @@ import com.example.quickstartlessons.databinding.ItemAddTextBinding
 
 
 class FragmentAddText : Fragment() {
-    private lateinit var inflater:LayoutInflater
+    private lateinit var inflater: LayoutInflater
     private lateinit var container: ViewGroup
     private lateinit var binding: ItemAddTextBinding
-    val items: MutableList<AddText> = mutableListOf()
+    private val items: MutableList<AddTextData> = mutableListOf()
     private val adapter = AdapterAddText {
-       createNewText()
-            }
+        createNewText()
+    }
 
 
     @SuppressLint("SuspiciousIndentation")
@@ -28,52 +27,51 @@ class FragmentAddText : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ItemAddTextBinding.inflate(inflater,container,false)
-            return binding.root
+        binding = ItemAddTextBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
     }
-   private fun setupRecyclerView(){
-        binding.recyclerView.adapter=adapter
-        binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
+
+    private fun setupRecyclerView() {
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
     }
-   private fun createNewText(){
-        showAlertDialog{
-            if(it) adapter.updateAdapter(items)
+
+    private fun createNewText() {
+        showAlertDialog {
+            if (it) adapter.updateAdapter(items)
         }
     }
 
-   private  fun showAlertDialog(onItemClick:(Boolean)->Unit) {
+    private fun showAlertDialog(onItemClick: (Boolean) -> Unit) {
 
-       val alertDialogBuilder = AlertDialog.Builder(requireContext())
-       alertDialogBuilder.setTitle("Enter the text")
+        val alertDialogBuilder = AlertDialog.Builder(requireContext())
+        alertDialogBuilder.setTitle("Enter the text")
 
 
-       val editText:DialogAddTextBinding=DialogAddTextBinding.inflate(inflater,container,false)
-      val text=  alertDialogBuilder.setMessage(editText.editTextDialog.text)
+        val editText: DialogAddTextBinding = DialogAddTextBinding.inflate(inflater, container, false)
+        val text = alertDialogBuilder.setMessage(editText.editTextDialog.text)
 
-       alertDialogBuilder.setPositiveButton("Add") { _: DialogInterface, _: Int ->
-           onItemClick.invoke(true)
-           items.add(AddText(text.toString()))
+        alertDialogBuilder.setPositiveButton("Add") { _: DialogInterface, _: Int ->
+            onItemClick.invoke(true)
+            items.add(AddTextData(text.toString()))
 
-       }
-       alertDialogBuilder.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
-           onItemClick.invoke(false)
 
-       }
+        }
+        alertDialogBuilder.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
+            onItemClick.invoke(false)
 
-       val alertDialog: AlertDialog = alertDialogBuilder.create()
-       if (!alertDialog.isShowing) {
-           alertDialog.show()
-       }
+        }
+
+        val alertDialog: AlertDialog = alertDialogBuilder.create()
+        if (!alertDialog.isShowing) {
+            alertDialog.show()
+        }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = FragmentAddText()
-    }
 }

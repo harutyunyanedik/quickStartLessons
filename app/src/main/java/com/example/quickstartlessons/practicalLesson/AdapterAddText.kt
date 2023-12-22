@@ -2,11 +2,8 @@ package com.example.quickstartlessons.practicalLesson
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FragmentAddTextBinding
 
@@ -14,7 +11,7 @@ class AdapterAddText(private val onClick: (String) -> Unit) : RecyclerView.Adapt
 
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private var items = mutableListOf<AddText>()
+    private var items = mutableListOf<AddTextData>()
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -33,10 +30,10 @@ class AdapterAddText(private val onClick: (String) -> Unit) : RecyclerView.Adapt
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateAdapter(items: List<AddText>?) {
+    fun updateAdapter(item: List<AddTextData>?) {
         this.items.clear()
-        items?.let {
-            this.items.addAll(it)
+        item?.let {
+            items.addAll(item)
         }
         notifyDataSetChanged()
     }
@@ -51,7 +48,7 @@ class AdapterAddText(private val onClick: (String) -> Unit) : RecyclerView.Adapt
             }
         }
 
-        fun bind(items: AddText) {
+        fun bind(items: AddTextData) {
             binding.addText.text = items.text
         }
     }
