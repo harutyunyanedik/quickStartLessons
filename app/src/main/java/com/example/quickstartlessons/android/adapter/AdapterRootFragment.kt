@@ -52,23 +52,8 @@ class AdapterRootFragment(private val onClick: (Model) -> Unit) :
         }
     }
 
-    fun showAlertDialog(onItemClick: (Boolean) -> Unit) {
-        val alertDialogBuilder = AlertDialog.Builder(context)
-        alertDialogBuilder.setTitle("Confirmation")
-        alertDialogBuilder.setMessage("Do you want to delete the text?")
 
-        alertDialogBuilder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
-            onItemClick.invoke(true)
-        }
-        alertDialogBuilder.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
-            onItemClick(false)
-        }
 
-        val alertDialog: AlertDialog = alertDialogBuilder.create()
-        if (!alertDialog.isShowing) {
-            alertDialog.show()
-        }
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     inner class RootFragmentViewHolder(private val binding: ViewFragmentRootBinding) :
