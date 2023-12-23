@@ -18,13 +18,13 @@ class ProductViewModel : ViewModel() {
   val productErrorLiveData: LiveData<Product?>
         get() = _productErrorLiveData
 
-    fun getProduct(isShowLoader: Boolean = true) {
+    fun getProduct(isShowLoader: Boolean = true,id:Int) {
         viewModelScope.launch {
             repo.getProducts(object : ApiResultCallback<Product?> {
                 override fun onSuccess(response: Product?) {
                     _productLiveData.value = response
                 }
-            }, isShowLoader)
+            }, isShowLoader,id)
         }
 
     }

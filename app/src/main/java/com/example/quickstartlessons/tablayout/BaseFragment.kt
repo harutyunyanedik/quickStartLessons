@@ -12,10 +12,10 @@ import com.example.quickstartlessons.databinding.FragmentAlbumsBinding
 import com.example.quickstartlessons.databinding.FragmentBaseBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class BaseFragmentView : Base() {
+class BaseFragmentView : Fragment() {
     private lateinit var binding: FragmentBaseBinding
     private lateinit var adapter: AdapterViewPager
-
+    val viewModel: ProductViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +28,10 @@ class BaseFragmentView : Base() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
+
+    }
+    fun setupListener(id:Int) {
+        viewModel.getProduct(true, id)
 
     }
 

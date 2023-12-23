@@ -6,11 +6,8 @@ import com.example.quickstartlessons.MainActivity
 
 open class Base:Fragment() {
 
- val viewModel: ProductViewModel by viewModels()
-    fun setupListener() {
-        viewModel.getProduct()
 
-    }
+
 
         fun replaceFragment(fragment: Fragment) {
             mainActivity().replaceFragment(fragment)

@@ -9,15 +9,14 @@ import retrofit2.Call
 
 interface ProductRepo {
 
-    suspend fun getProducts(resultCallback: ApiResultCallback<Product?>, isShowLoader: Boolean)
+    suspend fun getProducts(resultCallback: ApiResultCallback<Product?>, isShowLoader: Boolean, id: Int)
 }
 
 class ProductRepositoryImplementation(private val dataSource: ProductDataSource) : ProductRepo {
-    override suspend fun getProducts(resultCallback: ApiResultCallback<Product?>, isShowLoader: Boolean) {
-        getHttpResponse(resultCallback,isShowLoader){
-            dataSource.getProduct()
+    override suspend fun getProducts(resultCallback: ApiResultCallback<Product?>, isShowLoader: Boolean, id: Int) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            dataSource.getProduct(id)
         }
     }
-
 
 }

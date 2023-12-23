@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ProductDataSource {
-    @GET("products/1")
-    suspend fun getProduct(): Response<Product>
+    @GET("products/{id}")
+    suspend fun getProduct(@Path("id")id:Int): Response<Product>
 }

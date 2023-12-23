@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.FragmentFirstBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentFirst : Base() {
+class FragmentFirst : Fragment() {
     private lateinit var binding: FragmentFirstBinding
     private lateinit var adapter:AdapterProductImage
     override fun onCreateView(
@@ -22,9 +23,9 @@ class FragmentFirst : Base() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupListener()
         setupObservers()
         setupRecyclerView()
+        (parentFragment as BaseFragmentView).setupListener(1)
     }
 
     private fun setupRecyclerView(){
@@ -35,7 +36,7 @@ class FragmentFirst : Base() {
 
     @SuppressLint("SetTextI18n")
     private fun setupObservers() {
-        viewModel.productLiveData.observe(viewLifecycleOwner) {
+        (parentFragment as BaseFragmentView).viewModel.productLiveData.observe(viewLifecycleOwner) {
             binding.productId.text = "Id :" + it?.id.toString()
             binding.title.text = "Title:" + it?.title
             binding.brand.text = "Brand:" + it?.brand
