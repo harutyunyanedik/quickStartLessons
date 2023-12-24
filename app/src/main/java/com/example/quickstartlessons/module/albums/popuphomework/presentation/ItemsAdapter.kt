@@ -15,6 +15,12 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.BaseViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
 
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        context = recyclerView.context
+        inflater = LayoutInflater.from(context)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ItemsViewHolder(ItemDetailedBinding.inflate(inflater, parent, false))
@@ -42,7 +48,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.BaseViewHolder>() {
 
     inner class ItemsViewHolder(private val binding: ItemDetailedBinding) : BaseViewHolder(binding.root) {
         override fun bind(item: ItemsData) {
-//            binding.idTitle.text = item.id.toString()
+            binding.countryTitle1.text = item.country
             binding.nameTitle1.text = item.name
             binding.surnameTitle1.text = item.surname
 

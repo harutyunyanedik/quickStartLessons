@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">QuickStartLessons</string>
-    <string name="idTitle">"Id"</string>
+    <string name="countryTitle">"Country"</string>
     <string name="nameTitle">Name</string>
     <string name="surnameTitle">Surname</string>
     <string name="addUser">Add User</string>

@@ -19,8 +19,6 @@
         android:name="com.example.quickstartlessons.module.albums.popuphomework.presentation.ItemsFragment"
         android:label="fragment_items"
         tools:layout="@layout/fragment_items" >
-        <action
-            android:id="@+id/action_itemsFragment_to_baseFragment"
-            app:destination="@id/baseFragment" />
+
     </fragment>
 </navigation>

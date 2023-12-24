@@ -10,17 +10,6 @@
         tools:context=".module.albums.popuphomework.presentation.BaseFragment">
 
         <EditText
-            android:id="@+id/idTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/idTitle"
-            android:textColorHint="@color/black"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
             android:id="@+id/nameTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +18,7 @@
             android:textSize="16sp"
             android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/idTitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/surnameTitle"
@@ -42,6 +31,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nameTitle" />
 
+        <EditText
+            android:id="@+id/countryTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/countryTitle"
+            android:textColorHint="@color/black"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surnameTitle" />
+
         <Button
             android:id="@+id/addUser"
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:hint="@string/addUser"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/surnameTitle" />
+            app:layout_constraintTop_toBottomOf="@id/countryTitle" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
