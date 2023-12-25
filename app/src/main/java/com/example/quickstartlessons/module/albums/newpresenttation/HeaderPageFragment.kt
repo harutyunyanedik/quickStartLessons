@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.FragmentHeaderPageBinding
@@ -15,7 +16,7 @@ class HeaderPageFragment : Fragment() {
     private val item: MutableList<Model> = mutableListOf()
     var title: String = ""
      var massage: String = ""
-    private var n = 0
+         var n = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title = arguments?.getString(TITLE_KEY).toString()
@@ -32,30 +33,26 @@ class HeaderPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.plusButton.setOnClickListener {
-            showPopUp()
             setupItems()
+            showPopUp()
         }
     }
 
     private fun showPopUp() {
-        val showPopUp = PopUpFragment({
-            title = it
-        },{
-            massage = it
-        })
+        val showPopUp = PopUpFragment(massage, title)
         showPopUp.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
     }
 
     private fun setupItems() {
         binding.recyclerView.adapter = this.adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter.updateData(createImages())
+        adapter.updateData(createImages(title,massage))
 
     }
 
-    private fun createImages(): MutableList<Model> {
+    private fun createImages(title:String,massage:String): MutableList<Model> {
         for (i in 0..n) {
-            item.add(Model(title, massage))
+            item.add(Model(title,massage))
         }
         return item
     }

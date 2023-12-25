@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.module.albums.newpresenttation.HeaderPageFragment
-import com.example.quickstartlessons.module.albums.newpresenttation.PopUpFragment
-import org.koin.android.ext.android.get
 
 class MainActivity : AppCompatActivity() {
 

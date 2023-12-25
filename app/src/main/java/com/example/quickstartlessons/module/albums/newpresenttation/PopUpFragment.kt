@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.quickstartlessons.databinding.FragmentPopUpBinding
 
-class PopUpFragment(private var itemTitle: (String)->Unit, private var itemMassage: (String) -> Unit): DialogFragment() {
+class PopUpFragment(private var itemTitle: String, private var itemMassage: String): DialogFragment() {
    private lateinit var  binding: FragmentPopUpBinding
 
     override fun onCreateView(
@@ -24,8 +24,10 @@ class PopUpFragment(private var itemTitle: (String)->Unit, private var itemMassa
             if (binding.editTitle.text.isEmpty() || binding.editMassage.text.isEmpty()){
                 Toast.makeText(requireContext(),"Please fill the empty blanks first",Toast.LENGTH_SHORT).show()
             }else{
-                itemTitle.invoke(binding.editTitle.text.toString())
-                itemMassage.invoke(binding.editMassage.text.toString())
+                val title = binding.editTitle.text.toString()
+                val  massage = binding.editMassage.text.toString()
+                itemTitle = title
+                itemMassage = massage
                 dismiss()
             }
         }
