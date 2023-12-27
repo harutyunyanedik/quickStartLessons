@@ -7,18 +7,7 @@
 
     <fragment
         android:id="@+id/baseFragment"
-        android:name="com.example.quickstartlessons.module.albums.popuphomework.presentation.BaseFragment"
+        android:name="com.example.quickstartlessons.module.albums.popuphomework.presentation.FirstPageFragment"
         android:label="fragment_base"
-        tools:layout="@layout/fragment_base" >
-        <action
-            android:id="@+id/action_baseFragment_to_itemsFragment"
-            app:destination="@id/itemsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/itemsFragment"
-        android:name="com.example.quickstartlessons.module.albums.popuphomework.presentation.ItemsFragment"
-        android:label="fragment_items"
-        tools:layout="@layout/fragment_items" >
-
-    </fragment>
+        tools:layout="@layout/fragment_first_page" />
 </navigation>

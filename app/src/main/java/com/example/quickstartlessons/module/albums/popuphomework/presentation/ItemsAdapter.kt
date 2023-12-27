@@ -11,9 +11,10 @@ import com.example.quickstartlessons.module.albums.popuphomework.data.ItemsData
 
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.BaseViewHolder>() {
 
-    private val item = mutableListOf<ItemsData>()
+    private val items = mutableListOf<ItemsData>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
+
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -21,38 +22,36 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.BaseViewHolder>() {
         inflater = LayoutInflater.from(context)
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ItemsViewHolder(ItemDetailedBinding.inflate(inflater, parent, false))
     }
 
-    override fun getItemCount() = item.size
-
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(item[position])
+        holder.bind(items[position])
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateAdapter(list: List<ItemsData>) {
-        item.clear()
-        list.let {
-            item.addAll(item)
-        }
-        notifyDataSetChanged()
-    }
+    override fun getItemCount() = items.size
 
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(item: ItemsData)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateAdapter(list: List<ItemsAdapter>) {
+        items.clear()
+        list?.let {
+            items.addAll(items)
+        }
+        notifyDataSetChanged()
+    }
 
     inner class ItemsViewHolder(private val binding: ItemDetailedBinding) : BaseViewHolder(binding.root) {
         override fun bind(item: ItemsData) {
-            binding.countryTitle1.text = item.country
             binding.nameTitle1.text = item.name
             binding.surnameTitle1.text = item.surname
-
+            binding.countryTitle1.text = item.country
         }
+
 
     }
 }
