@@ -37,7 +37,7 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.BaseViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateAdapter(list: List<ItemsAdapter>) {
+    fun updateAdapter(list: List<ItemsData>) {
         items.clear()
         list?.let {
             items.addAll(items)

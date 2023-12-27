@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.example.quickstartlessons.module.albums.popuphomework.data.ItemsData
 
 class ItemsViewModel : ViewModel() {
-    private val _itemsList = MutableLiveData<List<ItemsAdapter>>()
-    val itemsList: LiveData<List<ItemsAdapter>>
+    private val _itemsList = MutableLiveData<List<ItemsData>>()
+    val itemsList: LiveData<List<ItemsData>>
         get() = _itemsList
 
     fun add(itemsData: ItemsData) {

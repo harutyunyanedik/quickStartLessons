@@ -40,24 +40,25 @@ class FirstPageFragment : Fragment() {
     private fun setupAdapter() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        viewModel.itemsList.observe(viewLifecycleOwner){
+        viewModel.itemsList.observe(viewLifecycleOwner) {
             adapter.updateAdapter(it)
         }
 
     }
 
-    private fun showDialog(){
+    private fun showDialog() {
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.fragment_first_page)
         val nameTitle: EditText = dialog.findViewById(R.id.nameTitle)
         val surnameTitle: EditText = dialog.findViewById(R.id.surnameTitle)
         val countryTitle: EditText = dialog.findViewById(R.id.countryTitle)
+        val addUser: EditText = dialog.findViewById(R.id.addUser)
         addUser.setOnClickListener {
-            val name = nameTitle.text.toString()
-            val surname = surnameTitle.text.toString()
-            val country = countryTitle.text.toString()
-            if (name.isNotEmpty() && surname.isNotEmpty() && country.isNotEmpty()){
-                viewModel.add(ItemsData(name, surname,country))
+            val name1 = nameTitle.text.toString()
+            val surname1 = surnameTitle.text.toString()
+            val country1 = countryTitle.text.toString()
+            if (name1.isNotEmpty() && surname1.isNotEmpty() && country1.isNotEmpty()) {
+                viewModel.add(ItemsData(name1, surname1, country1))
                 dialog.dismiss()
             } else {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
