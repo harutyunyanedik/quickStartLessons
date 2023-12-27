@@ -1,10 +1,9 @@
 package com.example.quickstartlessons.core.net
 
 import androidx.annotation.Keep
+
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
@@ -14,6 +13,7 @@ suspend fun <T> getHttpResponse(
     apiFunction: suspend () -> Response<T>
 ) {
     if (isShowLoader) {
+
 //        BaseFragment.addLoader()
     }
     withContext(
@@ -48,7 +48,7 @@ suspend fun <T> getHttpResponse(
 
 @Keep
 interface ApiResultCallback<T> {
-    fun onSuccess(response: T)
+    fun onSuccess(response: T?)
 
     fun onError(): Boolean = false
 

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FragmentAddTextBinding
 
-class AdapterAddText(private val onClick: (String) -> Unit) : RecyclerView.Adapter<AdapterAddText.ItemViewHolder>() {
+class AdapterAddText : RecyclerView.Adapter<AdapterAddText.ItemViewHolder>() {
 
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
@@ -40,13 +40,6 @@ class AdapterAddText(private val onClick: (String) -> Unit) : RecyclerView.Adapt
 
 
     inner class ItemViewHolder(private val binding: FragmentAddTextBinding) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.addButton.setOnClickListener {
-                if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onClick.invoke(items[adapterPosition].text)
-                }
-            }
-        }
 
         fun bind(items: AddTextData) {
             binding.addText.text = items.text

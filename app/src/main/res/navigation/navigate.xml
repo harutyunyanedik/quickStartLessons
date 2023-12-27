@@ -9,5 +9,13 @@
         android:id="@+id/fragmentAddText"
         android:name="com.example.quickstartlessons.practicalLesson.FragmentAddText"
         android:label="fragment_add_text"
-        tools:layout="@layout/fragment_add_text" />
+        tools:layout="@layout/fragment_add_text" >
+        <action
+            android:id="@+id/action_fragmentAddText_to_fragmentDialog"
+            app:destination="@id/fragmentDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/fragmentDialog"
+        android:name="com.example.quickstartlessons.practicalLesson.FragmentDialog"
+        android:label="FragmentDialog" />
 </navigation>
