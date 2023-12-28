@@ -7,6 +7,5 @@
     <fragment
         android:id="@+id/listTodoFragment"
         android:name="com.example.quickstartlessons.todolist.presentation.ListTodoFragment"
-        android:label="ListTodoFragment" >
-    </fragment>
+        android:label="ListTodoFragment" />
 </navigation>

@@ -20,4 +20,8 @@ class TodoViewModel : ViewModel() {
             _todoList.value = list?.toList()
         }
     }
+
+    fun addTodoList(list: List<Todo>){
+        _todoList.value = list
+    }
 }
