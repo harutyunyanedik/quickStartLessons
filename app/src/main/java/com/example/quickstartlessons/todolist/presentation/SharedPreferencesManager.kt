@@ -8,9 +8,9 @@ fun Activity.sharedPrefs() : SharedPreferences = this.getSharedPreferences("main
 
 fun Activity.putTodo(value: String){
     this.sharedPrefs().edit {
-        putString("todos", value)
+        putString("todoList", value)
         apply()
     }
 }
 
-fun Activity.getTodo() = this.sharedPrefs().getString("todos", "")
+fun Activity.getTodo() = this.sharedPrefs().getString("todoList", "")

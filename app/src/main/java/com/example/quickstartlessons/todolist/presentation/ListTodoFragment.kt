@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.DialogAddTodoBinding
 import com.example.quickstartlessons.databinding.FragmentListTodoBinding
 import com.example.quickstartlessons.todolist.data.Todo
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class ListTodoFragment : Fragment() {
 
     private lateinit var binding: FragmentListTodoBinding
     private val adapter = TodoAdapter()
     private val viewModel: TodoViewModel by viewModels()
-    private lateinit var todos: java.lang.StringBuilder
-
+    private lateinit var todos: MutableList<Todo>
 
 
     override fun onCreateView(
@@ -31,10 +32,8 @@ class ListTodoFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        todos = StringBuilder(requireActivity().getTodo()!!)
         setupViews()
         binding.buttonAdd.setOnClickListener {
             showDialog()
@@ -44,33 +43,27 @@ class ListTodoFragment : Fragment() {
     private fun setupViews() {
         binding.rvTodoList.adapter = adapter
         binding.rvTodoList.layoutManager = LinearLayoutManager(requireContext())
-        viewModel.addTodoList(getTodos())
+        todos = getTodos()
+        viewModel.addTodoList(todos)
         viewModel.todoList.observe(viewLifecycleOwner) {
             adapter.updateAdapter(it)
         }
 
     }
-    private fun getTodos() : List<Todo>{
-        val todoList = mutableListOf<Todo>()
-        while (todos.isNotEmpty()){
-            val indexOfTodo = todos.indexOf("/")
-            val todo = todos.substring(0, indexOfTodo)
-            val indexOfTitle = todo.indexOf("+")
-            val title =todo.substring(0, indexOfTitle)
-            val description = todo.substring(indexOfTitle + 1)
-            todoList.add(Todo(title, description))
-            todos.delete(0, indexOfTodo + 1)
-        }
-        return todoList
+
+    private fun getTodos(): MutableList<Todo> {
+        val json = requireActivity().getTodo()
+        val type = object : TypeToken<MutableList<Todo>>() {}.type
+        return Gson().fromJson(json, type) ?: mutableListOf()
     }
 
-    private fun showDialog(){
-        val dialog = AddTodoFragment{title, description ->
-            viewModel.addTodo(Todo(title, description))
-            todos.append("$title+$description/")
-            requireActivity().putTodo(todos.toString())
+    private fun showDialog() {
+        val dialog = AddTodoFragment { title, description ->
+            todos.add(Todo(title, description))
+            val convertedTodos = Gson().toJson(todos.toList())
+            requireActivity().putTodo(convertedTodos)
+            viewModel.addTodoList(todos)
         }
-
         dialog.show(childFragmentManager, "AddTodoDialog")
     }
 
@@ -87,6 +80,7 @@ class AddTodoFragment(private val addTodo: (String, String) -> Unit) : DialogFra
             it.window?.setLayout(1000, 1000)
         }
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DialogAddTodoBinding.inflate(inflater, container, false)
         return binding.root
