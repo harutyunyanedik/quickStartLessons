@@ -8,4 +8,11 @@
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="account">Account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in_we_are_waiting_for_you">SIGN IN, WE ARE WAITING FOR YOU</string>
+    <string name="email_username">Email/Username</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="sign_in">Sign in</string>
+    <string name="forgot_your_password">FORGOT YOUR PASSWORD?</string>
 </resources>

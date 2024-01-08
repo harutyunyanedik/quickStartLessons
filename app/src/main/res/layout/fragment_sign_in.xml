@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background"
+        android:padding="@dimen/padding_8dp"
+        tools:context=".module.launch.SignInFragment">
+
+        <TextView
+            android:id="@+id/textViewHaveAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_10"
+            android:textSize="@dimen/_20sp"
+            android:text="@string/already_have_an_account"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22sp"
+            android:layout_marginTop="@dimen/top_margin"
+            android:text="@string/sign_in_we_are_waiting_for_you"
+            app:layout_constraintTop_toBottomOf="@id/textViewHaveAccount"/>
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_username"
+            android:layout_marginTop="@dimen/top_margin"
+            android:inputType="textEmailAddress"
+            style="@style/edit_text_styles"
+            app:layout_constraintTop_toBottomOf="@id/textViewSignIn"/>
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:layout_marginTop="@dimen/top_margin"
+            android:inputType="textPassword"
+            style="@style/edit_text_styles"
+            app:layout_constraintTop_toBottomOf="@id/editTextEmail"/>
+
+        <CheckBox
+            android:id="@+id/checkboxRemember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_margin"
+            android:text="@string/remember_me"
+            android:textColor="@color/color_1_50"
+            android:padding="@dimen/padding_8dp"
+            android:button="@drawable/check_box_selector"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextPassword"/>
+
+        <Button
+            android:id="@+id/buttonSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:layout_marginTop="@dimen/top_margin"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/checkboxRemember"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_margin"
+            android:text="@string/forgot_your_password"
+            android:textSize="@dimen/_20sp"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/buttonSignIn"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
