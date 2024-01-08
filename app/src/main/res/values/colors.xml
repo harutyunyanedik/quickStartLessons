@@ -10,4 +10,15 @@
     <color name="white_10">#81FFFFFF</color>
     <color name="app_background">#000c24</color>
 
+    <color name="color_1">#fff</color>
+    <color name="color_1_90">#E6FFFFFF</color>
+    <color name="color_1_80">#CCFFFFFF</color>
+    <color name="color_1_70">#B3FFFFFF</color>
+    <color name="color_1_60">#99FFFFFF</color>
+    <color name="color_1_50">#80FFFFFF</color>
+    <color name="color_1_40">#66FFFFFF</color>
+    <color name="color_1_30">#4DFFFFFF</color>
+    <color name="color_1_20">#33FFFFFF</color>
+    <color name="color_1_10">#1AFFFFFF</color>
+
 </resources>
