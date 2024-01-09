@@ -28,11 +28,11 @@ class SignInFragment : ViewExtension() {
        openNewPage()
     }
     private fun openNewPage(){
-       mainActivity()?.getLoginPassword(LOGIN_KEY)
-        mainActivity()?.getLoginPassword(PASSWORD_KEY)
+      val login= mainActivity().getLoginPassword(LOGIN_KEY)
+       val password= mainActivity().getLoginPassword(PASSWORD_KEY)
         binding.buttonSignIn.setOnClickListener {
-            mainActivity()?.setLoginPassword(LOGIN_KEY,"name")
-            mainActivity()?.setLoginPassword(PASSWORD_KEY,"surname")
+            mainActivity().setLoginPassword(login,"name")
+            mainActivity().setLoginPassword(password,"surname")
             if(binding.login.text.toString()!="name" || binding.password.text.toString()!="surname"){
                 Toast.makeText(context,"Wrong username or password", Toast.LENGTH_SHORT).show()
             } else{
