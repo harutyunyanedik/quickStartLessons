@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInPageBinding
 
 class SignInFragment : ViewExtension() {
@@ -28,7 +29,7 @@ class SignInFragment : ViewExtension() {
         super.onViewCreated(view, savedInstanceState)
        openNewPage()
         binding.forgotPassword.setOnClickListener {
-            findNavController().navigate()
+            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToResetPasswordFragment())
         }
     }
     private fun openNewPage(){

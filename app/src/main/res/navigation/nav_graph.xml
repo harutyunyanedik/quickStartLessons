@@ -23,7 +23,11 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.quickstartlessons.module.login.SignInFragment"
-        android:label="SignInFragment" />
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.example.quickstartlessons.module.login.ResetPasswordFragment"
