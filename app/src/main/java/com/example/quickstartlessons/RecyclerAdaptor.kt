@@ -9,7 +9,7 @@ import com.example.quickstartlessons.databinding.LayoutRecyclerBinding
 class RecyclerAdaptor: RecyclerView.Adapter<RecyclerAdaptor.ViewRecyclerHolder>() {
        lateinit var inflater:LayoutInflater
        lateinit var context:Context
-        private val list:MutableList<newParametr> = mutableListOf()
+        private val list:MutableList<NewParametr> = mutableListOf()
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -24,7 +24,7 @@ class RecyclerAdaptor: RecyclerView.Adapter<RecyclerAdaptor.ViewRecyclerHolder>(
     override fun onBindViewHolder(holder: ViewRecyclerHolder, position: Int) {
         holder.bind(list[position])
     }
-    fun itemData(items:List<newParametr>?){
+    fun itemData(items:List<NewParametr>?){
         this.list.clear()
         items?.let {
             this.list.addAll(items)
@@ -32,11 +32,11 @@ class RecyclerAdaptor: RecyclerView.Adapter<RecyclerAdaptor.ViewRecyclerHolder>(
         notifyDataSetChanged()
     }
     inner class ViewRecyclerHolder(private val binding:LayoutRecyclerBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(position:newParametr) {
+        fun bind(position:NewParametr) {
             binding.recyclerText.text= position.value1
             binding.recyclerText2.text=position.values2
         }
     }
 
 }
-data class newParametr(val value1:String, val values2:String)
+data class NewParametr(val value1:String, val values2:String)

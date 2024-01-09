@@ -26,10 +26,10 @@ class RecyclerViewActivity : AppCompatActivity() {
             binding.recyclerView.layoutManager=manager
             adaptor.itemData(createNewList())
         }
-    fun createNewList():List<newParametr>{
-        val list= mutableListOf<newParametr>()
+    fun createNewList():List<NewParametr>{
+        val list= mutableListOf<NewParametr>()
         for (i in 0..100){
-            list.add(newParametr("News $i"," $i" ))
+            list.add(NewParametr("News $i"," $i" ))
         }
         return list
     }
