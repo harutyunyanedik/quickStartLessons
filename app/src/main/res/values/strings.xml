@@ -11,4 +11,9 @@
     <string name="account">Account</string>
     <string name="remember">Remember me </string>
     <string name="SignIn">Sign in </string>
+    <string name="email_UserName">Email/Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="Contact_Support"><u>Contact support</u></string>
+
 </resources>

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="Margin">16dp</dimen>
+    <dimen name="TextSize">20sp</dimen>
+    <dimen name="textHaveAccountSize">18sp</dimen>
+    <dimen name="editTextSize">16sp</dimen>
+    <dimen name="editTexHeight">64dp</dimen>
 
 </resources>

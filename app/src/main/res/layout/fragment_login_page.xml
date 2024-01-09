@@ -10,69 +10,99 @@
         android:background="@color/app_background">
 
         <TextView
-            android:id="@+id/AlreadyHaveAnAccount"
-            android:layout_marginTop="16dp"
+            android:id="@+id/haveAnAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Already"
-            android:textSize="16sp"
+            android:textSize="@dimen/textHaveAccountSize"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/signInWaiting"
+            android:layout_margin="@dimen/Margin"
             android:textColor="@color/white_10"
+            android:text="@string/Already"
             />
-
         <TextView
-            android:id="@+id/signInWaiting"
+            android:id="@+id/signIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Sign_In_Waiting"
-            android:textSize="24sp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/AlreadyHaveAnAccount"
+            app:layout_constraintTop_toBottomOf="@+id/haveAnAccount"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf=""
-            android:textColor="@color/white_10"
+            android:textSize="@dimen/TextSize"
+            android:layout_marginTop="@dimen/Margin"
+            android:layout_marginStart="@dimen/Margin"
+            android:layout_marginEnd="@dimen/Margin"
+            android:text="@string/Sign_In_Waiting"
+            android:textColor="@color/white"
             android:textAllCaps="true"/>
         <EditText
             android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/signInWaiting"/>
-
+            android:layout_height="@dimen/editTexHeight"
+            app:layout_constraintTop_toBottomOf="@+id/signIn"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/Margin"
+            style="@style/Login_Password"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email_UserName"
+            android:textColorHint="@color/color_1_40" />
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_height="@dimen/editTexHeight"
+            android:layout_margin="@dimen/Margin"
+            android:hint="@string/password"
+            style="@style/Login_Password"
+            android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@id/login"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColorHint="@color/color_1_40"/>
         <CheckBox
-            android:id="@+id/rememberMe"
+            android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            android:button="@drawable/check_box_remember"
-            android:textColor="@color/white_10"
             android:text="@string/remember"
-            app:layout_constraintTop_toBottomOf="@id/password"
-            />
+             android:button="@drawable/check_box_remember"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/Margin"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
         <Button
+            android:id="@+id/buttonSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rememberMe"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_margin="@dimen/Margin"
+            android:background="@drawable/sign_in_button"
             android:text="@string/SignIn"
-            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/checkbox"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/color_1_90"
 
             />
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonSignIn"
+            android:textColor="@color/color_1_90"
+            android:layout_margin="@dimen/Margin"
+            android:textSize="@dimen/editTextSize"
+            />
+           <CheckBox
+               android:id="@+id/contactSupport"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:button="@drawable/support_agent"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               android:layout_marginBottom="@dimen/Margin"
+               android:text="@string/Contact_Support"
+               android:textColor="@color/white_10"
+               />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

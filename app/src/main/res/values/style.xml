@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Login_Password" >
+        <item name="android:background">@drawable/ic_login_password_shape</item>
+        <item name="android:textColor">@color/color_1_40</item>
+        <item name="android:textSize">@dimen/editTextSize</item>
+
+    </style>
+
+</resources>
