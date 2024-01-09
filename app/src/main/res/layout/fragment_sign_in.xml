@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:background="@color/app_background"
         android:padding="@dimen/padding_8dp"
-        tools:context=".module.launch.SignInFragment">
+        tools:context=".module.launch.fragments.SignInFragment">
 
         <TextView
             android:id="@+id/textViewHaveAccount"

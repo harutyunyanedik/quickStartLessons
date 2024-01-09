@@ -15,4 +15,13 @@
     <string name="remember_me">Remember me</string>
     <string name="sign_in">Sign in</string>
     <string name="forgot_your_password">FORGOT YOUR PASSWORD?</string>
+    <string name="reset_password">Reset password</string>
+    <string name="reset_password_via_sms">Reset password via SMS</string>
+    <string name="please_enter_phone_number">Please enter phone number</string>
+    <string name="_374">+374</string>
+    <string name="xx_xxx_xxx">(XX) XXX-XXX</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="resetpassword_via_email">ResetPassword via Email</string>
+    <string name="email">Email</string>
+    <string name="sample_email_com">sample@email.com</string>
 </resources>
