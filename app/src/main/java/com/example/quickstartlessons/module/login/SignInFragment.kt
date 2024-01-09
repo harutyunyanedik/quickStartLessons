@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.databinding.FragmentSignInPageBinding
 
@@ -26,6 +27,9 @@ class SignInFragment : ViewExtension() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
        openNewPage()
+        binding.forgotPassword.setOnClickListener {
+            findNavController().navigate()
+        }
     }
     private fun openNewPage(){
       val login= mainActivity().getLoginPassword(LOGIN_KEY)

@@ -1,24 +1,34 @@
 package com.example.quickstartlessons.module.login
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.databinding.FragmentResetPasswordBinding
+
+
 class ResetPasswordFragment : Fragment() {
 
-private val binding:FragmentR
+    private lateinit var binding: FragmentResetPasswordBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_reset_password, container, false)
+        binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.radioGroup.setOnCheckedChangeListener { radioGroup, i ->
+            if (radioGroup.checkedRadioButtonId == R.id.resetSms) {
+                binding.enterContact.hint = "Enter phone number"
+            } else {
+                binding.enterContact.hint = "email"
+            }
+        }
     }
+
 }
