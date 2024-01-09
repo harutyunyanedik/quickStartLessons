@@ -15,5 +15,9 @@
     <string name="password">Password</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="Contact_Support"><u>Contact support</u></string>
+    <string name="Reset_password">Reset password</string>
+    <string name="reset_sms">SMS</string>
+    <string name="reset_email">E-mail</string>
+    <string name="reset">Reset</string>
 
 </resources>

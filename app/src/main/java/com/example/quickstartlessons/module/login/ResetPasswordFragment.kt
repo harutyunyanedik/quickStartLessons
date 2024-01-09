@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.quickstartlessons.R
 class ResetPasswordFragment : Fragment() {
 
-
+private val binding:FragmentR
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

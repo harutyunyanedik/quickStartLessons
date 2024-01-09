@@ -22,7 +22,8 @@
     <color name="color_1_20">#33FFFFFF</color>
     <color name="color_1_10">#1AFFFFFF</color>
 
-    <color name="dark_blue">#42465E</color>
+    <color name="dark_blue">#3C3F52</color>
+    <color name="dark_blue_60">#9942465E</color>
     <color name="green">#0AEC13</color>
     <color name="green_60">#990AEC13</color>
 
