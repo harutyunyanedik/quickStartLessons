@@ -23,7 +23,8 @@ class SignInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       val data= (requireActivity() as MainActivity).getLoginPassword(LOGIN_KEY)
+       val login= (requireActivity() as MainActivity).getLoginPassword(LOGIN_KEY)
+        val password=(requireActivity() as MainActivity).getLoginPassword(PASSWORD_KEY)
         binding.buttonSignIn.setOnClickListener {
            if()
         }
