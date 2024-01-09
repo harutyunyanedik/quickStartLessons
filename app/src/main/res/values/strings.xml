@@ -8,4 +8,20 @@
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="account">Account</string>
+
+    <string name="general_question">"Already have an account?"</string>
+    <string name="header_of_signing">"SIGN IN, WE ARE WAITING FOR YOU"</string>
+    <string name="text_email_hint">"Email / Username"</string>
+    <string name="text_password_hint">"Password"</string>
+    <string name="text_checkbox">"Remember me"</string>
+    <string name="text_buttonForSigning">"SIGN IN"</string>
+    <string name="question_about_forgot">"FORGOT YOUR PASSWORD?"</string>
+    <string name="text_contact">"Contact support"</string>
+
+    <string name="header_enterPassword">"RESET PASSWORD"</string>
+    <string name= "text_sms">"SMS"</string>
+    <string name="text_email">"E-MAIL"</string>
+    <string name="text_enter_phone">"Enter phone number"</string>
+    <string name="text_enter_email">"E-mail"</string>
+    <string name="text_reset">"RESET"</string>
 </resources>

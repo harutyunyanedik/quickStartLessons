@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background"
+        tools:context=".module.signing.PhoneNumberFragment">
+
+        <TextView
+            android:id="@+id/header_enterPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:padding="@dimen/dp_10"
+            android:text="@string/header_enterPassword"
+            android:textColor="@color/color_1_70"
+            android:textSize="@dimen/header_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_enterPhoneNumber"
+            tools:ignore="RtlHardcoded">
+
+            <RadioButton
+                android:id="@+id/sms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_15"
+                android:checked="true"
+                android:buttonTint="@color/color_1_60"
+                android:text="@string/text_sms"
+                android:textColor="@color/color_1_70"
+                android:textSize="@dimen/checkbox_sp"
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_15"
+                android:text="@string/text_email"
+                android:textColor="@color/color_1_70"
+                android:textSize="@dimen/checkbox_sp"
+                android:buttonTint="@color/color_1_60"
+                tools:ignore="HardcodedText" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/text_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_margin="@dimen/dp_15"
+            android:background="@drawable/shape_update_edittext"
+            android:hint="@string/text_enter_phone"
+            android:inputType="text"
+            android:padding="@dimen/dp_5"
+            android:textAlignment="center"
+            android:textColor="@color/color_1_80"
+            android:textColorHint="@color/color_1_80"
+            android:textSize="@dimen/normal_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            tools:ignore="Autofill,TextFields" />
+
+        <Button
+            android:id="@+id/buttonForReset"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_margin="@dimen/dp_15"
+            android:background="@drawable/custom_checkbox"
+            android:padding="@dimen/dp_5"
+            android:text="@string/text_reset"
+            android:textColor="@color/color_1_80"
+            android:textSize="@dimen/normal_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_phone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
