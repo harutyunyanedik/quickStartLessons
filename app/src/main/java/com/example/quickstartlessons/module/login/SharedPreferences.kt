@@ -1,11 +1,12 @@
 package com.example.quickstartlessons.module.login
+import android.app.Activity
 import android.content.Context.MODE_PRIVATE
 import androidx.core.content.edit
 import com.example.quickstartlessons.MainActivity
 
 
 
-fun MainActivity.setLoginPassword (key:String,value:String) {
+fun Activity.setLoginPassword (key:String, value:String) {
 
     val sharedPreferences=getSharedPreferences("Save data", MODE_PRIVATE)
     sharedPreferences.edit {
@@ -13,13 +14,10 @@ fun MainActivity.setLoginPassword (key:String,value:String) {
         apply()
     }
 }
-fun MainActivity.getLoginPassword (key:String):String {
+fun Activity.getLoginPassword (key:String):String {
 
     val sharedPreferences=getSharedPreferences("Save data", MODE_PRIVATE)
-    sharedPreferences.edit {
-        putString(key, VALUE)
-    }
-    return VALUE
+
+       return sharedPreferences.getString(key," ").toString()
+
 }
- const val KEY="key"
-const val VALUE="value"
