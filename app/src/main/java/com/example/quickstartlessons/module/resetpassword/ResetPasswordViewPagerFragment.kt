@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.launch.fragments
+package com.example.quickstartlessons.module.resetpassword
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentResetPasswordViewPagerBinding
-import com.example.quickstartlessons.module.launch.adapters.ResetPasswordViewPagerAdapter
+import com.example.quickstartlessons.module.resetpassword.email.ResetPasswordEmailFragment
+import com.example.quickstartlessons.module.resetpassword.sms.ResetPasswordSMSFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ResetPasswordViewPagerFragment : Fragment() {

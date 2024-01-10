@@ -3,55 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_background"
         android:padding="@dimen/_16dp"
-        tools:context=".module.launch.fragments.SignInFragment">
+        tools:context=".module.signin.SignInFragment">
 
         <TextView
-            android:id="@+id/textViewHaveAccount"
+            android:id="@+id/haveAccountTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
             android:text="@string/already_have_an_account"
             android:textColor="@color/white_10"
             android:textSize="@dimen/_20sp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewSignIn"
+            android:id="@+id/signInTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
+            android:layout_marginTop="@dimen/_16dp"
             android:text="@string/sign_in_we_are_waiting_for_you"
             android:textColor="@color/white"
             android:textSize="@dimen/_22sp"
-            app:layout_constraintTop_toBottomOf="@id/textViewHaveAccount" />
+            app:layout_constraintTop_toBottomOf="@id/haveAccountTextView" />
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/emailEditText"
             style="@style/edit_text_styles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
+            android:layout_marginTop="@dimen/_16dp"
             android:hint="@string/email_username"
             android:inputType="textEmailAddress"
-            app:layout_constraintTop_toBottomOf="@id/textViewSignIn" />
+            app:layout_constraintTop_toBottomOf="@id/signInTextView" />
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/passwordEditText"
             style="@style/edit_text_styles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
             android:hint="@string/password"
             android:inputType="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/editTextEmail" />
+            app:layout_constraintTop_toBottomOf="@id/emailEditText" />
 
         <CheckBox
-            android:id="@+id/checkboxRemember"
+            android:id="@+id/rememberMeCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
@@ -60,10 +60,10 @@
             android:text="@string/remember_me"
             android:textColor="@color/color_1_50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
+            app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
 
         <Button
-            android:id="@+id/buttonSignIn"
+            android:id="@+id/signInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
@@ -71,10 +71,10 @@
             android:enabled="false"
             android:text="@string/sign_in"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/checkboxRemember" />
+            app:layout_constraintTop_toBottomOf="@id/rememberMeCheckbox" />
 
         <TextView
-            android:id="@+id/textViewForgotPassword"
+            android:id="@+id/forgotPasswordTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
@@ -83,7 +83,7 @@
             android:text="@string/forgot_your_password"
             android:textColor="@color/white"
             android:textSize="@dimen/_20sp"
-            app:layout_constraintTop_toBottomOf="@id/buttonSignIn" />
+            app:layout_constraintTop_toBottomOf="@id/signInButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

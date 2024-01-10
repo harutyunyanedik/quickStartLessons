@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.launch.fragments
+package com.example.quickstartlessons.module.resetpassword.sms
 
 import android.os.Bundle
 import android.view.LayoutInflater
