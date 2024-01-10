@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="_24dp">24dp</dimen>
+
+    <dimen name="_12sp">12sp</dimen>
+
+    <dimen name="dialog_margin">32dp</dimen>
+</resources>
