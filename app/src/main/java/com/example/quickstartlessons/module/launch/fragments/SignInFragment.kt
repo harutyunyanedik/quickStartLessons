@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
@@ -27,6 +29,9 @@ class SignInFragment : Fragment() {
 
     private fun setupViews() {
         binding.buttonSignIn.isActivated = buttonIsActive()
+        binding.textViewForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_resetPasswordViewPagerFragment)
+        }
         binding.buttonSignIn.setOnClickListener {
             if (buttonIsActive()){
                 // intent

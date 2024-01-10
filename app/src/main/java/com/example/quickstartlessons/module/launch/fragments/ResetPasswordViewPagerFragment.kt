@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentResetPasswordViewPagerBinding
 import com.example.quickstartlessons.module.launch.adapters.ResetPasswordViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -28,6 +30,9 @@ class ResetPasswordViewPagerFragment : Fragment() {
     }
 
     private fun setupViews(){
+        binding.imageViewBack.setOnClickListener {
+            findNavController().navigate(R.id.action_resetPasswordViewPagerFragment_to_signInFragment)
+        }
         adapter = ResetPasswordViewPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)
         val fragments = mutableListOf(ResetPasswordSMSFragment.newInstance(), ResetPasswordEmailFragment.newInstance())
         binding.viewPager.apply {
