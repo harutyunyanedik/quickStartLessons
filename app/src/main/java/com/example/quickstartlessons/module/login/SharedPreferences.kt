@@ -1,4 +1,5 @@
 package com.example.quickstartlessons.module.login
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context.MODE_PRIVATE
 import androidx.core.content.edit
@@ -14,6 +15,7 @@ fun Activity.setLoginPassword (key:String, value:String) {
         apply()
     }
 }
+@SuppressLint("SuspiciousIndentation")
 fun Activity.getLoginPassword (key:String):String {
 
     val sharedPreferences=getSharedPreferences("Save data", MODE_PRIVATE)
