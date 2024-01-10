@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/homeMainTabFragment">
 
     <fragment
         android:id="@+id/homeMainTabFragment"
@@ -20,16 +20,5 @@
         android:name="com.example.quickstartlessons.module.account.AccountMainTabFragment"
         android:label="fragment_account_main_tab"
         tools:layout="@layout/fragment_account_main_tab" />
-    <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.example.quickstartlessons.module.login.SignInFragment"
-        android:label="SignInFragment" >
-        <action
-            android:id="@+id/action_signInFragment_to_resetPasswordFragment"
-            app:destination="@id/resetPasswordFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/resetPasswordFragment"
-        android:name="com.example.quickstartlessons.module.login.ResetPasswordFragment"
-        android:label="ResetPasswordFragment" />
+
 </navigation>
