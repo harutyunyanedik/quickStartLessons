@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.launch.adapters
+package com.example.quickstartlessons.module.resetpassword
 
 import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
