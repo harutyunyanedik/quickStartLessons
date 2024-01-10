@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.quickstartlessons.module.launch.fragments.SignInFragment"
-        android:label="SignInFragment" >
+        android:label="SignInFragment">
         <action
             android:id="@+id/action_signInFragment_to_resetPasswordViewPagerFragment"
             app:destination="@id/resetPasswordViewPagerFragment" />
@@ -15,9 +15,5 @@
     <fragment
         android:id="@+id/resetPasswordViewPagerFragment"
         android:name="com.example.quickstartlessons.module.launch.fragments.ResetPasswordViewPagerFragment"
-        android:label="ResetPasswordViewPagerFragment" >
-        <action
-            android:id="@+id/action_resetPasswordViewPagerFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
-    </fragment>
+        android:label="ResetPasswordViewPagerFragment"/>
 </navigation>

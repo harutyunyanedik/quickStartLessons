@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentResetPasswordViewPagerBinding
 import com.example.quickstartlessons.module.launch.adapters.ResetPasswordViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -29,9 +28,9 @@ class ResetPasswordViewPagerFragment : Fragment() {
         setupViews()
     }
 
-    private fun setupViews(){
+    private fun setupViews() {
         binding.imageViewBack.setOnClickListener {
-            findNavController().navigate(R.id.action_resetPasswordViewPagerFragment_to_signInFragment)
+            findNavController().navigateUp()
         }
         adapter = ResetPasswordViewPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)
         val fragments = mutableListOf(ResetPasswordSMSFragment.newInstance(), ResetPasswordEmailFragment.newInstance())
@@ -41,10 +40,10 @@ class ResetPasswordViewPagerFragment : Fragment() {
             isUserInputEnabled = false
         }
         adapter.updateData(fragments)
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) {tab, position ->
-            when(fragments[position]){
-                is ResetPasswordSMSFragment -> tab.text = "SMS"
-                is ResetPasswordEmailFragment -> tab.text = "Email"
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (fragments[position]) {
+                is ResetPasswordSMSFragment -> tab.text = "SMS" //todo move to res
+                is ResetPasswordEmailFragment -> tab.text = "Email"  // todo move to res
             }
         }.attach()
     }

@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ResetPasswordViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager, lifecycle) {
+class ResetPasswordViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     private val fragments = mutableListOf<Fragment>()
 
@@ -15,7 +15,7 @@ class ResetPasswordViewPagerAdapter(fragmentManager: FragmentManager, lifecycle:
     override fun createFragment(position: Int) = fragments[position]
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(items: List<Fragment>?){
+    fun updateData(items: List<Fragment>?) {
         fragments.clear()
         items?.let {
             fragments.addAll(it)
