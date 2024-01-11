@@ -30,25 +30,43 @@
             android:textSize="@dimen/_22sp"
             app:layout_constraintTop_toBottomOf="@id/haveAccountTextView" />
 
-        <EditText
-            android:id="@+id/emailEditText"
-            style="@style/edit_text_styles"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16dp"
-            android:hint="@string/email_username"
-            android:inputType="textEmailAddress"
-            app:layout_constraintTop_toBottomOf="@id/signInTextView" />
+            style="@style/edit_text_styles"
+            android:layout_marginTop="@dimen/margin_16dp"
+            app:layout_constraintTop_toBottomOf="@id/signInTextView" >
 
-        <EditText
-            android:id="@+id/passwordEditText"
-            style="@style/edit_text_styles"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:textColor="@color/color_1_70"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/email_username"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/emailEditText" />
+            style="@style/edit_text_styles"
+            android:layout_marginTop="@dimen/margin_16dp"
+            app:layout_constraintTop_toBottomOf="@id/emailTil" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
+                android:textColor="@color/color_1_70"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/password"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
             android:id="@+id/rememberMeCheckbox"
@@ -60,7 +78,7 @@
             android:text="@string/remember_me"
             android:textColor="@color/color_1_50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
+            app:layout_constraintTop_toBottomOf="@id/passwordTil" />
 
         <Button
             android:id="@+id/signInButton"

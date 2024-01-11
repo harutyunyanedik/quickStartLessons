@@ -24,4 +24,6 @@
     <string name="resetpassword_via_email">ResetPassword via Email</string>
     <string name="email">Email</string>
     <string name="sample_email_com">sample@email.com</string>
+    <string name="invalid_email">Invalid username</string>
+    <string name="invalid_password">Invalid password</string>
 </resources>

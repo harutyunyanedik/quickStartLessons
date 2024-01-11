@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.R
@@ -39,6 +40,22 @@ class SignInFragment : Fragment() {
         binding.passwordEditText.doAfterTextChanged {
             binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.emailEditText.text.isNullOrEmpty()
         }
+
+        binding.emailEditText.doOnTextChanged { text, start, count, after ->
+            if (text?.contains("@") != true){
+                binding.emailTil.error = getString(R.string.invalid_email)
+            } else{
+                binding.emailTil.error = null
+            }
+        }
+        binding.passwordEditText.doOnTextChanged { text, start, count, after ->
+            if (text.isNullOrEmpty() || text.length < 8){
+                binding.passwordTil.error = getString(R.string.invalid_password)
+            } else{
+                binding.passwordTil.error = null
+            }
+        }
+
 
         binding.signInButton.setOnClickListener {
 
