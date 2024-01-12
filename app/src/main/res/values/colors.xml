@@ -35,5 +35,6 @@
     <color name="qs_MaterialDialogDescriptionTextColor">@color/color_1_60</color>
     <color name="qs_MaterialDialogAgreeButtonTextColor">@color/myAccentColor</color>
     <color name="qs_MaterialDialogCancelButtonTextColor">@color/myAccentColor</color>
+    <color name="color_green">#4CAF50</color>
 
 </resources>
