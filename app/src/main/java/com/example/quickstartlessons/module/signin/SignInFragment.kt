@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.R
@@ -34,22 +33,17 @@ class SignInFragment : Fragment() {
         }
 
         binding.emailEditText.doAfterTextChanged {
-            binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.passwordEditText.text.isNullOrEmpty()
-        }
+            binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.passwordEditText.text.isNullOrEmpty() && it?.contains("@") == true
+                if (it?.contains("@") != true){
+                    binding.emailTil.error = getString(R.string.invalid_email)
+                } else{
+                    binding.emailTil.error = null
+                }
+            }
 
         binding.passwordEditText.doAfterTextChanged {
-            binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.emailEditText.text.isNullOrEmpty()
-        }
-
-        binding.emailEditText.doOnTextChanged { text, start, count, after ->
-            if (text?.contains("@") != true){
-                binding.emailTil.error = getString(R.string.invalid_email)
-            } else{
-                binding.emailTil.error = null
-            }
-        }
-        binding.passwordEditText.doOnTextChanged { text, start, count, after ->
-            if (text.isNullOrEmpty() || text.length < 8){
+            binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.passwordEditText.text.isNullOrEmpty() && (!it.isNullOrEmpty() && it.length > 8)
+            if (it.isNullOrEmpty() || it.length < 8){
                 binding.passwordTil.error = getString(R.string.invalid_password)
             } else{
                 binding.passwordTil.error = null
