@@ -1,5 +1,4 @@
 package com.example.quickstartlessons.module.signin
-
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
-import java.util.regex.Pattern
+
 
 class SignInFragment : Fragment() {
 
