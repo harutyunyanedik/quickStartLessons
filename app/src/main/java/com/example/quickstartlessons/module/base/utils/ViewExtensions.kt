@@ -111,24 +111,6 @@ fun EditText.requestDirectionFocus(direction: Int) {
     this.setSelection(direction)
 }
 
-fun EditText.addTextWatcher(
-    onBeforeTextChanged: (charSequence: CharSequence?, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
-    onTextChanged: (charSequence: CharSequence?, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
-    onAfterTextChanged: (editable: Editable?) -> Unit,
-) = this.addTextChangedListener(object : TextWatcher {
-    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        onBeforeTextChanged(s, start, count, after)
-    }
-
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        onTextChanged(s, start, before, count)
-    }
-
-    override fun afterTextChanged(s: Editable?) {
-        onAfterTextChanged(s)
-    }
-})
-
 fun ViewGroup.saveChildViewStates(): SparseArray<Parcelable> {
     val childViewStates = SparseArray<Parcelable>()
     children.forEach { child -> child.saveHierarchyState(childViewStates) }

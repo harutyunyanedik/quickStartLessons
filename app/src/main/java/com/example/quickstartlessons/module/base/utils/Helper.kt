@@ -70,13 +70,6 @@ object Helper {
         else activity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
     }
 
-//    fun copyToClipboard(context: Context, label: String?, text: String?, toastMessageRes: Int = R.string.wallet_global_text_copied) {
-//        val manager: ClipboardManager? = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
-//        val clipData = ClipData.newPlainText(label, text)
-//        manager?.setPrimaryClip(clipData)
-//        showToast(context, toastMessageRes)
-//    }
-
     fun showToast(context: Context, resId: Int, duration: Int = Toast.LENGTH_SHORT) {
         Toast.makeText(context, context.resources.getString(resId), duration).show()
     }
