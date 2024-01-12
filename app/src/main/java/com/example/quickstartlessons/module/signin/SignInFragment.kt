@@ -42,58 +42,61 @@ class SignInFragment : Fragment() {
             binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.emailEditText.text.isNullOrEmpty()
         }
 
-         binding.emailEditText.doAfterTextChanged {
-             if(! Patterns.EMAIL_ADDRESS.matcher(it.toString()).matches() || it!!.matches(".*[0-9].*".toRegex())){
-                 binding.emailUsernameInputLayout.error="Invalid Email address or username "
-             }else{
-                 binding.emailUsernameInputLayout.error=null
-             }
-         }
-        binding.passwordEditText.doAfterTextChanged {
-            if(it!!.matches(".*[0-9].*".toRegex())){
-                binding.passwordInputLayout.error="Password must contain at least one number"
+        binding.emailEditText.doAfterTextChanged {
+            if (!Patterns.EMAIL_ADDRESS.matcher(it.toString()).matches() || it.toString().matches(".*[0-9].*".toRegex())) {
+                binding.emailUsernameInputLayout.error = "Invalid Email address or username "
+            } else {
+                binding.emailUsernameInputLayout.error = null
             }
-            if(it.length<6){
-                binding.passwordInputLayout.error=" Password must be longer than 6 characters"
+        }
+        binding.passwordEditText.doAfterTextChanged {
+            for (i in 0..it.toString().length) {
+                if (!it.toString().matches(".*[0-9].*".toRegex())) {
+                    binding.passwordInputLayout.error = "Password must contain at least one number"
+                }
+                if (it.toString().length < 6) {
+                    binding.passwordInputLayout.error = " Password must be longer than 6 characters"
 
-            }else{
-                binding.emailUsernameInputLayout.error=null
+                } else {
+                    binding.emailUsernameInputLayout.error = null
+                }
             }
         }
     }
 
 
- //  private fun helperText() {
- //      binding.emailEditText.setOnFocusChangeListener { _, focus ->
- //          if (!focus) {
- //              binding.emailUsernameInputLayout.helperText = validEmailText()
- //          }
- //      }
- //      binding.passwordEditText.setOnFocusChangeListener{_, focus->
- //          if(!focus){
- //              binding.passwordInputLayout.helperText=validPassword()
- //          }
 
- //      }
- //  }
+    //  private fun helperText() {
+    //      binding.emailEditText.setOnFocusChangeListener { _, focus ->
+    //          if (!focus) {
+    //              binding.emailUsernameInputLayout.helperText = validEmailText()
+    //          }
+    //      }
+    //      binding.passwordEditText.setOnFocusChangeListener{_, focus->
+    //          if(!focus){
+    //              binding.passwordInputLayout.helperText=validPassword()
+    //          }
 
- //  private fun validEmailText(): String? {
- //      val emailText = binding.emailEditText.text.toString()
- //      if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()|| emailText.matches(".*[0-9].*".toRegex())) {
- //          return "Invalid Email address"
- //      }
+    //      }
+    //  }
 
- //      return null
- //  }
+    //  private fun validEmailText(): String? {
+    //      val emailText = binding.emailEditText.text.toString()
+    //      if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()|| emailText.matches(".*[0-9].*".toRegex())) {
+    //          return "Invalid Email address"
+    //      }
 
- //  private fun validPassword(): String? {
- //      val passwordText = binding.passwordEditText.text.toString()
- //      if (passwordText.length < 6) {
- //          return "Password must be longer than 6 characters"
- //      }
- //      if(!passwordText.matches(".*[0-9].*".toRegex())){
- //          return "Password must contain at least one number"
- //      }
- //      return null
- //  }
+    //      return null
+    //  }
+
+    //  private fun validPassword(): String? {
+    //      val passwordText = binding.passwordEditText.text.toString()
+    //      if (passwordText.length < 6) {
+    //          return "Password must be longer than 6 characters"
+    //      }
+    //      if(!passwordText.matches(".*[0-9].*".toRegex())){
+    //          return "Password must contain at least one number"
+    //      }
+    //      return null
+    //  }
 }

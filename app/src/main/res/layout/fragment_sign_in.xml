@@ -27,8 +27,9 @@
             android:layout_marginTop="@dimen/_16dp"
             android:text="@string/sign_in_we_are_waiting_for_you"
             android:textColor="@color/white"
-            android:textSize="@dimen/_22sp"
+            android:textSize="@dimen/_20sp"
             app:layout_constraintTop_toBottomOf="@id/haveAccountTextView" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailUsernameInputLayout"
             android:layout_width="match_parent"
@@ -37,8 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/signInTextView"
             app:errorEnabled="true"
-            app:helperTextTextColor="@color/color_red"
-
+            android:textColorHint="@color/color_1_40"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -47,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email_username"
-                android:textColorHint="@color/white_10"
                 android:inputType="textEmailAddress"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -62,6 +61,7 @@
             app:layout_constraintTop_toBottomOf="@id/emailUsernameInputLayout"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true"
+            android:textColorHint="@color/color_1_40"
 
             >
 
@@ -70,7 +70,6 @@
                 style="@style/edit_text_styles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16dp"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 />
