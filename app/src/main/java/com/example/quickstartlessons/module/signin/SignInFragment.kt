@@ -39,7 +39,7 @@ class SignInFragment : Fragment() {
             val text = (view as EditText).text.toString()
             if (!isFocused)
                 if (!Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
-                    binding.emailUsernameInputLayout.error = "invalid data"
+                    binding.emailUsernameInputLayout.error = "Invalid Email address or username"
                 }
         }
 
