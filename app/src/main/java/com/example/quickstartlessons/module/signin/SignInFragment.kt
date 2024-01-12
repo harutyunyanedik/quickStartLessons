@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
+import java.util.regex.Pattern
 
 class SignInFragment : Fragment() {
 
@@ -51,9 +52,9 @@ class SignInFragment : Fragment() {
         }
         binding.passwordEditText.doAfterTextChanged {
             for (i in 0..it.toString().length) {
-                if (!it.toString().matches(".*[0-9].*".toRegex())) {
-                    binding.passwordInputLayout.error = "Password must contain at least one number"
-                }
+               // if (!it.toString().matches(".*[0-9].*".toRegex())) {
+               //     binding.passwordInputLayout.error = "Password must contain at least one number"
+               // }
                 if (it.toString().length < 6) {
                     binding.passwordInputLayout.error = " Password must be longer than 6 characters"
 
