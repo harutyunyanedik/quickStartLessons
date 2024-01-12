@@ -1,10 +1,12 @@
 package com.example.quickstartlessons.module.signin
 
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.R
@@ -25,6 +27,7 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+
     }
 
     private fun setupViews() {
@@ -32,16 +35,18 @@ class SignInFragment : Fragment() {
             findNavController().navigate(R.id.action_signInFragment_to_resetPasswordViewPagerFragment)
         }
 
-        binding.emailEditText.doAfterTextChanged {
-            binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.passwordEditText.text.isNullOrEmpty()
+        binding.emailEditText.setOnFocusChangeListener { view, isFocused ->
+            val text = (view as EditText).text.toString()
+            if (!isFocused)
+                if (!Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
+                    binding.emailUsernameInputLayout.error = "Invalid Email address or username"
+                }
         }
 
-        binding.passwordEditText.doAfterTextChanged {
-            binding.signInButton.isEnabled = !it.isNullOrEmpty() && !binding.emailEditText.text.isNullOrEmpty()
-        }
-
-        binding.signInButton.setOnClickListener {
-
+        binding.passwordEditText.setOnFocusChangeListener { view, isFocused ->
+            val text = (view as EditText).text.toString()
+            if (!isFocused)
+                (!TextUtils.isEmpty(text) && Patterns.EMAIL_ADDRESS.matcher(text).matches())
         }
     }
 }
