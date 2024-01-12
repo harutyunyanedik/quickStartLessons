@@ -10,4 +10,6 @@
     <dimen name="_12sp">12sp</dimen>
     <dimen name="_15dp">15dp</dimen>
     <dimen name="_17dp">17dp</dimen>
+    <dimen name="_24dp">24dp</dimen>
+    <dimen name="dialog_margin">32dp</dimen>
 </resources>
