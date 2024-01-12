@@ -10,7 +10,7 @@ import com.example.quickstartlessons.module.base.utils.QSDefaultDialogData
 import com.example.quickstartlessons.module.base.utils.unbindDrawables
 import java.util.Stack
 
-class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dismissLoadingDialog()

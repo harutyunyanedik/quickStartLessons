@@ -27,7 +27,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.util.Stack
 
-class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
     var noConnectionTextView: TextView? = null
 
     private val loadingDialog: Dialog? by lazy {
@@ -97,7 +97,7 @@ class BaseActivity : AppCompatActivity() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    open fun setupUI(view: View) {
+    fun setupUI(view: View) {
         //Set up touch listener for non-text box views to hide keyboard.
         if (view !is EditText) {
             view.setOnTouchListener { _, _ ->
@@ -199,8 +199,6 @@ class BaseActivity : AppCompatActivity() {
             confirmationMessageDialog!!.show()
         }
     }
-
-    open fun loaderImageSrc(): String? = null
 
     companion object : KoinComponent {
         private val context by inject<Context>()

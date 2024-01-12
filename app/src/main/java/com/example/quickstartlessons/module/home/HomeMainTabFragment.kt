@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
-class HomeMainTabFragment : Fragment() {
+class HomeMainTabFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

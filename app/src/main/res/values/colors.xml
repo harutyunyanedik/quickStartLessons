@@ -25,7 +25,7 @@
 
     <color name="color_red">#D60E13</color>
 
-    <color name="status_bar_color">@color/toolbar_color</color>
+    <color name="status_bar_color">@color/app_background</color>
     <color name="toolbar_color">#FF5722</color>
 
     <color name="qs_MaterialDialogColorSurface">@color/app_background</color>
