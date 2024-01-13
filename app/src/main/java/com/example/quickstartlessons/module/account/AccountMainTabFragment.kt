@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.quickstartlessons.R
-
-class AccountMainTabFragment : Fragment() {
-
+class AccountMainTabFragment : Fragment()
+{
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -17,4 +16,11 @@ class AccountMainTabFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_account_main_tab, container, false)
     }
 
+    companion object {
+
+
+        @JvmStatic
+        fun newInstance() =
+            AccountMainTabFragment()
+    }
 }

@@ -11,13 +11,17 @@
         android:label="fragment_home_main_tab"
         tools:layout="@layout/fragment_home_main_tab" />
     <fragment
-        android:id="@+id/favoriteMainTabFragment"
-        android:name="com.example.quickstartlessons.module.favorite.FavoriteMainTabFragment"
-        android:label="fragment_favorite_main_tab"
-        tools:layout="@layout/fragment_favorite_main_tab" />
+        android:id="@+id/favouriteMainTabFragment"
+        android:name="com.example.quickstartlessons.module.favourite.FavouriteMainTabFragment"
+        android:label="fragment_favourite_main_tab"
+        tools:layout="@layout/fragment_favourite_main_tab" />
     <fragment
         android:id="@+id/accountMainTabFragment"
         android:name="com.example.quickstartlessons.module.account.AccountMainTabFragment"
         android:label="fragment_account_main_tab"
         tools:layout="@layout/fragment_account_main_tab" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.quickstartlessons.module.signIn.SignInFragment"
+        android:label="SignInFragment" />
 </navigation>
