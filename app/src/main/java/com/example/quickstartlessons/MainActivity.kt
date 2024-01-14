@@ -1,5 +1,7 @@
 package com.example.quickstartlessons
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -100,5 +102,9 @@ class MainActivity : BaseActivity() {
 
     companion object {
         private const val NAVIGATION_DESTINATION_DURATION: Long = 500
+
+        fun newIntent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
     }
 }

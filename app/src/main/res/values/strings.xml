@@ -30,5 +30,8 @@
     <string name="resetpassword_via_email">ResetPassword via Email</string>
     <string name="email">Email</string>
     <string name="sample_email_com">sample@email.com</string>
+    <string name="invalid_email">Invalid email address</string>
+    <string name="invalid_password">Invalid password</string>
     <string name="helper_text">jjjj</string>
+    <string name="please_fill_in_all_fields">Please fill in all fields</string>
 </resources>

@@ -1,14 +1,15 @@
 package com.example.quickstartlessons.module.signin
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
 
@@ -35,18 +36,36 @@ class SignInFragment : Fragment() {
             findNavController().navigate(R.id.action_signInFragment_to_resetPasswordViewPagerFragment)
         }
 
-        binding.emailEditText.setOnFocusChangeListener { view, isFocused ->
-            val text = (view as EditText).text.toString()
-            if (!isFocused)
-                if (!Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
-                    binding.emailUsernameInputLayout.error = "Invalid Email address or username"
+        binding.signInButton.setOnClickListener {
+            val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
+            if (!email.isNullOrEmpty() && !password.isNullOrEmpty()){
+                when {
+                    !Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length < 8 -> {
+                        binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                        binding.passwordInputLayout.error = getString(R.string.invalid_password)
+                    }
+                    !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                        binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                    }
+                    password.length < 8 -> {
+                        binding.passwordInputLayout.error = getString(R.string.invalid_password)
+                    }
+                    else -> {
+                        val intent = MainActivity.newIntent(requireContext())
+                        startActivity(intent)
+                    }
                 }
+            } else {
+                Toast.makeText(requireContext(), getString(R.string.please_fill_in_all_fields), Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.emailEditText.doOnTextChanged { text, start, before, count ->
+            binding.emailUsernameInputLayout.error = null
+        }
+        binding.passwordEditText.doOnTextChanged { text, start, before, count ->
+            binding.passwordInputLayout.error = null
         }
 
-        binding.passwordEditText.setOnFocusChangeListener { view, isFocused ->
-            val text = (view as EditText).text.toString()
-            if (!isFocused)
-                (!TextUtils.isEmpty(text) && Patterns.EMAIL_ADDRESS.matcher(text).matches())
-        }
     }
 }
