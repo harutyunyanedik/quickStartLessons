@@ -35,18 +35,35 @@ class SignInFragment : Fragment() {
             findNavController().navigate(R.id.action_signInFragment_to_resetPasswordViewPagerFragment)
         }
 
-        binding.emailEditText.setOnFocusChangeListener { view, isFocused ->
-            val text = (view as EditText).text.toString()
-            if (!isFocused)
-                if (!Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
-                    binding.emailUsernameInputLayout.error = "Invalid Email address or username"
-                }
+        fun validEmail(): Boolean {
+                 val text = binding.emailEditText.text.toString()
+                    return if (Patterns.EMAIL_ADDRESS.matcher(text).matches() && text.isNotEmpty()) {
+                        binding.emailUsernameInputLayout.error = null
+                        true
+                    }else {
+                        false
+                    }
         }
 
-        binding.passwordEditText.setOnFocusChangeListener { view, isFocused ->
-            val text = (view as EditText).text.toString()
-            if (!isFocused)
-                (!TextUtils.isEmpty(text) && Patterns.EMAIL_ADDRESS.matcher(text).matches())
+        fun validPassword(): Boolean {
+            val text = binding.passwordEditText.text.toString()
+            return if (text.length > 6) {
+                binding.passwordInputLayout.error = null
+                true
+            } else {
+                false
+            }
+
+        }
+        binding.signInButton.setOnClickListener {
+            if(!validEmail()){
+                binding.emailUsernameInputLayout.error = "Invalid or empty Email address or username"
+            }
+            if (!validPassword()) {
+                binding.passwordInputLayout.error = "Invalid password! Must by bigger 6 Characters!"
+            } else {
+                 //
+            }
         }
     }
 }

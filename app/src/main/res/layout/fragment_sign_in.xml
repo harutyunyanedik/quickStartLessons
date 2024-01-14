@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8dp"
             android:gravity="center_vertical"
-            android:hint="@string/email_username"
+            android:hint="@string/password"
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +98,8 @@
             android:layout_marginTop="@dimen/top_margin"
             android:background="@drawable/button_selector"
             android:text="@string/sign_in"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/rememberMeCheckbox" />
 
