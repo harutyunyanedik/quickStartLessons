@@ -36,13 +36,13 @@ class SignInFragment : Fragment() {
         }
 
         fun validEmail(): Boolean {
-                 val text = binding.emailEditText.text.toString()
-                    return if (Patterns.EMAIL_ADDRESS.matcher(text).matches() && text.isNotEmpty()) {
-                        binding.emailUsernameInputLayout.error = null
-                        true
-                    }else {
-                        false
-                    }
+            val text = binding.emailEditText.text.toString()
+            return if (Patterns.EMAIL_ADDRESS.matcher(text).matches() && text.isNotEmpty()) {
+                binding.emailUsernameInputLayout.error = null
+                true
+            } else {
+                false
+            }
         }
 
         fun validPassword(): Boolean {
@@ -56,13 +56,13 @@ class SignInFragment : Fragment() {
 
         }
         binding.signInButton.setOnClickListener {
-            if(!validEmail()){
+            if (!validEmail()) {
                 binding.emailUsernameInputLayout.error = "Invalid or empty Email address or username"
             }
             if (!validPassword()) {
                 binding.passwordInputLayout.error = "Invalid password! Must by bigger 6 Characters!"
             } else {
-                 //
+                //
             }
         }
     }
