@@ -9,11 +9,13 @@ import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import com.example.quickstartlessons.core.presentation.ProductsViewModel
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.module.base.activity.BaseActivity
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.Utils
 import com.example.quickstartlessons.module.base.utils.setupWithNavController
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
 
@@ -25,6 +27,7 @@ class MainActivity : BaseActivity() {
             findPrimaryNavigationFragment()?.onStateVisible()
         }
     }
+    val viewModel: ProductsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Utils.changeStatusBarColor(activity = this, color = ContextCompat.getColor(this, R.color.status_bar_color))
