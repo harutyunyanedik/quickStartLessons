@@ -31,4 +31,7 @@
     <string name="email">Email</string>
     <string name="sample_email_com">sample@email.com</string>
     <string name="helper_text">jjjj</string>
+    <string name="invalid_password">Invalid password! Must by bigger 6 Characters!</string>
+    <string name="invalid_email">Invalid or empty Email address or username</string>
+    <string name="field_required">The field is required</string>
 </resources>

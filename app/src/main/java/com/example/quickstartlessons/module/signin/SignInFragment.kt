@@ -1,16 +1,17 @@
 package com.example.quickstartlessons.module.signin
 
+import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
+import com.example.quickstartlessons.module.base.utils.QsConstants
 
 class SignInFragment : Fragment() {
 
@@ -27,7 +28,6 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-
     }
 
     private fun setupViews() {
@@ -35,35 +35,39 @@ class SignInFragment : Fragment() {
             findNavController().navigate(R.id.action_signInFragment_to_resetPasswordViewPagerFragment)
         }
 
-        fun validEmail(): Boolean {
-            val text = binding.emailEditText.text.toString()
-            return if (Patterns.EMAIL_ADDRESS.matcher(text).matches() && text.isNotEmpty()) {
-                binding.emailUsernameInputLayout.error = null
-                true
-            } else {
-                false
-            }
-        }
-
-        fun validPassword(): Boolean {
-            val text = binding.passwordEditText.text.toString()
-            return if (text.length > 6) {
-                binding.passwordInputLayout.error = null
-                true
-            } else {
-                false
-            }
-
-        }
         binding.signInButton.setOnClickListener {
-            if (!validEmail()) {
-                binding.emailUsernameInputLayout.error = "Invalid or empty Email address or username"
+            validate()
+        }
+    }
+
+    private fun validate() {
+        val email = binding.emailEditText.text.toString()
+        val password = binding.passwordEditText.text.toString()
+        when {
+            isValidEmail(email) && isValidPassword(password) -> startActivity(Intent(requireContext(), MainActivity::class.java))
+            !isValidEmail(email) && !isValidPassword(password) -> {
+                binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                binding.passwordInputLayout.error = getString(R.string.invalid_password)
             }
-            if (!validPassword()) {
-                binding.passwordInputLayout.error = "Invalid password! Must by bigger 6 Characters!"
-            } else {
-                //
+
+            isValidEmail(email) && !isValidPassword(password) -> {
+                binding.emailUsernameInputLayout.error = QsConstants.EMPTY_STRING
+                binding.passwordInputLayout.error = getString(R.string.invalid_password)
+            }
+
+            !isValidEmail(email) && isValidPassword(password) -> {
+                binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                binding.passwordInputLayout.error = QsConstants.EMPTY_STRING
+            }
+
+            email.isEmpty() && password.isEmpty() -> {
+                binding.emailUsernameInputLayout.error = getString(R.string.field_required)
+                binding.passwordInputLayout.error = getString(R.string.field_required)
             }
         }
     }
+
+    private fun isValidPassword(password: String): Boolean = password.length > 6
+
+    private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
