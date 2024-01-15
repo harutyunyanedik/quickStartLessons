@@ -75,7 +75,9 @@
                 android:gravity="start"
                 android:inputType="textPassword"
                 android:textAlignment="viewStart"
-                android:textColorHint="@color/white_10" />
+                android:textColorHint="@color/white_10"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorPrimary" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
