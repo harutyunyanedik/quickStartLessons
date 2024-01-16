@@ -33,6 +33,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         noConnectionTextView = binding.noConnectionTextView
+        viewModel.getProducts()
+
 
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
@@ -42,7 +44,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupViews() {
-        viewModel.getProducts()
         binding.bottomNavigationView.menu.children.forEachIndexed { index, menuItem ->
             menuItem.title = resources.getStringArray(R.array.navigationMenu_titles_res_ids_Array)[index]
         }

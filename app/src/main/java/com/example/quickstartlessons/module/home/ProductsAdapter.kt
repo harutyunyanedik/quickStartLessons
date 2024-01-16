@@ -34,7 +34,7 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     fun updateData(list: List<ProductDto>?) {
         items.clear()
         list?.let {
-            items.addAll(it)
+            items.addAll(list)
         }
     }
 

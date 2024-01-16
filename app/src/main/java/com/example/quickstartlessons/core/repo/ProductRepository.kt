@@ -1,15 +1,16 @@
 package com.example.quickstartlessons.core.repo
 
 import com.example.quickstartlessons.core.data.ProductDto
+import com.example.quickstartlessons.core.data.Products
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.ProductDataSource
 import com.example.quickstartlessons.core.net.getHttpResponse
 import retrofit2.Call
 
 interface ProductRepository {
-    fun getProductsV1(): Call<List<ProductDto>>
+    fun getProductsV1(): Call<Products>
 
-    suspend fun getProductsV2(resultCallback: ApiResultCallback<List<ProductDto>?>, isShowLoader: Boolean)
+    suspend fun getProductsV2(resultCallback: ApiResultCallback<Products?>, isShowLoader: Boolean)
 
     fun getProductV1(id: Int): Call<ProductDto>
 
@@ -18,9 +19,9 @@ interface ProductRepository {
 
 class ProductsRepositoryImplementation(private val dataSource: ProductDataSource) : ProductRepository {
 
-    override fun getProductsV1(): Call<List<ProductDto>> = dataSource.getProducts()
+    override fun getProductsV1(): Call<Products> = dataSource.getProducts()
 
-    override suspend fun getProductsV2(resultCallback: ApiResultCallback<List<ProductDto>?>, isShowLoader: Boolean) {
+    override suspend fun getProductsV2(resultCallback: ApiResultCallback<Products?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
             dataSource.getProductsV2()
         }

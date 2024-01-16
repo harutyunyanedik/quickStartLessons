@@ -14,6 +14,7 @@ class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductsAdapter()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,14 +25,16 @@ class HomeMainTabFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupAdapter()
+        setupViews()
+
     }
 
-    private fun setupAdapter() {
+    private fun setupViews() {
         binding.rvProducts.adapter = adapter
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
         (requireActivity() as MainActivity).viewModel.productLiveData.observe(viewLifecycleOwner) {
-            adapter.updateData(it)
+            adapter.updateData(it?.products)
         }
     }
+
 }

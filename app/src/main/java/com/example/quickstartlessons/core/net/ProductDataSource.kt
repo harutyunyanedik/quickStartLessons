@@ -1,6 +1,7 @@
 package com.example.quickstartlessons.core.net
 
 import com.example.quickstartlessons.core.data.ProductDto
+import com.example.quickstartlessons.core.data.Products
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
@@ -9,10 +10,10 @@ import retrofit2.http.Path
 interface ProductDataSource {
 
     @GET("products")
-    fun getProducts(): Call<List<ProductDto>>
+    fun getProducts(): Call<Products>
 
     @GET("products")
-    suspend fun getProductsV2(): Response<List<ProductDto>>
+    suspend fun getProductsV2(): Response<Products>
 
     @GET("products/{id}")
     fun getProduct(@Path("id") id: Int): Call<ProductDto>
