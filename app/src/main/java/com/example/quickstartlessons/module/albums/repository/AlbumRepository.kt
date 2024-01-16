@@ -2,8 +2,8 @@ package com.example.quickstartlessons.module.albums.repository
 
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getHttpResponse
+import com.example.quickstartlessons.core.net.products.datasource.ProductDataSource
 import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
-import com.example.quickstartlessons.module.albums.net.datasource.AlbumDataSource
 import retrofit2.Call
 
 interface AlbumRepository {
@@ -16,7 +16,7 @@ interface AlbumRepository {
     suspend fun getAlbumV2(resultCallback: ApiResultCallback<AlbumDto?>, isShowLoader: Boolean, id: Int)
 }
 
-class AlbumRepositoryImplementation(private val dataSource: AlbumDataSource) : AlbumRepository {
+class AlbumRepositoryImplementation(private val dataSource: ProductDataSource) : AlbumRepository {
 
     override fun getAlbumsV1(): Call<List<AlbumDto>> = dataSource.getAlbums()
 

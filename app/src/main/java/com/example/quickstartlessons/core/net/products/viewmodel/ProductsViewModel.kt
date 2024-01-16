@@ -6,29 +6,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getApi
-import com.example.quickstartlessons.core.net.products.dto.ProductsDto
-import com.example.quickstartlessons.core.net.products.repo.ProductRepository
-import com.example.quickstartlessons.core.net.products.repo.ProductRepositoryImplementation
+import com.example.quickstartlessons.core.net.products.dto.Products
+import com.example.quickstartlessons.core.net.products.repo.ProductsRepository
+import com.example.quickstartlessons.core.net.products.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch
 
 class ProductsViewModel:ViewModel() {
-    private val repo: ProductRepository = ProductRepositoryImplementation(getApi())
+    private val repo: ProductsRepository = ProductsRepositoryImplementation(getApi())
 
-    private val _productLiveData: MutableLiveData<List<ProductsDto>?> = MutableLiveData()
-    val productLiveData: LiveData<List<ProductsDto>?>
+    private val _productLiveData: MutableLiveData<List<Products>?> = MutableLiveData()
+    val productLiveData: LiveData<List<Products>?>
         get() = _productLiveData
 
     private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
 
-    fun getProducts(isShoLoader: Boolean = true) {
+    fun getProducts(isShowLoader: Boolean = true) {
         viewModelScope.launch {
-            repo.getAlbumsV2(object : ApiResultCallback<List<ProductsDto>?> {
-                override fun onSuccess(response: List<ProductsDto>?) {
+            repo.getProductsV2((object : ApiResultCallback<Products?> {
+                override fun onSuccess(response: Products?) {
                     _productLiveData.value = response
                 }
-            }, isShoLoader)
+            }), isShowLoader)
         }
     }
 }
