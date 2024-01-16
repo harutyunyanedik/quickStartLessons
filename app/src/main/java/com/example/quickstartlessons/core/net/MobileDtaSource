@@ -1,3 +1,0 @@
-package com.example.quickstartlessons.core.net
-
-data class MobileDataSource()
