@@ -32,11 +32,13 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(list: List<ProductsDto>?) {
         items.clear()
         list?.let {
             items.addAll(list)
         }
+        notifyDataSetChanged()
     }
 
     abstract class BaseViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -55,8 +57,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
         @SuppressLint("SetTextI18n")
         override fun bind(item: ProductsDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
-            binding.tvTitle.text = item.title
-            binding.tvPrice.text = "${item.price.toString()} $"
+            binding.phoneTitle.text = item.title
+            binding.price.text = "${item.price.toString()} $"
 
         }
     }

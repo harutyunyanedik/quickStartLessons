@@ -15,10 +15,10 @@
         android:background="@color/app_background">
 
         <TextView
-            android:id="@+id/tvPhones"
+            android:id="@+id/products"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/phones"
+            android:text="@string/products"
             android:textColor="@color/white"
             android:textSize="@dimen/_36sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +28,9 @@
             android:id="@+id/recyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/products"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

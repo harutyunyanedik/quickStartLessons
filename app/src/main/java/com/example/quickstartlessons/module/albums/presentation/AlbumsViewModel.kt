@@ -15,7 +15,7 @@ class AlbumsViewModel : ViewModel() {
 
     private val repo: AlbumRepository = AlbumRepositoryImplementation(getApi())
 
-    //
+
     private val _albumLiveData: MutableLiveData<List<AlbumDto>?> = MutableLiveData()
     val albumLiveData: LiveData<List<AlbumDto>?>
         get() = _albumLiveData
