@@ -31,7 +31,7 @@ class ProductAdapter:RecyclerView.Adapter <ProductAdapter.ProductViewHolder>(){
         holder.bind(items[position])
     }
     @SuppressLint("NotifyDataSetChanged")
-    private fun updateData(item:List<ProductData>?){
+   fun updateData(item:List<ProductData>?){
         items.clear()
         item?.let{
             items.addAll(item)
