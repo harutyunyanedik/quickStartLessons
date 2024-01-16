@@ -26,11 +26,11 @@ class ProductsViewModel:ViewModel() {
 
     fun getProducts(isShowLoader: Boolean = true) {
         viewModelScope.launch {
-            repo.getProductsV2(object : ApiResultCallback<List<Products?> {
-                override fun onSuccess(response: List<Products?>) {
+            repo.getProductsV2((object : ApiResultCallback<Products?> {
+                override fun onSuccess(response: Products?) {
                     _productLiveData.value = response
                 }
-            }, isShowLoader)
+            }), isShowLoader)
         }
     }
 }

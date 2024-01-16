@@ -17,20 +17,21 @@ interface AlbumRepository {
 }
 
 class AlbumRepositoryImplementation(private val dataSource: ProductDataSource) : AlbumRepository {
-
-    override fun getAlbumsV1(): Call<List<AlbumDto>> = dataSource.getAlbums()
+    override fun getAlbumsV1(): Call<List<AlbumDto>> {
+        TODO("Not yet implemented")
+    }
 
     override suspend fun getAlbumsV2(resultCallback: ApiResultCallback<List<AlbumDto>?>, isShowLoader: Boolean) {
-        getHttpResponse(resultCallback, isShowLoader) {
-            dataSource.getAlbumsV2()
-        }
+        TODO("Not yet implemented")
     }
 
-    override fun getAlbumV1(id: Int): Call<AlbumDto> = dataSource.getAlbum(id)
+    override fun getAlbumV1(id: Int): Call<AlbumDto> {
+        TODO("Not yet implemented")
+    }
 
     override suspend fun getAlbumV2(resultCallback: ApiResultCallback<AlbumDto?>, isShowLoader: Boolean, id: Int) {
-        getHttpResponse(resultCallback, isShowLoader) {
-            dataSource.getAlbumV2(id)
-        }
+        TODO("Not yet implemented")
     }
+
+
 }

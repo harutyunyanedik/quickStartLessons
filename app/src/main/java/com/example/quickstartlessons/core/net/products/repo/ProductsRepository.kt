@@ -5,7 +5,9 @@ import com.example.quickstartlessons.core.net.products.datasource.ProductDataSou
 import com.example.quickstartlessons.core.net.products.dto.ProductsDto
 import com.example.quickstartlessons.core.net.getHttpResponse
 import com.example.quickstartlessons.core.net.products.dto.Products
+import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 import retrofit2.Call
+
 
 interface ProductsRepository {
     fun getProductsV1(): Call<Products>
@@ -34,4 +36,6 @@ class ProductsRepositoryImplementation(private val dataSource: ProductDataSource
             dataSource.getProductV2(id)
         }
     }
+
+
 }
