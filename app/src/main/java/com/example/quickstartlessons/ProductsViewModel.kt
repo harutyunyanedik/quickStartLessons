@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.core.presentation
+package com.example.quickstartlessons
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
