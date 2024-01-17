@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getApi
 import com.example.quickstartlessons.core.net.products.dto.ProductsDto
-import com.example.quickstartlessons.core.net.products.dto.ProductDto
 import com.example.quickstartlessons.core.net.products.repo.ProductsRepository
 import com.example.quickstartlessons.core.net.products.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch
@@ -26,8 +25,8 @@ class ProductsViewModel:ViewModel() {
 
     fun getProducts(isShowLoader: Boolean = true) {
         viewModelScope.launch {
-            repo.getProductsV2((object : ApiResultCallback<ProductDto?> {
-                override fun onSuccess(response: ProductDto?) {
+            repo.getProductsV2((object : ApiResultCallback<ProductsDto?> {
+                override fun onSuccess(response: ProductsDto?) {
                     _productLiveData.value = response
                 }
             }), isShowLoader)

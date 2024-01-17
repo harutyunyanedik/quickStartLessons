@@ -11,11 +11,8 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
 
 class HomeMainTabFragment : BaseFragment() {
-
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductsAdapter()
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +31,7 @@ class HomeMainTabFragment : BaseFragment() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         (requireActivity() as MainActivity).viewModel.productLiveData.observe(viewLifecycleOwner) {
-            adapter.updateData(it?.products)
+            adapter.updateData(it)
         }
     }
 

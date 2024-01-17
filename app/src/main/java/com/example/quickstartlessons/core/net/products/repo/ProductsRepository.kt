@@ -9,9 +9,9 @@ import retrofit2.Call
 
 
 interface ProductsRepository {
-    fun getProductsV1(): Call<ProductDto>
+    fun getProductsV1(): Call<ProductsDto>
 
-    suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean)
+    suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
 
     fun getProductV1(id: Int): Call<ProductDto>
 
@@ -19,11 +19,9 @@ interface ProductsRepository {
 }
 
 class ProductsRepositoryImplementation(private val dataSource: ProductDataSource) : ProductsRepository {
+    override fun getProductsV1(): Call<ProductsDto> = dataSource.getProducts()
 
-    override fun getProductsV1(): Call<ProductDto> = dataSource.getProducts()
-
-
-    override suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean) {
+    override suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
             dataSource.getProductsV2()
         }
@@ -35,5 +33,6 @@ class ProductsRepositoryImplementation(private val dataSource: ProductDataSource
         getHttpResponse(resultCallback, isShowLoader) {
             dataSource.getProductV2(id)
         }
+
     }
 }

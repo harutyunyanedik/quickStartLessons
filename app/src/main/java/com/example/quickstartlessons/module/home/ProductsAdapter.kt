@@ -34,13 +34,15 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     override fun getItemCount() = items.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(list: List<ProductDto>?) {
+    fun updateData(list: List<ProductsDto>?) {
         items.clear()
-        list?.let {
-            items.addAll(list)
+        items.let {
+            items.addAll(it)
         }
         notifyDataSetChanged()
     }
+
+
 
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(item: ProductDto)
