@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.quickstartlessons.core.net.products.dto.ProductDto
 import com.example.quickstartlessons.core.net.products.dto.ProductsDto
 import com.example.quickstartlessons.databinding.ItemProductBinding
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
 
-    private val items = mutableListOf<ProductsDto>()
+    private val items = mutableListOf<ProductDto>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
@@ -33,29 +34,30 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     override fun getItemCount() = items.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(list: List<ProductsDto>?) {
+    fun updateData(list: List<ProductDto>?) {
         items.clear()
         list?.let {
-            items.addAll(it)
+            items.addAll(list)
         }
         notifyDataSetChanged()
     }
 
-    abstract class BaseViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        abstract fun bind(item: ProductsDto)
+    abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        abstract fun bind(item: ProductDto)
     }
-    inner class ProductViewHolder(private val binding: ItemProductBinding): BaseViewHolder(binding.root) {
+
+    inner class ProductViewHolder(private val binding: ItemProductBinding) : BaseViewHolder(binding.root) {
 
         init {
             binding.checkboxFavorite.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (adapterPosition != RecyclerView.NO_POSITION){
+                if (adapterPosition != RecyclerView.NO_POSITION) {
                     items[adapterPosition].isFavorite = isChecked
                 }
             }
         }
 
         @SuppressLint("SetTextI18n")
-        override fun bind(item: ProductsDto) {
+        override fun bind(item: ProductDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
             binding.phoneTitle.text = item.title
             binding.price.text = "${item.price.toString()} $"

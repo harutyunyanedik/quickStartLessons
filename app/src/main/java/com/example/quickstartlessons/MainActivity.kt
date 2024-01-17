@@ -29,6 +29,7 @@ class MainActivity : BaseActivity() {
     }
 
     val viewModel: ProductsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Utils.changeStatusBarColor(activity = this, color = ContextCompat.getColor(this, R.color.status_bar_color))
         super.onCreate(savedInstanceState)

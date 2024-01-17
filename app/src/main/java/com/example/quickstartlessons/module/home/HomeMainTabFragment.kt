@@ -34,7 +34,7 @@ class HomeMainTabFragment : BaseFragment() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         (requireActivity() as MainActivity).viewModel.productLiveData.observe(viewLifecycleOwner) {
-            adapter.updateData(it)
+            adapter.updateData(it?.products)
         }
     }
 
