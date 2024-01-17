@@ -20,7 +20,7 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = ItemHomeMainTabBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,7 +31,6 @@ class HomeMainTabFragment : BaseFragment() {
         setupListener()
         setupObserve()
 
-
     }
 
     private fun setupRecyclerView() {
@@ -41,7 +40,7 @@ class HomeMainTabFragment : BaseFragment() {
     }
 
     private fun setupObserve() {
-        viewModel.productLiveData.observe(viewLifecycleOwner) {
+        viewModel.productLiveData.observe(viewLifecycleOwner) {it->
             adapter.updateData(it)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
