@@ -35,11 +35,12 @@ class HomeMainTabFragment : BaseFragment() {
     private fun setupViews() {
         binding.rvProducts.adapter = adapter
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
-        viewModel.getProducts()
+        viewModel.getProducts() // todo move to onCreate fun
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
+            // todo me have showErrorMessageDialog() fun extension in fragment, use it
             val alertDialogBuilder = AlertDialog.Builder(requireContext())
 
             alertDialogBuilder.setTitle("Error")
