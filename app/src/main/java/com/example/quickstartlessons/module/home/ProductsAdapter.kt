@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.core.net.products.dto.ProductDto
-import com.example.quickstartlessons.core.net.products.dto.ProductsDto
 import com.example.quickstartlessons.databinding.ItemProductBinding
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
@@ -34,9 +33,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     override fun getItemCount() = items.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(list: List<ProductsDto>?) {
+    fun updateData(list: List<ProductDto>?) {
         items.clear()
-        items.let {
+        list?.let {
             items.addAll(it)
         }
         notifyDataSetChanged()
@@ -53,7 +52,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
         override fun bind(item: ProductDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
             binding.productDescription.text = item.title
-            binding.productPrice.text = "${item.price.toString()} $"
+            binding.productPrice.text = "${item.price} $"
 
         }
     }
