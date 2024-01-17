@@ -1,6 +1,6 @@
-package com.example.quickstartlessons.core.net
+package com.example.quickstartlessons.core
 
-import com.example.quickstartlessons.core.net.products.datasource.ProductDataSource
+import com.example.quickstartlessons.core.net.ProductDataSource
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request

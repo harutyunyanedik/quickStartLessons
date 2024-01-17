@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.core.net
+package com.example.quickstartlessons.core
 
 import androidx.annotation.Keep
 import com.example.quickstartlessons.module.base.fragment.BaseFragment

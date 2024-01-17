@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.quickstartlessons.core.net.ApiResultCallback
-import com.example.quickstartlessons.core.net.getApi
-import com.example.quickstartlessons.core.net.products.dto.ProductDto
-import com.example.quickstartlessons.core.net.products.dto.ProductsDto
-import com.example.quickstartlessons.core.net.products.repo.ProductsRepository
-import com.example.quickstartlessons.core.net.products.repo.ProductsRepositoryImplementation
+import com.example.quickstartlessons.core.ApiResultCallback
+import com.example.quickstartlessons.core.getApi
+import com.example.quickstartlessons.module.data.ProductDto
+import com.example.quickstartlessons.module.data.ProductsDto
+import com.example.quickstartlessons.core.repo.ProductsRepository
+import com.example.quickstartlessons.core.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch
 
 class HomeMainTabViewModel : ViewModel() {

@@ -1,8 +1,7 @@
 package com.example.quickstartlessons.module.albums.repository
 
-import com.example.quickstartlessons.core.net.ApiResultCallback
-import com.example.quickstartlessons.core.net.getHttpResponse
-import com.example.quickstartlessons.core.net.products.datasource.ProductDataSource
+import com.example.quickstartlessons.core.ApiResultCallback
+import com.example.quickstartlessons.core.net.ProductDataSource
 import com.example.quickstartlessons.module.albums.data.model.responce.AlbumDto
 import retrofit2.Call
 
