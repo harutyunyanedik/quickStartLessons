@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.core.net.products.viewmodel
+package com.example.quickstartlessons.module.home.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import com.example.quickstartlessons.core.net.products.repo.ProductsRepository
 import com.example.quickstartlessons.core.net.products.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch
 
-class ProductsViewModel : ViewModel() {
+class HomeMainTabViewModel : ViewModel() {
     private val repo: ProductsRepository = ProductsRepositoryImplementation(getApi())
 
 

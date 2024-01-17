@@ -3,14 +3,12 @@ package com.example.quickstartlessons
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
-import com.example.quickstartlessons.core.net.products.viewmodel.ProductsViewModel
 import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.module.base.activity.BaseActivity
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
@@ -27,7 +25,7 @@ class MainActivity : BaseActivity() {
             findPrimaryNavigationFragment()?.onStateVisible()
         }
     }
-    val viewModel: ProductsViewModel by viewModels() // todo refactor package
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Utils.changeStatusBarColor(activity = this, color = ContextCompat.getColor(this, R.color.status_bar_color))
         super.onCreate(savedInstanceState)
@@ -39,7 +37,6 @@ class MainActivity : BaseActivity() {
         }
         setupViews()
         observeLiveData()
-        viewModel.getProducts()
     }
 
     private fun setupViews() {
