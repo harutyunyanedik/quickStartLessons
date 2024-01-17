@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import com.example.quickstartlessons.R
+
 import com.example.quickstartlessons.databinding.FragmentMathDataBinding
-import com.example.quickstartlessons.homework.LivaData.MathData
-import com.example.quickstartlessons.homework.LivaData.MathLiveData
+
+import com.example.quickstartlessons.homework.LivaData.SingleLiveEvent
 
 class MathDataFragment : Fragment() {
     private lateinit var binding: FragmentMathDataBinding
-    private lateinit var liveData: MathLiveData
+    private  val liveData:SingleLiveEvent<String> = SingleLiveEvent()
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
@@ -27,7 +27,7 @@ class MathDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        liveData.observeOnc(viewLifecycleOwner) { it ->
+        liveData.observe(viewLifecycleOwner) { it ->
             binding.mathData.text = it
 
         }
