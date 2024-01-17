@@ -49,15 +49,6 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     }
 
     inner class ProductViewHolder(private val binding: ItemProductBinding) : BaseViewHolder(binding.root) {
-
-        init {
-            binding.checkboxFavorite.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (adapterPosition != RecyclerView.NO_POSITION) {
-                    items[adapterPosition].isFavorite = isChecked
-                }
-            }
-        }
-
         @SuppressLint("SetTextI18n")
         override fun bind(item: ProductDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)

@@ -13,6 +13,7 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductsAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
