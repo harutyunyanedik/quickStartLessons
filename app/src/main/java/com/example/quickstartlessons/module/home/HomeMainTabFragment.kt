@@ -41,7 +41,7 @@ class HomeMainTabFragment : BaseFragment() {
     }
 
     private fun setupViews() {
-        binding.rvItemsOfProducts.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvItemsOfProducts.layoutManager = GridLayoutManager(requireContext(), 1)
         binding.rvItemsOfProducts.adapter = adapter
     }
 
