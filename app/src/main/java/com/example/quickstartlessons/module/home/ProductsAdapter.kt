@@ -61,8 +61,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
         @SuppressLint("SetTextI18n")
         override fun bind(item: ProductDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
-            binding.phoneTitle.text = item.title
-            binding.price.text = "${item.price.toString()} $"
+            binding.productDescription.text = item.title
+            binding.productPrice.text = "${item.price.toString()} $"
 
         }
     }
