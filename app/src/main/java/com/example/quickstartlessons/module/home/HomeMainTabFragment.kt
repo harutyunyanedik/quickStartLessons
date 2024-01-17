@@ -1,7 +1,5 @@
 package com.example.quickstartlessons.module.home
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,25 +33,13 @@ class HomeMainTabFragment : BaseFragment() {
     private fun setupViews() {
         binding.rvProducts.adapter = adapter
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
-        viewModel.getProducts() // todo move to onCreate fun
+        viewModel.getProducts()
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            // todo me have showErrorMessageDialog() fun extension in fragment, use it
-            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+            showErrorMessageDialog("Error", it!!)
 
-            alertDialogBuilder.setTitle("Error")
-            alertDialogBuilder.setMessage(it)
-
-            alertDialogBuilder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
-                dismissLoadingDialog()
-            }
-
-            val alertDialog: AlertDialog = alertDialogBuilder.create()
-            if (!alertDialog.isShowing) {
-                alertDialog.show()
-            }
         }
     }
 
