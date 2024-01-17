@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.product
+package com.example.quickstartlessons.module.product.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.core.net.ProductData
+import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.databinding.FragmentProductDataBinding
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
-    private val items: MutableList<ProductData> = mutableListOf()
+    private val items: MutableList<ProductDto> = mutableListOf()
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -32,7 +32,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(item: List<ProductData>?) {
+    fun updateData(item: List<ProductDto>?) {
         items.clear()
         item?.let {
             items.addAll(item)
@@ -51,7 +51,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         //     }
         // }
 
-        fun bind(item: ProductData) {
+        fun bind(item: ProductDto) {
             Glide.with(context).load(item.thumbnail).into(binding.imageProduct)
             binding.productBrand.text = item.brand
             binding.productPrice.text = item.price.toString()

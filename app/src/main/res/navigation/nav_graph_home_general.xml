@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.quickstartlessons.module.home.HomeMainTabFragment"
+        android:name="com.example.quickstartlessons.module.home.ui.HomeMainTabFragment"
         android:label="HomeFragment"
         tools:layout="@layout/item_home_main_tab" />
 
