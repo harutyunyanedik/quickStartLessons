@@ -8,11 +8,11 @@ import com.example.quickstartlessons.core.net.getHttpResponse
 import retrofit2.Call
 
 interface ProductRepository {
-    fun getProductsV1(): Call<ProductsDto>
+    fun getProductsV1(): Call<ProductsDto> // todo delete
 
     suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
 
-    fun getProductV1(id: Int): Call<ProductDto>
+    fun getProductV1(id: Int): Call<ProductDto> // todo delete
 
     suspend fun getProductV2(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id: Int)
 }

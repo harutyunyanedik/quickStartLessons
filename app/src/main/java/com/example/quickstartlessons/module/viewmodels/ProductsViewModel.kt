@@ -18,7 +18,7 @@ class ProductsViewModel : ViewModel() {
     val productLiveData: LiveData<ProductsDto?>
         get() = _productLiveData
 
-    private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()  // todo handle error case
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
 

@@ -27,7 +27,7 @@ class MainActivity : BaseActivity() {
             findPrimaryNavigationFragment()?.onStateVisible()
         }
     }
-    val viewModel: ProductsViewModel by viewModels()
+    val viewModel: ProductsViewModel by viewModels() // todo move to fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Utils.changeStatusBarColor(activity = this, color = ContextCompat.getColor(this, R.color.status_bar_color))

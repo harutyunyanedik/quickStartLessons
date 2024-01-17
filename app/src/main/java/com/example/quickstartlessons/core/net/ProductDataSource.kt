@@ -10,13 +10,13 @@ import retrofit2.http.Path
 interface ProductDataSource {
 
     @GET("products")
-    fun getProducts(): Call<ProductsDto>
+    fun getProducts(): Call<ProductsDto> // todo delete
 
     @GET("products")
     suspend fun getProductsV2(): Response<ProductsDto>
 
     @GET("products/{id}")
-    fun getProduct(@Path("id") id: Int): Call<ProductDto>
+    fun getProduct(@Path("id") id: Int): Call<ProductDto> // todo delete
 
     @GET("products/{id}")
     suspend fun getProductV2(@Path("id") id: Int): Response<ProductDto>
