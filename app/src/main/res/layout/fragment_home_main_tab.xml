@@ -19,7 +19,7 @@
                 android:id="@+id/tvPhones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/phones"
+                android:text="@string/products"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_36sp"
                 app:layout_constraintStart_toStartOf="parent"

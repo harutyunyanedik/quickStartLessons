@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.module.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -31,11 +32,13 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(list: List<ProductDto>?) {
         items.clear()
         list?.let {
             items.addAll(list)
         }
+        notifyDataSetChanged()
     }
 
     abstract class BaseViewHolder(view: View): RecyclerView.ViewHolder(view) {
