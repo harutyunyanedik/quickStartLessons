@@ -12,14 +12,12 @@ import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.adapter.ProductsRecyclerViewAdapter
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
-
 class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
     private val viewModel: ProductsViewModel by viewModels()
     private var adapter: ProductsRecyclerViewAdapter = ProductsRecyclerViewAdapter {
-       // var favoriteIsChecked = it
-        //
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +34,8 @@ class HomeMainTabFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpObservers()
         setupViews()
+        setUpObservers()
     }
 
     private fun setupViews() {
@@ -47,11 +45,10 @@ class HomeMainTabFragment : BaseFragment() {
 
     private fun setUpObservers() {
         viewModel.productsLiveData.observe(viewLifecycleOwner) {
-                adapter.updateData(it?.products)
-
+            adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show() // todo show dialog
         }
     }
 }

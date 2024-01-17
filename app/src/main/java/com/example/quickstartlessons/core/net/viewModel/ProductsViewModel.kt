@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.core.net.viewModel
+package com.example.quickstartlessons.core.net.viewModel // todo  module/home/ui/
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getProduct
-import com.example.quickstartlessons.core.net.repo.Model.ProductsModel
+import com.example.quickstartlessons.core.net.repo.model.ProductsModel
 import com.example.quickstartlessons.core.net.repo.repository.ProductRepositoryImplementation
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
 import kotlinx.coroutines.launch

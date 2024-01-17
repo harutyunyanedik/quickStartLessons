@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.core.net.repo.Model
+package com.example.quickstartlessons.core.net.repo.model // todo move to module/products/data/response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

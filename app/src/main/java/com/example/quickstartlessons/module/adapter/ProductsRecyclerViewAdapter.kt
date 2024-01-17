@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.core.net.repo.Model.ProductsDto
+import com.example.quickstartlessons.core.net.repo.model.ProductsDto
 import com.example.quickstartlessons.databinding.RvHomeMainTabFragmentBinding
 
 class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
@@ -48,7 +48,7 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
     inner class ProductsRecyclerViewHolder(private val binding: RvHomeMainTabFragmentBinding) : BaseViewHolder(binding.root) {
         init {
             binding.favoriteCheckbox.setOnClickListener {
-                if(adapterPosition !=RecyclerView.NO_POSITION) {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
                     onItemClick.invoke(true)
                 }
             }
@@ -62,7 +62,7 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
             binding.productDescription.text = item.description
             binding.productPrice.text = item.description
             binding.productRating.text = item.rating
-           Glide.with(context).load(item. thumbnail).into(binding.productThumbnail)
+            Glide.with(context).load(item.thumbnail).into(binding.productThumbnail)
         }
     }
 

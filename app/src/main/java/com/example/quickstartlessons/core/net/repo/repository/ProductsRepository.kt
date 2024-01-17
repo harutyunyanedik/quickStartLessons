@@ -2,10 +2,9 @@ package com.example.quickstartlessons.core.net.repo.repository
 
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getHttpResponse
-import com.example.quickstartlessons.core.net.repo.Model.ProductsDto
+import com.example.quickstartlessons.core.net.repo.model.ProductsDto
 import com.example.quickstartlessons.core.net.repo.datasource.ProductsDataSource
-import com.example.quickstartlessons.core.net.repo.Model.ProductsModel
-
+import com.example.quickstartlessons.core.net.repo.model.ProductsModel
 
 interface ProductsRepository {
 
