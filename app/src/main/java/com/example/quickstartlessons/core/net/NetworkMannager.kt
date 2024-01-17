@@ -1,6 +1,7 @@
 package com.example.quickstartlessons.core.net
 
 import androidx.annotation.Keep
+import com.example.quickstartlessons.core.net.repo.Model.ProductsModel
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers

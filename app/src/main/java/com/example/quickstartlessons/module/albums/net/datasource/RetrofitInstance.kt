@@ -1,6 +1,5 @@
-package com.example.quickstartlessons.core.net
+package com.example.quickstartlessons.module.albums.net.datasource
 
-import com.example.quickstartlessons.core.net.repo.datasource.ProductsDataSource
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -37,7 +36,7 @@ class HeaderInterceptor : Interceptor {
     }
 }
 
-fun getProduct(): ProductsDataSource = getApiService()
+fun getApi(): AlbumDataSource = getApiService()
 
 inline fun <reified T> getApiService(): T {
     return retrofit.create(T::class.java)
