@@ -15,6 +15,7 @@ import com.example.quickstartlessons.module.base.activity.BaseActivity
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.Utils
 import com.example.quickstartlessons.module.base.utils.setupWithNavController
+import com.example.quickstartlessons.module.viewmodels.ProductsViewModel
 
 class MainActivity : BaseActivity() {
 

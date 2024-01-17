@@ -1,4 +1,4 @@
-package com.example.quickstartlessons
+package com.example.quickstartlessons.module.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
