@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.core.data
+package com.example.quickstartlessons.module.data
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
