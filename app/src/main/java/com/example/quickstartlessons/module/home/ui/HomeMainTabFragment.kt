@@ -6,15 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.home.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ProductsAdapter
 
 
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductsAdapter()
+    private val categoriesAdapter = CategoriesAdapter()
     private val viewModel: HomeMainTabViewModel by viewModels()
+    private val categoriesViewModel: CategoriesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +42,14 @@ class HomeMainTabFragment : BaseFragment() {
     private fun setupViews() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvCategories.adapter = adapter
+        binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun setUpObservers() {
+        viewModel.productLiveData.observe(viewLifecycleOwner) {
+            adapter.updateData(it)
+        }
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }

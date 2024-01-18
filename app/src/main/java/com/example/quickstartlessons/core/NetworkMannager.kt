@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 suspend fun <T> getHttpResponse(
-    resultCallBack: ApiResultCallback<List<String>>,
+    resultCallBack: ApiResultCallback<T?>,
     isShowLoader: Boolean = true,
     apiFunction: suspend () -> Response<T>
 ) {
