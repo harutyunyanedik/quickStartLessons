@@ -59,7 +59,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             binding.productPrice.text = "${item.price} $"
             binding.productTitle.text = item.title
             binding.productDescription.text = item.description
-
+            binding.favoriteProduct.isChecked=item.favorite
         }
     }
 }
