@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
 
-class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>() {
+class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private val item: MutableList<String> = mutableListOf()
@@ -18,19 +18,17 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>
         inflater = LayoutInflater.from(context)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesAdapter.BaseViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         return CategoriesViewHolder(FragmentCategoriesBinding.inflate(inflater, parent, false))
     }
+    override fun getItemCount() = item.size
 
-    override fun onBindViewHolder(holder: CategoriesAdapter.BaseViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         holder.bind(item[position])
     }
 
-    override fun getItemCount(): Int = item.size
-
-
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(list: List<String>?) {
+    fun updateDataCategories(list: List<String>?) {
         item.clear()
         list?.let {
             item.addAll(item)
@@ -38,13 +36,13 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>
         notifyDataSetChanged()
     }
 
-    abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        abstract fun bind(item: String)
+//    abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+//        abstract fun bind(item: String)
+//
+//    }
 
-    }
-
-    inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) : BaseViewHolder(binding.root) {
-        override fun bind(item: String) {
+    inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) :RecyclerView.ViewHolder(binding.root) {
+         fun bind(item: String) {
             binding.categoriesName.text = item
 
         }

@@ -26,11 +26,13 @@ class HomeMainTabFragment : BaseFragment() {
     ): View {
         binding = FragmentHomeMainTabBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProducts()
+        categoriesViewModel.getCategories()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ class HomeMainTabFragment : BaseFragment() {
     private fun setupViews() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvCategories.adapter = adapter
+        binding.rvCategories.adapter = categoriesAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
@@ -50,8 +52,8 @@ class HomeMainTabFragment : BaseFragment() {
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }
-        viewModel.productLiveData.observe(viewLifecycleOwner) {
-            adapter.updateData(it)
+        categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
+            categoriesAdapter.updateDataCategories(it)
         }
     }
 }
