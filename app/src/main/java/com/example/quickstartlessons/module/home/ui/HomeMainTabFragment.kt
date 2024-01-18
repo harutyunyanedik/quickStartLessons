@@ -26,7 +26,6 @@ class HomeMainTabFragment : BaseFragment() {
     ): View {
         binding = FragmentHomeMainTabBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +43,7 @@ class HomeMainTabFragment : BaseFragment() {
     private fun setupViews() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvCategories.adapter = categoriesAdapter
+        binding.rvCategories.adapter = adapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
