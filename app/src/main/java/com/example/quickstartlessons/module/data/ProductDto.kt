@@ -14,5 +14,4 @@ data class ProductDto(
     val price: Int,
     @SerializedName("thumbnail")
     val imageUrl: String,
-    var isFavorite: Boolean = false
 ) : Serializable

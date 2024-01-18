@@ -8,14 +8,21 @@
         android:background="@color/white"
         tools:context=".module.home.HomeMainTabFragment">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
         <TextView
-            android:id="@+id/tvPhones"
+            android:id="@+id/tvProducts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/products"
             android:textColor="@color/black"
             android:textSize="@dimen/_36sp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvCategories"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -23,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPhones"
+            app:layout_constraintTop_toBottomOf="@id/tvProducts"
             tools:listitem="@layout/product_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

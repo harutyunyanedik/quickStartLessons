@@ -8,6 +8,10 @@ import retrofit2.http.Path
 
 interface ProductDataSource {
 
+    @GET("products/category/{categoryName}")
+    suspend fun getProductsByCategory(@Path("categoryName") name: String): Response<ProductsDto>
+    @GET("products/categories")
+    suspend fun getCategories(): Response<List<String>>
 
     @GET("products")
     suspend fun getProductsV2(): Response<ProductsDto>

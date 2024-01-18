@@ -6,14 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.data.ProductMapper
+import java.util.Locale
 
 class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val adapter = ProductsAdapter()
+    private val productsAdapter = ProductsAdapter()
+    private val categoriesAdapter = CategoriesAdapter()
     private val viewModel: ProductsViewModel by viewModels()
+    private val mapper = ProductMapper()
 
 
     override fun onCreateView(
@@ -31,12 +37,26 @@ class HomeMainTabFragment : BaseFragment() {
     }
 
     private fun setupViews() {
-        binding.rvProducts.adapter = adapter
+        binding.rvProducts.adapter = productsAdapter
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvCategories.adapter = categoriesAdapter
+        binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        viewModel.getCategories()
+        viewModel.categoryLiveData.observe(viewLifecycleOwner) {
+            categoriesAdapter.updateData(mapper.listStringToListCategory(it))
+        }
         viewModel.getProducts()
         viewModel.productLiveData.observe(viewLifecycleOwner) {
-            adapter.updateData(it?.products)
+            productsAdapter.updateData(mapper.listProductsDtoToListProducts(it))
         }
+
+        categoriesAdapter.onCategoryClick = {
+            viewModel.getProductsByCategory(category = it)
+            binding.tvProducts.text = it.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+
+        }
+
+
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error", it!!)
 

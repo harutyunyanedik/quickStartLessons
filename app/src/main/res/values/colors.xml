@@ -51,6 +51,8 @@
     <color name="password_toggle_tint">#8f9096</color>
     <color name="status_bar_color">@color/app_background</color>
 
+    <color name="blue_light">#19B7FF</color>
+
     <color name="quickStart_MaterialDialogColorSurface">@color/app_background</color>
     <color name="quickStart_MaterialDialogAccentColor">@color/myAccentColor</color>
     <color name="quickStart_MaterialDialogColorOnSurface">@color/app_background</color>

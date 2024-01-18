@@ -22,6 +22,15 @@ class ProductsViewModel : ViewModel() {
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
 
+    private val _categoryLiveData: MutableLiveData<List<String>?> = MutableLiveData()
+
+    val categoryLiveData: LiveData<List<String>?>
+        get() = _categoryLiveData
+
+    private val _categoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val categoryErrorLiveData: LiveData<String?>
+        get() = _categoryErrorLiveData
+
     fun getProducts(isShowLoader: Boolean = false) {
         viewModelScope.launch {
             repo.getProductsV2((object : ApiResultCallback<ProductsDto?> {
@@ -34,6 +43,36 @@ class ProductsViewModel : ViewModel() {
                     return true
                 }
             }), isShowLoader)
+        }
+    }
+
+    fun getCategories(isShowLoader: Boolean = false) {
+        viewModelScope.launch {
+            repo.getCategories((object : ApiResultCallback<List<String>?> {
+                override fun onSuccess(response: List<String>?) {
+                    _categoryLiveData.value = response
+                }
+
+                override fun onError(): Boolean {
+                    _categoryErrorLiveData.value = "The request failed"
+                    return true
+                }
+            }), isShowLoader)
+        }
+    }
+
+    fun getProductsByCategory(isShowLoader: Boolean = false, category: String) {
+        viewModelScope.launch {
+            repo.getProductsByCategory((object : ApiResultCallback<ProductsDto?> {
+                override fun onSuccess(response: ProductsDto?) {
+                   _productLiveData.value = response
+                }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "The request failed"
+                    return true
+                }
+            }), isShowLoader, category)
         }
     }
 }
