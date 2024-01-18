@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.databinding.FragmentProductDataBinding
 
@@ -44,7 +43,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     inner class ProductViewHolder(private val binding: FragmentProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.favoriteProduct.setOnCheckedChangeListener { button, isChecked ->
-                if (button.isPressed) {
+               if (button.isPressed) {
                     if (adapterPosition != RecyclerView.NO_POSITION) {
                         items[adapterPosition].favorite = isChecked
 
