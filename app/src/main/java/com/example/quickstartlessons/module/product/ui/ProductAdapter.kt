@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.databinding.FragmentProductDataBinding
 
@@ -41,20 +42,22 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     }
 
     inner class ProductViewHolder(private val binding: FragmentProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
-       //    init {
-    //   binding.favoriteProduct.setOnCheckedChangeListener {
-    //       if (it.isPressed) {
-    //           if (adapterPosition != RecyclerView.NO_POSITION) {
-    //               onItemClick.invoke(items[adapterPosition].thumbnail, items[adapterPosition].title)
-    //               notifyItemChanged(adapterPosition)
-    //           }
-    //       }
-    //   }
+        init {
+            binding.favoriteProduct.setOnCheckedChangeListener { button, isChecked ->
+                if (button.isPressed) {
+                    if (adapterPosition != RecyclerView.NO_POSITION) {
+                        items[adapterPosition].favorite = isChecked
 
+                    }
+                }
+            }
+        }
+
+        @SuppressLint("SetTextI18n")
         fun bind(item: ProductDto) {
             Glide.with(context).load(item.thumbnail).into(binding.imageProduct)
             binding.productBrand.text = item.brand
-            binding.productPrice.text = item.price.toString()
+            binding.productPrice.text = item.price.toString() + R.string.usd
             binding.productTitle.text = item.title
             binding.productDescription.text = item.description
 

@@ -11,8 +11,7 @@ interface CategoriesRepository {
 class CategoryRepositoryImplementation(private val dataSource: CategoriesDataSource) : CategoriesRepository {
     override suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
-           dataSource.getCategories()
+            dataSource.getCategories()
         }
-
     }
 }

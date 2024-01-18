@@ -47,6 +47,10 @@
     <color name="color_1_18">#26FFFFFF</color>
     <color name="color_1_19">#1AFFFFFF</color>
     <color name="color_1_20">#0DFFFFFF</color>
+    <color name="color_black">#111111</color>
+    <color name="color_black_10">#1A111111</color>
+    <color name="color_black_20">#33111111</color>
+    <color name="color_black_40">#66111111</color>
 
     <color name="password_toggle_tint">#8f9096</color>
     <color name="status_bar_color">@color/app_background</color>
