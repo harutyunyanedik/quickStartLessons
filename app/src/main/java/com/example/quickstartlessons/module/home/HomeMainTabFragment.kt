@@ -20,9 +20,9 @@ class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
     private val viewModel: ProductsViewModel by viewModels()
-    private  val viewModelCategory: CategoriesViewModel by viewModels()
-    private var categoriesAdapter:CategoriesRecyclerViewAdapter = CategoriesRecyclerViewAdapter{
-
+    private val viewModelCategory: CategoriesViewModel by viewModels()
+    private var categoriesAdapter: CategoriesRecyclerViewAdapter = CategoriesRecyclerViewAdapter {
+        binding.productsHeader.text = it
     }
     private var adapter: ProductsRecyclerViewAdapter = ProductsRecyclerViewAdapter {
 
@@ -61,13 +61,13 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog","Unresolved error")
+            showErrorMessageDialog("Error Dialog", "Unresolved error")
         }
         viewModelCategory.categoriesLiveData.observe(viewLifecycleOwner) {
             categoriesAdapter.updateData(it)
         }
         viewModelCategory.categoriesErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog","Unresolved error")
+            showErrorMessageDialog("Error Dialog", "Unresolved error")
         }
     }
 }

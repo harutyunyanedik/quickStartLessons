@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.RvHomeCategoriseBinding
 import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
 
-class CategoriesRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : RecyclerView.Adapter<CategoriesRecyclerViewAdapter.BaseViewHolder>() {
+class CategoriesRecyclerViewAdapter(private var onItem: (String) -> Unit) : RecyclerView.Adapter<CategoriesRecyclerViewAdapter.BaseViewHolder>() {
 
     private val item: MutableList<String> = mutableListOf()
     private lateinit var inflater: LayoutInflater
@@ -48,7 +48,7 @@ class CategoriesRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) 
         init {
             binding.categories.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onItemClick.invoke(true)
+                    onItem.invoke(binding.categoriesText.text.toString())
                 }
             }
         }
