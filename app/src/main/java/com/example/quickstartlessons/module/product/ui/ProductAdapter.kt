@@ -57,7 +57,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         fun bind(item: ProductDto) {
             Glide.with(context).load(item.thumbnail).into(binding.imageProduct)
             binding.productBrand.text = item.brand
-            binding.productPrice.text = item.price.toString() + R.string.usd
+            binding.productPrice.text = "${item.price} $"
             binding.productTitle.text = item.title
             binding.productDescription.text = item.description
 
