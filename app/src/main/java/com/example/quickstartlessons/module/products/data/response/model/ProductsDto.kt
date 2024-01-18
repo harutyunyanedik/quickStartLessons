@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.core.net.repo.model // todo move to module/products/data/response
+package com.example.quickstartlessons.module.products.data.response.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -19,7 +19,5 @@ data class ProductsDto(
     @SerializedName("category")
     val category: String,
     @SerializedName("thumbnail")
-    val thumbnail: String,
-    @SerializedName("images")
-    val images: List<String>
+    val thumbnail: String
 ) : Serializable

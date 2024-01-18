@@ -4,18 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.quickstartlessons.core.net.viewModel.ProductsViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.quickstartlessons.module.home.ui.viewModel.ProductsViewModel
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
+import com.example.quickstartlessons.module.adapter.CategoriesRecyclerViewAdapter
 import com.example.quickstartlessons.module.adapter.ProductsRecyclerViewAdapter
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.home.ui.viewModel.CategoriesViewModel
+import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
 
 class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
     private val viewModel: ProductsViewModel by viewModels()
+    private  val viewModelCategory: CategoriesViewModel by viewModels()
+    private var categoriesAdapter:CategoriesRecyclerViewAdapter = CategoriesRecyclerViewAdapter{
+
+    }
     private var adapter: ProductsRecyclerViewAdapter = ProductsRecyclerViewAdapter {
 
     }
@@ -23,6 +31,7 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProducts()
+        viewModelCategory.getCategories()
     }
 
     override fun onCreateView(
@@ -36,11 +45,15 @@ class HomeMainTabFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setUpObservers()
+
     }
 
     private fun setupViews() {
-        binding.rvItemsOfProducts.layoutManager = GridLayoutManager(requireContext(), 1)
+        binding.rvItemsOfProducts.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvItemsOfProducts.adapter = adapter
+
+        binding.rvItemOfCategories.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        binding.rvItemOfCategories.adapter = categoriesAdapter
     }
 
     private fun setUpObservers() {
@@ -48,7 +61,13 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show() // todo show dialog
+            showErrorMessageDialog("Error Dialog","Unresolved error")
+        }
+        viewModelCategory.categoriesLiveData.observe(viewLifecycleOwner) {
+            categoriesAdapter.updateData(it)
+        }
+        viewModelCategory.categoriesErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error Dialog","Unresolved error")
         }
     }
 }

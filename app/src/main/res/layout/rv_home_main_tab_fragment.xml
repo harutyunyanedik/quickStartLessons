@@ -6,102 +6,64 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_8dp"
-        app:cardBackgroundColor="@color/app_background">
+        android:layout_margin="@dimen/_1dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_16dp"
+        app:cardElevation="@dimen/_6dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/product_id"
-            style="@style/TextView"
-            android:text="id"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
+            <ImageView
+                android:id="@+id/product_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:scaleType="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,MissingConstraints" />
 
-        <TextView
-            android:id="@+id/product_title"
-            style="@style/TextView"
-            android:text="title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_id"
-            tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/product_id"
+                style="@style/TextView"
+                android:text="id"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_thumbnail"
+                tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/product_description"
-            style="@style/TextView"
-            android:text="description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_title"
-            tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/product_title"
+                style="@style/TextView"
+                android:text="title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_id"
+                tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/product_price"
-            style="@style/TextView"
-            android:text="price"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_description"
-            tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/product_price"
+                style="@style/TextView"
+                android:text="price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_title"
+                tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/product_rating"
-            style="@style/TextView"
-            android:text="rating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_price"
-            tools:ignore="HardcodedText" />
+            <CheckBox
+                android:id="@+id/favorite_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/top_margin"
+                android:button="@drawable/favorite_checkbox_selector"
+                android:checked="false"
+                android:padding="@dimen/_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_price"
+                tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/product_brand"
-            style="@style/TextView"
-            android:text="brand"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_rating"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/product_category"
-            style="@style/TextView"
-            android:text="category"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_brand"
-            tools:ignore="HardcodedText" />
-
-        <ImageView
-            android:id="@+id/product_thumbnail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_6dp"
-            android:scaleType="center"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_category"
-            tools:ignore="ContentDescription" />
-
-
-        <CheckBox
-            android:id="@+id/favorite_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/top_margin"
-            android:checked="false"
-            android:button="@drawable/favorite_checkbox_selector"
-            android:padding="@dimen/_16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_thumbnail"
-            tools:ignore="MissingConstraints" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

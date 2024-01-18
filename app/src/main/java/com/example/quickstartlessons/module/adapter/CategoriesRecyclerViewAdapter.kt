@@ -6,18 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.quickstartlessons.module.products.data.response.model.ProductsDto
-import com.example.quickstartlessons.databinding.RvHomeMainTabFragmentBinding
+import com.example.quickstartlessons.databinding.RvHomeCategoriseBinding
+import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
 
-class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
+class CategoriesRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : RecyclerView.Adapter<CategoriesRecyclerViewAdapter.BaseViewHolder>() {
 
-    private val item: MutableList<ProductsDto> = mutableListOf()
+    private val item: MutableList<String> = mutableListOf()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return ProductsRecyclerViewHolder(RvHomeMainTabFragmentBinding.inflate(inflater, parent, false))
+        return CategoriesRecyclerViewHolder(RvHomeCategoriseBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
@@ -33,7 +32,7 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(item: List<ProductsDto>?) {
+    fun updateData(item: List<String>?) {
         this.item.clear()
         item?.let {
             this.item.addAll(it)
@@ -42,25 +41,20 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
     }
 
     abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        abstract fun bind(item: ProductsDto)
+        abstract fun bind(item: String)
     }
 
-    inner class ProductsRecyclerViewHolder(private val binding: RvHomeMainTabFragmentBinding) : BaseViewHolder(binding.root) {
+    inner class CategoriesRecyclerViewHolder(private val binding: RvHomeCategoriseBinding) : BaseViewHolder(binding.root) {
         init {
-            binding.favoriteCheckbox.setOnCheckedChangeListener { _ , isChecked ->
+            binding.categories.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                 // binding.productId.text =  item[adapterPosition].id.toString()
                     onItemClick.invoke(true)
                 }
             }
         }
 
-        @SuppressLint("SetTextI18n")
-        override fun bind(item: ProductsDto) {
-            binding.productId.text = item.id.toString()
-            binding.productTitle.text = item.title
-            binding.productPrice.text = "Price: ${item.price}"
-            Glide.with(context).load(item.thumbnail).into(binding.productThumbnail)
+        override fun bind(item: String) {
+            binding.categoriesText.text = item
         }
     }
 

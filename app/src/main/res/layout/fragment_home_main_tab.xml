@@ -6,22 +6,60 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".module.home.HomeMainTabFragment"
-       >
+        tools:context=".module.home.HomeMainTabFragment">
 
-        <FrameLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_itemsOfProducts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:background="@color/teal_200"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
-        </FrameLayout>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/products"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16dp"
+                android:text="@string/products"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="HardcodedText" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_itemOfCategories"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+            <TextView
+                android:id="@+id/productsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40dp"
+                android:text="@string/products_header"
+                android:background="@color/selector_color_bottom_bar"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_itemOfCategories" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_itemsOfProducts"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/productsHeader" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

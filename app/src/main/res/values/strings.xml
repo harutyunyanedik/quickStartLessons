@@ -34,4 +34,7 @@
     <string name="invalid_password">Invalid password! Must by bigger 6 Characters!</string>
     <string name="invalid_email">Invalid or empty Email address or username</string>
     <string name="field_required">The field is required</string>
+    <string name="products">Products</string>
+    <string name="products_header">Products category</string>
+    <string name="categories">Categories</string>
 </resources>
