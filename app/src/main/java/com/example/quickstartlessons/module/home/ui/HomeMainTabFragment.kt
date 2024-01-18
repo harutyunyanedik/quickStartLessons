@@ -19,6 +19,11 @@ class HomeMainTabFragment : BaseFragment() {
     private val categoriesAdapter = CategoriesAdapter()
     private val viewModel: HomeMainTabViewModel by viewModels()
     private val categoriesViewModel: CategoriesViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getProducts()
+        categoriesViewModel.getCategories()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,11 +33,6 @@ class HomeMainTabFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.getProducts()
-        categoriesViewModel.getCategories()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
