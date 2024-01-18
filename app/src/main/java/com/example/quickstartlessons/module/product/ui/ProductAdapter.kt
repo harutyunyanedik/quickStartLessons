@@ -46,7 +46,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
                if (button.isPressed) {
                     if (adapterPosition != RecyclerView.NO_POSITION) {
                         items[adapterPosition].favorite = isChecked
-
                     }
                 }
             }
