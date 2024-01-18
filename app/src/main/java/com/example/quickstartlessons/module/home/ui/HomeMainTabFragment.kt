@@ -4,21 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.HorizontalScrollView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.ItemHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.category.data.model.response.ui.CategoriesAdapter
 import com.example.quickstartlessons.module.product.ui.ProductAdapter
 
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: ItemHomeMainTabBinding
     private val adapter = ProductAdapter()
+    private val adapterCategories = CategoriesAdapter()
     private val viewModel: HomeMainTabViewModel by viewModels()
+    private val viewModelCategories: HomeMainTabViewModelCategories by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProduct()
+        viewModelCategories.getCategories()
     }
 
     override fun onCreateView(
@@ -31,13 +37,15 @@ class HomeMainTabFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView() // todo rename setupViews
+        setupViews()
         setupObserve()
     }
 
-    private fun setupRecyclerView() {
+    private fun setupViews() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+       binding.recyclerViewCategory.adapter = adapterCategories
+      binding.recyclerViewCategory.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun setupObserve() {
@@ -47,5 +55,11 @@ class HomeMainTabFragment : BaseFragment() {
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
+       viewModelCategories.productLiveDataCategory.observe(viewLifecycleOwner) {
+           adapterCategories.updateData(it)
+       }
+       viewModelCategories.productErrorLiveData.observe(viewLifecycleOwner) {
+          showErrorMessageDialog("Error data", it.toString())
+      }
     }
 }

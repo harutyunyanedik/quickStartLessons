@@ -41,15 +41,15 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     }
 
     inner class ProductViewHolder(private val binding: FragmentProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
-        //   init {
-        // binding.favoriteProduct.setOnClickListener {
-        //     if (it.isPressed) {
-        //         if (adapterPosition != RecyclerView.NO_POSITION) {
-        //             onItemClick.invoke(items[adapterPosition].thumbnail, items[adapterPosition].title)
-        //             notifyItemChanged(adapterPosition)
-        //         }
-        //     }
-        // }
+       //    init {
+    //   binding.favoriteProduct.setOnCheckedChangeListener {
+    //       if (it.isPressed) {
+    //           if (adapterPosition != RecyclerView.NO_POSITION) {
+    //               onItemClick.invoke(items[adapterPosition].thumbnail, items[adapterPosition].title)
+    //               notifyItemChanged(adapterPosition)
+    //           }
+    //       }
+    //   }
 
         fun bind(item: ProductDto) {
             Glide.with(context).load(item.thumbnail).into(binding.imageProduct)
