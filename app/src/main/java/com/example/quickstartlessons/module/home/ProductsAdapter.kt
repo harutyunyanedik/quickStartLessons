@@ -58,6 +58,7 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
             binding.tvTitle.text = item.title
             binding.tvPrice.text = "${item.price.toString()} $"
+            binding.checkboxFavorite.isChecked = item.isFavorite
 
         }
     }

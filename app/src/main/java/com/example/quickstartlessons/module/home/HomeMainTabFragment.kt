@@ -42,10 +42,11 @@ class HomeMainTabFragment : BaseFragment() {
         binding.rvCategories.adapter = categoriesAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         viewModel.getCategories()
+        viewModel.getProducts()
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
             categoriesAdapter.updateData(mapper.listStringToListCategory(it))
         }
-        viewModel.getProducts()
+
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             productsAdapter.updateData(mapper.listProductsDtoToListProducts(it))
         }

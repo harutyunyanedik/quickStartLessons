@@ -16,6 +16,7 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.CategoryViewH
     private val items = mutableListOf<Category>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
+    private var selectedIndex = -1
     var onCategoryClick: ((String) -> Unit)? = null
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -43,19 +44,27 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.CategoryViewH
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class CategoryViewHolder(private val binding: CategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onCategoryClick?.invoke(items[adapterPosition].category)
-                    binding.constraintLayoutCategories.background = ContextCompat.getDrawable(context, R.color.blue_light)
+                    selectedIndex = adapterPosition
+                    notifyDataSetChanged()
                 }
             }
         }
 
         fun bind(item: Category) {
             binding.textViewCategory.text = item.category.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+            if (selectedIndex == adapterPosition){
+                item.isSelected = R.color.blue_light
+            } else {
+                item.isSelected = R.color.white
+            }
+            binding.constraintLayoutCategories.background = ContextCompat.getDrawable(context, item.isSelected)
         }
     }
 }
