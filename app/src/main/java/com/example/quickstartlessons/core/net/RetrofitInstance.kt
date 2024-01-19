@@ -36,7 +36,7 @@ class HeaderInterceptor : Interceptor {
     }
 }
 
-fun getProductsApi(): ProductDataSource = getApiService()
+fun getProductsApi(): DataSource = getApiService()
 
 inline fun <reified T> getApiService(): T {
     return retrofit.create(T::class.java)

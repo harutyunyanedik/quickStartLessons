@@ -1,12 +1,12 @@
 package com.example.quickstartlessons.core.repo
 
 import com.example.quickstartlessons.core.net.ApiResultCallback
-import com.example.quickstartlessons.core.net.ProductDataSource
+import com.example.quickstartlessons.core.net.DataSource
 import com.example.quickstartlessons.core.net.getHttpResponse
-import com.example.quickstartlessons.module.data.ProductDto
-import com.example.quickstartlessons.module.data.ProductsDto
+import com.example.quickstartlessons.module.product.data.net.response.ProductDto
+import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
 
-interface ProductRepository {  // todo rename Repository
+interface Repository {
 
     suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
 
@@ -17,7 +17,7 @@ interface ProductRepository {  // todo rename Repository
     suspend fun getProductV2(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id: Int)
 }
 
-class ProductsRepositoryImplementation(private val dataSource: ProductDataSource) : ProductRepository {
+class ProductsRepositoryImplementation(private val dataSource: DataSource) : Repository {
 
     override suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {

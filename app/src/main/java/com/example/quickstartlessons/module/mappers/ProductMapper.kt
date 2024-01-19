@@ -1,4 +1,9 @@
-package com.example.quickstartlessons.module.data
+package com.example.quickstartlessons.module.mappers
+
+import com.example.quickstartlessons.module.category.data.model.Category
+import com.example.quickstartlessons.module.product.data.model.Product
+import com.example.quickstartlessons.module.product.data.net.response.ProductDto
+import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
 
 class ProductMapper {
 

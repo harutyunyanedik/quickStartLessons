@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.CategoryItemBinding
 import com.example.quickstartlessons.module.base.utils.QsConstants
-import com.example.quickstartlessons.module.data.Category
+import com.example.quickstartlessons.module.category.data.model.Category
 import java.util.Locale
 
 class CategoriesAdapter(private val onCategoryClick: (String) -> Unit) : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
@@ -17,7 +17,7 @@ class CategoriesAdapter(private val onCategoryClick: (String) -> Unit) : Recycle
     private val items = mutableListOf<Category>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private var selectedIndex = QsConstants.NO_VALUE
+    private var selectedIndex = QsConstants.ZERO
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -38,6 +38,7 @@ class CategoriesAdapter(private val onCategoryClick: (String) -> Unit) : Recycle
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(list: List<Category>?) {
         items.clear()
+        items.add(Category("All products", R.color.blue_light))
         list?.let {
             items.addAll(it)
         }

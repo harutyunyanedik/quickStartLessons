@@ -1,9 +1,9 @@
-package com.example.quickstartlessons.module.data
+package com.example.quickstartlessons.module.product.data.net.response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class ProductDto( // todo product/data/net/response
+data class ProductDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")

@@ -1,6 +1,6 @@
-package com.example.quickstartlessons.module.data
+package com.example.quickstartlessons.module.product.data.model
 
-data class Product( // todo product/data/model/
+data class Product(
     val id: Int,
     val title: String,
     val description: String,

@@ -1,12 +1,12 @@
 package com.example.quickstartlessons.core.net
 
-import com.example.quickstartlessons.module.data.ProductDto
-import com.example.quickstartlessons.module.data.ProductsDto
+import com.example.quickstartlessons.module.product.data.net.response.ProductDto
+import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface ProductDataSource {  // todo rename dataSource
+interface DataSource {
 
     @GET("products/category/{categoryName}")
     suspend fun getProductsByCategory(@Path("categoryName") name: String): Response<ProductsDto>

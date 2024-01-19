@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.ProductItemBinding
-import com.example.quickstartlessons.module.data.Product
+import com.example.quickstartlessons.module.product.data.model.Product
 
 class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
 

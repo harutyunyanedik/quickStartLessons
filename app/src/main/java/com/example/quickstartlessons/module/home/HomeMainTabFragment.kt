@@ -8,9 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.data.ProductMapper
+import com.example.quickstartlessons.module.mappers.ProductMapper
 import java.util.Locale
 
 class HomeMainTabFragment : BaseFragment() {
@@ -20,7 +21,11 @@ class HomeMainTabFragment : BaseFragment() {
     private val mapper = ProductMapper()
     private val productsAdapter = ProductsAdapter()
     private val categoriesAdapter = CategoriesAdapter {
-        viewModel.getProductsByCategory(category = it)
+        if (it == getString(R.string.products)){
+            viewModel.getProducts()
+        } else {
+            viewModel.getProductsByCategory(category = it)
+        }
         binding.tvProducts.text = it.replaceFirstChar {
             if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
         }
@@ -56,16 +61,20 @@ class HomeMainTabFragment : BaseFragment() {
 
     private fun observeLiveData() {
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
-            categoriesAdapter.updateData(mapper.listStringToListCategory(it))
+            categoriesAdapter.updateData(it)
         }
 
         viewModel.productLiveData.observe(viewLifecycleOwner) {
-            productsAdapter.updateData(mapper.listProductsDtoToListProducts(it))
+            productsAdapter.updateData(it)
         }
 
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error", it ?: "Unknown error")
         }
+        viewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error", it ?: "Unknown error")
+        }
+
     }
 
 }

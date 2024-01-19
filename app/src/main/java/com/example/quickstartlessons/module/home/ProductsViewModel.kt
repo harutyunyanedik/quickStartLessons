@@ -6,19 +6,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getProductsApi
-import com.example.quickstartlessons.core.repo.ProductRepository
 import com.example.quickstartlessons.core.repo.ProductsRepositoryImplementation
-import com.example.quickstartlessons.module.data.ProductsDto
+import com.example.quickstartlessons.core.repo.Repository
+import com.example.quickstartlessons.module.category.data.model.Category
+import com.example.quickstartlessons.module.mappers.ProductMapper
+import com.example.quickstartlessons.module.product.data.model.Product
+import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
 import kotlinx.coroutines.launch
 
 class ProductsViewModel : ViewModel() {
-    private val repo: ProductRepository = ProductsRepositoryImplementation(getProductsApi())
+    private val mapper = ProductMapper()
+    private val repo: Repository = ProductsRepositoryImplementation(getProductsApi())
 
-    private val _productLiveData: MutableLiveData<ProductsDto?> = MutableLiveData()
-    val productLiveData: LiveData<ProductsDto?>
+    private val _productLiveData: MutableLiveData<List<Product>?> = MutableLiveData()
+    val productLiveData: LiveData<List<Product>?>
         get() = _productLiveData
 
-    private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()  // todo handle error case
+    private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
 
@@ -26,7 +30,7 @@ class ProductsViewModel : ViewModel() {
         viewModelScope.launch {
             repo.getProductsV2((object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
-                    _productLiveData.value = response
+                    _productLiveData.value = mapper.listProductsDtoToListProducts(response)
                 }
 
                 override fun onError(): Boolean {
@@ -37,9 +41,9 @@ class ProductsViewModel : ViewModel() {
         }
     }
 
-    private val _categoryLiveData: MutableLiveData<List<String>?> = MutableLiveData()
+    private val _categoryLiveData: MutableLiveData<List<Category>?> = MutableLiveData()
 
-    val categoryLiveData: LiveData<List<String>?>
+    val categoryLiveData: LiveData<List<Category>?>
         get() = _categoryLiveData
 
     private val _categoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
@@ -50,7 +54,7 @@ class ProductsViewModel : ViewModel() {
         viewModelScope.launch {
             repo.getCategories((object : ApiResultCallback<List<String>?> {
                 override fun onSuccess(response: List<String>?) {
-                    _categoryLiveData.value = response
+                    _categoryLiveData.value = mapper.listStringToListCategory(response)
                 }
 
                 override fun onError(): Boolean {
@@ -65,7 +69,7 @@ class ProductsViewModel : ViewModel() {
         viewModelScope.launch {
             repo.getProductsByCategory((object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
-                    _productLiveData.value = response
+                    _productLiveData.value = mapper.listProductsDtoToListProducts(response)
                 }
 
                 override fun onError(): Boolean {
