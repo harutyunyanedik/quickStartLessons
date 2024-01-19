@@ -61,13 +61,13 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog", "Unresolved error")
+            showErrorMessageDialog("Error Dialog", "Unresolved error") // todo inchi hamar Unresolved error, it e henc qo errona
         }
         viewModelCategory.categoriesLiveData.observe(viewLifecycleOwner) {
             categoriesAdapter.updateData(it)
         }
         viewModelCategory.categoriesErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog", "Unresolved error")
+            showErrorMessageDialog("Error Dialog", "Unresolved error") // todo inchi hamar Unresolved error, it e henc qo errona
         }
     }
 }

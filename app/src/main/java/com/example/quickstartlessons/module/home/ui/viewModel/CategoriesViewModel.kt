@@ -10,7 +10,7 @@ import com.example.quickstartlessons.core.net.repo.repository.ProductRepositoryI
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
 import kotlinx.coroutines.launch
 
-class CategoriesViewModel: ViewModel() {
+class CategoriesViewModel: ViewModel() { // todo jnji tar HomeMainTabViewModel i mej
 
     private val repo: ProductsRepository = ProductRepositoryImplementation(getProduct())
 

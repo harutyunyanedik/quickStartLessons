@@ -11,7 +11,7 @@ import com.example.quickstartlessons.core.net.repo.repository.ProductRepositoryI
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
 import kotlinx.coroutines.launch
 
-class ProductsViewModel: ViewModel() {
+class ProductsViewModel: ViewModel() { //todo ProductsViewModel e rename ara homeMainTabViewModel
 
     private val repo: ProductsRepository = ProductRepositoryImplementation(getProduct())
 
