@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.home.CategoriesAdapter
-import com.example.quickstartlessons.module.home.ProductsAdapter
+import com.example.quickstartlessons.module.home.ui.adapters.CategoriesAdapter
+import com.example.quickstartlessons.module.home.ui.adapters.ProductsAdapter
+import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewModel
 
 
 class HomeMainTabFragment : BaseFragment() {
@@ -37,7 +38,7 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-        setUpObservers()
+        observeLivedata()
     }
 
     private fun setupViews() {
@@ -47,12 +48,12 @@ class HomeMainTabFragment : BaseFragment() {
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
-    private fun setUpObservers() {
+    private fun observeLivedata() {
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }
         categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
-            categoriesAdapter.updateDataCategories(it)
-        }
+            categoriesAdapter.updateDataCategories(listOf())
+        } // todo handle error case
     }
 }

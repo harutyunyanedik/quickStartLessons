@@ -7,7 +7,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface ProductDataSource{
+interface ProductDataSource {
 
     @GET("products")
     fun getProducts(): Call<ProductsDto>
@@ -20,4 +20,6 @@ interface ProductDataSource{
 
     @GET("products/{id}")
     suspend fun getProductV2(@Path("id") id: Int): Response<ProductDto>
+    @GET("products/categories")
+    suspend fun getCategories(): Response<List<String>>
 }

@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home
+package com.example.quickstartlessons.module.home.ui.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
