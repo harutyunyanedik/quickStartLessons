@@ -18,7 +18,7 @@ class HomeMainTabFragment : BaseFragment() {
     private val adapter = ProductsAdapter()
     private val categoriesAdapter = CategoriesAdapter()
     private val viewModel: HomeMainTabViewModel by viewModels()
-    private val categoriesViewModel: CategoriesViewModel by viewModels()
+    private val categoriesViewModel: HomeMainTabViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
