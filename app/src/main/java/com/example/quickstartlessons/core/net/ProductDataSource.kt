@@ -1,7 +1,7 @@
 package com.example.quickstartlessons.core.net
 
-import com.example.quickstartlessons.module.data.ProductDto
-import com.example.quickstartlessons.module.data.ProductsDto
+import com.example.quickstartlessons.module.products.data.ProductDto
+import com.example.quickstartlessons.module.products.data.ProductsDto
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET

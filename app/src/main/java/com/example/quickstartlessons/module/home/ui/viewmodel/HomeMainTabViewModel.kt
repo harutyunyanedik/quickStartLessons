@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.ApiResultCallback
 import com.example.quickstartlessons.core.getApi
-import com.example.quickstartlessons.core.getApiCategory
-import com.example.quickstartlessons.module.data.ProductDto
-import com.example.quickstartlessons.module.data.ProductsDto
+import com.example.quickstartlessons.module.products.data.ProductDto
+import com.example.quickstartlessons.module.products.data.ProductsDto
 import com.example.quickstartlessons.core.repo.ProductsRepository
 import com.example.quickstartlessons.core.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch

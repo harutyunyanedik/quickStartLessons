@@ -1,10 +1,10 @@
 package com.example.quickstartlessons.core.repo
 
 import com.example.quickstartlessons.core.ApiResultCallback
-import com.example.quickstartlessons.module.data.ProductDto
+import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.core.getHttpResponse
 import com.example.quickstartlessons.core.net.ProductDataSource
-import com.example.quickstartlessons.module.data.ProductsDto
+import com.example.quickstartlessons.module.products.data.ProductsDto
 import retrofit2.Call
 
 

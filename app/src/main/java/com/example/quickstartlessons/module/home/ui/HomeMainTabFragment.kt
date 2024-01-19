@@ -52,8 +52,15 @@ class HomeMainTabFragment : BaseFragment() {
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }
+        viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
+        }
         categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
-            categoriesAdapter.updateDataCategories(listOf())
-        } // todo handle error case
+            categoriesAdapter.updateDataCategories(it)
+        }
+
+        categoriesViewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
+        }
     }
 }

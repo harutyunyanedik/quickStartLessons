@@ -30,12 +30,13 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateDataCategories(item: List<String>?) {
-       items.clear()
-        item.let {
-            if (item != null) {
-                items.addAll(item)
+    fun updateDataCategories(list: List<String>?) {
+      this.items.clear()
+        list.let {
+            if (list != null) {
+                items.addAll(list)
             }
+
         }
         notifyDataSetChanged()
     }
