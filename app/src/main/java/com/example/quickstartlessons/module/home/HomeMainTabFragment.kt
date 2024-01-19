@@ -16,10 +16,15 @@ import java.util.Locale
 class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val productsAdapter = ProductsAdapter()
-    private val categoriesAdapter = CategoriesAdapter()
     private val viewModel: ProductsViewModel by viewModels()
     private val mapper = ProductMapper()
+    private val productsAdapter = ProductsAdapter()
+    private val categoriesAdapter = CategoriesAdapter {
+        viewModel.getProductsByCategory(category = it)
+        binding.tvProducts.text = it.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
+    }
 
 
     override fun onCreateView(
@@ -30,9 +35,15 @@ class HomeMainTabFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getCategories()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+        observeLiveData()
 
     }
 
@@ -41,24 +52,21 @@ class HomeMainTabFragment : BaseFragment() {
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCategories.adapter = categoriesAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        viewModel.getCategories() // todo move to onCreate function
         viewModel.getProducts()
-        viewModel.categoryLiveData.observe(viewLifecycleOwner) { // todo move to observeLiveData function
+
+    }
+
+    private fun observeLiveData() {
+        viewModel.categoryLiveData.observe(viewLifecycleOwner) {
             categoriesAdapter.updateData(mapper.listStringToListCategory(it))
         }
 
-        viewModel.productLiveData.observe(viewLifecycleOwner) { // todo move to observeLiveData function
+        viewModel.productLiveData.observe(viewLifecycleOwner) {
             productsAdapter.updateData(mapper.listProductsDtoToListProducts(it))
         }
 
-        categoriesAdapter.onCategoryClick = { // todo remove from here and use inside constructor body
-            viewModel.getProductsByCategory(category = it)
-            binding.tvProducts.text = it.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-
-        }
-
-
-        viewModel.productErrorLiveData.observe(viewLifecycleOwner) {  // todo move to observeLiveData function
+        viewModel.productErrorLiveData.observe(viewLifecycleOwner)
+        {
             showErrorMessageDialog("Error", it!!)
 
         }

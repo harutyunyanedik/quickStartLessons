@@ -11,13 +11,12 @@ import com.example.quickstartlessons.databinding.CategoryItemBinding
 import com.example.quickstartlessons.module.data.Category
 import java.util.Locale
 
-class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
+class CategoriesAdapter(private val onCategoryClick: (String) -> Unit) : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
 
     private val items = mutableListOf<Category>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private var selectedIndex = -1
-    var onCategoryClick: ((String) -> Unit)? = null // todo move to constructor and change var to val
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -50,7 +49,7 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.CategoryViewH
         init {
             binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onCategoryClick?.invoke(items[adapterPosition].category)
+                    onCategoryClick.invoke(items[adapterPosition].category)
                     selectedIndex = adapterPosition
                     notifyDataSetChanged()
                 }
