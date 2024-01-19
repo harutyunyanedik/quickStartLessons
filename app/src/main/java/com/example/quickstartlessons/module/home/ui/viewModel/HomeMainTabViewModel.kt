@@ -48,6 +48,24 @@ class HomeMainTabViewModel: ViewModel() {
                     _productsLiveData.value = response
                 }
             }, isShoLoader)
-        }
+        } // todo add error case
+    }
+
+    private val _categoriesLiveData: MutableLiveData<List<String>?> = MutableLiveData()
+    val categoriesLiveData: LiveData<List<String>?>
+        get() = _categoriesLiveData
+
+    private val _categoriesErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val categoriesErrorLiveData: LiveData<String?>
+        get() = _categoriesErrorLiveData
+
+    fun getCategories(isShoLoader: Boolean = false) {
+        viewModelScope.launch {
+            repo.getAllCategories(object : ApiResultCallback<List<String>?> {
+                override fun onSuccess(response:List<String>?) {
+                    _categoriesLiveData.value = response
+                }
+            }, isShoLoader)
+        } // todo add error case
     }
 }

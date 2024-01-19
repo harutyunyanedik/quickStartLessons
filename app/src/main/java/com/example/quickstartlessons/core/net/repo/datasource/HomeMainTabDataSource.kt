@@ -1,12 +1,13 @@
 package com.example.quickstartlessons.core.net.repo.datasource
 
+import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
 import com.example.quickstartlessons.module.products.data.response.model.ProductsDto
 import com.example.quickstartlessons.module.products.data.response.model.ProductsModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface HomeMainTabDataSource {
+interface ProductsDataSource {
 
     @GET("products")
     suspend fun getAllProducts(): Response <ProductsModel>

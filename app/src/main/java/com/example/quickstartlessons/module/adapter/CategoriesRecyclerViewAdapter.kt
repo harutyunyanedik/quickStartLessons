@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.adapter
+package com.example.quickstartlessons.module.adapter // todo move to home/ui/adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
