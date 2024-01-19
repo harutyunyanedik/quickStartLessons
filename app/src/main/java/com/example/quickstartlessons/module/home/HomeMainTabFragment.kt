@@ -41,24 +41,24 @@ class HomeMainTabFragment : BaseFragment() {
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCategories.adapter = categoriesAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        viewModel.getCategories()
+        viewModel.getCategories() // todo move to onCreate function
         viewModel.getProducts()
-        viewModel.categoryLiveData.observe(viewLifecycleOwner) {
+        viewModel.categoryLiveData.observe(viewLifecycleOwner) { // todo move to observeLiveData function
             categoriesAdapter.updateData(mapper.listStringToListCategory(it))
         }
 
-        viewModel.productLiveData.observe(viewLifecycleOwner) {
+        viewModel.productLiveData.observe(viewLifecycleOwner) { // todo move to observeLiveData function
             productsAdapter.updateData(mapper.listProductsDtoToListProducts(it))
         }
 
-        categoriesAdapter.onCategoryClick = {
+        categoriesAdapter.onCategoryClick = { // todo remove from here and use inside constructor body
             viewModel.getProductsByCategory(category = it)
             binding.tvProducts.text = it.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 
         }
 
 
-        viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
+        viewModel.productErrorLiveData.observe(viewLifecycleOwner) {  // todo move to observeLiveData function
             showErrorMessageDialog("Error", it!!)
 
         }

@@ -17,7 +17,7 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.CategoryViewH
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private var selectedIndex = -1
-    var onCategoryClick: ((String) -> Unit)? = null
+    var onCategoryClick: ((String) -> Unit)? = null // todo move to constructor and change var to val
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)

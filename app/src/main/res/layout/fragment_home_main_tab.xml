@@ -12,26 +12,27 @@
             android:id="@+id/rvCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+
+        <!--         todo toolbar always must be at the top of fragment -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@android:color/holo_blue_dark"
-            app:layout_constraintTop_toBottomOf="@id/rvCategories"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/rvCategories">
 
             <TextView
                 android:id="@+id/tvProducts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:text="@string/products"
-                android:textSize="@dimen/_36sp"
-                />
+                android:textColor="@color/white"
+                android:textSize="@dimen/_36sp" />
         </androidx.appcompat.widget.Toolbar>
 
 
