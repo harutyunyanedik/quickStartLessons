@@ -3,8 +3,7 @@ package com.example.quickstartlessons.core.net.repo.repository
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getHttpResponse
 import com.example.quickstartlessons.module.products.data.response.model.ProductsDto
-import com.example.quickstartlessons.core.net.repo.datasource.ProductsDataSource
-import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
+import com.example.quickstartlessons.core.net.repo.datasource.HomeMainTabDataSource
 import com.example.quickstartlessons.module.products.data.response.model.ProductsModel
 
 interface ProductsRepository {
@@ -19,7 +18,7 @@ interface ProductsRepository {
 
 }
 
-class ProductRepositoryImplementation(private val dataSource: ProductsDataSource) : ProductsRepository {
+class ProductRepositoryImplementation(private val dataSource: HomeMainTabDataSource) : ProductsRepository {
 
     override suspend fun getAllProducts(resultCallback: ApiResultCallback<ProductsModel?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {

@@ -8,19 +8,16 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quickstartlessons.module.home.ui.viewModel.ProductsViewModel
+import com.example.quickstartlessons.module.home.ui.viewModel.HomeMainTabViewModel
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.adapter.CategoriesRecyclerViewAdapter
 import com.example.quickstartlessons.module.adapter.ProductsRecyclerViewAdapter
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.home.ui.viewModel.CategoriesViewModel
-import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
 
 class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val viewModel: ProductsViewModel by viewModels()
-    private val viewModelCategory: CategoriesViewModel by viewModels()
+    private val viewModel: HomeMainTabViewModel by viewModels()
     private var categoriesAdapter: CategoriesRecyclerViewAdapter = CategoriesRecyclerViewAdapter {
         binding.productsHeader.text = it
     }
@@ -31,7 +28,7 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProducts()
-        viewModelCategory.getCategories()
+        viewModel.getCategories()
     }
 
     override fun onCreateView(
@@ -61,13 +58,13 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog", "Unresolved error") // todo inchi hamar Unresolved error, it e henc qo errona
+            showErrorMessageDialog("Error Dialog", "it")
         }
-        viewModelCategory.categoriesLiveData.observe(viewLifecycleOwner) {
+        viewModel.categoriesLiveData.observe(viewLifecycleOwner) {
             categoriesAdapter.updateData(it)
         }
-        viewModelCategory.categoriesErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog", "Unresolved error") // todo inchi hamar Unresolved error, it e henc qo errona
+        viewModel.categoriesErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error Dialog", "it")
         }
     }
 }
