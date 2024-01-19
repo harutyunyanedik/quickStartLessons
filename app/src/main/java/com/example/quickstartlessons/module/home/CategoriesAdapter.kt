@@ -3,7 +3,6 @@ package com.example.quickstartlessons.module.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
@@ -11,7 +10,7 @@ import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private val item: MutableList<String> = mutableListOf() // todo rename to items
+    private val items: MutableList<String> = mutableListOf()
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
@@ -21,17 +20,17 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         return CategoriesViewHolder(FragmentCategoriesBinding.inflate(inflater, parent, false))
     }
-    override fun getItemCount() = item.size
+    override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
-        holder.bind(item[position])
+        holder.bind(items[position])
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateDataCategories(list: List<String>?) { // todo list rename to items
-        item.clear()
+        items.clear()
         list?.let {
-            item.addAll(item) // todo addAll(list)
+            items.addAll(items) // todo addAll(list)
         }
         notifyDataSetChanged()
     }
