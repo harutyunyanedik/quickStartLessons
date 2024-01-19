@@ -44,8 +44,8 @@ class HomeMainTabFragment : BaseFragment() {
     private fun setupViews() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-       binding.recyclerViewCategory.adapter = adapterCategories
-      binding.recyclerViewCategory.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerViewCategory.adapter = adapterCategories
+        binding.recyclerViewCategory.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun setupObserve() {
@@ -53,13 +53,13 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show() // todo showErrorMessageDialog()
         }
-       viewModelCategories.productLiveDataCategory.observe(viewLifecycleOwner) {
-           adapterCategories.updateData(it)
-       }
-       viewModelCategories.productErrorLiveData.observe(viewLifecycleOwner) {
-          showErrorMessageDialog("Error data", it.toString())
-      }
+        viewModelCategories.productLiveDataCategory.observe(viewLifecycleOwner) {
+            adapterCategories.updateData(it)
+        }
+        viewModelCategories.productErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error data", it.toString()) // todo showErrorMessageDialog()
+        }
     }
 }
