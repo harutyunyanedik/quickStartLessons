@@ -22,15 +22,6 @@ class ProductsViewModel : ViewModel() {
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
 
-    private val _categoryLiveData: MutableLiveData<List<String>?> = MutableLiveData()
-
-    val categoryLiveData: LiveData<List<String>?>
-        get() = _categoryLiveData
-
-    private val _categoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
-    val categoryErrorLiveData: LiveData<String?>
-        get() = _categoryErrorLiveData
-
     fun getProducts(isShowLoader: Boolean = false) {
         viewModelScope.launch {
             repo.getProductsV2((object : ApiResultCallback<ProductsDto?> {
@@ -45,6 +36,15 @@ class ProductsViewModel : ViewModel() {
             }), isShowLoader)
         }
     }
+
+    private val _categoryLiveData: MutableLiveData<List<String>?> = MutableLiveData()
+
+    val categoryLiveData: LiveData<List<String>?>
+        get() = _categoryLiveData
+
+    private val _categoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val categoryErrorLiveData: LiveData<String?>
+        get() = _categoryErrorLiveData
 
     fun getCategories(isShowLoader: Boolean = false) {
         viewModelScope.launch {
@@ -65,7 +65,7 @@ class ProductsViewModel : ViewModel() {
         viewModelScope.launch {
             repo.getProductsByCategory((object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
-                   _productLiveData.value = response
+                    _productLiveData.value = response
                 }
 
                 override fun onError(): Boolean {

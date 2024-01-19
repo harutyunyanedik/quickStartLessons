@@ -6,7 +6,7 @@ import com.example.quickstartlessons.core.net.getHttpResponse
 import com.example.quickstartlessons.module.data.ProductDto
 import com.example.quickstartlessons.module.data.ProductsDto
 
-interface ProductRepository {
+interface ProductRepository {  // todo rename Repository
 
     suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
 

@@ -26,7 +26,6 @@ class HomeMainTabFragment : BaseFragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +36,7 @@ class HomeMainTabFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.getProducts()
         viewModel.getCategories()
     }
 
@@ -52,8 +52,6 @@ class HomeMainTabFragment : BaseFragment() {
         binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCategories.adapter = categoriesAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        viewModel.getProducts()
-
     }
 
     private fun observeLiveData() {
@@ -65,10 +63,8 @@ class HomeMainTabFragment : BaseFragment() {
             productsAdapter.updateData(mapper.listProductsDtoToListProducts(it))
         }
 
-        viewModel.productErrorLiveData.observe(viewLifecycleOwner)
-        {
-            showErrorMessageDialog("Error", it!!)
-
+        viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error", it ?: "Unknown error")
         }
     }
 

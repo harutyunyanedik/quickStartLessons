@@ -3,7 +3,7 @@ package com.example.quickstartlessons.module.data
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class ProductDto(
+data class ProductDto( // todo product/data/net/response
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")
