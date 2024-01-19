@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.CategoriesAdapter
-import com.example.quickstartlessons.module.home.ProductsAdapter
+import com.example.quickstartlessons.module.home.ui.adapters.ProductsAdapter
+import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewModel
 
 
 class HomeMainTabFragment : BaseFragment() {
@@ -18,7 +19,7 @@ class HomeMainTabFragment : BaseFragment() {
     private val adapter = ProductsAdapter()
     private val categoriesAdapter = CategoriesAdapter()
     private val viewModel: HomeMainTabViewModel by viewModels()
-    private val categoriesViewModel: CategoriesViewModel by viewModels()
+    private val categoriesViewModel: HomeMainTabViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,22 +38,29 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-        setUpObservers()
+        observeLivedata()
     }
 
     private fun setupViews() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvCategories.adapter = adapter
+        binding.rvCategories.adapter = categoriesAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
-    private fun setUpObservers() {
+    private fun observeLivedata() {
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }
+        viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
+        }
         categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
             categoriesAdapter.updateDataCategories(it)
+        }
+
+        categoriesViewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
         }
     }
 }

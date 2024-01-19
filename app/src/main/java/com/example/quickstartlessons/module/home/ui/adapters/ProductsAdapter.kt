@@ -11,11 +11,9 @@ import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.databinding.ItemProductBinding
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
-
     private val items = mutableListOf<ProductDto>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
-
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
@@ -41,8 +39,6 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
         notifyDataSetChanged()
     }
 
-
-
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(item: ProductDto)
     }
@@ -53,7 +49,6 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
             binding.productDescription.text = item.title
             binding.productPrice.text = "${item.price} $"
-
         }
     }
 }
