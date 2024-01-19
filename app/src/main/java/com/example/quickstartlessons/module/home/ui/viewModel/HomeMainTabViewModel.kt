@@ -23,6 +23,16 @@ class HomeMainTabViewModel: ViewModel() {
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
 
+    fun getProducts(isShoLoader: Boolean = true) {
+        viewModelScope.launch {
+            repo.getAllProducts(object : ApiResultCallback<ProductsModel?> {
+                override fun onSuccess(response: ProductsModel?) {
+                    _productsLiveData.value = response
+                }
+            }, isShoLoader)
+        } // todo add error case
+    }
+
     private val _categoriesLiveData: MutableLiveData<List<String>?> = MutableLiveData()
     val categoriesLiveData: LiveData<List<String>?>
         get() = _categoriesLiveData
@@ -31,23 +41,13 @@ class HomeMainTabViewModel: ViewModel() {
     val categoriesErrorLiveData: LiveData<String?>
         get() = _categoriesErrorLiveData
 
-    fun getCategories(isShoLoader: Boolean = true) {
+    fun getCategories(isShoLoader: Boolean = false) {
         viewModelScope.launch {
             repo.getAllCategories(object : ApiResultCallback<List<String>?> {
                 override fun onSuccess(response:List<String>?) {
                     _categoriesLiveData.value = response
                 }
-            }, false)
-        }
-    }
-
-    fun getProducts(isShoLoader: Boolean = true) {
-        viewModelScope.launch {
-            repo.getAllProducts(object : ApiResultCallback<ProductsModel?> {
-                override fun onSuccess(response: ProductsModel?) {
-                    _productsLiveData.value = response
-                }
             }, isShoLoader)
-        }
+        } // todo add error case
     }
 }

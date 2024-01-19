@@ -41,8 +41,7 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-        setUpObservers()
-
+        observeLiveData()
     }
 
     private fun setupViews() {
@@ -53,18 +52,18 @@ class HomeMainTabFragment : BaseFragment() {
         binding.rvItemOfCategories.adapter = categoriesAdapter
     }
 
-    private fun setUpObservers() {
+    private fun observeLiveData() {
         viewModel.productsLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it?.products)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog", "it")
+            showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
         }
         viewModel.categoriesLiveData.observe(viewLifecycleOwner) {
             categoriesAdapter.updateData(it)
         }
         viewModel.categoriesErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error Dialog", "it")
+            showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
         }
     }
 }

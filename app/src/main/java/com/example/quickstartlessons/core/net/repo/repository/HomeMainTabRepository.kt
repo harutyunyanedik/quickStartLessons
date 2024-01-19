@@ -6,7 +6,7 @@ import com.example.quickstartlessons.module.products.data.response.model.Product
 import com.example.quickstartlessons.core.net.repo.datasource.HomeMainTabDataSource
 import com.example.quickstartlessons.module.products.data.response.model.ProductsModel
 
-interface ProductsRepository {
+interface ProductsRepository {   // todo rename to repository
 
     suspend fun getAllProducts(resultCallback: ApiResultCallback<ProductsModel?>, isShowLoader: Boolean)
 

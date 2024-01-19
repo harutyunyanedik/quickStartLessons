@@ -6,7 +6,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface HomeMainTabDataSource {
+interface HomeMainTabDataSource { // todo rename to dataSource
 
     @GET("products")
     suspend fun getAllProducts(): Response <ProductsModel>
