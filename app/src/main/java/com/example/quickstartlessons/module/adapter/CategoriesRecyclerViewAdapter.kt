@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.RvHomeCategoriseBinding
-import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
 
 class CategoriesRecyclerViewAdapter(private var onItem: (String) -> Unit) : RecyclerView.Adapter<CategoriesRecyclerViewAdapter.BaseViewHolder>() {
 

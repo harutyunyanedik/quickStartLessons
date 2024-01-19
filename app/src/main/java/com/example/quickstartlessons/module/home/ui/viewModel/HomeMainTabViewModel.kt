@@ -11,7 +11,7 @@ import com.example.quickstartlessons.core.net.repo.repository.ProductRepositoryI
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
 import kotlinx.coroutines.launch
 
-class ProductsViewModel: ViewModel() { //todo ProductsViewModel e rename ara homeMainTabViewModel
+class HomeMainTabViewModel: ViewModel() {
 
     private val repo: ProductsRepository = ProductRepositoryImplementation(getProduct())
 
@@ -22,6 +22,24 @@ class ProductsViewModel: ViewModel() { //todo ProductsViewModel e rename ara hom
     private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
+
+    private val _categoriesLiveData: MutableLiveData<List<String>?> = MutableLiveData()
+    val categoriesLiveData: LiveData<List<String>?>
+        get() = _categoriesLiveData
+
+    private val _categoriesErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val categoriesErrorLiveData: LiveData<String?>
+        get() = _categoriesErrorLiveData
+
+    fun getCategories(isShoLoader: Boolean = true) {
+        viewModelScope.launch {
+            repo.getAllCategories(object : ApiResultCallback<List<String>?> {
+                override fun onSuccess(response:List<String>?) {
+                    _categoriesLiveData.value = response
+                }
+            }, false)
+        }
+    }
 
     fun getProducts(isShoLoader: Boolean = true) {
         viewModelScope.launch {
