@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getProduct
-import com.example.quickstartlessons.module.products.data.response.model.ProductsModel
 import com.example.quickstartlessons.core.net.repo.repository.ProductRepositoryImplementation
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
+import com.example.quickstartlessons.module.products.data.response.model.ProductsModel
 import kotlinx.coroutines.launch
 
-class HomeMainTabViewModel: ViewModel() {
+class HomeMainTabViewModel : ViewModel() {
 
     private val repo: ProductsRepository = ProductRepositoryImplementation(getProduct())
 
@@ -31,13 +31,13 @@ class HomeMainTabViewModel: ViewModel() {
     val categoriesErrorLiveData: LiveData<String?>
         get() = _categoriesErrorLiveData
 
-    fun getCategories(isShoLoader: Boolean = true) {
+    fun getCategories(isShoLoader: Boolean = false) {
         viewModelScope.launch {
             repo.getAllCategories(object : ApiResultCallback<List<String>?> {
-                override fun onSuccess(response:List<String>?) {
+                override fun onSuccess(response: List<String>?) {
                     _categoriesLiveData.value = response
                 }
-            }, false)
+            }, isShoLoader)
         }
     }
 
@@ -46,24 +46,6 @@ class HomeMainTabViewModel: ViewModel() {
             repo.getAllProducts(object : ApiResultCallback<ProductsModel?> {
                 override fun onSuccess(response: ProductsModel?) {
                     _productsLiveData.value = response
-                }
-            }, isShoLoader)
-        } // todo add error case
-    }
-
-    private val _categoriesLiveData: MutableLiveData<List<String>?> = MutableLiveData()
-    val categoriesLiveData: LiveData<List<String>?>
-        get() = _categoriesLiveData
-
-    private val _categoriesErrorLiveData: MutableLiveData<String?> = MutableLiveData()
-    val categoriesErrorLiveData: LiveData<String?>
-        get() = _categoriesErrorLiveData
-
-    fun getCategories(isShoLoader: Boolean = false) {
-        viewModelScope.launch {
-            repo.getAllCategories(object : ApiResultCallback<List<String>?> {
-                override fun onSuccess(response:List<String>?) {
-                    _categoriesLiveData.value = response
                 }
             }, isShoLoader)
         } // todo add error case

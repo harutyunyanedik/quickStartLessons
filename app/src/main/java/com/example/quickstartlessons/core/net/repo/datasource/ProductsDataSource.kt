@@ -1,6 +1,5 @@
 package com.example.quickstartlessons.core.net.repo.datasource
 
-import com.example.quickstartlessons.module.products.data.response.model.CategoryModel
 import com.example.quickstartlessons.module.products.data.response.model.ProductsDto
 import com.example.quickstartlessons.module.products.data.response.model.ProductsModel
 import retrofit2.Response

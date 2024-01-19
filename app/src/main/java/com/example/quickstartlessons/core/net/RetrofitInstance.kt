@@ -1,6 +1,6 @@
 package com.example.quickstartlessons.core.net
 
-import com.example.quickstartlessons.core.net.repo.datasource.HomeMainTabDataSource
+import com.example.quickstartlessons.core.net.repo.datasource.ProductsDataSource
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -37,7 +37,7 @@ class HeaderInterceptor : Interceptor {
     }
 }
 
-fun getProduct(): HomeMainTabDataSource = getApiService()
+fun getProduct(): ProductsDataSource = getApiService()
 
 inline fun <reified T> getApiService(): T {
     return retrofit.create(T::class.java)
