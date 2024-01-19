@@ -8,23 +8,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
 
-class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>() {
+class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private val item = mutableListOf<String>()
+    private val item: MutableList<String> = mutableListOf()
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
         inflater = LayoutInflater.from(context)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         return CategoriesViewHolder(FragmentCategoriesBinding.inflate(inflater, parent, false))
     }
-
     override fun getItemCount() = item.size
 
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         holder.bind(item[position])
     }
 
@@ -37,13 +36,13 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>
         notifyDataSetChanged()
     }
 
-    abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        abstract fun bind(item: String)
+//    abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+//        abstract fun bind(item: String)
+//
+//    }
 
-    }
-
-    inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) : BaseViewHolder(binding.root) {
-        override fun bind(item: String) {
+    inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) :RecyclerView.ViewHolder(binding.root) {
+         fun bind(item: String) {
             binding.categoriesName.text = item
 
         }

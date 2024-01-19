@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home
+package com.example.quickstartlessons.module.home.ui.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.module.data.ProductDto
+import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.databinding.ItemProductBinding
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
