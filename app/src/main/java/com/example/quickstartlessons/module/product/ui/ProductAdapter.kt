@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.product.ui
+package com.example.quickstartlessons.module.product.ui // todo home/ui/adapter/
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -43,7 +43,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     inner class ProductViewHolder(private val binding: FragmentProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.favoriteProduct.setOnCheckedChangeListener { button, isChecked ->
-               if (button.isPressed) {
+                if (button.isPressed) {
                     if (adapterPosition != RecyclerView.NO_POSITION) {
                         items[adapterPosition].favorite = isChecked
                     }
@@ -58,7 +58,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             binding.productPrice.text = "${item.price} $"
             binding.productTitle.text = item.title
             binding.productDescription.text = item.description
-            binding.favoriteProduct.isChecked=item.favorite
+            binding.favoriteProduct.isChecked = item.favorite
         }
     }
 }

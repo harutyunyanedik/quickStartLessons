@@ -53,13 +53,13 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-             showErrorMessageDialog("Error data", it.toString())
+            showErrorMessageDialog("Error data", it.toString())
         }
         viewModel.productLiveDataCategory.observe(viewLifecycleOwner) {
             adapterCategories.updateData(it)
         }
-        viewModel.productErrorLiveDataCategory.observe(viewLifecycleOwner) {it->
-            showErrorMessageDialog("Error data", it.toString()) // todo showErrorMessageDialog()
+        viewModel.productErrorLiveDataCategory.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error data", it.toString())
         }
     }
 }

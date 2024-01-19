@@ -6,7 +6,7 @@ import com.example.quickstartlessons.module.product.data.model.response.Products
 import com.example.quickstartlessons.core.net.getHttpResponse
 
 
-interface ProductRepository {
+interface ProductRepository { //todo rename Repository
     suspend fun getProducts(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
     suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean,id:String)
 }
@@ -21,7 +21,7 @@ class ProductRepositoryImplementation(private val dataSource: ProductDataSource)
 
     override suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean, id: String) {
         getHttpResponse(resultCallback,isShowLoader) {
-            dataSource.getCategories(id)
+            dataSource.getCategories()
         }
     }
 }

@@ -22,6 +22,7 @@ class HomeMainTabViewModel : ViewModel() {
     private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
+
     private val _productLiveDataCategory: MutableLiveData<List<String>?> = MutableLiveData()
     val productLiveDataCategory: LiveData<List<String>?>
         get() = _productLiveDataCategory
@@ -45,10 +46,8 @@ class HomeMainTabViewModel : ViewModel() {
             repository.getCategories(object : ApiResultCallback<List<String>?> {
                 override fun onSuccess(response: List<String>?) {
                     _productLiveDataCategory.value = response
-
                 }
             }, isShoLoader, id)
-
         }
     }
 }

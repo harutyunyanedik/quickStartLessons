@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.category.data.model.response.ui
+package com.example.quickstartlessons.module.category.data.model.response.ui // todo home/ui/adapter/
 
 import android.annotation.SuppressLint
 import android.content.Context
