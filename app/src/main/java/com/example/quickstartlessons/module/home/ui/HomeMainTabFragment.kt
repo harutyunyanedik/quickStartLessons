@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home.ui
+package com.example.quickstartlessons.module.home.ui // todo ui/viewmodel/
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,7 +37,7 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-        setUpObservers()
+        setUpObservers() // todo observeLiveData
     }
 
     private fun setupViews() {
@@ -53,6 +53,6 @@ class HomeMainTabFragment : BaseFragment() {
         }
         categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
             categoriesAdapter.updateDataCategories(it)
-        }
+        } // todo handle error case
     }
 }

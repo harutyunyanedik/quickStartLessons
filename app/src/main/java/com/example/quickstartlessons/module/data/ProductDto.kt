@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.data
+package com.example.quickstartlessons.module.data // todo products/data
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

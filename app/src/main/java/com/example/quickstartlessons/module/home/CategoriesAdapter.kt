@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home
+package com.example.quickstartlessons.module.home // todo ui/adapter/
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -21,6 +21,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         return CategoriesViewHolder(FragmentCategoriesBinding.inflate(inflater, parent, false))
     }
+
     override fun getItemCount() = item.size
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
@@ -41,8 +42,8 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
 //
 //    } // todo inchi es comment arel? het ber baseViewHolder ov sarqi
 
-    inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) :RecyclerView.ViewHolder(binding.root) {
-         fun bind(item: String) {
+    inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: String) {
             binding.categoriesName.text = item
 
         }
