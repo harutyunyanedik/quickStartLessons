@@ -8,12 +8,20 @@ import com.example.quickstartlessons.core.net.getHttpResponse
 
 interface ProductRepository {
     suspend fun getProducts(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
+    suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean,id:String)
 }
 
 class ProductRepositoryImplementation(private val dataSource: ProductDataSource) : ProductRepository {
+
     override suspend fun getProducts(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
             dataSource.getProduct()
+        }
+    }
+
+    override suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean, id: String) {
+        getHttpResponse(resultCallback,isShowLoader) {
+            dataSource.getCategories(id)
         }
     }
 }

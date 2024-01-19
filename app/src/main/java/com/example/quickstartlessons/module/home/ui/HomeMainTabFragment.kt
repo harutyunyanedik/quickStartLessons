@@ -19,12 +19,12 @@ class HomeMainTabFragment : BaseFragment() {
     private val adapter = ProductAdapter()
     private val adapterCategories = CategoriesAdapter()
     private val viewModel: HomeMainTabViewModel by viewModels()
-    private val viewModelCategories: HomeMainTabViewModelCategories by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProduct()
-        viewModelCategories.getCategories()
+        viewModel.getCategories(true, "categories")
     }
 
     override fun onCreateView(
@@ -53,12 +53,12 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show() // todo showErrorMessageDialog()
+             showErrorMessageDialog("Error data", it.toString())
         }
-        viewModelCategories.productLiveDataCategory.observe(viewLifecycleOwner) {
+        viewModel.productLiveDataCategory.observe(viewLifecycleOwner) {
             adapterCategories.updateData(it)
         }
-        viewModelCategories.productErrorLiveData.observe(viewLifecycleOwner) {
+        viewModel.productErrorLiveDataCategory.observe(viewLifecycleOwner) {it->
             showErrorMessageDialog("Error data", it.toString()) // todo showErrorMessageDialog()
         }
     }
