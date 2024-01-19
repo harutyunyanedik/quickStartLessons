@@ -11,7 +11,7 @@ import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private val item: MutableList<String> = mutableListOf()
+    private val item: MutableList<String> = mutableListOf() // todo rename to items
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
@@ -28,10 +28,10 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateDataCategories(list: List<String>?) {
+    fun updateDataCategories(list: List<String>?) { // todo list rename to items
         item.clear()
         list?.let {
-            item.addAll(item)
+            item.addAll(item) // todo addAll(list)
         }
         notifyDataSetChanged()
     }
@@ -39,7 +39,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
 //    abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //        abstract fun bind(item: String)
 //
-//    }
+//    } // todo inchi es comment arel? het ber baseViewHolder ov sarqi
 
     inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) :RecyclerView.ViewHolder(binding.root) {
          fun bind(item: String) {

@@ -10,7 +10,7 @@ import com.example.quickstartlessons.core.repo.CategoriesRepository
 import com.example.quickstartlessons.core.repo.CategoriesRepositoryImplementation
 import kotlinx.coroutines.launch
 
-class CategoriesViewModel:ViewModel() {
+class CategoriesViewModel:ViewModel() { // todo es jnji tar homeMainTabviewModel i mej
     private val repo: CategoriesRepository = CategoriesRepositoryImplementation(getApiCategory())
 
     private val _categoryLiveDataCategory: MutableLiveData<List<String>?> = MutableLiveData()
