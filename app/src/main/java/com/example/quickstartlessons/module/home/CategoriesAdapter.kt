@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.CategoryItemBinding
+import com.example.quickstartlessons.module.base.utils.QsConstants
 import com.example.quickstartlessons.module.data.Category
 import java.util.Locale
 
@@ -16,7 +17,7 @@ class CategoriesAdapter(private val onCategoryClick: (String) -> Unit) : Recycle
     private val items = mutableListOf<Category>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private var selectedIndex = -1
+    private var selectedIndex = QsConstants.NO_VALUE
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
