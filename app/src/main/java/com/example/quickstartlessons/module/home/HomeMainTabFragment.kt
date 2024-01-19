@@ -11,14 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.mappers.ProductMapper
 import java.util.Locale
 
 class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
     private val viewModel: ProductsViewModel by viewModels()
-    private val mapper = ProductMapper()
     private val productsAdapter = ProductsAdapter()
     private val categoriesAdapter = CategoriesAdapter {
         if (it == getString(R.string.products)){
