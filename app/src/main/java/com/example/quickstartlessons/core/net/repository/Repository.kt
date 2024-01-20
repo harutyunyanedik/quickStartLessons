@@ -27,7 +27,7 @@ class RepositoryImplementation(private val dataSource: ProductDataSource) : Repo
     }
     override suspend fun getProductByCategory(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id: String) {
         getHttpResponse(resultCallback,isShowLoader){
-           dataSource.getProductByCategory(id)
+         dataSource.getProductByCategory(id)
         }
     }
 }

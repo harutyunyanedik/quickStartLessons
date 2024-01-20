@@ -11,12 +11,16 @@ import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.adapter.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
+import java.util.Locale
 
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductAdapter()
-    private val adapterCategories = CategoriesAdapter{
-
+    private val adapterCategories = CategoriesAdapter{ category->
+         viewModel.geProductByCategory(true,category)
+        binding.toolBarName.text=category.replaceFirstChar {
+           it.uppercase()
+        }
     }
     private val viewModel: HomeMainTabViewModel by viewModels()
 

@@ -54,23 +54,26 @@ class HomeMainTabViewModel : ViewModel() {
                 override fun onSuccess(response: List<String>?) {
                     _categoryLiveData.value = response
                 }
+                override fun onError(): Boolean {
+                    _categoryErrorLiveData.value = "Error data"
+                    return true
+                }
             }, isShoLoader)
         }
     }
-    private val _productByCategoryLiveData: MutableLiveData<ProductDto?> = MutableLiveData()
-    val productByCategoryLiveData: LiveData<ProductDto?>
-        get() = _productByCategoryLiveData
-
-    private val _productByCategoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
-    val productByCategoryErrorLiveData: LiveData<String?>
-        get() = _productByCategoryErrorLiveData
 
     fun geProductByCategory(isShoLoader: Boolean=true,id:String){
         viewModelScope.launch {
-            repository.getProductByCategory(object :ApiResultCallback<ProductsDto?>{
+            repository.getProductByCategory(object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
-                    _productByCategoryLiveData.value
+                    _productLiveData.value = response?.products
                 }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "Error data"
+                    return true
+                }
+
             },isShoLoader,id)
         }
     }

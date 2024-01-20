@@ -13,5 +13,5 @@ interface ProductDataSource {
     suspend fun getCategories(): Response<List<String>>
 
     @GET("products/category/{categoryName}")
-    suspend fun getProductByCategory(@Path("categoryName") id:String)
+    suspend fun getProductByCategory(@Path("categoryName") id:String):Response<ProductsDto>
 }
