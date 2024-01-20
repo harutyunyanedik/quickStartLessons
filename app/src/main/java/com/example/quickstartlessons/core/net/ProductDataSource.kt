@@ -5,11 +5,13 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface ProductDataSource { // todo rename DataSource
+interface ProductDataSource {
     @GET("products")
     suspend fun getProduct(): Response<ProductsDto>
 
     @GET("products/categories")
     suspend fun getCategories(): Response<List<String>>
 
+    @GET("products/category/{categoryName}")
+    suspend fun getProductByCategory(@Path("categoryName") id:String)
 }

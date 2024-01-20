@@ -6,12 +6,13 @@ import com.example.quickstartlessons.module.product.data.model.response.Products
 import com.example.quickstartlessons.core.net.getHttpResponse
 
 
-interface ProductRepository { //todo rename Repository
+interface Repository {
     suspend fun getProducts(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
-    suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean,id:String)
+    suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean)
+    suspend fun getProductByCategory(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id:String)
 }
 
-class ProductRepositoryImplementation(private val dataSource: ProductDataSource) : ProductRepository {
+class RepositoryImplementation(private val dataSource: ProductDataSource) : Repository {
 
     override suspend fun getProducts(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
@@ -19,9 +20,14 @@ class ProductRepositoryImplementation(private val dataSource: ProductDataSource)
         }
     }
 
-    override suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean, id: String) {
+    override suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback,isShowLoader) {
             dataSource.getCategories()
+        }
+    }
+    override suspend fun getProductByCategory(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id: String) {
+        getHttpResponse(resultCallback,isShowLoader){
+           dataSource.getProductByCategory(id)
         }
     }
 }

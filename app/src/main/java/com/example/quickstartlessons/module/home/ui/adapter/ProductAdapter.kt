@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.product.ui // todo home/ui/adapter/
+package com.example.quickstartlessons.module.home.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.databinding.FragmentProductDataBinding
+import com.example.quickstartlessons.databinding.ItemProductDataBinding
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
@@ -22,7 +23,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        return ProductViewHolder(FragmentProductDataBinding.inflate(inflater, parent, false))
+        return ProductViewHolder(ItemProductDataBinding.inflate(inflater, parent, false))
     }
 
     override fun getItemCount(): Int = items.size
@@ -40,7 +41,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         notifyDataSetChanged()
     }
 
-    inner class ProductViewHolder(private val binding: FragmentProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ProductViewHolder(private val binding: ItemProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.favoriteProduct.setOnCheckedChangeListener { button, isChecked ->
                 if (button.isPressed) {

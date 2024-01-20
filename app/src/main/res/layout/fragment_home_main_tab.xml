@@ -47,7 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclerViewCategory"
-            tools:listitem="@layout/fragment_product_data" />
+            tools:listitem="@layout/item_product_data" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

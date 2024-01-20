@@ -1,14 +1,15 @@
-package com.example.quickstartlessons.module.category.data.model.response.ui // todo home/ui/adapter/
+package com.example.quickstartlessons.module.home.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quickstartlessons.databinding.FragmentCategoriesDataBinding
+import com.example.quickstartlessons.databinding.ItemCategoriesDataBinding
+import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 
 
-class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
+class CategoriesAdapter (private val onItemClick:(String)->Unit): RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val items: MutableList<String> = mutableListOf()
@@ -21,7 +22,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
-        return CategoriesViewHolder(FragmentCategoriesDataBinding.inflate(inflater, parent, false))
+        return CategoriesViewHolder(ItemCategoriesDataBinding.inflate(inflater, parent, false))
     }
 
     override fun getItemCount(): Int = items.size
@@ -39,9 +40,20 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
         notifyDataSetChanged()
     }
 
-    inner class CategoriesViewHolder(private val binding: FragmentCategoriesDataBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CategoriesViewHolder(private val binding: ItemCategoriesDataBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.categories.setOnClickListener {
+                if(adapterPosition!=RecyclerView.NO_POSITION){
+                    onItemClick.invoke(items[adapterPosition])
+                    
+                }
+
+            }
+        }
         fun bind(item: String) {
             binding.categories.text = item
+
         }
     }
 }
