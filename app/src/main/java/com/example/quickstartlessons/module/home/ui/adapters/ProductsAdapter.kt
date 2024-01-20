@@ -44,6 +44,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     }
 
     inner class ProductViewHolder(private val binding: ItemProductBinding) : BaseViewHolder(binding.root) {
+
         @SuppressLint("SetTextI18n")
         override fun bind(item: ProductDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)

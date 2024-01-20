@@ -17,7 +17,7 @@ import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewMod
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductsAdapter()
-    private val categoriesAdapter = CategoriesAdapter()
+    private val categoriesAdapter = CategoriesAdapter {}
     private val viewModel: HomeMainTabViewModel by viewModels()
     private val categoriesViewModel: HomeMainTabViewModel by viewModels()
 

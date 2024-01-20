@@ -11,6 +11,7 @@ import com.example.quickstartlessons.module.products.data.ProductsDto
 import com.example.quickstartlessons.core.repo.ProductsRepository
 import com.example.quickstartlessons.core.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class HomeMainTabViewModel : ViewModel() {
     private val repo: ProductsRepository = ProductsRepositoryImplementation(getApi())
@@ -31,6 +32,16 @@ class HomeMainTabViewModel : ViewModel() {
     private val _categoryErrorLiveDataCategory: MutableLiveData<String?> = MutableLiveData()
     val categoryErrorLiveData: LiveData<String?>
         get() = _categoryErrorLiveDataCategory
+
+    private val _productsByCategoryLiveData: MutableLiveData<ProductsDto> = MutableLiveData()
+    val productsByCategoryLiveData: LiveData<ProductsDto>
+        get() = _productsByCategoryLiveData
+
+    private val _productsByCategoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val productsByCategoryErrorLiveData: LiveData<String?>
+        get() = _productsByCategoryErrorLiveData
+
+
     fun getProducts(isShowLoader: Boolean = true) {
         viewModelScope.launch {
             repo.getProductsV2((object : ApiResultCallback<ProductsDto?> {
@@ -43,8 +54,8 @@ class HomeMainTabViewModel : ViewModel() {
 
     fun getCategories(isShoLoader: Boolean = true) {
         viewModelScope.launch {
-            repo.getCategories(object :ApiResultCallback<List<String>?> {
-                override fun onSuccess(response:List<String>?) {
+            repo.getCategories(object : ApiResultCallback<List<String>?> {
+                override fun onSuccess(response: List<String>?) {
                     _categoryLiveDataCategory.value = response
 
                 }
@@ -52,4 +63,15 @@ class HomeMainTabViewModel : ViewModel() {
         }
 
     }
+
+    fun getProductsByCategory(isShowLoader: Boolean = true, category: String) {
+        viewModelScope.launch {
+            repo.getProductsByCategory((object : ApiResultCallback<ProductsDto?> {
+                override fun onSuccess(response: ProductsDto?) {
+                    _productLiveData.value = response?.products
+                }
+            }), isShowLoader, category)
+        }
+    }
+
 }
