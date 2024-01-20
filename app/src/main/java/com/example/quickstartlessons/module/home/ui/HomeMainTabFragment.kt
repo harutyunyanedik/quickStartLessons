@@ -17,9 +17,20 @@ import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewMod
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductsAdapter()
-    private val categoriesAdapter = CategoriesAdapter { category ->
-        viewModel.getProductsByCategory(true, category)
+    private val categoriesAdapter = CategoriesAdapter {
+        if (it == "All products") {
+            viewModel.getProducts()
+        } else {
+            viewModel.getProductsByCategory(category = it)
+        }
+        binding.products.text = it.replaceFirstChar {
+            if (it.isLowerCase()) {
+                it.titlecase()
+            } else it.toString()
+
+        }
     }
+
     private val viewModel: HomeMainTabViewModel by viewModels()
     private val categoriesViewModel: HomeMainTabViewModel by viewModels()
 

@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
+import com.example.quickstartlessons.module.base.utils.QsConstants
 
 class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private val items: MutableList<String> = mutableListOf()
-    private var select = RecyclerView.NO_POSITION
+    private var select = QsConstants.ZERO
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -68,7 +69,7 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
         override fun bind(item: String) {
             binding.categoriesName.text = item
             if (select == adapterPosition) {
-                binding.categoriesName.setBackgroundColor(R.color.purple_500)
+                binding.categoriesName.setBackgroundColor(R.color.teal_700)
 
             } else binding.categoriesName.setBackgroundColor(R.color.white)
         }
