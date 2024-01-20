@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.module.home.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.CategoriesAdapter
@@ -17,8 +19,10 @@ import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewMod
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val adapter = ProductsAdapter()
+
+    @SuppressLint("ResourceType")
     private val categoriesAdapter = CategoriesAdapter {
-        if (it == "All products") {
+        if (it == getString(R.id.products)) {
             viewModel.getProducts()
         } else {
             viewModel.getProductsByCategory(category = it)
