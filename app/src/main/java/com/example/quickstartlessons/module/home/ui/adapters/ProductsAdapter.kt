@@ -44,12 +44,21 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     }
 
     inner class ProductViewHolder(private val binding: ItemProductBinding) : BaseViewHolder(binding.root) {
-
+        init {
+            binding.checkboxFavorite.setOnCheckedChangeListener { button, isChecked ->
+                if (button.isPressed) {
+                    if (adapterPosition != RecyclerView.NO_POSITION) {
+                        items[adapterPosition].isFavorite = isChecked
+                    }
+                }
+            }
+        }
         @SuppressLint("SetTextI18n")
         override fun bind(item: ProductDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
             binding.productDescription.text = item.title
             binding.productPrice.text = "${item.price} $"
+            binding.checkboxFavorite.isChecked = item.isFavorite
         }
     }
 }
