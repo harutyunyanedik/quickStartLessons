@@ -73,7 +73,9 @@ class HomeMainTabFragment : BaseFragment() {
             showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
         }
         categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
-            categoriesAdapter.updateDataCategories(it)
+            if (it != null) {
+                categoriesAdapter.updateDataCategories(it)
+            }
         }
 
         categoriesViewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {

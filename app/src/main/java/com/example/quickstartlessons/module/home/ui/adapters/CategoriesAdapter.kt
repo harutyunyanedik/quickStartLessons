@@ -32,10 +32,10 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateDataCategories(list:List<String>) {
+    fun updateDataCategories(list: List<String>) {
         this.items.clear()
         list.let {
-                items.addAll(list)
+            items.addAll(list)
         }
         notifyDataSetChanged()
     }
