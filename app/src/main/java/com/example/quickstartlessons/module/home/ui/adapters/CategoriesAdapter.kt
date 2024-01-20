@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
-import com.example.quickstartlessons.module.base.utils.QsConstants
 
 class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>() {
     private lateinit var context: Context
@@ -33,13 +32,10 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateDataCategories(list: List<String>?) {
+    fun updateDataCategories(list:List<String>) {
         this.items.clear()
-        items.add("All products")
         list.let {
-            if (list != null) {
                 items.addAll(list)
-            }
         }
         notifyDataSetChanged()
     }
