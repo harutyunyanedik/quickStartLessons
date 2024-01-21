@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.products.data.response.model
+package com.example.quickstartlessons.module.products.data.response.model.products
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -20,4 +20,15 @@ data class ProductsDto(
     val category: String,
     @SerializedName("thumbnail")
     val thumbnail: String
-) : Serializable
+) : Serializable{
+    fun ProductsDto.toProduct() = Product(
+        id = id,
+       title = title,
+        description = description,
+        price = price,
+        rating = rating,
+        brand = brand,
+        category = category,
+        thumbnail = thumbnail,
+    )
+}

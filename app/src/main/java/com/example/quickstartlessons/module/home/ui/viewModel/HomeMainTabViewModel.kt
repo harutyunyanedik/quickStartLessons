@@ -8,7 +8,7 @@ import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getProduct
 import com.example.quickstartlessons.core.net.repo.repository.ProductRepositoryImplementation
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
-import com.example.quickstartlessons.module.products.data.response.model.ProductsModel
+import com.example.quickstartlessons.module.products.data.response.model.products.ProductsModel
 import kotlinx.coroutines.launch
 
 class HomeMainTabViewModel : ViewModel() {
@@ -19,16 +19,31 @@ class HomeMainTabViewModel : ViewModel() {
     val productsLiveData: LiveData<ProductsModel?>
         get() = _productsLiveData
 
-    private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
-    val productErrorLiveData: LiveData<String?>
+    private val _productErrorLiveData: MutableLiveData<String> = MutableLiveData()
+    val productErrorLiveData: LiveData<String>
         get() = _productErrorLiveData
+
+    fun getProducts(isShoLoader: Boolean = true) {
+        viewModelScope.launch {
+            repo.getAllProducts(object : ApiResultCallback<ProductsModel?> {
+                override fun onSuccess(response: ProductsModel?) {
+                    _productsLiveData.value = response
+                }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "Unknown error"
+                    return super.onError()
+                }
+            }, isShoLoader)
+        }
+    }
 
     private val _categoriesLiveData: MutableLiveData<List<String>?> = MutableLiveData()
     val categoriesLiveData: LiveData<List<String>?>
         get() = _categoriesLiveData
 
-    private val _categoriesErrorLiveData: MutableLiveData<String?> = MutableLiveData()
-    val categoriesErrorLiveData: LiveData<String?>
+    private val _categoriesErrorLiveData: MutableLiveData<String> = MutableLiveData()
+    val categoriesErrorLiveData: LiveData<String>
         get() = _categoriesErrorLiveData
 
     fun getCategories(isShoLoader: Boolean = false) {
@@ -37,17 +52,36 @@ class HomeMainTabViewModel : ViewModel() {
                 override fun onSuccess(response: List<String>?) {
                     _categoriesLiveData.value = response
                 }
+
+                override fun onError(): Boolean {
+                    _categoriesErrorLiveData.value = "Unknown error"
+                    return super.onError()
+                }
             }, isShoLoader)
         }
     }
 
-    fun getProducts(isShoLoader: Boolean = true) {
+    private val _productsByCategoryErrorLiveData: MutableLiveData<String> = MutableLiveData()
+    val productsByCategoryErrorLiveData: LiveData<String>
+        get() = _productsByCategoryErrorLiveData
+
+    private val _productsByCategoryLiveData: MutableLiveData<ProductsModel?> = MutableLiveData()
+    val productsByCategoryLiveData: LiveData<ProductsModel?>
+        get() = _productsByCategoryLiveData
+
+    fun getProductsByCategory(isShoLoader: Boolean = false, categoryName: String) {
         viewModelScope.launch {
-            repo.getAllProducts(object : ApiResultCallback<ProductsModel?> {
+            repo.getProductsByCategory(object : ApiResultCallback<ProductsModel?> {
                 override fun onSuccess(response: ProductsModel?) {
-                    _productsLiveData.value = response
+                    _productsByCategoryLiveData.value = response
+                    _productsLiveData.value = _productsByCategoryLiveData.value
                 }
-            }, isShoLoader)
-        } // todo add error case
+
+                override fun onError(): Boolean {
+                    _productsByCategoryErrorLiveData.value = "Unknown error"
+                    return super.onError()
+                }
+            }, isShoLoader, categoryName)
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.adapter
+package com.example.quickstartlessons.module.home.ui.viewModel.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.module.products.data.response.model.ProductsDto
+import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
 import com.example.quickstartlessons.databinding.RvHomeMainTabFragmentBinding
+import com.example.quickstartlessons.module.products.data.response.model.products.Product
 
 class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
 
-    private val item: MutableList<ProductsDto> = mutableListOf()
+    private val items: MutableList<ProductsDto> = mutableListOf()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
@@ -21,10 +22,10 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(item[position])
+        holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int = item.size
+    override fun getItemCount(): Int = items.size
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -34,9 +35,9 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(item: List<ProductsDto>?) {
-        this.item.clear()
+        this.items.clear()
         item?.let {
-            this.item.addAll(it)
+            this.items.addAll(it)
         }
         notifyDataSetChanged()
     }
@@ -49,6 +50,8 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
         init {
             binding.favoriteCheckbox.setOnCheckedChangeListener { _ , isChecked ->
                 if (adapterPosition != RecyclerView.NO_POSITION) {
+                 // items[adapterPosition].isFavorite = isChecked
+                    notifyItemChanged(adapterPosition)
                  // binding.productId.text =  item[adapterPosition].id.toString()
                     onItemClick.invoke(true)
                 }
@@ -59,7 +62,7 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
         override fun bind(item: ProductsDto) {
             binding.productId.text = item.id.toString()
             binding.productTitle.text = item.title
-            binding.productPrice.text = "Price: ${item.price}"
+            binding.productPrice.text = "Price: ${item.price} $"
             Glide.with(context).load(item.thumbnail).into(binding.productThumbnail)
         }
     }

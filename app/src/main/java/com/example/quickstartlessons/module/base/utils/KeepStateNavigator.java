@@ -31,7 +31,7 @@ import java.util.Map;
 
 
 @Deprecated
-@Navigator.Name("keep_state_fragment") // `keep_state_fragment` is used in navigation xml
+@Navigator.Name("keep_state_fragment") // todo`keep_state_fragment` is used in navigation xml
 public class KeepStateNavigator extends Navigator<FragmentNavigator.Destination> {
     private static final String TAG = "FragmentNavigator";
     private static final String KEY_BACK_STACK_IDS = "androidx-nav-fragment:navigator:backStackIds";
@@ -182,12 +182,12 @@ public class KeepStateNavigator extends Navigator<FragmentNavigator.Destination>
             ft.addToBackStack(generateBackStackName(mBackStack.size() + 1, destId));
             isAdded = true;
         }
-        if (navigatorExtras instanceof FragmentNavigator.Extras) {
-            FragmentNavigator.Extras extras = (FragmentNavigator.Extras) navigatorExtras;
-            for (Map.Entry<View, String> sharedElement : extras.getSharedElements().entrySet()) {
-                ft.addSharedElement(sharedElement.getKey(), sharedElement.getValue());
-            }
-        }
+//        if (navigatorExtras instanceof FragmentNavigator.Extras) {
+//           // FragmentNavigator.Extras extras = (FragmentNavigator.Extras) navigatorExtras;
+//            for (Map.Entry<View, String> sharedElement : extras.getSharedElements().entrySet()) {
+//                ft.addSharedElement(sharedElement.getKey(), sharedElement.getValue());
+//            }
+       // }
         ft.setReorderingAllowed(true);
         ft.commit();
         // The commit succeeded, update our view of the world
