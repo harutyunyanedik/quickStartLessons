@@ -20,7 +20,7 @@ class HomeMainTabFragment : BaseFragment() {
     private val adapter = ProductAdapter()
     private val adapterCategories = CategoriesAdapter { category ->
 
-        if (category == QsConstants.ALL_PRODUCTS) {
+        if (category == QsConstants.ALL_PRODUCTS) { // todo delete constant use resurce
             viewModel.getProduct()
         } else {
             viewModel.geProductByCategory(true, category)
