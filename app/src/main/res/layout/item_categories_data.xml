@@ -4,22 +4,22 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewCategories"
-        android:layout_width="@dimen/_210dp"
+        android:layout_width="@dimen/_205dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/_8dp"
-        app:cardElevation="@dimen/_8dp"
+        app:cardCornerRadius="@dimen/_3dp"
+        app:cardElevation="@dimen/_5dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintByCategory"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_80dp"
+            android:text="@string/products"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
                 android:id="@+id/categories"

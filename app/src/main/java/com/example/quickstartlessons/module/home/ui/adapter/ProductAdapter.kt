@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
-
 import com.example.quickstartlessons.databinding.ItemProductDataBinding
 
 
@@ -47,6 +46,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
                 if (button.isPressed) {
                     if (adapterPosition != RecyclerView.NO_POSITION) {
                         items[adapterPosition].favorite = isChecked
+
                     }
                 }
             }

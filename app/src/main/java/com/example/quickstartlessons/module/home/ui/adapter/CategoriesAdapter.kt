@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ItemCategoriesDataBinding
 import com.example.quickstartlessons.module.base.utils.QsConstants
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
-import java.util.Locale
 
 
 class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val items: MutableList<String> = mutableListOf()
-    private var select = -1
+    private var select = QsConstants.NO_VALUE
+    private var isSelected = R.color.white
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -53,9 +52,7 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
             binding.constraintByCategory.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onItemClick.invoke(items[adapterPosition])
-                    items[adapterPosition]!=items[adapterPosition]
                     select = adapterPosition
-
                     notifyDataSetChanged()
                 }
 
@@ -64,14 +61,15 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
 
         @SuppressLint("ResourceAsColor")
         fun bind(item: String) {
-            binding.categories.text = item.replaceFirstChar { it.uppercase()
+            binding.categories.text = item.replaceFirstChar {
+                it.uppercase()
             }
-          if(select==adapterPosition){
-              binding.constraintByCategory.setBackgroundColor(R.color.purple_200)
-          }
-          else{
-              binding.constraintByCategory.setBackgroundColor(R.color.white)
-          }
+            isSelected = if (select == adapterPosition) {
+                R.color.purple_200
+            } else {
+                R.color.white
+            }
+            binding.constraintByCategory.background = ContextCompat.getDrawable(context, isSelected)
         }
     }
 }
