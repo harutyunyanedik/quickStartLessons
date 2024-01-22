@@ -11,11 +11,17 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.example.quickstartlessons.core.di.appComponent
 import com.example.quickstartlessons.module.base.coroutine.BaseCoroutineExceptionHandler
 import com.example.quickstartlessons.module.base.utils.Prefs
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidFileProperties
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 class QSApplication : Application(), LifecycleObserver {
     private lateinit var currentActivityState: Lifecycle
@@ -35,12 +41,12 @@ class QSApplication : Application(), LifecycleObserver {
     }
 
     private fun setupKoin() {
-//        startKoin {
-//            androidLogger(Level.ERROR)
-//            androidContext(this@QSApplication)
-//            androidFileProperties()
-//            modules(appComponent)
-//        }
+        startKoin {
+            androidLogger(Level.ERROR)
+            androidContext(this@QSApplication)
+            androidFileProperties()
+            modules(appComponent)
+        }
     }
 
     private fun listenToNetworkChange() {
