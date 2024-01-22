@@ -5,15 +5,18 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentCategoriesBinding
+import com.example.quickstartlessons.module.base.utils.QsConstants
 
 class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<CategoriesAdapter.BaseViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private val items: MutableList<String> = mutableListOf()
-    private var select = -1
+    private var select = QsConstants.NO_VALUE
+    private var isSelected = R.color.white
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -42,23 +45,18 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
 
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(item: String)
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
     inner class CategoriesViewHolder(private val binding: FragmentCategoriesBinding) : BaseViewHolder(binding.root) {
-
         init {
             binding.constraintLayout.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onItemClick.invoke(items[adapterPosition])
-                    items[adapterPosition] != items[adapterPosition]
                     select = adapterPosition
-
                     notifyDataSetChanged()
                 }
             }
-
         }
 
         @SuppressLint("ResourceAsColor")
@@ -66,11 +64,14 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
             binding.categoriesName.text = item.replaceFirstChar {
                 it.uppercase()
             }
-            if (select == adapterPosition) {
-                binding.constraintLayout.setBackgroundColor(R.color.teal_700)
-
-            } else binding.constraintLayout.setBackgroundColor(R.color.white)
+            isSelected = if (select == adapterPosition) {
+                R.color.teal_700
+            } else {
+                R.color.white
+            }
+            binding.constraintLayout.background = ContextCompat.getDrawable(context, isSelected)
         }
+
 
     }
 }

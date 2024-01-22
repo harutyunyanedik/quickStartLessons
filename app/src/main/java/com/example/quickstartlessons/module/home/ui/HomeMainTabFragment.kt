@@ -21,13 +21,13 @@ class HomeMainTabFragment : BaseFragment() {
     private val adapter = ProductsAdapter()
 
     @SuppressLint("ResourceType")
-    private val categoriesAdapter = CategoriesAdapter {
-        if (it == getString(R.id.products)) {
-            viewModel.getProducts()
+    private val categoriesAdapter = CategoriesAdapter { category ->
+        if (category == getString(R.id.products)) {
+            viewModel.run { getProducts() }
         } else {
-            viewModel.getProductsByCategory(category = it)
+            viewModel.getProductsByCategory(true, category)
         }
-        binding.products.text = it.replaceFirstChar {
+        binding.products.text = category.replaceFirstChar {
             if (it.isLowerCase()) {
                 it.titlecase()
             } else it.toString()
@@ -73,9 +73,13 @@ class HomeMainTabFragment : BaseFragment() {
             showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
         }
         categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
+            val list = mutableListOf<String>()
+            list.add("All products")
             if (it != null) {
-                categoriesAdapter.updateDataCategories(it)
+                list.addAll(it)
             }
+            categoriesAdapter.updateDataCategories(list)
+
         }
 
         categoriesViewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {

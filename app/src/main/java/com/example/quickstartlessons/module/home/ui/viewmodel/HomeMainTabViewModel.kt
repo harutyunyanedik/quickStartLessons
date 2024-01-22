@@ -11,7 +11,7 @@ import com.example.quickstartlessons.module.products.data.ProductsDto
 import com.example.quickstartlessons.core.repo.ProductsRepository
 import com.example.quickstartlessons.core.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch
-import retrofit2.Response
+
 
 class HomeMainTabViewModel : ViewModel() {
     private val repo: ProductsRepository = ProductsRepositoryImplementation(getApi())
@@ -48,6 +48,11 @@ class HomeMainTabViewModel : ViewModel() {
                 override fun onSuccess(response: ProductsDto?) {
                     _productLiveData.value = response?.products
                 }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "Error data"
+                    return true
+                }
             }), isShowLoader)
         }
     }
@@ -59,6 +64,11 @@ class HomeMainTabViewModel : ViewModel() {
                     _categoryLiveDataCategory.value = response
 
                 }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "Error data"
+                    return true
+                }
             }, isShoLoader)
         }
 
@@ -69,6 +79,11 @@ class HomeMainTabViewModel : ViewModel() {
             repo.getProductsByCategory((object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
                     _productLiveData.value = response?.products
+                }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "Error data"
+                    return true
                 }
             }), isShowLoader, category)
         }
