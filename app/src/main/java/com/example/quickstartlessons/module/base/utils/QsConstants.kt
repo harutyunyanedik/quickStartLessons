@@ -8,5 +8,5 @@ object QsConstants {
     const val EMPTY_STRING = ""
     const val STRING_SPACE = " "
 
-    const val PRODUCTS_BASE_URL = ""
+    const val PRODUCTS_BASE_URL = "https://jsonplaceholder.typicode.com/"
 }
