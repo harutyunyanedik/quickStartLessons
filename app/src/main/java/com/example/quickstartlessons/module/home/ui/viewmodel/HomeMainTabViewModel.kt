@@ -2,19 +2,16 @@ package com.example.quickstartlessons.module.home.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.ApiResultCallback
-import com.example.quickstartlessons.core.getApi
+import com.example.quickstartlessons.core.repo.ProductsRepository
+import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
 import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.module.products.data.ProductsDto
-import com.example.quickstartlessons.core.repo.ProductsRepository
-import com.example.quickstartlessons.core.repo.ProductsRepositoryImplementation
 import kotlinx.coroutines.launch
 
 
-class HomeMainTabViewModel : ViewModel() {
-    private val repo: ProductsRepository = ProductsRepositoryImplementation(getApi())
+class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservableViewModel() {
 
 
     private val _productLiveData: MutableLiveData<List<ProductDto>?> = MutableLiveData()

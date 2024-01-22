@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
@@ -14,6 +13,7 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ui.adapters.ProductsAdapter
 import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeMainTabFragment : BaseFragment() {
@@ -35,8 +35,7 @@ class HomeMainTabFragment : BaseFragment() {
         }
     }
 
-    private val viewModel: HomeMainTabViewModel by viewModels()
-    private val categoriesViewModel: HomeMainTabViewModel by viewModels()
+    private val viewModel by viewModel<HomeMainTabViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +48,7 @@ class HomeMainTabFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProducts()
-        categoriesViewModel.getCategories()
+        viewModel.getCategories()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,17 +71,16 @@ class HomeMainTabFragment : BaseFragment() {
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
         }
-        categoriesViewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
+        viewModel.categoryLiveDataCategory.observe(viewLifecycleOwner) {
             val list = mutableListOf<String>()
             list.add("All products")
             if (it != null) {
                 list.addAll(it)
             }
             categoriesAdapter.updateDataCategories(list)
-
         }
 
-        categoriesViewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
+        viewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
         }
     }

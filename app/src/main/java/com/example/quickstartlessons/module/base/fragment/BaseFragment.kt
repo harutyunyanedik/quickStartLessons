@@ -2,7 +2,6 @@ package com.example.quickstartlessons.module.base.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.example.quickstartlessons.QSApplication.Companion.networkStateLiveData
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.module.base.activity.BaseActivity
