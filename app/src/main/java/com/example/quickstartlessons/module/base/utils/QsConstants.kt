@@ -7,7 +7,7 @@ object QsConstants {
     const val NO_VALUE = -1
     const val EMPTY_STRING = ""
     const val STRING_SPACE = " "
-    const val ALL_PRODUCTS="Products"
+    const val ALL_PRODUCTS = "Products"
 
-    const val PRODUCTS_BASE_URL = "https://jsonplaceholder.typicode.com/"
+    const val PRODUCTS_BASE_URL = "https://dummyjson.com/"
 }

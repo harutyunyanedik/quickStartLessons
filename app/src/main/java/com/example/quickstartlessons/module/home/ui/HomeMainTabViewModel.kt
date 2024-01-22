@@ -2,18 +2,15 @@ package com.example.quickstartlessons.module.home.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
+import com.example.quickstartlessons.core.net.repository.Repository
+import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.module.product.data.model.response.ProductsDto
-import com.example.quickstartlessons.core.net.getApi
-import com.example.quickstartlessons.core.net.repository.Repository
-import com.example.quickstartlessons.core.net.repository.RepositoryImplementation
 import kotlinx.coroutines.launch
 
-class HomeMainTabViewModel : ViewModel() {
-    private val repository: Repository = RepositoryImplementation(getApi())
+class HomeMainTabViewModel(private val repository: Repository) : BaseObservableViewModel() {
 
     private val _productLiveData: MutableLiveData<List<ProductDto>?> = MutableLiveData()
     val productLiveData: LiveData<List<ProductDto>?>
@@ -22,6 +19,7 @@ class HomeMainTabViewModel : ViewModel() {
     private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
+
     fun getProduct(isShoLoader: Boolean = true) {
         viewModelScope.launch {
             repository.getProducts(object : ApiResultCallback<ProductsDto?> {
@@ -34,8 +32,7 @@ class HomeMainTabViewModel : ViewModel() {
                     return true
                 }
 
-            }
-            , isShoLoader)
+            }, isShoLoader)
         }
     }
 
@@ -54,6 +51,7 @@ class HomeMainTabViewModel : ViewModel() {
                 override fun onSuccess(response: List<String>?) {
                     _categoryLiveData.value = response
                 }
+
                 override fun onError(): Boolean {
                     _categoryErrorLiveData.value = "Error data"
                     return true
@@ -62,7 +60,7 @@ class HomeMainTabViewModel : ViewModel() {
         }
     }
 
-    fun geProductByCategory(isShoLoader: Boolean=true,id:String){
+    fun geProductByCategory(isShoLoader: Boolean = true, id: String) {
         viewModelScope.launch {
             repository.getProductByCategory(object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
@@ -74,7 +72,7 @@ class HomeMainTabViewModel : ViewModel() {
                     return true
                 }
 
-            },isShoLoader,id)
+            }, isShoLoader, id)
         }
     }
 }

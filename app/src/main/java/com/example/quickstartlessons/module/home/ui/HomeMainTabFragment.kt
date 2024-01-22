@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
@@ -13,6 +12,7 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.QsConstants
 import com.example.quickstartlessons.module.home.ui.adapter.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeMainTabFragment : BaseFragment() {
@@ -30,7 +30,7 @@ class HomeMainTabFragment : BaseFragment() {
         }
 
     }
-    private val viewModel: HomeMainTabViewModel by viewModels()
+    private val viewModel by viewModel<HomeMainTabViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
