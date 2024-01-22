@@ -5,18 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
-import com.example.quickstartlessons.core.net.getProductsApi
-import com.example.quickstartlessons.core.repo.ProductsRepositoryImplementation
 import com.example.quickstartlessons.core.repo.Repository
+import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
 import com.example.quickstartlessons.module.category.data.model.Category
 import com.example.quickstartlessons.module.mappers.ProductMapper
 import com.example.quickstartlessons.module.product.data.model.Product
 import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
 import kotlinx.coroutines.launch
 
-class ProductsViewModel : ViewModel() {
+class ProductsViewModel(private val repo: Repository) : BaseObservableViewModel() {
     private val mapper = ProductMapper()
-    private val repo: Repository = ProductsRepositoryImplementation(getProductsApi())
 
     private val _productLiveData: MutableLiveData<List<Product>?> = MutableLiveData()
     val productLiveData: LiveData<List<Product>?>
