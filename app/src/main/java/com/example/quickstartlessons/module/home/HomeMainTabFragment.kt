@@ -1,26 +1,24 @@
 package com.example.quickstartlessons.module.home
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quickstartlessons.R
-import com.example.quickstartlessons.module.home.ui.viewModel.HomeMainTabViewModel
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.home.ui.viewModel.HomeMainTabViewModel
 import com.example.quickstartlessons.module.home.ui.viewModel.adapter.CategoriesRecyclerViewAdapter
 import com.example.quickstartlessons.module.home.ui.viewModel.adapter.ProductsRecyclerViewAdapter
-import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
 class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val viewModel: HomeMainTabViewModel by viewModels()
+    private val viewModel by viewModel<HomeMainTabViewModel>()
     private var categoriesAdapter: CategoriesRecyclerViewAdapter = CategoriesRecyclerViewAdapter{ it, n->
         if(n % 2 != 1) {
             binding.productsHeader.text = it.toLowerCase(Locale.ROOT).replaceFirstChar {
