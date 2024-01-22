@@ -8,9 +8,10 @@ import com.example.quickstartlessons.R
 import com.example.quickstartlessons.module.base.activity.BaseActivity
 import com.example.quickstartlessons.module.base.utils.QSDefaultDialogData
 import com.example.quickstartlessons.module.base.utils.unbindDrawables
+import org.koin.androidx.scope.ScopeFragment
 import java.util.Stack
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : ScopeFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dismissLoadingDialog()
