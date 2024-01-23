@@ -60,50 +60,34 @@
             app:layout_constraintStart_toEndOf="@id/userImage"
             app:layout_constraintTop_toBottomOf="@id/userName" />
 
-        <ImageView
+        <CheckBox
             android:id="@+id/notificationIcon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8dp"
-            android:src="@drawable/ic_notification_icon"
+            android:button="@drawable/ic_notification_unchecked"
+            android:text="@string/notifications"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_24dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userImage" />
 
-        <TextView
-            android:id="@+id/notifications"
-            android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/settingsIcon"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8dp"
-            android:text="@string/notifications"
+            android:button="@drawable/ic_settings_icon"
+            android:text="@string/settings"
             android:textColor="@color/black"
-            android:textSize="@dimen/_22sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/notificationIcon"
-            app:layout_constraintTop_toBottomOf="@id/userImage"
-            app:layout_constraintTop_toTopOf="@id/notificationIcon"/>
-
-        <ImageView
-            android:id="@+id/settingsIcon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_margin="@dimen/_8dp"
-            android:src="@drawable/ic_settings_icon"
+            android:textSize="@dimen/_24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/notificationIcon"
             />
 
-        <TextView
-            android:id="@+id/settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8dp"
-            android:text="@string/settings"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_22sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/settingsIcon"
-            app:layout_constraintTop_toBottomOf="@id/settingsIcon"
-            app:layout_constraintTop_toTopOf="@id/settingsIcon"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
