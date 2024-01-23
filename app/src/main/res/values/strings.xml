@@ -36,4 +36,9 @@
     <string name="field_required">The field is required</string>
     <string name="products">Products</string>
     <string name="usd">USD</string>
+    <string name="profile">Profile</string>
+    <string name="name_lastName">Lusine Barseghyan</string>
+    <string name="email_address">lusbars1991@mail.ru</string>
+    <string name="Notification">Notification</string>
+    <string name="settings">Settings</string>
 </resources>
