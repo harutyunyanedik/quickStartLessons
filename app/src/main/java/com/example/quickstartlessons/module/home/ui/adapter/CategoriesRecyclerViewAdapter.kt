@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home.ui.viewModel.adapter
+package com.example.quickstartlessons.module.home.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,13 +11,12 @@ import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.RvHomeCategoriseBinding
 import com.example.quickstartlessons.module.base.utils.QsConstants
 
-class CategoriesRecyclerViewAdapter( private var onItemClick: (String,Int) -> Unit) : RecyclerView.Adapter<CategoriesRecyclerViewAdapter.BaseViewHolder>() {
+class CategoriesRecyclerViewAdapter( private var onItemClick: (String) -> Unit) : RecyclerView.Adapter<CategoriesRecyclerViewAdapter.BaseViewHolder>() {
 
     private val items: MutableList<String> = mutableListOf()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private var selectedIndex = QsConstants.NO_VALUE
-    private var n = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return CategoriesRecyclerViewHolder(RvHomeCategoriseBinding.inflate(inflater, parent, false))
@@ -52,19 +51,16 @@ class CategoriesRecyclerViewAdapter( private var onItemClick: (String,Int) -> Un
         init {
             binding.root.setOnClickListener{
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    n += 1
-                    onItemClick.invoke(binding.categoriesText.text.toString(),n)
+
+                    onItemClick.invoke(binding.categoriesText.text.toString())
                     selectedIndex = adapterPosition
                     notifyDataSetChanged()
                 }
             }
             }
-
-
-
         override fun bind(item: String) {
                 binding.categoriesText.text = item.uppercase()
-                if (selectedIndex == adapterPosition && n % 2 != 1) {
+                if (selectedIndex == adapterPosition ) {
                     binding.categories.background = ContextCompat.getDrawable(context, R.drawable.component_clicked_color)
                 } else {
                     binding.categories.background = ContextCompat.getDrawable(context, R.color.white)

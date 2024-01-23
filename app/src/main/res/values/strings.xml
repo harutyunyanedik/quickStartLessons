@@ -37,4 +37,9 @@
     <string name="products">Products</string>
     <string name="products_header">All products </string>
     <string name="categories">Categories</string>
+    <string name="profile_text">Profile</string>
+    <string name="notification_text">Notifications</string>
+    <string name="settings_text">Settings</string>
+    <string name="account_mail">nare.isahakjan@mail.ru</string>
+    <string name="account_user_name">Nare Isahakyan</string>
 </resources>
