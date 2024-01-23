@@ -1,19 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".module.account.AccountMainTabFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".module.account.AccountMainTabFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/teal_700"
+            android:text="@string/profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/toolBarName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:text="@string/profile"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_36sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_margin="@dimen/_8dp"
+            android:src="@drawable/profile_picture"
+            app:layout_constraintStart_toStartOf="@id/toolBar"
+            app:layout_constraintTop_toBottomOf="@id/toolBar" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:text="@string/username"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_22sp"
+            app:layout_constraintStart_toEndOf="@id/userImage"
+            app:layout_constraintTop_toBottomOf="@id/toolBar" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:text="@string/userEmail"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sp"
+            app:layout_constraintStart_toEndOf="@id/userImage"
+            app:layout_constraintTop_toBottomOf="@id/userName" />
+
+        <ImageView
+            android:id="@+id/notificationIcon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="@dimen/_8dp"
+            android:src="@drawable/ic_notification_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userImage" />
+
+        <TextView
+            android:id="@+id/notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:text="@string/notifications"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/notificationIcon"
+            app:layout_constraintTop_toBottomOf="@id/userImage"
+            app:layout_constraintTop_toTopOf="@id/notificationIcon"/>
+
+        <ImageView
+            android:id="@+id/settingsIcon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="@dimen/_8dp"
+            android:src="@drawable/ic_settings_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notificationIcon"
+            />
+
+        <TextView
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:text="@string/settings"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/settingsIcon"
+            app:layout_constraintTop_toBottomOf="@id/settingsIcon"
+            app:layout_constraintTop_toTopOf="@id/settingsIcon"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

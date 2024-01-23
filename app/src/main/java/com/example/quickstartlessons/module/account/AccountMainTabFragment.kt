@@ -4,17 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.quickstartlessons.R
+import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
 class AccountMainTabFragment : BaseFragment() {
+    private lateinit var binding: FragmentAccountMainTabBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account_main_tab, container, false)
+    ): View {
+        binding = FragmentAccountMainTabBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
 
 }

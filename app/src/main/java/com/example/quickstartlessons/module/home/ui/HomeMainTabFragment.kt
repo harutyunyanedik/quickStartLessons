@@ -22,8 +22,8 @@ class HomeMainTabFragment : BaseFragment() {
 
     @SuppressLint("ResourceType")
     private val categoriesAdapter = CategoriesAdapter { category ->
-        if (category == getString(R.id.products)) {
-            viewModel.run { getProducts() }
+        if (category == getString(R.string.products)) {
+            viewModel.getProducts()
         } else {
             viewModel.getProductsByCategory(true, category)
         }
