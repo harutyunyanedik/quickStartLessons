@@ -15,8 +15,8 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private val items: MutableList<String> = mutableListOf()
-    private var select = QsConstants.NO_VALUE
-    private var isSelected = R.color.white
+    private var isSelected = QsConstants.NO_VALUE
+
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -53,7 +53,7 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
             binding.constraintLayout.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onItemClick.invoke(items[adapterPosition])
-                    select = adapterPosition
+                    isSelected = adapterPosition
                     notifyDataSetChanged()
                 }
             }
@@ -64,12 +64,12 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
             binding.categoriesName.text = item.replaceFirstChar {
                 it.uppercase()
             }
-            isSelected = if (select == adapterPosition) {
+            val color = if (isSelected == adapterPosition) {
                 R.color.teal_700
             } else {
                 R.color.white
             }
-            binding.constraintLayout.background = ContextCompat.getDrawable(context, isSelected)
+            binding.constraintLayout.background = ContextCompat.getDrawable(context, color)
         }
 
 
