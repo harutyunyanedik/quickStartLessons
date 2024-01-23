@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.base.utils.QsConstants
 import com.example.quickstartlessons.module.home.ui.adapter.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
