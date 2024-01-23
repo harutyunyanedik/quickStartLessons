@@ -37,4 +37,9 @@
     <string name="phones">Phones</string>
     <string name="products">All products</string>
     <string name="the_request_failed">The request failed</string>
+    <string name="profile">Profile</string>
+    <string name="mariam_davtyan">Mariam Davtyan</string>
+    <string name="mariam_gmail_com">mariam@gmail.com</string>
+    <string name="notifications">Notifications</string>
+    <string name="settings">Settings</string>
 </resources>

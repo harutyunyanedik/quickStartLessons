@@ -1,19 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".module.account.AccountMainTabFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".module.account.AccountMainTabFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBarAccount"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_24sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_margin="@dimen/_16dp"
+            android:src="@drawable/img_mariam"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolBarAccount" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16dp"
+            android:text="@string/mariam_davtyan"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/profile_image"
+            app:layout_constraintStart_toEndOf="@id/profile_image"
+            app:layout_constraintTop_toTopOf="@id/profile_image" />
+
+        <TextView
+            android:id="@+id/textViewMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mariam_gmail_com"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/textViewName"
+            app:layout_constraintStart_toStartOf="@id/textViewName"
+            app:layout_constraintTop_toBottomOf="@id/textViewName" />
+
+        <CheckBox
+            android:id="@+id/checkboxNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_32dp"
+            android:button="@drawable/notification_selector"
+            android:text="@string/notifications"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/profile_image"
+            app:layout_constraintTop_toBottomOf="@id/textViewMail" />
+
+        <CheckBox
+            android:id="@+id/checkboxSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:button="@drawable/ic_settings"
+            android:text="@string/settings"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/profile_image"
+            app:layout_constraintTop_toBottomOf="@id/checkboxNotifications" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
