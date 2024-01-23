@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.QsConstants
@@ -20,7 +21,7 @@ class HomeMainTabFragment : BaseFragment() {
     private val adapter = ProductAdapter()
     private val adapterCategories = CategoriesAdapter { category ->
 
-        if (category == QsConstants.ALL_PRODUCTS) { // todo delete constant use resurce
+        if (category == getString(R.string.products)) {
             viewModel.getProduct()
         } else {
             viewModel.geProductByCategory(true, category)
@@ -71,14 +72,11 @@ class HomeMainTabFragment : BaseFragment() {
             showErrorMessageDialog("Error data", it.toString())
         }
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
-            val list = mutableListOf<String>()
-            list.add(QsConstants.ALL_PRODUCTS)
-            if (it != null) {
-                list.addAll(it)
-            }
+            val list=it?.toMutableList()
+            list?.add(0,getString(R.string.products))
             adapterCategories.updateData(list)
+            }
 
-        }
         viewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error data", it.toString())
         }
