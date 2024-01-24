@@ -15,46 +15,53 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/change_language"
-            android:textSize="@dimen/_26dp"
             android:textColor="@color/black"
+            android:textSize="@dimen/_26dp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <Button
-            android:id="@+id/english"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_selector"
-            android:text="@string/english"
-            android:layout_marginTop="@dimen/_36dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/changeLanguage" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/russia"
-            android:layout_width="match_parent"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16dp"
-            android:background="@drawable/button_selector"
-            android:text="@string/russian"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/english" />
+            tools:ignore="MissingConstraints">
+
+            <RadioButton
+                android:id="@+id/english"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_36dp"
+                android:buttonTint="@color/purple_700"
+                android:textColor="@color/black"
+                android:text="@string/english"
+                android:checked="true"
+                 />
+
+            <RadioButton
+                android:id="@+id/russia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+                android:buttonTint="@color/purple_700"
+                android:textColor="@color/black"
+                android:text="@string/russian"
+
+                 />
 
 
-        <Button
-            android:id="@+id/armenian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16dp"
-            android:background="@drawable/button_selector"
-            android:text="@string/armenian"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/russia" />
+            <RadioButton
+                android:id="@+id/armenian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+                android:textColor="@color/purple_700"
+                android:text="@string/armenian"
+                android:buttonTint="@color/black"
+                />
+
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

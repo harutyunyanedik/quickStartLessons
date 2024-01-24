@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentChangeLangugaeBinding
 
-class ChangeLanguageFragment : DialogFragment() {
+class ChangeLanguageFragment(private val onItemClick:()->Unit) : DialogFragment() {
     private lateinit var binding:FragmentChangeLangugaeBinding
 
     override fun onCreateView(
@@ -24,5 +24,8 @@ class ChangeLanguageFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+    private fun changeLanguage(){
+        binding.changeLanguage.
     }
 }
