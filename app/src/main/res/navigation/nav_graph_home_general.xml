@@ -34,7 +34,9 @@
         android:id="@+id/accountFragment"
         android:name="com.example.quickstartlessons.module.account.AccountMainTabFragment"
         android:label="AccountFragment"
-        tools:layout="@layout/fragment_account_main_tab" />
+        tools:layout="@layout/fragment_account_main_tab" >
+
+    </fragment>
 
     <action
         android:id="@+id/action_global_accountFragment"
