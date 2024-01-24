@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
@@ -23,9 +25,9 @@ class AccountMainTabFragment : BaseFragment() {
         setUpViews()
     }
 
-    fun setUpViews(){
-        binding.settingsIcon.setOnClickListener{
-
+    private fun setUpViews() {
+        binding.settingsIcon.setOnClickListener {
+           findNavController().navigate(R.id.action_accountFakeFragment_to_settingsFragment)
         }
     }
 
