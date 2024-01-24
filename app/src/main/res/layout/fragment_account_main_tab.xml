@@ -58,31 +58,34 @@
             app:layout_constraintStart_toEndOf="@id/userImage"
             app:layout_constraintTop_toBottomOf="@id/userName" />
 
-        <CheckBox
+        <TextView
             android:id="@+id/notificationIcon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8dp"
-            android:button="@drawable/ic_notification_unchecked"
+            android:layout_marginTop="@dimen/_16dp"
+            android:drawableStart="@drawable/ic_notification_unchecked"
+            android:padding="@dimen/_8dp"
             android:text="@string/notifications"
             android:textColor="@color/black"
-            android:textSize="@dimen/_24dp"
+            android:textSize="@dimen/_24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userImage" />
+            app:layout_constraintTop_toBottomOf="@id/userImage"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
-        <CheckBox
+        <TextView
             android:id="@+id/settingsIcon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8dp"
-            android:button="@drawable/ic_settings_icon"
+            android:layout_marginTop="@dimen/_8dp"
+            android:drawableStart="@drawable/ic_settings_icon"
+            android:padding="@dimen/_8dp"
             android:text="@string/settings"
             android:textColor="@color/black"
+            android:textSize="@dimen/_24sp"
             android:textStyle="bold"
-            android:textSize="@dimen/_24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/notificationIcon"
-            />
+            tools:ignore="UseCompatTextViewDrawableXml" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
