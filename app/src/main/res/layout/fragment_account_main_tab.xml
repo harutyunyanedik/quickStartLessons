@@ -103,19 +103,6 @@
 
         </CheckBox>
 
-        <TextView
-            android:id="@+id/language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="language"
-            android:textColor="@color/black"
-           android:layout_marginStart="@dimen/_36dp"
-          android:textSize="@dimen/_20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings"
-          />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
