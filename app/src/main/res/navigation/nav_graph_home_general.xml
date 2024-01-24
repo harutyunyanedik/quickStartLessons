@@ -34,23 +34,19 @@
         android:id="@+id/accountFragment"
         android:name="com.example.quickstartlessons.module.account.AccountMainTabFragment"
         android:label="AccountFragment"
-        tools:layout="@layout/fragment_account_main_tab" >
-        <action
-            android:id="@+id/action_accountFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_account_main_tab" />
 
     <action
         android:id="@+id/action_global_accountFragment"
         app:destination="@id/accountFragment" />
 
-    <keep_state_fragment
+    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.quickstartlessons.module.account.settings.SettingsFragment"
-        android:label="SettingsFragment" >
-        <action
-            android:id="@+id/action_settingsFragment_to_accountFragment"
-            app:destination="@id/accountFragment" />
-    </keep_state_fragment>
+        android:label="SettingsFragment" />
+
+    <action
+        android:id="@+id/action_global_settingsFragment"
+        app:destination="@id/settingsFragment" />
 
 </navigation>

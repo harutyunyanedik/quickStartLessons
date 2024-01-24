@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
@@ -23,12 +22,8 @@ class AccountMainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.notification.setOnCheckedChangeListener { compoundButton, b ->
-
-        }
-
         binding.settings.setOnClickListener {
-           findNavController().navigate(R.id.action_accountFragment_to_settingsFragment)
+           findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalSettingsFragment())
         }
     }
 
