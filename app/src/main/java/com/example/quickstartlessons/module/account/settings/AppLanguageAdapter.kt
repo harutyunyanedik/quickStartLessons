@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.module.account.settings
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -30,7 +31,14 @@ class AppLanguageAdapter(private val onItemClick:()->Unit) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: ChangeLanguageViewHolder, position: Int) {
         holder.bind(items[position])
     }
-
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(item:List<String>?){
+        items.clear()
+        item?.let {
+            items.addAll(item)
+        }
+        notifyDataSetChanged()
+    }
     inner class ChangeLanguageViewHolder(private val binding: ItemChangeLangugaeBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.language.setOnClickListener {

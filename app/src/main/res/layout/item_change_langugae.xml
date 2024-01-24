@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".module.account.settings.ChangeLanguageFragment">
+            tools:context=".module.account.settings.AppLanguageFragment">
 
             <TextView
                 android:id="@+id/language"

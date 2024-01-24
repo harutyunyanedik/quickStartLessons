@@ -30,5 +30,9 @@ private lateinit var binding:FragmentSettingsBinding
 
         }
     }
+    private fun showDialog(){
+        val dialog=AppLanguageFragment()
+        dialog.show(childFragmentManager,"Show Dialog")
+    }
 
 }
