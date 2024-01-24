@@ -43,5 +43,8 @@
     <string name="account_mail">nare.isahakjan@mail.ru</string>
     <string name="account_user_name">Nare Isahakyan</string>
 
-    <string name="change_language">Change language</string>
+    <string name="choose_language">Choose language</string>
+    <string name="app_language">App language</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="languages">languages</string>
 </resources>

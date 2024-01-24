@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
+import com.example.quickstartlessons.module.account.settings.languages.ChooseLanguageFragment
 
 class SettingsFragment : Fragment() {
 
@@ -24,9 +25,16 @@ class SettingsFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        binding.changeLanguage.setOnClickListener {
-
+        binding.appLanguage.setOnClickListener {
+            showBottomSheetDialog()
         }
     }
+
+    private fun showBottomSheetDialog(){
+            val chooseLanguageFragment = ChooseLanguageFragment{language->
+                binding.chooseLanguage.text = language
+            }
+            chooseLanguageFragment.show(childFragmentManager, chooseLanguageFragment.tag)
+        }
 
 }

@@ -9,26 +9,89 @@
         android:background="@color/white"
         tools:context=".module.account.settings.SettingsFragment">
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="@dimen/_40dp"
-            android:layout_height="@dimen/_40dp"
-            android:background="@drawable/ic_arrow_back"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/settings_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/teal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:background="@drawable/ic_back"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/settings_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_30dp"
+                android:gravity="center"
+                android:text="@string/settings_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="HardcodedText" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/underline"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2dp"
+            android:background="@color/teal_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings_toolbar"
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/change_language"
+            android:id="@+id/app_language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_200"
             android:padding="@dimen/_16dp"
-            android:text="@string/change_language"
-            android:textColor="@color/white"
+            android:text="@string/app_language"
+            android:textColor="@color/black"
             android:textSize="@dimen/_22sp"
+            android:drawableStart="@drawable/ic_language"
+            android:drawablePadding="@dimen/_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backButton"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toBottomOf="@+id/underline"
+            tools:ignore="MissingConstraints,UseCompatTextViewDrawableXml" />
+        <TextView
+            android:id="@+id/choose_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_50dp"
+            android:text="@string/languages"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_18sp"
+            android:drawablePadding="@dimen/_8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_language"
+            tools:ignore="MissingConstraints,RtlHardcoded,RtlSymmetry,UseCompatTextViewDrawableXml" />
+
+        <TextView
+            android:id="@+id/sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_16dp"
+            android:text="@string/sign_out"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_22sp"
+            android:drawableStart="@drawable/ic_logout"
+            android:drawablePadding="@dimen/_8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_language"
+            tools:ignore="MissingConstraints,UseCompatTextViewDrawableXml" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
