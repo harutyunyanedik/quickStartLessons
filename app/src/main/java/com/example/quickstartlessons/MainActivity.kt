@@ -53,7 +53,7 @@ class MainActivity : BaseActivity() {
         val navGraphIds = listOf(
             R.navigation.nav_graph_home,
             R.navigation.nav_graph_favorite,
-            R.navigation.nav_graph_account
+            R.navigation.nav_graph_account,
         )
 
         val controller = binding.bottomNavigationView.setupWithNavController(

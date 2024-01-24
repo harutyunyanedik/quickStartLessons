@@ -77,7 +77,10 @@ class HomeMainTabFragment : BaseFragment() {
             showErrorMessageDialog("Error Dialog", it)
         }
         viewModel.categoriesLiveData.observe(viewLifecycleOwner) {
-            categoriesAdapter.updateData(it)
+            val items :MutableList<String> = mutableListOf()
+            items.add(getString(R.string.products_header))
+            if (it != null) items.addAll(it)
+            categoriesAdapter.updateData(items)
         }
         viewModel.categoriesErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error Dialog", it)

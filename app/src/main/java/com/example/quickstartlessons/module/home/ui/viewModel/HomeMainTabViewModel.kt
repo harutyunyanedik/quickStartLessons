@@ -45,7 +45,7 @@ class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservabl
     fun getCategories(isShoLoader: Boolean = false) {
         viewModelScope.launch {
             repo.getAllCategories(object : ApiResultCallback<List<String>?> {
-                override fun onSuccess(response: List<String>?) {
+                override fun onSuccess(response:List<String>??) {
                     _categoriesLiveData.value = response
                 }
 

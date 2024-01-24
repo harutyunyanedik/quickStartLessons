@@ -35,7 +35,7 @@ class CategoriesRecyclerViewAdapter( private var onItemClick: (String) -> Unit) 
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(item: List<String>?) {
+    fun updateData(item:List<String>?) {
         this.items.clear()
         item?.let {
             this.items.addAll(it)
@@ -51,8 +51,7 @@ class CategoriesRecyclerViewAdapter( private var onItemClick: (String) -> Unit) 
         init {
             binding.root.setOnClickListener{
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-
-                    onItemClick.invoke(binding.categoriesText.text.toString())
+                   onItemClick.invoke(items[adapterPosition])
                     selectedIndex = adapterPosition
                     notifyDataSetChanged()
                 }

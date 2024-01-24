@@ -42,4 +42,6 @@
     <string name="settings_text">Settings</string>
     <string name="account_mail">nare.isahakjan@mail.ru</string>
     <string name="account_user_name">Nare Isahakyan</string>
+
+    <string name="change_language">Change language</string>
 </resources>
