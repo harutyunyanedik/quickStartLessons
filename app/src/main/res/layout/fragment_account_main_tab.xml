@@ -62,29 +62,39 @@
             app:layout_constraintStart_toStartOf="@id/textViewName"
             app:layout_constraintTop_toBottomOf="@id/textViewName" />
 
-        <CheckBox
+        <TextView
             android:id="@+id/checkboxNotifications"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16dp"
             android:layout_marginTop="@dimen/_32dp"
-            android:button="@drawable/notification_selector"
+            android:drawableStart="@drawable/notification_unchecked"
+            android:gravity="center"
+            android:padding="@dimen/_8dp"
             android:text="@string/notifications"
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/profile_image"
-            app:layout_constraintTop_toBottomOf="@id/textViewMail" />
+            app:layout_constraintTop_toBottomOf="@id/textViewMail"
+            tools:ignore="RtlCompat,UseCompatTextViewDrawableXml" />
 
-        <CheckBox
+        <TextView
             android:id="@+id/checkboxSettings"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16dp"
-            android:button="@drawable/ic_settings"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:drawableStart="@drawable/ic_settings"
+            android:gravity="center"
+            android:padding="@dimen/_8dp"
             android:text="@string/settings"
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/profile_image"
-            app:layout_constraintTop_toBottomOf="@id/checkboxNotifications" />
+            app:layout_constraintTop_toBottomOf="@id/checkboxNotifications"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

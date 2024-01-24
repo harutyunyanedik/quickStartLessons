@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
@@ -27,7 +26,7 @@ class AccountMainTabFragment : BaseFragment() {
 
     private fun setupViews() {
         binding.checkboxSettings.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsFragment)
+            findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
         }
     }
 
