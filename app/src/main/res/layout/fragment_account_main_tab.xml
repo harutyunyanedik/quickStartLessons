@@ -6,7 +6,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".module.account.AccountMainTabFragment">
 
         <androidx.appcompat.widget.Toolbar
@@ -99,8 +99,23 @@
             android:textSize="@dimen/_24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/notification"
-            tools:ignore="MissingConstraints,SpUsage" />
+            tools:ignore="MissingConstraints,SpUsage">
+
+        </CheckBox>
+
+        <TextView
+            android:id="@+id/language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="language"
+            android:textColor="@color/black"
+           android:layout_marginStart="@dimen/_36dp"
+          android:textSize="@dimen/_20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings"
+          />
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout></layout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
