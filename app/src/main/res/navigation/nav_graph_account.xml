@@ -7,14 +7,6 @@
     <fragment
         android:id="@+id/accountFakeFragment"
         android:name="com.example.quickstartlessons.module.base.fragment.FakeFragment"
-        android:label="" >
-        <action
-            android:id="@+id/action_accountFakeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
-    <keep_state_fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.quickstartlessons.module.account.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="" />
 
 </navigation>
