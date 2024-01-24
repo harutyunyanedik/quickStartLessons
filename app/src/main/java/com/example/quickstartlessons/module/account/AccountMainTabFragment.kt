@@ -27,7 +27,7 @@ class AccountMainTabFragment : BaseFragment() {
 
     private fun setupViews() {
         binding.checkboxSettings.setOnClickListener {
-            findNavController().navigate(R.id.action_accountFakeFragment_to_settingsFragment)
+            findNavController().navigate(R.id.action_settingsFragment)
         }
     }
 
