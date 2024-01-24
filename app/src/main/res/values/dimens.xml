@@ -24,4 +24,5 @@
     <dimen name="_140dp">140dp</dimen>
     <dimen name="_96dp">96dp</dimen>
     <dimen name="_26dp">26dp</dimen>
+    <dimen name="_36sp">36sp</dimen>
 </resources>

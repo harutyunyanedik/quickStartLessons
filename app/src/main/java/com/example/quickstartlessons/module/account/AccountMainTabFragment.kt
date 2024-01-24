@@ -23,12 +23,10 @@ class AccountMainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.settings.setOnClickListener {
-          showPopup()
+          findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalSettingsFragment())
         }
     }
-    private fun showPopup() {
-        val dialog = ChangeLanguageFragment()
-        dialog.show(childFragmentManager, "Show dialog")
+
+
     }
 
-}

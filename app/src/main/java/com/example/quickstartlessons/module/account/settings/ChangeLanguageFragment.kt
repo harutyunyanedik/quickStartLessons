@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account
+package com.example.quickstartlessons.module.account.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentChangeLangugaeBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ChangeLanguageFragment : DialogFragment() {
-    private lateinit var binding:FragmentChangeLangugaeBinding
+class ChangeLanguageFragment : BottomSheetDialogFragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +26,7 @@ class ChangeLanguageFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
-    private fun changeLanguage(){
 
-    }
+
+
 }

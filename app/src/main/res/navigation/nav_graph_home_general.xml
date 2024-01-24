@@ -41,5 +41,11 @@
     <action
         android:id="@+id/action_global_accountFragment"
         app:destination="@id/accountFragment" />
-
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.quickstartlessons.module.account.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <action
+        android:id="@+id/action_global_settingsFragment"
+        app:destination="@id/settingsFragment" />
 </navigation>

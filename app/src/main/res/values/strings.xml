@@ -45,4 +45,7 @@
     <string name="armenian">Հայերեն</string>
     <string name="russian">Русский</string>
     <string name="change_language">Language</string>
+    <string name="app_language">App Language</string>
+    <string name="sign_out">Sign out</string>
+
 </resources>
