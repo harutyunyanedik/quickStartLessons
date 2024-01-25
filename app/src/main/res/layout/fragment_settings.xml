@@ -7,14 +7,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/app_background"
         tools:context=".module.account.SettingsFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBarSettings"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/purple_500"
+            android:background="@color/app_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -23,42 +23,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/settings"
+                android:drawableStart="@drawable/ic_back"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_24sp" />
+
         </androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:id="@+id/textViewChangeLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/_32dp"
+            android:layout_marginStart="@dimen/_16dp"
             android:text="@string/change_language"
-            android:textColor="@color/black"
             android:textSize="@dimen/_20sp"
+            android:drawableStart="@drawable/ic_language"
+            android:drawablePadding="@dimen/_16dp"
             app:layout_constraintTop_toBottomOf="@id/toolBarSettings"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Spinner
-            android:id="@+id/spinnerLanguages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_16dp"
-            android:backgroundTint="@color/black"
-            android:padding="@dimen/_8dp"
-            android:textSize="@dimen/_20sp"
-            app:layout_constraintTop_toBottomOf="@id/textViewChangeLanguage"
-            tools:layout_editor_absoluteX="16dp" />
-
-        <Button
-            android:id="@+id/buttonSave"
+        <TextView
+            android:id="@+id/textViewChangeSignOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/purple_500"
-            android:text="@string/save"
-            app:layout_constraintTop_toBottomOf="@id/spinnerLanguages"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/_16dp"/>
+            android:layout_marginTop="@dimen/_32dp"
+            android:layout_marginStart="@dimen/_16dp"
+            android:text="@string/sign_out"
+            android:textSize="@dimen/_20sp"
+            android:drawableStart="@drawable/ic_sign_out"
+            android:drawablePadding="@dimen/_16dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewChangeLanguage"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
