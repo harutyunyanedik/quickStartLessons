@@ -7,18 +7,28 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/_16dp"
         app:cardBackgroundColor="@color/color_1_20"
         app:cardCornerRadius="@dimen/_5dp"
-        app:cardUseCompatPadding="true"
-        android:padding="@dimen/_16dp">
+        app:cardUseCompatPadding="true">
 
-        <TextView
-            android:id="@+id/textViewLanguage"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutLanguage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_8dp"
-            android:textSize="@dimen/_24sp"
-            tools:text="English"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_24sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="English" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.ButtomLayoutBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomFragment(): BottomSheetDialogFragment(){
+class BottomFragment(private val selectedLanguage: (String) -> Unit): BottomSheetDialogFragment(){
 
     private lateinit var binding: ButtomLayoutBinding
-    private val languages = mutableListOf<String>()
+    private val languages = mutableListOf<Language>()
     private val adapter = LanguagesAdapter {
-
+        selectedLanguage.invoke(it)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -37,14 +37,14 @@ class BottomFragment(): BottomSheetDialogFragment(){
 
     }
     private fun createLanguages() {
-        languages.add("English")
-        languages.add("Armenian")
-        languages.add("Russian")
-        languages.add("Espanol")
-        languages.add("Francais")
-        languages.add("Deutsch")
-        languages.add("Polski")
-        languages.add("Ukrainian")
+        languages.add(Language("English"))
+        languages.add(Language("Armenian"))
+        languages.add(Language("Russian"))
+        languages.add(Language("Espanol"))
+        languages.add(Language("Francais"))
+        languages.add(Language("Deutsch"))
+        languages.add(Language("Polski"))
+        languages.add(Language("Ukrainian"))
     }
 
 }

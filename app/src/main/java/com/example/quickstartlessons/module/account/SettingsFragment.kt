@@ -26,7 +26,9 @@ class SettingsFragment : BaseFragment() {
 
     private fun setupViews() {
         binding.textViewChangeLanguage.setOnClickListener {
-            val bottomSheetDialog = BottomFragment()
+            val bottomSheetDialog = BottomFragment {
+
+            }
             bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
         }
     }
