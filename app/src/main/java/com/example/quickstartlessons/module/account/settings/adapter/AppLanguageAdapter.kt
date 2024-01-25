@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account.settings
+package com.example.quickstartlessons.module.account.settings.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -39,12 +39,15 @@ class AppLanguageAdapter(private val onItemClick:()->Unit) : RecyclerView.Adapte
         }
         notifyDataSetChanged()
     }
+    @SuppressLint("NotifyDataSetChanged")
     inner class ChangeLanguageViewHolder(private val binding: ItemChangeLangugaeBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.language.setOnClickListener {
                 if(adapterPosition!=RecyclerView.NO_POSITION){
                     onItemClick.invoke()
+
                     isSelected=adapterPosition
+                    notifyDataSetChanged()
 
                 }
             }
@@ -52,7 +55,7 @@ class AppLanguageAdapter(private val onItemClick:()->Unit) : RecyclerView.Adapte
         fun bind(item: String) {
             binding.language.text = item
             val color=if(isSelected==adapterPosition){
-                R.color.purple_200
+                R.color.purple_500
 
             }else{
                 R.color.color_black_10

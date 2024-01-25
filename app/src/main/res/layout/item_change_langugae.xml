@@ -5,7 +5,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewLanguage"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
+        android:layout_margin="@dimen/_5dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_3dp"
@@ -16,7 +17,6 @@
             android:id="@+id/constraintLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_26dp"
             android:background="@color/color_black_10"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,9 +24,10 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:context=".module.account.settings.AppLanguageFragment">
 
+
             <TextView
                 android:id="@+id/language"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12dp"
                 android:textColor="@color/black"

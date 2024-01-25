@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
@@ -23,10 +24,12 @@ private lateinit var binding:FragmentSettingsBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-    binding.toolBar.navigationIcon
+    binding.toolBar.setOnClickListener{
+       findNavController().navigateUp()
+    }
 
-        binding.language.setOnClickListener {
-
+        binding.appLanguage.setOnClickListener {
+          showDialog()
 
         }
     }
