@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
-import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
 class AccountMainTabFragment : BaseFragment() {
@@ -15,7 +13,7 @@ class AccountMainTabFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAccountMainTabBinding.inflate(inflater, container, false)
         return binding.root
     }
