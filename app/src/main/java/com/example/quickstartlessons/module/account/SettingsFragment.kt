@@ -5,8 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.quickstartlessons.R
-import com.example.quickstartlessons.databinding.FragmentBottomSheetBinding
+import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -22,17 +21,20 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showDialog()
-    }
-    private fun showDialog(){
-        binding.appLanguage.setOnClickListener{
-            val dialog = BottomSheetFragment()
-            dialog.show(childFragmentManager,"Show Dialog")
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.appLanguage.setOnClickListener {
+            showBottomSheetDialog()
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = SettingsFragment()
+    private fun showBottomSheetDialog(){
+        val chooseLanguage = LanguagesFragment{ language->
+            binding.appLanguage.text = language
+        }
+        chooseLanguage.show(childFragmentManager, chooseLanguage.tag)
     }
+
 }
