@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
@@ -26,10 +27,13 @@ class SettingsFragment : BaseFragment() {
 
     private fun setupViews() {
         binding.textViewChangeLanguage.setOnClickListener {
-            val bottomSheetDialog = BottomFragment {
+            val bottomSheetDialog = ChangeLanguageBottomSheetDialogFragment {
 
             }
             bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
+        }
+        binding.textViewSettings.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

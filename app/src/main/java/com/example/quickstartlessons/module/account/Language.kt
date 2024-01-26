@@ -4,5 +4,5 @@ import com.example.quickstartlessons.R
 
 data class Language(
     val language: String,
-    var isSelected: Int = R.color.color_1_20
+    var isSelected: Int = R.color.white
 )

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.ButtomLayoutBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomFragment(private val selectedLanguage: (String) -> Unit): BottomSheetDialogFragment(){
+class ChangeLanguageBottomSheetDialogFragment(private val selectedLanguage: (String) -> Unit): BottomSheetDialogFragment(){
 
     private lateinit var binding: ButtomLayoutBinding
     private val languages = mutableListOf<Language>()

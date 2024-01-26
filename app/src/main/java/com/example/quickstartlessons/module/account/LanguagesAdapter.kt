@@ -58,9 +58,9 @@ class LanguagesAdapter(val onLanguageClick: (String) -> Unit): RecyclerView.Adap
         fun bind(item: Language) {
             binding.textViewLanguage.text = item.language
             if (selectedPosition == adapterPosition){
-                item.isSelected = android.R.color.holo_orange_light
+                item.isSelected = R.color.blue_light
             } else {
-                item.isSelected = R.color.color_1_20
+                item.isSelected = R.color.white
             }
             binding.constraintLayoutLanguage.background = ContextCompat.getDrawable(context, item.isSelected)
         }
