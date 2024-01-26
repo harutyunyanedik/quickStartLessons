@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.example.quickstartlessons.databinding.FragmentLanguagesBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -12,12 +13,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class LanguagesFragment(private val onItemClick: (String) -> Unit) : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentLanguagesBinding
+    private val languages = mutableListOf<String>()
     private val adapter = LanguageAdapter {
         onItemClick.invoke(it)
-        dismiss()
     }
-    private val languages:MutableList<String> = mutableListOf("English","Русский","Հայերեն", "Français")
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +35,13 @@ class LanguagesFragment(private val onItemClick: (String) -> Unit) : BottomSheet
         binding.rvBottomSheet.adapter = adapter
         binding.rvBottomSheet.layoutManager = LinearLayoutManager(requireContext())
         adapter.updateDataLanguages(languages)
+    }
+
+    private fun createLanguages() {
+        languages.add("Հայերեն")
+        languages.add("Русский")
+        languages.add("English")
+        languages.add("Français")
     }
 
 }

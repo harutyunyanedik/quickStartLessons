@@ -15,26 +15,26 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSettingsBinding.inflate(inflater,container,false)
+        binding = FragmentSettingsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.backButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        binding.appLanguage.setOnClickListener {
+        binding.appLanguage.setOnClickListener{
             showBottomSheetDialog()
         }
     }
 
-    private fun showBottomSheetDialog(){
-        val chooseLanguage = LanguagesFragment{ language->
-            binding.appLanguage.text = language
-        }
-        chooseLanguage.show(childFragmentManager, chooseLanguage.tag)
-    }
+    private fun showBottomSheetDialog() {
+            val bottomSheetDialog = LanguagesFragment{
 
+            }
+            bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
+
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+    }
 }
