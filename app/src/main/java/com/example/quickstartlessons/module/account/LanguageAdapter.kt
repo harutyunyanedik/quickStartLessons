@@ -8,18 +8,14 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
-import com.example.quickstartlessons.databinding.FragmentSettingsBinding
-import com.example.quickstartlessons.databinding.ItemBottomSheetBinding
+import com.example.quickstartlessons.databinding.ItemLanguagesBinding
 import com.example.quickstartlessons.module.base.utils.QsConstants
 
 class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<LanguageAdapter.BaseViewHolder>() {
-    private lateinit var items: MutableList<String>
+    private var items= mutableListOf<String>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private var selectedPosition = QsConstants.NO_VALUE
-
-
-
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
@@ -27,7 +23,7 @@ class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return LanguageViewHolder(ItemBottomSheetBinding.inflate(inflater, parent, false))
+        return LanguageViewHolder(ItemLanguagesBinding.inflate(inflater, parent, false))
     }
 
     override fun getItemCount() = items.size
@@ -38,7 +34,7 @@ class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateDataLanguages(list: List<String>) {
-        this.items.clear()
+       this.items.clear()
         list.let {
             items.addAll(list)
         }
@@ -50,7 +46,7 @@ class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    inner class LanguageViewHolder(private val binding: ItemBottomSheetBinding) : BaseViewHolder(binding.root) {
+    inner class LanguageViewHolder(private val binding: ItemLanguagesBinding) : BaseViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
@@ -64,7 +60,7 @@ class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.
         override fun bind(item: String) {
             binding.language.text = item
             val color = if (selectedPosition == adapterPosition) {
-                R.color.color_red
+                R.color.teal_700
             } else {
                 R.color.white
             }

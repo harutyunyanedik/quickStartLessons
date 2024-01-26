@@ -10,12 +10,12 @@ import com.example.quickstartlessons.databinding.FragmentLanguagesBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class LanguagesFragment(private val onItemClick: (String) -> Unit) : BottomSheetDialogFragment() {
+class LanguagesFragment(private val selectedLanguage: (String) -> Unit) : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentLanguagesBinding
     private val languages = mutableListOf<String>()
     private val adapter = LanguageAdapter {
-        onItemClick.invoke(it)
+        selectedLanguage.invoke(it)
     }
 
     override fun onCreateView(
@@ -28,12 +28,13 @@ class LanguagesFragment(private val onItemClick: (String) -> Unit) : BottomSheet
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        createLanguages()
         setUpViews()
     }
 
     private fun setUpViews() {
-        binding.rvBottomSheet.adapter = adapter
-        binding.rvBottomSheet.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvLanguages.adapter = adapter
+        binding.rvLanguages.layoutManager = LinearLayoutManager(requireContext())
         adapter.updateDataLanguages(languages)
     }
 

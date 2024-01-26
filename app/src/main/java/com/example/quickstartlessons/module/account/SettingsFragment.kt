@@ -21,20 +21,17 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.appLanguage.setOnClickListener{
-            showBottomSheetDialog()
-        }
+        setupViews()
     }
 
-    private fun showBottomSheetDialog() {
-            val bottomSheetDialog = LanguagesFragment{
-
+    private fun setupViews() {
+        binding.appLanguage.setOnClickListener {
+            val bottomSheetDialog = LanguagesFragment {
             }
             bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
-
+        }
         binding.backButton.setOnClickListener {
             findNavController().navigateUp()
         }
-
     }
 }
