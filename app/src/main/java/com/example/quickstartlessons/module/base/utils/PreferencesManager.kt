@@ -2,10 +2,10 @@ package com.example.quickstartlessons.module.base.utils
 
 object PreferencesManager {
 
-    private const val PREF_KEY_TEST = "pref_key_test"
+    private const val PREF_KEY_CURRENT_LANGUAGE = "pref_key_current_language"
 
-    fun putTest(isShow: Boolean) = Prefs.put(PREF_KEY_TEST, isShow)
+    fun putCurrentLanguage(languageCode: String) = Prefs.put(PREF_KEY_CURRENT_LANGUAGE, languageCode)
 
-    fun isTest() = Prefs.getBoolean(PREF_KEY_TEST, false)
+    fun getCurrentLanguage() = Prefs.getString(PREF_KEY_CURRENT_LANGUAGE, "en") ?: "en"
 
 }

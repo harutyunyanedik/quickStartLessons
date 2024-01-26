@@ -28,14 +28,11 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Utils.changeStatusBarColor(activity = this, color = ContextCompat.getColor(this, R.color.status_bar_color))
+        savedInstanceState?.clear()
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         noConnectionTextView = binding.noConnectionTextView
-
-
-        if (savedInstanceState == null) {
-            setupBottomNavigationBar()
-        }
+        setupBottomNavigationBar()
         setupViews()
         observeLiveData()
     }

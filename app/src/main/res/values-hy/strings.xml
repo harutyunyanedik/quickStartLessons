@@ -1,17 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">QuickStartLessons</string>
-    <string name="title_text" translatable="false">"Arsenal FS Specials"</string>
+    <string name="app_name">QuickStartLessons</string>
 
-
-    <string name="home">Home</string>
-    <string name="favorite">Favorite</string>
-    <string name="account">Account</string>
-
-    <integer-array name="navigationMenu_titles_res_ids_Array">
-        <item name="navigationMenu_home">@string/home</item>
-        <item name="navigationMenu_history">@string/favorite</item>
-        <item name="navigationMenu_scanner">@string/account</item>
-    </integer-array>
+    <string name="home">Գլխաոր</string>
+    <string name="favorite">Ֆավորիտե</string>
+    <string name="account">Մենու</string>
 
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in_we_are_waiting_for_you">SIGN IN, WE ARE WAITING FOR YOU</string>
@@ -48,10 +41,4 @@
     <string name="english">English</string>
     <string name="russian">Russian</string>
     <string name="armenian">Armenian</string>
-
-    <string-array name="languages">
-        <item>English</item>
-        <item>Armenian</item>
-        <item>Russian</item>
-    </string-array>
 </resources>
