@@ -9,4 +9,6 @@
         android:name="com.example.quickstartlessons.module.base.fragment.FakeFragment"
         android:label="" />
 
+    <include app:graph="@navigation/nav_graph_home_general" />
+
 </navigation>

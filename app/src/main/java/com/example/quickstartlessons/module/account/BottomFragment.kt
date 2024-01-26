@@ -6,22 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.ButtomLayoutBinding
+import com.example.quickstartlessons.module.base.model.LocaleEnum
+import com.example.quickstartlessons.module.base.utils.LocaleSwitcher
+import com.example.quickstartlessons.module.base.utils.PreferencesManager
+import com.example.quickstartlessons.module.base.utils.homeActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import java.util.Locale
 
-class BottomFragment(): BottomSheetDialogFragment(){
+class BottomFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: ButtomLayoutBinding
-    private val languages = mutableListOf<String>()
+    private val languages = mutableListOf<LocaleEnum>()
     private val adapter = LanguagesAdapter {
-
+        LocaleSwitcher.updateLocale(requireContext(), Locale(it.languageCode))
+        requireActivity().recreate()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = ButtomLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,18 +39,13 @@ class BottomFragment(): BottomSheetDialogFragment(){
     private fun setupViews() {
         binding.rvLanguages.adapter = adapter
         binding.rvLanguages.layoutManager = LinearLayoutManager(requireContext())
-        adapter.updateData(languages)
+        adapter.updateData(languages.map { SelectableProvider(data = it, selected = PreferencesManager.getCurrentLanguage() == it.languageCode) })
 
     }
+
     private fun createLanguages() {
-        languages.add("English")
-        languages.add("Armenian")
-        languages.add("Russian")
-        languages.add("Espanol")
-        languages.add("Francais")
-        languages.add("Deutsch")
-        languages.add("Polski")
-        languages.add("Ukrainian")
+        languages.add(LocaleEnum.ENGLISH)
+        languages.add(LocaleEnum.RUSSIAN)
+        languages.add(LocaleEnum.ARMENIAN)
     }
-
 }
