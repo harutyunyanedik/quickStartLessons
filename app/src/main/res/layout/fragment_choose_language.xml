@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".module.account.settings.languages.ChooseLanguageFragment">
+        tools:context=".module.settings.languages.ChangeLanguageButtonSheetDialog">
 
         <TextView
             android:id="@+id/headerChoseLanguages"

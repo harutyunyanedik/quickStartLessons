@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
 import com.example.quickstartlessons.databinding.RvHomeMainTabFragmentBinding
-import com.example.quickstartlessons.module.products.data.response.model.products.Product
 
-class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
+class ProductsRecyclerViewAdapter(private var onItemClick: (String) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
 
     private val items: MutableList<ProductsDto> = mutableListOf()
     private lateinit var inflater: LayoutInflater
@@ -46,14 +45,21 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Boolean) -> Unit) : 
         abstract fun bind(item: ProductsDto)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class ProductsRecyclerViewHolder(private val binding: RvHomeMainTabFragmentBinding) : BaseViewHolder(binding.root) {
         init {
-            binding.favoriteCheckbox.setOnCheckedChangeListener { _ , isChecked ->
+//            binding.favoriteCheckbox.setOnCheckedChangeListener { _ , isChecked ->
+//                if (adapterPosition != RecyclerView.NO_POSITION) {
+//                  items[adapterPosition].isFavorite = isChecked
+//                    notifyItemChanged(adapterPosition)
+//                  binding.productId.text =  item[adapterPosition].id.toString()
+//                    onItemClick.invoke(true)
+//                }
+//            }
+            binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                 // items[adapterPosition].isFavorite = isChecked
-                    notifyItemChanged(adapterPosition)
-                 // binding.productId.text =  item[adapterPosition].id.toString()
-                    onItemClick.invoke(true)
+                    onItemClick.invoke(items[adapterPosition].id.toString())
+                    notifyDataSetChanged()
                 }
             }
         }

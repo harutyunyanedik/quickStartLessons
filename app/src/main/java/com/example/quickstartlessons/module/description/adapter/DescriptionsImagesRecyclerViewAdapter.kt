@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account.settings.languages.adapter
+package com.example.quickstartlessons.module.description.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quickstartlessons.databinding.RvChooseLanguageBinding
+import com.bumptech.glide.Glide
+import com.example.quickstartlessons.databinding.RvDescriptionFragmentBinding
 
+class DescriptionsImagesRecyclerViewAdapter : RecyclerView.Adapter<DescriptionsImagesRecyclerViewAdapter.BaseViewHolder>() {
 
-class ChooseLanguageRecyclerViewAdapter(private var onItemClick: (String) -> Unit) : RecyclerView.Adapter<ChooseLanguageRecyclerViewAdapter.BaseViewHolder>() {
     private val items: MutableList<String> = mutableListOf()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return ChooseLanguageRecyclerViewHolder(RvChooseLanguageBinding.inflate(inflater, parent, false))
+        return DescriptionsImagesRecyclerViewHolder(RvDescriptionFragmentBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
@@ -43,15 +44,14 @@ class ChooseLanguageRecyclerViewAdapter(private var onItemClick: (String) -> Uni
         abstract fun bind(item: String)
     }
 
-    inner class ChooseLanguageRecyclerViewHolder(private val binding: RvChooseLanguageBinding) : BaseViewHolder(binding.root) {
-        init {
-            binding.languages.setOnClickListener {
-                onItemClick.invoke(items[adapterPosition])
-            }
-        }
-
+    @SuppressLint("NotifyDataSetChanged")
+    inner class DescriptionsImagesRecyclerViewHolder(private val binding: RvDescriptionFragmentBinding) : BaseViewHolder(binding.root) {
         override fun bind(item: String) {
-            binding.languages.text = item.toString()
+            Glide.with(context).load(item).into(binding.images)
         }
     }
 }
+
+
+
+

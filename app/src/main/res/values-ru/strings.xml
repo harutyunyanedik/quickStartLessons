@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuickStartLessons</string>
+    <string name="home">Главный </string>
+    <string name="favorite">Избранное</string>
+    <string name="account">Меню</string>
+    <string name="already_have_an_account">У вас уже есть аккаунт?</string>
+    <string name="sign_in_we_are_waiting_for_you">ЗАХОДИТЕ, МЫ ЖДЕМ ВАС!</string>
+    <string name="email_username">Электронная почта/имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="remember_me">Помнить</string>
+    <string name="sign_in">Входить</string>
+    <string name="forgot_your_password">ЗАБЫЛИ ПАРОЛЬ?</string>
+    <string name="reset_password">Восстановить пароль</string>
+    <string name="reset_password_via_sms">Восстановить пароль через смс</string>
+    <string name="please_enter_phone_number">Пожалуйста, введите номер телефона</string>
+    <string name="send_sms">Отправить SMS</string>
+    <string name="resetpassword_via_email">Восстановить пароль через почту</string>
+    <string name="invalid_password">Неверный пароль. Должно быть больше 6 символов.</string>
+    <string name="invalid_email">Неверный или пустой адрес электронной почты или имя пользователя</string>
+    <string name="field_required">Поле, обязательное для заполнения</string>
+    <string name="products">Продукты</string>
+    <string name="products_header">Все продукты</string>
+    <string name="categories">Категории</string>
+    <string name="profile_text">Профиль</string>
+    <string name="notification_text">Уведомления</string>
+    <string name="settings_text">Настройки</string>
+    <string name="account_user_name">Наре Исаакян</string>
+    <string name="choose_language">Выберите язык</string>
+    <string name="app_language">Язык приложения</string>
+    <string name="sign_out">Выходить</string>
+    <string name="description">Описание: </string>
+    <string name="price">Цена: </string>
+    <string name="title">Заголовок: </string>
+    <string name="brand">Бренд: </string>
+    <string name="category">Категория: </string>
+    <string name="discountPercentage">Процент скидки: </string>
+    <string name="rating">Рейтинг: </string>
+</resources>

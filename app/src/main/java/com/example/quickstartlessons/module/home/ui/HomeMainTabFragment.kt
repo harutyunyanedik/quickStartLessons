@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,12 +29,12 @@ class HomeMainTabFragment : BaseFragment() {
             viewModel.getProductsByCategory(true, categoryName = it)
         }else if(it == getString(R.string.products_header)){
             viewModel.getProducts()
-           binding.productsHeader.text = getString(R.string.products_header)
-
+           binding.productsHeader.text = "All Products"
         }
     }
-    private var adapter: ProductsRecyclerViewAdapter = ProductsRecyclerViewAdapter {
 
+    private var adapter: ProductsRecyclerViewAdapter = ProductsRecyclerViewAdapter {id->
+        findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalDescriptionFragment(id))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,7 +79,7 @@ class HomeMainTabFragment : BaseFragment() {
         }
         viewModel.categoriesLiveData.observe(viewLifecycleOwner) {
             val items :MutableList<String> = mutableListOf()
-            items.add(getString(R.string.products_header))
+            items.add("All Products")
             if (it != null) items.addAll(it)
             categoriesAdapter.updateData(items)
         }

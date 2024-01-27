@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">QuickStartLessons</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_text">"Arsenal FS Specials"</string>
+    <string name="app_name" translatable="false">QuickStartLessons</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="title_text" translatable="false">"Arsenal FS Specials"</string>
 
 
     <string name="home">Home</string>
@@ -24,13 +24,13 @@
     <string name="reset_password">Reset password</string>
     <string name="reset_password_via_sms">Reset password via SMS</string>
     <string name="please_enter_phone_number">Please enter phone number</string>
-    <string name="_374">+374</string>
-    <string name="xx_xxx_xxx">(XX) XXX-XXX</string>
+    <string name="_374" translatable="false">+374</string>
+    <string name="xx_xxx_xxx" translatable="false">(XX) XXX-XXX</string>
     <string name="send_sms">Send SMS</string>
     <string name="resetpassword_via_email">ResetPassword via Email</string>
-    <string name="email">Email</string>
-    <string name="sample_email_com">sample@email.com</string>
-    <string name="helper_text">jjjj</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="sample_email_com" translatable="false">sample@email.com</string>
+    <string name="helper_text" translatable="false">jjjj</string>
     <string name="invalid_password">Invalid password! Must by bigger 6 Characters!</string>
     <string name="invalid_email">Invalid or empty Email address or username</string>
     <string name="field_required">The field is required</string>
@@ -40,11 +40,23 @@
     <string name="profile_text">Profile</string>
     <string name="notification_text">Notifications</string>
     <string name="settings_text">Settings</string>
-    <string name="account_mail">nare.isahakjan@mail.ru</string>
+    <string name="account_mail" translatable="false">nare.isahakjan@mail.ru</string>
     <string name="account_user_name">Nare Isahakyan</string>
 
     <string name="choose_language">Choose language</string>
     <string name="app_language">App language</string>
     <string name="sign_out">Sign Out</string>
-    <string name="languages">languages</string>
+
+    <string name="english" translatable="false">English</string>
+    <string name="russian" translatable="false">Russian</string>
+    <string name="armenian" translatable="false">Armenian</string>
+    <string name="languages" translatable="false">languages</string>
+   <string name="description">Description: </string>
+    <string name="price">Price: </string>
+    <string name="title">Title: </string>
+    <string name="brand">Brand: </string>
+    <string name="category">Category: </string>
+    <string name="discountPercentage">Discount Percentage: </string>
+    <string name="rating">Rating: </string>
+
 </resources>

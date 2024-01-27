@@ -42,11 +42,26 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.quickstartlessons.module.account.settings.SettingsFragment"
+        android:name="com.example.quickstartlessons.module.settings.SettingsFragment"
         android:label="SettingsFragment" />
 
     <action
         android:id="@+id/action_global_settingsFragment"
         app:destination="@id/settingsFragment" />
+
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.example.quickstartlessons.module.description.DescriptionFragment"
+        android:label="DescriptionFragment">
+    <argument
+        android:name ="idDescription"
+        app:argType = "string"/>
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_descriptionFragment"
+        app:destination="@id/descriptionFragment" />
+
+
 
 </navigation>

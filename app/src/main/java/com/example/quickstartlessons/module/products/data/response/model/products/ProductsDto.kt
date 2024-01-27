@@ -19,11 +19,16 @@ data class ProductsDto(
     @SerializedName("category")
     val category: String,
     @SerializedName("thumbnail")
-    val thumbnail: String
-) : Serializable{
+    val thumbnail: String,
+    @SerializedName("discountPercentage")
+    val discountPercentage: String,
+    @SerializedName("images")
+    val images: List<String>
+
+) : Serializable {
     fun ProductsDto.toProduct() = Product(
         id = id,
-       title = title,
+        title = title,
         description = description,
         price = price,
         rating = rating,

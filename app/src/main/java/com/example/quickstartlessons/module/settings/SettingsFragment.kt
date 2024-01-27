@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account.settings
+package com.example.quickstartlessons.module.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
-import com.example.quickstartlessons.module.account.settings.languages.ChooseLanguageFragment
+import com.example.quickstartlessons.module.settings.languages.ChangeLanguageButtonSheetDialog
 
 class SettingsFragment : Fragment() {
 
@@ -31,8 +31,8 @@ class SettingsFragment : Fragment() {
     }
 
     private fun showBottomSheetDialog(){
-            val chooseLanguageFragment = ChooseLanguageFragment{language->
-                binding.chooseLanguage.text = language
+            val chooseLanguageFragment = ChangeLanguageButtonSheetDialog{
+
             }
             chooseLanguageFragment.show(childFragmentManager, chooseLanguageFragment.tag)
         }

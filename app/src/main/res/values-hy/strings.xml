@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuickStartLessons</string>
+    <string name="home">Գլխավոր</string>
+    <string name="favorite">Ֆավորիտ</string>
+    <string name="account">Մենյու</string>
+    <string name="already_have_an_account">Արդեն ունեք հաշիվ?</string>
+    <string name="sign_in_we_are_waiting_for_you">ՄՏԵՔ, ՄԵՆՔ ՍՊԱՍՈՒՄ ԵՆՔ ՁԵԶ</string>
+    <string name="email_username">Փոստ/Օգտանուն</string>
+    <string name="password">Գաղտնաբառ</string>
+    <string name="remember_me">Հիշել</string>
+    <string name="sign_in">Մուտք գործել</string>
+    <string name="forgot_your_password">ՄՈՌԱՑԵԼ ԵՔ ՁԵՐ ԳԱՂՏՆԱԲԱՌԸ?</string>
+    <string name="reset_password">Վերականգնել գաղտնաբառը</string>
+    <string name="reset_password_via_sms">Վերականգնել գաղտնաբառը SMS-ի միջոցով</string>
+    <string name="please_enter_phone_number">Խնդրում ենք մուտքագրել հեռախոսահամարը</string>
+    <string name="send_sms">Ուղարկեք SMS</string>
+    <string name="resetpassword_via_email">Վերականգնել գաղտնաբառը փոստի միջոցով</string>
+    <string name="invalid_password">Անվավեր գաղտնաբառ է: Պետք է լինի 6 նիշից ավելի մեծ:</string>
+    <string name="invalid_email">Անվավեր կամ դատարկ է փոստի հասցեն կամ օգտանունը</string>
+    <string name="field_required">Դաշտը պարտադիր է</string>
+    <string name="products">Ապրանքներ</string>
+    <string name="products_header">Բոլոր ապրանքները </string>
+    <string name="categories">Կատեգորիաներ</string>
+    <string name="profile_text">Անձնական էջ</string>
+    <string name="notification_text">Ծանուցումներ</string>
+    <string name="settings_text">Կարգավորումնե</string>
+    <string name="account_user_name">Նարե Իսահակյան</string>
+    <string name="choose_language">Ընտրեք լեզուն</string>
+    <string name="app_language">Հավելվածի լեզուն</string>
+    <string name="sign_out">Դուրս գալ</string>
+    <string name="description">Նկարագրություն: </string>
+    <string name="price">Արժեքը: </string>
+    <string name="title">Վերնագիր: </string>
+    <string name="brand">Բրենդ: </string>
+    <string name="category">Կարգավիճակ: </string>
+    <string name="discountPercentage">Զեղչի տոկոսը։ </string>
+    <string name="rating">Վարկանիշ: </string>
+</resources>
