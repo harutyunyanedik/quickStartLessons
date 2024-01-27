@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.details.ProductDetailsFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
@@ -17,7 +19,10 @@ class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
     private val viewModel by viewModel<ProductsViewModel>()
-    private val productsAdapter = ProductsAdapter()
+    private val productsAdapter = ProductsAdapter {
+        findNavController().navigate(ProductDetailsFragmentDirections.actionDetailsFragment(it))
+
+    }
     private val categoriesAdapter = CategoriesAdapter {
         if (it == getString(R.string.products)) {
             viewModel.getProducts()

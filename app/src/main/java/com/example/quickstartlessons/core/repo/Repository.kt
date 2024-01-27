@@ -8,6 +8,8 @@ import com.example.quickstartlessons.module.product.data.net.response.ProductsDt
 
 interface Repository {
 
+    suspend fun getProductById(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id: Int)
+
     suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
 
     suspend fun getCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean)
@@ -18,6 +20,12 @@ interface Repository {
 }
 
 class ProductsRepositoryImplementation(private val dataSource: DataSource) : Repository {
+
+    override suspend fun getProductById(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id: Int) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            dataSource.getProductById(id)
+        }
+    }
 
     override suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {

@@ -12,6 +12,10 @@ data class ProductDto(
     val description: String,
     @SerializedName("price")
     val price: Int,
+    @SerializedName("rating")
+    val rating: Float,
     @SerializedName("thumbnail")
     val imageUrl: String,
+    @SerializedName("images")
+    val images: List<String>
 ) : Serializable
