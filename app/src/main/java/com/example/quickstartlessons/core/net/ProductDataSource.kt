@@ -19,7 +19,7 @@ interface ProductDataSource {
     fun getProduct(@Path("id") id: Int): Call<ProductDto>
 
     @GET("products/{id}")
-    suspend fun getProductV2(@Path("id") id: Int): Response<ProductDto>
+    suspend fun getProductById(@Path("id") id: Int): Response<ProductDto>
 
     @GET("products/categories")
     suspend fun getCategories(): Response<List<String>>

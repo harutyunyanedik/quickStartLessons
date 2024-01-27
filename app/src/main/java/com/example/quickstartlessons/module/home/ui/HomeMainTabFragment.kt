@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
@@ -13,12 +14,15 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ui.adapters.ProductsAdapter
 import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewModel
+import com.example.quickstartlessons.module.products.details.ProductDetailsFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val adapter = ProductsAdapter()
+    private val adapter = ProductsAdapter {
+        findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragment(it))
+    }
 
     @SuppressLint("ResourceType")
     private val categoriesAdapter = CategoriesAdapter { category ->

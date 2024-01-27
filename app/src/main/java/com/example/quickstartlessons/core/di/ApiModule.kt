@@ -13,11 +13,6 @@ import org.koin.dsl.module
 
 internal val apiModule = module {
 
-    single { createWebService<AlbumDataSource>(createOkHttpClient(), PRODUCTS_BASE_URL) }
-
     single { createWebService<ProductDataSource>(createOkHttpClient(), PRODUCTS_BASE_URL) }
-
-    single<AlbumRepository> { AlbumRepositoryImplementation(get()) }
-
     single<ProductsRepository> { ProductsRepositoryImplementation(get()) }
 }

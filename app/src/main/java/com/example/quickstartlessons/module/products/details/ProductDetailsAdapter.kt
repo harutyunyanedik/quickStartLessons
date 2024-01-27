@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.quickstartlessons.databinding.FragmentProductDetailsBinding
 import com.example.quickstartlessons.databinding.ItemProductDetaislBinding
 import com.example.quickstartlessons.module.products.data.ProductDto
 
 class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private var items = mutableListOf<ProductDto>()
+    private var items = mutableListOf<String>()
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -22,7 +23,7 @@ class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return ProductDetailsBaseViewHolder(ItemProductDetaislBinding.inflate(inflater, parent, false))
+       return ProductDetailsBaseViewHolder(ItemProductDetaislBinding.inflate(inflater,parent,false))
     }
 
     override fun getItemCount() = items.size
@@ -32,26 +33,23 @@ class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseVie
     }
 
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        abstract fun bind(item: ProductDto)
+        abstract fun bind(item: String)
 
     }
 
     @SuppressLint("NotifyDataSetChanged")
-     fun updateDataDetails(item: ProductDto) {
+     fun updateDataDetails(list: List<String>?) {
         items.clear()
-        item.let {
+        list.let {
             items.addAll(items)
         }
         notifyDataSetChanged()
     }
 
     inner class ProductDetailsBaseViewHolder(private val binding: ItemProductDetaislBinding) : BaseViewHolder(binding.root) {
-        override fun bind(item: ProductDto) {
-            Glide.with(context).load(item.imageUrl).into(binding.productImage)
-            binding.productTitle.text = item.title
-            binding.productDetailedDescription.text = item.description
-            binding.productPrice.text = item.price.toString()
-            binding.checkboxFavorite.isChecked = item.isFavorite
+        override fun bind(item: String) {
+            Glide.with(context).load(item).into(binding.imageViewProductDetails)
+
         }
 
     }

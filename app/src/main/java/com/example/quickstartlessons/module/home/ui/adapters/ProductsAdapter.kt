@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.databinding.ItemProductBinding
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
+class ProductsAdapter(val onClickItem: (Int) -> Unit) : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     private val items = mutableListOf<ProductDto>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
@@ -50,6 +50,12 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
                     if (adapterPosition != RecyclerView.NO_POSITION) {
                         items[adapterPosition].isFavorite = isChecked
                     }
+                }
+            }
+
+            binding.root.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION){
+                    onClickItem.invoke(items[adapterPosition].id)
                 }
             }
         }
