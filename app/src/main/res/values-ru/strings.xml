@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">Главное</string>
+    <string name="favorite">Избранное</string>
+    <string name="account">Учетная запись</string>
+
+    <integer-array name="navigationMenu_titles_res_ids_Array">
+        <item name="navigationMenu_home">@string/home</item>
+        <item name="navigationMenu_history">@string/favorite</item>
+        <item name="navigationMenu_scanner">@string/account</item>
+    </integer-array>
+
+    <string name="already_have_an_account">У вас уже есть учетная запись?</string>
+    <string name="sign_in_we_are_waiting_for_you">Войдите, мы ждем вас</string>
+    <string name="email_username">Эл. почта</string>
+    <string name="password">Пароль</string>
+    <string name="remember_me">Запомнить</string>
+    <string name="sign_in">Войти</string>
+    <string name="forgot_your_password">ЗАБЫЛИ ПАРОЛЬ?</string>
+    <string name="reset_password">Востоновить пароль</string>
+    <string name="reset_password_via_sms">Сброс пароля через СМС</string>
+    <string name="please_enter_phone_number">Пожалуйста, введите номер телефона</string>
+    <string name="_374">+374</string>
+    <string name="xx_xxx_xxx">(XX) XXX-XXX</string>
+    <string name="send_sms">Отправить смс</string>
+    <string name="resetpassword_via_email">Сбросить пароль по электронной почте</string>
+    <string name="email">Электронная почта</string>
+    <string name="sample_email_com">sample@email.com</string>
+    <string name="helper_text">jjjj</string>
+    <string name="invalid_password">Неверный пароль! Должно быть больше 6 символов!</string>
+    <string name="invalid_email">Неверный или пустой адрес электронной почты или имя пользователя</string>
+    <string name="field_required">Поле обязательно</string>
+    <string name="phones">Телефоны</string>
+    <string name="the_request_failed">Ошибка запроса</string>
+    <string name="profile">Профиль</string>
+    <string name="mariam_davtyan">Mariam Davtyan</string>
+    <string name="mariam_gmail_com">mariam@gmail.com</string>
+    <string name="notifications">Уведомления</string>
+    <string name="settings">Настройки</string>
+    <string name="change_language">Язык приложения</string>
+    <string name="save">Сохранять</string>
+    <string name="sign_out">Выйти</string>
+    <string name="choose_language">Выберите язык</string>
+</resources>

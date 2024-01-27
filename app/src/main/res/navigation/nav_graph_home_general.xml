@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.quickstartlessons.module.account.SettingsFragment"
+        android:name="com.example.quickstartlessons.module.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings"/>
     <action

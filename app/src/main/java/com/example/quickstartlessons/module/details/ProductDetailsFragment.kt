@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.databinding.FragmentProductDetailsBinding
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProductDetailsFragment : Fragment() {
+class ProductDetailsFragment : BaseFragment() {
 
     private lateinit var binding: FragmentProductDetailsBinding
     private val adapter = ImagesAdapter()

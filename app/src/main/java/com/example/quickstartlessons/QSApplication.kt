@@ -13,7 +13,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.example.quickstartlessons.core.di.appComponent
 import com.example.quickstartlessons.module.base.coroutine.BaseCoroutineExceptionHandler
+import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.Prefs
+import com.yariksoffice.lingver.Lingver
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -22,6 +24,7 @@ import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
+import java.util.Locale
 
 class QSApplication : Application(), LifecycleObserver {
     private lateinit var currentActivityState: Lifecycle
@@ -38,6 +41,7 @@ class QSApplication : Application(), LifecycleObserver {
             .setPrefsName(packageName)
             .setUseDefaultSharedPreference(true)
             .build()
+        Lingver.Companion.init(this, Locale(PreferencesManager.getCurrentLanguage()))
     }
 
     private fun setupKoin() {

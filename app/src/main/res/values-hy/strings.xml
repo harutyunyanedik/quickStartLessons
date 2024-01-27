@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">Գլխավոր</string>
+    <string name="favorite">Ֆավորիտ</string>
+    <string name="account">Օգտահաշիվ</string>
+
+    <integer-array name="navigationMenu_titles_res_ids_Array">
+        <item name="navigationMenu_home">@string/home</item>
+        <item name="navigationMenu_history">@string/favorite</item>
+        <item name="navigationMenu_scanner">@string/account</item>
+    </integer-array>
+
+    <string name="already_have_an_account">Արդեն ունեք հաշիվ</string>
+    <string name="sign_in_we_are_waiting_for_you">ՄՈՒՏՔ ԳՈՐԾԵՔ, ՄԵՆՔ ԱՐԴԵՆ ՍՊԱՍՈՒՄ ԵՆՔ ՁԵԶ</string>
+    <string name="email_username">Էլ․ հասցե/Օգտանուն</string>
+    <string name="password">Գաղտնաբառ</string>
+    <string name="remember_me">Հիշել ինձ</string>
+    <string name="sign_in">ՄՈՒՏՔ ԳՈՐԾԵԼ</string>
+    <string name="forgot_your_password">ՄՈՌԱՑԵ՞Լ ԵՔ ՁԵՐ ԳԱՂՏՆԱԲԱՌԸ</string>
+    <string name="reset_password">Փոխել գաղտնաբառը</string>
+    <string name="reset_password_via_sms">Փոխել գաղտնաբառը հաղորդագրության միջոցով</string>
+    <string name="please_enter_phone_number">Խնդրում ենք մուտքագրեք ձեր հեռախոսահամարը</string>
+    <string name="_374">+374</string>
+    <string name="xx_xxx_xxx">(XX) XXX-XXX</string>
+    <string name="send_sms">Ուղղարկել հաղորդագրություն</string>
+    <string name="resetpassword_via_email">Փոխել գաղտնաբառը էլ․ փոստի միջոցով</string>
+    <string name="email">Էլ․ հասցե</string>
+    <string name="sample_email_com">sample@email.com</string>
+    <string name="helper_text">jjjj</string>
+    <string name="invalid_password">Սխալ գաղտնաբառ։ Պետք է մեծ լինի 6 նիշից</string>
+    <string name="invalid_email">Սխալ կամ դատարկ էլ հասցե կամ օգտանուն</string>
+    <string name="field_required">Դաշտը պարտադիր է</string>
+    <string name="phones">Հեռախոսներ</string>
+    <string name="the_request_failed">Հարցումը ձախողվել է</string>
+    <string name="profile">Պրոֆիլ</string>
+    <string name="mariam_davtyan">Mariam Davtyan</string>
+    <string name="mariam_gmail_com">mariam@gmail.com</string>
+    <string name="notifications">Ծանուցումներ</string>
+    <string name="settings">Կարգավորումներ</string>
+    <string name="change_language">Լեզու</string>
+    <string name="save">Պահպանել</string>
+    <string name="sign_out">Դուրս գալ</string>
+    <string name="choose_language">Ընտրեք լեզուն</string>
+</resources>

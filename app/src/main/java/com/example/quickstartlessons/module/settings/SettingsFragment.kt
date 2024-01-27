@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account
+package com.example.quickstartlessons.module.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.settings.ChangeLanguageBottomSheetDialogFragment
 
 class SettingsFragment : BaseFragment() {
 

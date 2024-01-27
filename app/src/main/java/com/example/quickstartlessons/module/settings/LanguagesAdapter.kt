@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account
+package com.example.quickstartlessons.module.settings
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,14 +8,14 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.LanguageItemBinding
-import com.example.quickstartlessons.module.base.utils.QsConstants
+import com.example.quickstartlessons.module.base.model.LocaleEnum
+import com.example.quickstartlessons.module.base.model.SelectableData
 
-class LanguagesAdapter(val onLanguageClick: (String) -> Unit): RecyclerView.Adapter<LanguagesAdapter.LanguageViewHolder>() {
+class LanguagesAdapter(val onLanguageClick: (LocaleEnum) -> Unit): RecyclerView.Adapter<LanguagesAdapter.LanguageViewHolder>() {
 
-    private val items = mutableListOf<Language>()
+    private val items = mutableListOf<SelectableData<LocaleEnum>>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private var selectedPosition = QsConstants.NO_VALUE
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -34,7 +34,7 @@ class LanguagesAdapter(val onLanguageClick: (String) -> Unit): RecyclerView.Adap
     override fun getItemCount() = items.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(list: List<Language>?) {
+    fun updateData(list: List<SelectableData<LocaleEnum>>?) {
         items.clear()
         list?.let {
             items.addAll(list)
@@ -49,20 +49,23 @@ class LanguagesAdapter(val onLanguageClick: (String) -> Unit): RecyclerView.Adap
         init {
             binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onLanguageClick.invoke(items[adapterPosition].language)
-                    selectedPosition = adapterPosition
+                    cleanSelections()
+                    onLanguageClick.invoke(items[adapterPosition].data)
+                    items[adapterPosition].isSelected = true
                     notifyDataSetChanged()
                 }
             }
         }
-        fun bind(item: Language) {
-            binding.textViewLanguage.text = item.language
-            if (selectedPosition == adapterPosition){
-                item.isSelected = R.color.blue_light
-            } else {
-                item.isSelected = R.color.white
+
+        private fun cleanSelections() {
+            items.onEach {
+                it.isSelected = false
             }
-            binding.constraintLayoutLanguage.background = ContextCompat.getDrawable(context, item.isSelected)
+        }
+        fun bind(item: SelectableData<LocaleEnum>) {
+            binding.textViewLanguage.text = context.getString(item.data.languageResId)
+            val selectedColor = if (item.isSelected) R.color.blue_light else R.color.white
+            binding.constraintLayoutLanguage.background = ContextCompat.getDrawable(context, selectedColor)
         }
     }
 }
