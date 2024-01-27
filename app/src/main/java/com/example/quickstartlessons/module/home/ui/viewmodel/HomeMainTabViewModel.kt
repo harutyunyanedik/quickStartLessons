@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservableViewModel() {
 
-
     private val _productLiveData: MutableLiveData<List<ProductDto>?> = MutableLiveData()
     val productLiveData: LiveData<List<ProductDto>?>
         get() = _productLiveData
@@ -21,23 +20,6 @@ class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservabl
     private val _productErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val productErrorLiveData: LiveData<String?>
         get() = _productErrorLiveData
-
-    private val _categoryLiveDataCategory: MutableLiveData<List<String>?> = MutableLiveData()
-    val categoryLiveDataCategory: LiveData<List<String>?>
-        get() = _categoryLiveDataCategory
-
-    private val _categoryErrorLiveDataCategory: MutableLiveData<String?> = MutableLiveData()
-    val categoryErrorLiveData: LiveData<String?>
-        get() = _categoryErrorLiveDataCategory
-
-    private val _productsByCategoryLiveData: MutableLiveData<ProductsDto> = MutableLiveData()
-    val productsByCategoryLiveData: LiveData<ProductsDto>
-        get() = _productsByCategoryLiveData
-
-    private val _productsByCategoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
-    val productsByCategoryErrorLiveData: LiveData<String?>
-        get() = _productsByCategoryErrorLiveData
-
 
     fun getProducts(isShowLoader: Boolean = true) {
         viewModelScope.launch {
@@ -53,6 +35,38 @@ class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservabl
             }), isShowLoader)
         }
     }
+
+    private val _productDetailsLiveData: MutableLiveData<ProductDto> = MutableLiveData()
+    val productDetailsLiveData: LiveData<ProductDto>
+        get() = _productDetailsLiveData
+
+    private val _productDetailsErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val productDetailsErrorLiveData: LiveData<String?>
+        get() = _productErrorLiveData
+
+    fun getProductsDetail(isShowLoader: Boolean = true) {
+        viewModelScope.launch {
+            repo.getProductsV2((object : ApiResultCallback<ProductsDto?> {
+                override fun onSuccess(response: ProductsDto?) {
+                    _productLiveData.value = response?.products
+                }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "Error data"
+                    return true
+                }
+            }), isShowLoader)
+        }
+    }
+
+
+    private val _categoryLiveDataCategory: MutableLiveData<List<String>?> = MutableLiveData()
+    val categoryLiveDataCategory: LiveData<List<String>?>
+        get() = _categoryLiveDataCategory
+
+    private val _categoryErrorLiveDataCategory: MutableLiveData<String?> = MutableLiveData()
+    val categoryErrorLiveData: LiveData<String?>
+        get() = _categoryErrorLiveDataCategory
 
     fun getCategories(isShoLoader: Boolean = true) {
         viewModelScope.launch {
@@ -70,6 +84,15 @@ class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservabl
         }
 
     }
+
+
+    private val _productsByCategoryLiveData: MutableLiveData<ProductsDto> = MutableLiveData()
+    val productsByCategoryLiveData: LiveData<ProductsDto>
+        get() = _productsByCategoryLiveData
+
+    private val _productsByCategoryErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val productsByCategoryErrorLiveData: LiveData<String?>
+        get() = _productsByCategoryErrorLiveData
 
     fun getProductsByCategory(isShowLoader: Boolean = true, category: String) {
         viewModelScope.launch {

@@ -29,7 +29,7 @@
                 android:id="@+id/language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_16dp"
+                android:padding="@dimen/_8dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
