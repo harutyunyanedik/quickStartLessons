@@ -8,6 +8,9 @@
         android:layout_height="match_parent"
         tools:context=".module.products.details.ProductDetailsFragment">
 
+
+        <!--  todo id rvProductDetail rename to imagesRecyclerView-->
+        <!--  todo 300dp use from resource-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProductDetail"
             android:layout_width="match_parent"
@@ -18,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
+        <!--  todo  productTitle rename to titleTextView-->
         <TextView
             android:id="@+id/productTitle"
             android:layout_width="wrap_content"
@@ -27,10 +30,11 @@
             android:padding="@dimen/_8dp"
             android:text="@string/productsTitle"
             android:textSize="@dimen/_22sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvProductDetail"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/rvProductDetail" />
 
+        <!--  todo  productDetailedDescription rename to descriptionTextView-->
         <TextView
             android:id="@+id/productDetailedDescription"
             android:layout_width="wrap_content"
@@ -39,11 +43,12 @@
             android:padding="@dimen/_8dp"
             android:text="@string/productsDescription"
             android:textSize="@dimen/_22sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productTitle"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/productTitle" />
 
 
+        <!--  todo  productPrice rename to priceTextView-->
         <TextView
             android:id="@+id/productPrice"
             android:layout_width="wrap_content"
@@ -52,10 +57,11 @@
             android:padding="@dimen/_8dp"
             android:text="@string/productsPrice"
             android:textSize="@dimen/_22sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productDetailedDescription"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/productDetailedDescription" />
 
+        <!--  todo  checkboxFavorite rename to favoriteCheckbox-->
         <CheckBox
             android:id="@+id/checkboxFavorite"
             android:layout_width="wrap_content"

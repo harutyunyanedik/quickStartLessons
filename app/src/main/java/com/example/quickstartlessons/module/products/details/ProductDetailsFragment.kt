@@ -41,7 +41,6 @@ class ProductDetailsFragment : BaseFragment() {
     private fun setUpViews() {
         binding.rvProductDetail.adapter = adapter
         binding.rvProductDetail.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-
     }
 
     @SuppressLint("SetTextI18n")

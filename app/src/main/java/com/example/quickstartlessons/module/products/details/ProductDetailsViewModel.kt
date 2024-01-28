@@ -29,7 +29,7 @@ class ProductDetailsViewModel(private val repo: ProductsRepository) : BaseObserv
                     _productDetailsErrorLiveData.value = "Error data"
                     return true
                 }
-            }), isShowLoader,id)
+            }), isShowLoader, id)
         }
     }
 }
