@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account
+package com.example.quickstartlessons.module.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,7 +26,7 @@ class SettingsFragment : Fragment() {
 
     private fun setupViews() {
         binding.appLanguage.setOnClickListener {
-            val bottomSheetDialog = LanguagesFragment {
+            val bottomSheetDialog = ChangeLanguagesFragment {
             }
             bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
         }

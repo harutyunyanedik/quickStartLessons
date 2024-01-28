@@ -41,7 +41,7 @@
         app:destination="@id/accountFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.quickstartlessons.module.account.SettingsFragment"
+        android:name="com.example.quickstartlessons.module.settings.SettingsFragment"
         android:label="SettingsFragment" />
 
     <action
@@ -60,8 +60,4 @@
     <action
         android:id="@+id/action_productDetailsFragment"
         app:destination="@id/productDetailsFragment" />
-
-
-
-
 </navigation>

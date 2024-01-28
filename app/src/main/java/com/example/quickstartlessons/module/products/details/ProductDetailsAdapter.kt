@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.databinding.FragmentProductDetailsBinding
 import com.example.quickstartlessons.databinding.ItemProductDetaislBinding
-import com.example.quickstartlessons.module.products.data.ProductDto
 
 class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseViewHolder>() {
     private lateinit var context: Context
@@ -41,7 +39,9 @@ class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseVie
      fun updateDataDetails(list: List<String>?) {
         items.clear()
         list.let {
-            items.addAll(items)
+            if (list != null) {
+                items.addAll(list)
+            }
         }
         notifyDataSetChanged()
     }

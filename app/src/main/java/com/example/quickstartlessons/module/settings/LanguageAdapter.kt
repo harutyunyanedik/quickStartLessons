@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account
+package com.example.quickstartlessons.module.settings
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,13 +9,14 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ItemLanguagesBinding
-import com.example.quickstartlessons.module.base.utils.QsConstants
+import com.example.quickstartlessons.module.base.model.LocaleEnum
+import com.example.quickstartlessons.module.base.model.SelectableData
 
-class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<LanguageAdapter.BaseViewHolder>() {
-    private var items= mutableListOf<String>()
+class LanguageAdapter(private val onItemClick: (LocaleEnum) -> Unit) : RecyclerView.Adapter<LanguageAdapter.BaseViewHolder>() {
+    private var items = mutableListOf<SelectableData<LocaleEnum>>()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
-    private var selectedPosition = QsConstants.NO_VALUE
+
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
@@ -33,8 +34,8 @@ class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateDataLanguages(list: List<String>) {
-       this.items.clear()
+    fun updateDataLanguages(list: List<SelectableData<LocaleEnum>>) {
+        this.items.clear()
         list.let {
             items.addAll(list)
         }
@@ -42,7 +43,7 @@ class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.
     }
 
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        abstract fun bind(item: String)
+        abstract fun bind(item: SelectableData<LocaleEnum>)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -50,21 +51,24 @@ class LanguageAdapter(private val onItemClick: (String) -> Unit) : RecyclerView.
         init {
             binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onItemClick.invoke(items[adapterPosition])
-                    selectedPosition = adapterPosition
+                    clearSelections()
+                    onItemClick.invoke(items[adapterPosition].data)
+                    items[adapterPosition].isSelected = true
                     notifyDataSetChanged()
                 }
             }
         }
 
-        override fun bind(item: String) {
-            binding.language.text = item
-            val color = if (selectedPosition == adapterPosition) {
-                R.color.teal_700
-            } else {
-                R.color.white
+        private fun clearSelections() {
+            items.onEach {
+                it.isSelected = false
             }
-            binding.constraintLanguage.background = ContextCompat.getDrawable(context, color)
+        }
+
+        override fun bind(item: SelectableData<LocaleEnum>) {
+            binding.language.text = context.getString(item.data.languageResId)
+            val selectedColor = if (item.isSelected) R.color.teal_700 else R.color.white
+            binding.constraintLanguage.background = ContextCompat.getDrawable(context, selectedColor)
         }
     }
 }
