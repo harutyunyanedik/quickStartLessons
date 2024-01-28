@@ -2,18 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--  todo rename layout name item_product_images-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--  todo 300dp use from resource-->
-        <!--  todo add scaleType centerCrop-->
         <ImageView
             android:id="@+id/imageViewProductDetails"
             android:layout_width="0dp"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/_300dp"
             android:contentDescription="@string/products"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

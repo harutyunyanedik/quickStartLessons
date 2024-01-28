@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.databinding.ItemProductDetaislBinding
+import com.example.quickstartlessons.databinding.ItemProductImagesBinding
 
-class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseViewHolder>() { // todo rename to ProductImagesAdapter
+class ProductImagesAdapter : RecyclerView.Adapter<ProductImagesAdapter.BaseViewHolder>() {
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
     private var items = mutableListOf<String>()
@@ -21,7 +21,7 @@ class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-       return ProductDetailsBaseViewHolder(ItemProductDetaislBinding.inflate(inflater,parent,false))
+       return ProductImagesViewHolder(ItemProductImagesBinding.inflate(inflater,parent,false))
     }
 
     override fun getItemCount() = items.size
@@ -35,18 +35,17 @@ class ProductDetailsAdapter : RecyclerView.Adapter<ProductDetailsAdapter.BaseVie
     }
 
     @SuppressLint("NotifyDataSetChanged")
-     fun updateDataDetails(list: List<String>?) {  // todo updateDataDetails rename to updateData
+     fun updateData(list: List<String>) {
         items.clear()
         list.let {
-            if (list != null) {  // todo ete grel es if list != null, baa el let e inchi hamara?? if e jnji menak let ogtagorci
                 items.addAll(list)
-            }
         }
         notifyDataSetChanged()
     }
 
-    // todo ProductDetailsBaseViewHolder rename to ProductImagesViewHolder
-    inner class ProductDetailsBaseViewHolder(private val binding: ItemProductDetaislBinding) : BaseViewHolder(binding.root) {
+
+    inner class ProductImagesViewHolder(private val binding: ItemProductImagesBinding) : BaseViewHolder(binding.root) {
+
         override fun bind(item: String) {
             Glide.with(context).load(item).into(binding.imageViewProductDetails)
         }

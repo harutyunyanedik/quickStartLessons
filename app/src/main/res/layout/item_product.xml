@@ -40,7 +40,7 @@
                 />
 
             <TextView
-                android:id="@+id/productPrice"
+                android:id="@+id/priceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_22sp"
@@ -51,12 +51,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 />
             <CheckBox
-                android:id="@+id/checkboxFavorite"
+                android:id="@+id/favoriteCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/ic_favorite_product"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/productPrice"
+                app:layout_constraintTop_toBottomOf="@id/priceTextView"
                 app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -15,7 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ProductDetailsFragment : BaseFragment() {
 
     private lateinit var binding: FragmentProductDetailsBinding
-    private var adapter = ProductDetailsAdapter()
+    private var adapter = ProductImagesAdapter()
     private val viewModel by viewModel<ProductDetailsViewModel>()
     private val args by navArgs<ProductDetailsFragmentArgs>()
 
@@ -39,20 +39,22 @@ class ProductDetailsFragment : BaseFragment() {
     }
 
     private fun setUpViews() {
-        binding.rvProductDetail.adapter = adapter
-        binding.rvProductDetail.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        binding.imagesRecyclerView.adapter = adapter
+        binding.imagesRecyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
     }
 
     @SuppressLint("SetTextI18n")
     private fun observeLiveData() {
         viewModel.productDetailsLiveData.observe(viewLifecycleOwner) {
-            adapter.updateDataDetails(it?.images)
-            binding.productTitle.text = it?.title
-            binding.productDetailedDescription.text = it?.description
-            binding.productPrice.text = "${it?.price} $"
             if (it != null) {
-                binding.checkboxFavorite.isChecked = it.isFavorite
-                adapter.updateDataDetails(it.images)
+                adapter.updateData(it.images)
+            }
+            binding.titleTextView.text = it?.title
+            binding.descriptionTextView.text = it?.description
+            binding.priceTextView.text = "${it?.price} $"
+            if (it != null) {
+                binding.favoriteCheckbox.isChecked = it.isFavorite
+                adapter.updateData(it.images)
             }
         }
         viewModel.productDetailsErrorLiveData.observe(viewLifecycleOwner) {
