@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.databinding.FragmentProductBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
@@ -29,17 +28,15 @@ class ProductDetailsFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentProductBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
-        setupObserve()
-        binding.toolBar.setOnClickListener{
+        setupObserve() // todo rename to observeLiveData
+        binding.toolBar.setOnClickListener { // todo move to setupListeners function
             findNavController().navigateUp()
         }
     }
@@ -64,6 +61,5 @@ class ProductDetailsFragment : BaseFragment() {
         viewModel.productByIdErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error data", it.toString())
         }
-
     }
 }
