@@ -10,6 +10,7 @@ interface ProductsRepository {
 
     suspend fun getAllProducts(resultCallback: ApiResultCallback<ProductsModel?>, isShowLoader: Boolean)
 
+    // todo rename getProduct to getProductById
     suspend fun getProduct(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id: Int)
 
     suspend fun getAllCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean)

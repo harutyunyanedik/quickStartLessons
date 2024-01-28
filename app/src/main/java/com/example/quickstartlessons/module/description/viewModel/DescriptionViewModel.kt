@@ -9,6 +9,7 @@ import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewMod
 import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
 import kotlinx.coroutines.launch
 
+// todo rename DescriptionViewModel to productDetailsViewModel
 class DescriptionViewModel(private val repo: ProductsRepository) : BaseObservableViewModel() {
 
     private val _productLiveData: MutableLiveData<ProductsDto?> = MutableLiveData()
@@ -19,6 +20,7 @@ class DescriptionViewModel(private val repo: ProductsRepository) : BaseObservabl
     val productErrorLiveData: LiveData<String>
         get() = _productErrorLiveData
 
+    // todo rename getProduct to getProductById
     fun getProduct(isShoLoader: Boolean = true, id: Int) {
         viewModelScope.launch {
             repo.getProduct(object : ApiResultCallback<ProductsDto?> {

@@ -11,7 +11,7 @@ interface ProductsDataSource {
     @GET("products")
     suspend fun getAllProducts(): Response <ProductsModel>
 
-    @GET("products/{id}")
+    @GET("products/{id}")  // todo rename getProduct to getProductById
     suspend fun getProduct(@Path("id") id: Int): Response <ProductsDto>
 
     @GET("products/categories")

@@ -53,15 +53,16 @@
         android:id="@+id/descriptionFragment"
         android:name="com.example.quickstartlessons.module.description.DescriptionFragment"
         android:label="DescriptionFragment">
-    <argument
-        android:name ="idDescription"
-        app:argType = "string"/>
+        <argument
+            android:name="idDescription"
+            app:argType="string" />
+        <!--todo string to integer-->
+        <!--todo idDescription to id-->
     </fragment>
 
     <action
         android:id="@+id/action_global_descriptionFragment"
         app:destination="@id/descriptionFragment" />
-
 
 
 </navigation>

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.RvDescriptionFragmentBinding
 
+// todo DescriptionsImagesRecyclerViewAdapter rename to ProductImagesAdapter
 class DescriptionsImagesRecyclerViewAdapter : RecyclerView.Adapter<DescriptionsImagesRecyclerViewAdapter.BaseViewHolder>() {
 
     private val items: MutableList<String> = mutableListOf()
@@ -44,7 +45,7 @@ class DescriptionsImagesRecyclerViewAdapter : RecyclerView.Adapter<DescriptionsI
         abstract fun bind(item: String)
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged") // todo DescriptionsImagesRecyclerViewHolder rename to ProductImagesViewHolder
     inner class DescriptionsImagesRecyclerViewHolder(private val binding: RvDescriptionFragmentBinding) : BaseViewHolder(binding.root) {
         override fun bind(item: String) {
             Glide.with(context).load(item).into(binding.images)

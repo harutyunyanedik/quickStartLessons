@@ -14,7 +14,7 @@ import com.example.quickstartlessons.module.description.adapter.DescriptionsImag
 import com.example.quickstartlessons.module.description.viewModel.DescriptionViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
+// todo rename DescriptionFragment to ProductDetailsFragment
 class DescriptionFragment : BaseFragment() {
 
     private lateinit var binding: FragmentDescriptionBinding
