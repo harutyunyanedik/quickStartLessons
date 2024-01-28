@@ -44,25 +44,23 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.quickstartlessons.module.settings.SettingsFragment"
         android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings"/>
+        tools:layout="@layout/fragment_settings" />
     <action
         android:id="@+id/action_settingsFragment"
         app:destination="@id/settingsFragment" />
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.example.quickstartlessons.module.details.ProductDetailsFragment"
-        android:label="ProductDetailsFragment"
-        >
+        android:label="ProductDetailsFragment">
         <argument
             android:name="id"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
 
-    <action android:id="@+id/action_detailsFragment"
-        app:destination="@id/productDetailsFragment"/>
-
-
+    <action
+        android:id="@+id/action_detailsFragment"
+        app:destination="@id/productDetailsFragment" />
 
 
 </navigation>

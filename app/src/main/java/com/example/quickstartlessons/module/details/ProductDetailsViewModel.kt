@@ -26,7 +26,7 @@ class ProductDetailsViewModel(private val repo: Repository) : BaseObservableView
                     _productLiveData.value = response
                 }
 
-                override fun onError(): Boolean {
+                override fun onError(): Boolean { // todo setValue to _productErrorLiveData
                     return super.onError()
                 }
             }, isShowLoader, id)

@@ -3,24 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--todo add id NestedScrollView-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <!-- todo im added here <fillViewPort> here, here is the link about it  https://copyprogramming.com/howto/what-does-fillviewport-in-scrollview-really-do-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_16dp"
             android:background="@color/white"
+            android:padding="@dimen/_16dp"
             tools:context=".module.details.ProductDetailsFragment">
 
+            <!--todo rvImages to imagesRecyclerView-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvImages"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!--todo tvTitleDetails to titleTextView-->
             <TextView
                 android:id="@+id/tvTitleDetails"
                 android:layout_width="wrap_content"
@@ -34,6 +39,7 @@
                 app:layout_constraintTop_toBottomOf="@id/rvImages"
                 tools:text="iphone 15 pro" />
 
+            <!--todo tvDescription to descriptionTextView-->
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
@@ -46,6 +52,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvTitleDetails"
                 tools:text="128 GB (White Titanium)" />
 
+            <!--todo tvPriceDetails to priceTextView-->
             <TextView
                 android:id="@+id/tvPriceDetails"
                 android:layout_width="wrap_content"
@@ -59,6 +66,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvDescription"
                 tools:text="1300 $" />
 
+            <!--todo tvRating to ratingTextView-->
             <TextView
                 android:id="@+id/tvRating"
                 android:layout_width="wrap_content"
@@ -71,6 +79,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPriceDetails"
+                tools:ignore="UseCompatTextViewDrawableXml"
                 tools:text="4.69" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

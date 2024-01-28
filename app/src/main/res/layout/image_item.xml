@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
+    <!--todo layout name  to item_image-->
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardUseCompatPadding="true"
-        app:cardElevation="@dimen/_5dp"
         android:layout_margin="@dimen/_8dp"
-        app:cardCornerRadius="@dimen/_5dp">
+        app:cardCornerRadius="@dimen/_5dp"
+        app:cardElevation="@dimen/_5dp"
+        app:cardUseCompatPadding="true">
 
+        <!--todo remove hardCoded dimens and use from resource-->
         <ImageView
             android:id="@+id/imageViewProductDetails"
             android:layout_width="350dp"
