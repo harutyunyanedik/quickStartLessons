@@ -10,8 +10,7 @@ interface ProductsRepository {
 
     suspend fun getAllProducts(resultCallback: ApiResultCallback<ProductsModel?>, isShowLoader: Boolean)
 
-    // todo rename getProduct to getProductById
-    suspend fun getProduct(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id: Int)
+    suspend fun getProductById(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id: Int)
 
     suspend fun getAllCategories(resultCallback: ApiResultCallback<List<String>?>, isShowLoader: Boolean)
 
@@ -29,9 +28,9 @@ class ProductRepositoryImplementation(private val dataSource: ProductsDataSource
         }
     }
 
-    override suspend fun getProduct(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id: Int) {
+    override suspend fun getProductById(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id: Int) {
         getHttpResponse(resultCallback, isShowLoader) {
-            dataSource.getProduct(id)
+            dataSource.getProductById(id)
         }
     }
 

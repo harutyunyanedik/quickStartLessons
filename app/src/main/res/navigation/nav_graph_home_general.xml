@@ -51,13 +51,12 @@
 
     <fragment
         android:id="@+id/descriptionFragment"
-        android:name="com.example.quickstartlessons.module.description.DescriptionFragment"
+        android:name="com.example.quickstartlessons.module.description.ProductDetailsFragment"
         android:label="DescriptionFragment">
         <argument
-            android:name="idDescription"
-            app:argType="string" />
-        <!--todo string to integer-->
-        <!--todo idDescription to id-->
+            android:name="id"
+            app:argType="integer" />
+
     </fragment>
 
     <action

@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.RvDescriptionFragmentBinding
 
-// todo DescriptionsImagesRecyclerViewAdapter rename to ProductImagesAdapter
-class DescriptionsImagesRecyclerViewAdapter : RecyclerView.Adapter<DescriptionsImagesRecyclerViewAdapter.BaseViewHolder>() {
+class ProductImagesAdapter : RecyclerView.Adapter<ProductImagesAdapter.BaseViewHolder>() {
 
     private val items: MutableList<String> = mutableListOf()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        return DescriptionsImagesRecyclerViewHolder(RvDescriptionFragmentBinding.inflate(inflater, parent, false))
+        return ProductImagesViewHolder(RvDescriptionFragmentBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
@@ -45,8 +44,8 @@ class DescriptionsImagesRecyclerViewAdapter : RecyclerView.Adapter<DescriptionsI
         abstract fun bind(item: String)
     }
 
-    @SuppressLint("NotifyDataSetChanged") // todo DescriptionsImagesRecyclerViewHolder rename to ProductImagesViewHolder
-    inner class DescriptionsImagesRecyclerViewHolder(private val binding: RvDescriptionFragmentBinding) : BaseViewHolder(binding.root) {
+    @SuppressLint("NotifyDataSetChanged")
+    inner class ProductImagesViewHolder(private val binding: RvDescriptionFragmentBinding) : BaseViewHolder(binding.root) {
         override fun bind(item: String) {
             Glide.with(context).load(item).into(binding.images)
         }

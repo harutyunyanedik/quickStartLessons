@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
 import com.example.quickstartlessons.databinding.RvHomeMainTabFragmentBinding
 
-class ProductsRecyclerViewAdapter(private var onItemClick: (String) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
+class ProductsRecyclerViewAdapter(private var onItemClick: (Int) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
 
     private val items: MutableList<ProductsDto> = mutableListOf()
     private lateinit var inflater: LayoutInflater
@@ -58,7 +58,7 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (String) -> Unit) : R
 //            }
             binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onItemClick.invoke(items[adapterPosition].id.toString())
+                    onItemClick.invoke(items[adapterPosition].id)
                     notifyDataSetChanged()
                 }
             }

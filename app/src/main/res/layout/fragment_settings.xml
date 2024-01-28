@@ -20,8 +20,8 @@
 
             <Button
                 android:id="@+id/backButton"
-                android:layout_width="@dimen/_40dp"
-                android:layout_height="@dimen/_40dp"
+                android:layout_width="@dimen/_35dp"
+                android:layout_height="@dimen/_35dp"
                 android:background="@drawable/ic_back"
                 tools:ignore="MissingConstraints" />
 
@@ -29,11 +29,10 @@
                 android:id="@+id/settings_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_30dp"
-                android:gravity="center"
+
                 android:text="@string/settings_text"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_36sp"
+                android:textSize="@dimen/_34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="HardcodedText" />
