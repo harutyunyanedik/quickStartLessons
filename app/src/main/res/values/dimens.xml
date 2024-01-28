@@ -17,4 +17,6 @@
     <dimen name="_150dp">150dp</dimen>
     <dimen name="_24sp">24sp</dimen>
     <dimen name="_32dp">32dp</dimen>
+    <dimen name="_350dp">350dp</dimen>
+    <dimen name="_450dp">450dp</dimen>
 </resources>

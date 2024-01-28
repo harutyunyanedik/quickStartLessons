@@ -48,6 +48,7 @@
     <string name="english" translatable="false">English</string>
     <string name="russian" translatable="false">Russian</string>
     <string name="armenian" translatable="false">Armenian</string>
+    <string name="sms">SMS</string>
 
     <string-array name="languages">
         <item>English</item>

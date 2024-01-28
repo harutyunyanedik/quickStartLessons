@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.databinding.ImageItemBinding
+import com.example.quickstartlessons.databinding.ItemImageBinding
 
 class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
     private val items = mutableListOf<String>()
@@ -20,7 +20,7 @@ class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        return ImageViewHolder(ImageItemBinding.inflate(inflater, parent, false))
+        return ImageViewHolder(ItemImageBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
@@ -38,7 +38,7 @@ class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
 
     override fun getItemCount() = items.size
 
-    inner class ImageViewHolder(private val binding: ImageItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ImageViewHolder(private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
             Glide.with(context).load(item).into(binding.imageViewProductDetails)
         }

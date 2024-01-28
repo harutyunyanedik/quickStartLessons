@@ -38,19 +38,22 @@ class ProductDetailsFragment : BaseFragment() {
     }
 
     private fun setupViews() {
-        binding.rvImages.adapter = adapter
-        binding.rvImages.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        binding.imagesRecyclerView.adapter = adapter
+        binding.imagesRecyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
     }
 
     private fun observeLiveData(){
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it?.images)
             with(binding) {
-                tvTitleDetails.text = it?.title
-                tvDescription.text = it?.description
-                tvPriceDetails.text = "${it?.price.toString()} $"
-                tvRating.text = it?.rating.toString()
+                titleTextView.text = it?.title
+                descriptionTextView.text = it?.description
+                priceTextView.text = "${it?.price.toString()} $"
+                ratingTextView.text = it?.rating.toString()
             }
+        }
+        viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
+            showErrorMessageDialog("Error", it ?: "Unknown error")
         }
     }
 
