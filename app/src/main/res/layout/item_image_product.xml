@@ -6,11 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- todo use 300dp from resources-->
         <ImageView
             android:id="@+id/imageProduct"
             android:layout_width="0dp"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/_300dp"
             android:contentDescription="@string/products"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

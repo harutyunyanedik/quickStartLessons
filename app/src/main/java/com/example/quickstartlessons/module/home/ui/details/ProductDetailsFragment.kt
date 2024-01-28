@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quickstartlessons.databinding.FragmentProductBinding
+import com.example.quickstartlessons.databinding.FragmentProductDetailsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.adapter.ProductImageAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductDetailsFragment : BaseFragment() {
-    private lateinit var binding: FragmentProductBinding
+    private lateinit var binding: FragmentProductDetailsBinding
     private val adapter = ProductImageAdapter()
     private val viewModel by viewModel<ProductDetailsViewModel>()
     private val args: ProductDetailsFragmentArgs by navArgs()
@@ -28,15 +28,19 @@ class ProductDetailsFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProductBinding.inflate(inflater, container, false)
+        binding = FragmentProductDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
-        setupObserve() // todo rename to observeLiveData
-        binding.toolBar.setOnClickListener { // todo move to setupListeners function
+        observeLiveData()
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+        binding.toolBar.setOnClickListener {
             findNavController().navigateUp()
         }
     }
@@ -47,15 +51,15 @@ class ProductDetailsFragment : BaseFragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setupObserve() {
+    private fun observeLiveData() {
         viewModel.productByIdLiveData.observe(viewLifecycleOwner) {
-            binding.title.text = it?.title
-            binding.rating.text = "Rating:${it?.rating}"
-            binding.discountPercentage.text = "DiscountPercentage :${it?.discountPercentage}%"
-            binding.stock.text = "Stock :${it?.stock}"
-            binding.description.text = it?.description
-            binding.price.text = "${it?.price} $"
-            binding.favoriteProduct.isChecked = it?.favorite == true
+            binding.titleTextView.text = it?.title
+            binding.ratingTextView.text = "Rating:${it?.rating}"
+            binding.discountPercentageTextView.text = "DiscountPercentage :${it?.discountPercentage}%"
+            binding.stockTextView.text = "Stock :${it?.stock}"
+            binding.descriptionTextView.text = it?.description
+            binding.priceTextView.text = "${it?.price} $"
+            binding.favoriteProductCheckbox.isChecked = it?.favorite == true
             adapter.updateData(it?.image)
         }
         viewModel.productByIdErrorLiveData.observe(viewLifecycleOwner) {

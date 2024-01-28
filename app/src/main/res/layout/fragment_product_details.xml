@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- todo rename fragment_product to fragment_product_details-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,18 +19,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_back" />
 
-        <!-- todo use 300dp from resources-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/_300dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
-        <!-- todo id title to titleTextView-->
+
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_12dp"
@@ -41,9 +39,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclerView" />
 
-        <!-- todo id description to descriptionTextView-->
+
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/descriptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_12dp"
@@ -51,12 +49,11 @@
             android:textSize="@dimen/_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title" />
+            app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
 
-        <!-- todo id discountPercentage to discountPercentageTextView-->
         <TextView
-            android:id="@+id/discountPercentage"
+            android:id="@+id/discountPercentageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_12dp"
@@ -64,11 +61,11 @@
             android:textSize="@dimen/_20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description" />
+            app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
 
-        <!-- todo id rating to ratingTextView-->
+
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/ratingTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_12dp"
@@ -76,11 +73,11 @@
             android:textSize="@dimen/_20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/discountPercentage" />
+            app:layout_constraintTop_toBottomOf="@id/discountPercentageTextView" />
 
-        <!-- todo id stock to stockTextView-->
+
         <TextView
-            android:id="@+id/stock"
+            android:id="@+id/stockTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_12dp"
@@ -88,11 +85,11 @@
             android:textSize="@dimen/_20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rating" />
+            app:layout_constraintTop_toBottomOf="@id/ratingTextView" />
 
-        <!-- todo id price to priceTextView-->
+
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/priceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_12dp"
@@ -100,18 +97,18 @@
             android:textSize="@dimen/_24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/stock" />
+            app:layout_constraintTop_toBottomOf="@id/stockTextView" />
 
-        <!-- todo id favoriteProduct to favoriteCheckbox-->
+
         <CheckBox
-            android:id="@+id/favoriteProduct"
+            android:id="@+id/favoriteProductCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10dp"
             android:button="@drawable/ic_favorite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/price" />
+            app:layout_constraintTop_toBottomOf="@id/priceTextView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
