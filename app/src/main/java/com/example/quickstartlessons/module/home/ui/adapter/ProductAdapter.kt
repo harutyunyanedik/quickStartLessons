@@ -10,7 +10,7 @@ import com.example.quickstartlessons.module.product.data.model.response.ProductD
 import com.example.quickstartlessons.databinding.ItemProductDataBinding
 
 
-class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     private val items: MutableList<ProductDto> = mutableListOf()
@@ -40,8 +40,15 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class ProductViewHolder(private val binding: ItemProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            binding.productConstraintLayout.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onItemClick.invoke(items[adapterPosition].id)
+                    notifyDataSetChanged()
+                }
+            }
             binding.favoriteProduct.setOnCheckedChangeListener { button, isChecked ->
                 if (button.isPressed) {
                     if (adapterPosition != RecyclerView.NO_POSITION) {

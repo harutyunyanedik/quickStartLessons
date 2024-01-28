@@ -48,4 +48,16 @@
     <action
         android:id="@+id/action_global_settingsFragment"
         app:destination="@id/settingsFragment" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.quickstartlessons.module.home.ui.details.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+        <argument
+            android:name="productId"
+            app:argType="string"/>
+    </fragment>
+    <action
+        android:id="@+id/action_global_productDetailsFragment"
+        app:destination="@id/productDetailsFragment" />
+
 </navigation>

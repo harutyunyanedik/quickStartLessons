@@ -9,6 +9,8 @@ data class ProductsDto(
 ) : Serializable
 
 data class ProductDto(
+    @SerializedName("id")
+    val id: Int,
     @SerializedName("title")
     val title: String,
     @SerializedName("description")
@@ -19,6 +21,14 @@ data class ProductDto(
     val brand: String,
     @SerializedName("thumbnail")
     val thumbnail: String,
-    var favorite:Boolean=false
+    @SerializedName("discountPercentage")
+    val discountPercentage: Float,
+    @SerializedName("rating")
+    val rating: Float,
+    @SerializedName("stock ")
+    val stock: Int,
+    @SerializedName("image")
+    val image: List<String>,
+    var favorite: Boolean = false
 ) : Serializable
 

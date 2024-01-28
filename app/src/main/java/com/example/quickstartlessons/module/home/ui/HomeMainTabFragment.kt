@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
@@ -17,7 +18,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val adapter = ProductAdapter()
+    private val adapter = ProductAdapter{
+
+        findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.toString()))
+
+    }
     private val adapterCategories = CategoriesAdapter { category ->
 
         if (category == getString(R.string.products)) {

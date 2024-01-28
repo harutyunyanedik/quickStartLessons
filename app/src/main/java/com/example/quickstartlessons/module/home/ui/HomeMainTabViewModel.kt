@@ -75,4 +75,6 @@ class HomeMainTabViewModel(private val repository: Repository) : BaseObservableV
             }, isShoLoader, id)
         }
     }
+
+
 }
