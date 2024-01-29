@@ -8,13 +8,15 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ItemChangeLangugaeBinding
+import com.example.quickstartlessons.module.base.model.LocaleEnum
+import com.example.quickstartlessons.module.base.model.SelectableData
 import com.example.quickstartlessons.module.base.utils.QsConstants
 
-class AppLanguageAdapter(private val onItemClick:()->Unit) : RecyclerView.Adapter<AppLanguageAdapter.ChangeLanguageViewHolder>() {
+class AppLanguageAdapter(private val onItemClick:(LocaleEnum)->Unit) : RecyclerView.Adapter<AppLanguageAdapter.ChangeLanguageViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
-    private val items = mutableListOf<String>()
-    private var isSelected=QsConstants.NO_VALUE
+    private val items = mutableListOf<SelectableData<LocaleEnum>>()
+
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -32,7 +34,7 @@ class AppLanguageAdapter(private val onItemClick:()->Unit) : RecyclerView.Adapte
         holder.bind(items[position])
     }
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(item:List<String>?){
+    fun updateData(item:List<SelectableData<LocaleEnum>>?){
         items.clear()
         item?.let {
             items.addAll(item)
@@ -44,23 +46,24 @@ class AppLanguageAdapter(private val onItemClick:()->Unit) : RecyclerView.Adapte
         init {
             binding.language.setOnClickListener {
                 if(adapterPosition!=RecyclerView.NO_POSITION){
-                    onItemClick.invoke()
-
-                    isSelected=adapterPosition
+                    clearSelections()
+                    onItemClick.invoke(items[adapterPosition].data)
+                    items[adapterPosition].isSelected=true
                     notifyDataSetChanged()
 
                 }
             }
         }
-        fun bind(item: String) {
-            binding.language.text = item
-            val color=if(isSelected==adapterPosition){
-                R.color.purple_500
-
-            }else{
-                R.color.color_black_10
+        private fun clearSelections(){
+            items.onEach {
+                it.isSelected=false
             }
-           binding.constraintLanguage.background= ContextCompat.getDrawable(context, color)
+        }
+        fun bind(item: SelectableData<LocaleEnum>) {
+            binding.language.text = context.getString(item.data.languageResId)
+
+            val selectedColor=if(item.isSelected)R.color.purple_500 else   R.color.color_black_10
+           binding.constraintLanguage.background= ContextCompat.getDrawable(context, selectedColor)
         }
     }
 }

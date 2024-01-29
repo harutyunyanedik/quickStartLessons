@@ -13,6 +13,7 @@ import com.example.quickstartlessons.databinding.ActivityMainBinding
 import com.example.quickstartlessons.module.base.activity.BaseActivity
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.Utils
+import com.example.quickstartlessons.module.base.utils.clone
 import com.example.quickstartlessons.module.base.utils.setupWithNavController
 
 class MainActivity : BaseActivity() {
@@ -28,13 +29,13 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Utils.changeStatusBarColor(activity = this, color = ContextCompat.getColor(this, R.color.status_bar_color))
+        savedInstanceState?.clear()
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         noConnectionTextView = binding.noConnectionTextView
 
-        if (savedInstanceState == null) {
-            setupBottomNavigationBar()
-        }
+
+        setupBottomNavigationBar()
         setupViews()
         observeLiveData()
     }

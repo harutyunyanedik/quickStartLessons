@@ -1,17 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">QuickStartLessons</string>
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="home">Главный</string>
+    <string name="favorite">Любимый</string>
+    <string name="account">Счет</string>
 
-
-    <string name="home">Home</string>
-    <string name="favorite">Favorite</string>
-    <string name="account">Account</string>
-
-    <integer-array name="navigationMenu_titles_res_ids_Array">
-        <item name="navigationMenu_home">@string/home</item>
-        <item name="navigationMenu_history">@string/favorite</item>
-        <item name="navigationMenu_scanner">@string/account</item>
-    </integer-array>
 
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in_we_are_waiting_for_you">SIGN IN, WE ARE WAITING FOR YOU</string>
@@ -46,5 +38,4 @@
     <string name="change_language">Language</string>
     <string name="app_language">App Language</string>
     <string name="sign_out">Sign out</string>
-
 </resources>
