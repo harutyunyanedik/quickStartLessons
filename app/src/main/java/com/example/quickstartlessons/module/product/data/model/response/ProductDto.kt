@@ -23,11 +23,11 @@ data class ProductDto(
     val thumbnail: String,
     @SerializedName("discountPercentage")
     val discountPercentage: Float,
+    @SerializedName("stock")
+    val stock: Int,
     @SerializedName("rating")
     val rating: Float,
-    @SerializedName("stock ") // todo stex el nayi "stock " probel uni dra hamar el data ches stanum, es SerializedName e petqa lini nuyn json i ke i anunov
-    val stock: Int,
-    @SerializedName("images") // todo json e vor nayes endex key voch te image a ayl images dra hamr du null es stanum, stex poxi dir chisht key e u kashxati
+    @SerializedName("images")
     val image: List<String>,
     var favorite: Boolean = false
 ) : Serializable
