@@ -46,7 +46,7 @@ class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservabl
     val categoryErrorLiveData: LiveData<String?>
         get() = _categoryErrorLiveDataCategory
 
-    fun getCategories(isShoLoader: Boolean = true) {
+    fun getCategories(isShowLoader: Boolean = true) {
         viewModelScope.launch {
             repo.getCategories(object : ApiResultCallback<List<String>?> {
                 override fun onSuccess(response: List<String>?) {
@@ -58,7 +58,7 @@ class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservabl
                     _productErrorLiveData.value = "Error data"
                     return true
                 }
-            }, isShoLoader)
+            }, isShowLoader)
         }
 
     }
