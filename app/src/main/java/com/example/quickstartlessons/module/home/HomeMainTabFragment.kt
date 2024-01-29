@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
@@ -17,7 +19,11 @@ class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
     private val viewModel by viewModel<ProductsViewModel>()
-    private val productsAdapter = ProductsAdapter()
+    private val favoriteManager by inject<FavoriteManager>()
+    private val productsAdapter = ProductsAdapter { product, isFavorite ->
+        if (isFavorite) favoriteManager.insertProduct(product.id, product.title) else favoriteManager.deleteProduct(id)
+    }
+
     private val categoriesAdapter = CategoriesAdapter {
         if (it == getString(R.string.products)) {
             viewModel.getProducts()
@@ -73,6 +79,9 @@ class HomeMainTabFragment : BaseFragment() {
             showErrorMessageDialog("Error", it ?: "Unknown error")
         }
 
+        favoriteManager.getAllProducts().observe(viewLifecycleOwner) {
+            productsAdapter.updateFavorites(it.map { entity -> entity.id })
+        }
     }
 
 }

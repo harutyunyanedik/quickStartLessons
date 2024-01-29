@@ -10,9 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.databinding.ProductItemBinding
 import com.example.quickstartlessons.module.product.data.model.Product
 
-class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
+class ProductsAdapter(private val onFavoriteClick: (Product, Boolean) -> Unit) : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
 
     private val items = mutableListOf<Product>()
+    private val favoriteIds = mutableListOf<Int>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
@@ -41,25 +42,37 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
         notifyDataSetChanged()
     }
 
-    abstract class BaseViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateFavorites(list: List<Int>?) {
+        favoriteIds.clear()
+        list?.let {
+            favoriteIds.addAll(list)
+        }
+        notifyDataSetChanged()
+    }
+
+    abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(item: Product)
     }
-    inner class ProductViewHolder(private val binding: ProductItemBinding): BaseViewHolder(binding.root) {
+
+    inner class ProductViewHolder(private val binding: ProductItemBinding) : BaseViewHolder(binding.root) {
 
         init {
             binding.checkboxFavorite.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (adapterPosition != RecyclerView.NO_POSITION){
-                    items[adapterPosition].isFavorite = isChecked
+                if (buttonView.isPressed) {
+                    if (adapterPosition != RecyclerView.NO_POSITION) {
+                        onFavoriteClick.invoke(items[adapterPosition], isChecked)
+                    }
                 }
             }
         }
 
+        @SuppressLint("SetTextI18n")
         override fun bind(item: Product) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
             binding.tvTitle.text = item.title
-            binding.tvPrice.text = "${item.price.toString()} $"
-            binding.checkboxFavorite.isChecked = item.isFavorite
-
+            binding.tvPrice.text = "${item.price} $"
+            binding.checkboxFavorite.isChecked = favoriteIds.contains(item.id)
         }
     }
 }
