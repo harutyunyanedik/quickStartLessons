@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.details.ProductDetailsFragmentDirections
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
@@ -19,10 +21,13 @@ class HomeMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeMainTabBinding
     private val viewModel by viewModel<ProductsViewModel>()
-    private val productsAdapter = ProductsAdapter {
-        findNavController().navigate(ProductDetailsFragmentDirections.actionDetailsFragment(it))
+    private val favoriteManager: FavoriteManager by inject()
+    private val productsAdapter = ProductsAdapter (onClickItem = {
+        findNavController().navigate(ProductDetailsFragmentDirections.actionDetailsFragment(it.id))
 
-    }
+    }, favoriteUpdate = {isFavorite, product ->
+        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProduct(product.id)
+    })
     private val categoriesAdapter = CategoriesAdapter {
         if (it == getString(R.string.products)) {
             viewModel.getProducts()
@@ -69,6 +74,11 @@ class HomeMainTabFragment : BaseFragment() {
 
         viewModel.productLiveData.observe(viewLifecycleOwner) {
             productsAdapter.updateData(it)
+        }
+
+        favoriteManager.getAllProducts().observe(viewLifecycleOwner) {
+            val favoritesId = it.map {productEntity -> productEntity.id}
+            productsAdapter.updateFavorites(favoritesId)
         }
 
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {

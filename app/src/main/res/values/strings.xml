@@ -49,6 +49,7 @@
     <string name="russian" translatable="false">Russian</string>
     <string name="armenian" translatable="false">Armenian</string>
     <string name="sms">SMS</string>
+    <string name="favorites">Favorites</string>
 
     <string-array name="languages">
         <item>English</item>
