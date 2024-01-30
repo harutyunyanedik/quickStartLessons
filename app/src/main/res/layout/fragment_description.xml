@@ -12,23 +12,51 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/_8dp"
             android:background="@color/white"
             tools:context=".module.description.ProductDetailsFragment">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_65dp"
+                android:background="@color/teal_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/backButton"
+                    android:layout_width="@dimen/_35dp"
+                    android:layout_height="@dimen/_35dp"
+                    android:background="@drawable/ic_back"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/toolbar_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="title"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="HardcodedText" />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/imagesRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_300dp"
+                android:layout_marginTop="@dimen/_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <TextView
                 android:id="@+id/titleTextView"
                 style="@style/TextView_description"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_24dp"
+                android:padding="@dimen/_8dp"
                 android:text="title"
                 app:layout_constraintTop_toBottomOf="@+id/imagesRecyclerView"
                 tools:ignore="HardcodedText,MissingConstraints" />
@@ -36,8 +64,7 @@
             <TextView
                 android:id="@+id/descriptionTextView"
                 style="@style/TextView_description"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_12dp"
+                android:padding="@dimen/_8dp"
                 android:text="description"
                 app:layout_constraintTop_toBottomOf="@+id/titleTextView"
                 tools:ignore="HardcodedText,MissingConstraints" />
@@ -45,8 +72,7 @@
             <TextView
                 android:id="@+id/categoryTextView"
                 style="@style/TextView_description"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_12dp"
+                android:padding="@dimen/_8dp"
                 android:text="category"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
                 tools:ignore="HardcodedText,MissingConstraints" />
@@ -54,8 +80,7 @@
             <TextView
                 android:id="@+id/brandTextView"
                 style="@style/TextView_description"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_12dp"
+                android:padding="@dimen/_8dp"
                 android:text="brand"
                 app:layout_constraintTop_toBottomOf="@+id/categoryTextView"
                 tools:ignore="HardcodedText,MissingConstraints" />
@@ -63,8 +88,7 @@
             <TextView
                 android:id="@+id/discountPercentageTextView"
                 style="@style/TextView_description"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_12dp"
+                android:padding="@dimen/_8dp"
                 android:text="discountPercentage"
                 app:layout_constraintTop_toBottomOf="@+id/brandTextView"
                 tools:ignore="HardcodedText,MissingConstraints" />
@@ -73,7 +97,8 @@
                 android:id="@+id/priceTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_24dp"
+                android:padding="@dimen/_8dp"
+                android:layout_marginTop="@dimen/_6dp"
                 android:text="price"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_36sp"
@@ -83,8 +108,8 @@
             <TextView
                 android:id="@+id/ratingTextView"
                 style="@style/TextView_description"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_12dp"
+                android:padding="@dimen/_8dp"
+                android:layout_marginTop="@dimen/_3dp"
                 android:text="rating"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceTextView"
@@ -94,13 +119,14 @@
                 android:id="@+id/favoriteCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_12dp"
+                android:layout_marginTop="@dimen/_3dp"
                 android:button="@drawable/favorite_checkbox_selector"
                 android:checked="false"
                 android:padding="@dimen/_15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceTextView"
                 tools:ignore="MissingConstraints" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

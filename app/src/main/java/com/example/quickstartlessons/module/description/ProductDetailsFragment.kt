@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
@@ -39,6 +40,10 @@ class ProductDetailsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         observeLiveData()
+
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupViews() {
@@ -53,6 +58,7 @@ class ProductDetailsFragment : BaseFragment() {
             binding.descriptionTextView.text = getString(R.string.description) + " ${it?.description}"
             binding.priceTextView.text = getString(R.string.price) + " ${it?.price} $"
             binding.titleTextView.text = getString(R.string.title) + " ${it?.title}"
+            binding.toolbarText.text = it?.title
             binding.brandTextView.text = getString(R.string.brand) + " ${it?.brand}"
             binding.categoryTextView.text = getString(R.string.category) + " ${it?.category}"
             binding.discountPercentageTextView.text = getString(R.string.discountPercentage) + " ${it?.discountPercentage} %"

@@ -10,9 +10,14 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
 import com.example.quickstartlessons.databinding.RvHomeMainTabFragmentBinding
 
-class ProductsRecyclerViewAdapter(private var onItemClick: (Int) -> Unit) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
+class ProductsRecyclerViewAdapter(
+    val onItemClick: (ProductsDto) -> Unit,
+    val updateFavorites: (Boolean, ProductsDto) -> Unit
+) :
+    RecyclerView.Adapter<ProductsRecyclerViewAdapter.BaseViewHolder>() {
 
     private val items: MutableList<ProductsDto> = mutableListOf()
+    private val favoriteItems = mutableListOf<Int>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
 
@@ -41,6 +46,15 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Int) -> Unit) : Recy
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateFavorites(item: List<Int>?) {
+        this.favoriteItems.clear()
+        item?.let {
+            this.favoriteItems.addAll(it)
+        }
+        notifyDataSetChanged()
+    }
+
     abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         abstract fun bind(item: ProductsDto)
     }
@@ -48,17 +62,16 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Int) -> Unit) : Recy
     @SuppressLint("NotifyDataSetChanged")
     inner class ProductsRecyclerViewHolder(private val binding: RvHomeMainTabFragmentBinding) : BaseViewHolder(binding.root) {
         init {
-//            binding.favoriteCheckbox.setOnCheckedChangeListener { _ , isChecked ->
-//                if (adapterPosition != RecyclerView.NO_POSITION) {
-//                  items[adapterPosition].isFavorite = isChecked
-//                    notifyItemChanged(adapterPosition)
-//                  binding.productId.text =  item[adapterPosition].id.toString()
-//                    onItemClick.invoke(true)
-//                }
-//            }
+            binding.favoriteCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    if(buttonView.isPressed){
+                        updateFavorites.invoke(isChecked,items[adapterPosition])
+                    }
+                }
+            }
             binding.root.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onItemClick.invoke(items[adapterPosition].id)
+                    onItemClick.invoke(items[adapterPosition])
                     notifyDataSetChanged()
                 }
             }
@@ -69,6 +82,7 @@ class ProductsRecyclerViewAdapter(private var onItemClick: (Int) -> Unit) : Recy
             binding.productId.text = item.id.toString()
             binding.productTitle.text = item.title
             binding.productPrice.text = "Price: ${item.price} $"
+            binding.favoriteCheckbox.isChecked = favoriteItems.contains(item.id)
             Glide.with(context).load(item.thumbnail).into(binding.productThumbnail)
         }
     }
