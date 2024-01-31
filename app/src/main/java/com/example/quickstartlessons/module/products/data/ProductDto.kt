@@ -17,5 +17,5 @@ data class ProductDto(
   @SerializedName("images")
   val images: List<String>,
   @SerializedName("favorite")
-  var isFavorite:Boolean
+  var isFavorite: Boolean = false
 ) : Serializable

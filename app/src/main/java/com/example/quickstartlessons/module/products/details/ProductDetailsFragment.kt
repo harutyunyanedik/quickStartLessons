@@ -36,6 +36,7 @@ class ProductDetailsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         observeLiveData()
         setUpViews()
+
     }
 
     private fun setUpViews() {

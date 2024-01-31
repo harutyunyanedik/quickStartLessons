@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.quickstartlessons.core.room.data.ProductEntity
 
+
 @Dao
 interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,4 +19,6 @@ interface ProductDao {
 
     @Query("SELECT * FROM product_table")
     fun getAllProducts(): LiveData<List<ProductEntity>>
+    @Query("DELETE FROM product_table WHERE id = :id")
+    suspend fun deleteProductById(id:Int)
 }

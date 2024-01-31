@@ -2,7 +2,6 @@ package com.example.quickstartlessons.core.room
 
 import com.example.quickstartlessons.core.room.dao.ProductDao
 import com.example.quickstartlessons.core.room.data.ProductEntity
-import com.example.quickstartlessons.module.products.data.Product
 import com.example.quickstartlessons.module.products.data.ProductDto
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +13,7 @@ class FavoriteManager(private val dao: ProductDao) {
     private val job = SupervisorJob()
     private val scope: CoroutineScope = CoroutineScope(job + Dispatchers.Default)
 
-    fun insertProduct(product: Product) {
+    fun insertProduct(product: ProductDto) {
         scope.launch {
             dao.insertProduct(
                 ProductEntity(
@@ -30,7 +29,7 @@ class FavoriteManager(private val dao: ProductDao) {
     }
 
     fun deleteProduct(product: ProductDto) {
-        scope.launch{
+        scope.launch {
             dao.deleteProduct(
                 ProductEntity(
                     id = product.id,
@@ -42,6 +41,12 @@ class FavoriteManager(private val dao: ProductDao) {
             )
         }
 
+    }
+
+    fun deleteProductByID(product: ProductDto) {
+        scope.launch {
+            dao.deleteProductById(product.id)
+        }
     }
 
     fun getAllProducts() = dao.getAllProducts()

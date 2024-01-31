@@ -10,5 +10,5 @@ data class ProductEntity(
     val description: String,
     val price: Int,
     val imageUrl: String,
-    var isFavorite: Boolean
+    var isFavorite: Boolean = false
 )

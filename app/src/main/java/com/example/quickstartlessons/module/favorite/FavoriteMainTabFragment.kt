@@ -6,13 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentFavoriteMainTabBinding
-import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.base.utils.viewLifecycle
 import com.example.quickstartlessons.module.home.ui.adapters.ProductsAdapter
 import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.module.products.details.ProductDetailsFragmentDirections
@@ -31,7 +27,7 @@ class FavoriteMainTabFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavoriteMainTabBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -56,7 +52,8 @@ class FavoriteMainTabFragment : BaseFragment() {
                     title = productEntity.title,
                     description = productEntity.description,
                     price = productEntity.price,
-                    imageUrl = productEntity.imageUrl
+                    imageUrl = productEntity.imageUrl,
+                    images = mutableListOf("")
                 )
             }
             adapter.updateData(products)
