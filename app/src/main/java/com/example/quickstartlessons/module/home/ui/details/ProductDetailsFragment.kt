@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentProductDetailsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.base.utils.QsConstants
 import com.example.quickstartlessons.module.home.ui.adapter.ProductImageAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,6 +24,7 @@ class ProductDetailsFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProductById(true, args.productId.toInt())
+
     }
 
     override fun onCreateView(
@@ -54,16 +57,17 @@ class ProductDetailsFragment : BaseFragment() {
     private fun observeLiveData() {
         viewModel.productByIdLiveData.observe(viewLifecycleOwner) {
             binding.titleTextView.text = it?.title
-            binding.ratingTextView.text = "Rating:${it?.rating}"
-            binding.discountPercentageTextView.text = "DiscountPercentage :${it?.discountPercentage}%"
-            binding.stockTextView.text = "Stock :${it?.stock}"
+            binding.ratingTextView.text = getString(R.string.rating) +":" + it?.rating.toString()
+            binding.discountPercentageTextView.text = getString(R.string.discountPercentage)+":"+it?.discountPercentage.toString()+"%"
+            binding.stockTextView.text = getString(R.string.stock) + ":"+it?.stock.toString()
             binding.descriptionTextView.text = it?.description
             binding.priceTextView.text = "${it?.price} $"
             binding.favoriteProductCheckbox.isChecked = it?.favorite == true
             adapter.updateData(it?.image)
+            binding.toolBar.title=it?.title
         }
         viewModel.productByIdErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error data", it.toString())
+            showErrorMessageDialog(getString(R.string.error_data), it.toString())
         }
     }
 }
