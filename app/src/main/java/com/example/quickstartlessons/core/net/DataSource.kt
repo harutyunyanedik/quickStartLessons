@@ -2,11 +2,15 @@ package com.example.quickstartlessons.core.net
 
 import com.example.quickstartlessons.module.product.data.net.response.ProductDto
 import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
+import com.example.quickstartlessons.module.users.data.net.UsersDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface DataSource {
+
+    @GET("users")
+    suspend fun getUsers(): Response<UsersDto?>
 
     @GET("products/{id}")
     suspend fun getProductById(@Path("id") id: Int) : Response<ProductDto?>
