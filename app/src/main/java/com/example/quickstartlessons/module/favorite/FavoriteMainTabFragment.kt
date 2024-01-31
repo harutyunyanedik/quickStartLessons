@@ -17,6 +17,7 @@ import org.koin.android.ext.android.inject
 class FavoriteMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentFavoriteMainTabBinding
     private val favoriteManager: FavoriteManager by inject()
+
     private val adapter = ProductAdapter(onItemClick = {
         findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.id.toString()))
     }, updateFavorite = { isFavorite, product ->

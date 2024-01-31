@@ -27,7 +27,7 @@ class FavoriteManager(private val dao: ProductDao) {
         }
     }
 
-    fun deleteProduct(product: ProductDto) {
+    fun deleteProduct(product: ProductDto) { // todo delete
         scope.launch {
             dao.deleteProduct(
                 ProductEntity(
@@ -42,7 +42,7 @@ class FavoriteManager(private val dao: ProductDao) {
         }
     }
 
-    fun deleteProductById(product: ProductDto) {
+    fun deleteProductById(product: ProductDto) { // todo use parameter id
         scope.launch {
             dao.deleteProductById(product.id)
         }
