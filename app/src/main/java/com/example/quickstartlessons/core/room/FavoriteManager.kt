@@ -12,8 +12,9 @@ class FavoriteManager(private val dao: ProductDao) {
 
     private val job = SupervisorJob()
     private val scope: CoroutineScope = CoroutineScope(job + Dispatchers.Default)
+    val id = mutableListOf<Int>()
 
-    fun insertProduct( product : ProductsDto) {
+    fun insertProduct(product: ProductsDto) {
         scope.launch {
             dao.insertProduct(
                 ProductEntity(
@@ -21,23 +22,28 @@ class FavoriteManager(private val dao: ProductDao) {
                     title = product.title, price = product.price,
                     description = product.description, rating = product.rating,
                     brand = product.brand, category = product.category, thumbnail = product.thumbnail
+                )
+            )
+            id.add(product.id)
+        }
+    }
 
+
+    fun deleteProduct(product: ProductsDto) {
+        scope.launch {
+            dao.deleteProduct(ProductEntity(
+                    id = product.id,
+                    title = product.title, price = product.price,
+                    description = product.description, rating = product.rating,
+                    brand = product.brand, category = product.category, thumbnail = product.thumbnail
                 )
             )
         }
     }
 
-    fun deleteProduct( product : ProductsDto) {
+    fun deleteProductById(product: ProductsDto) {
         scope.launch {
-            dao.deleteProduct(
-                ProductEntity(
-                    id = product.id,
-                    title = product.title, price = product.price,
-                    description = product.description, rating = product.rating,
-                    brand = product.brand, category = product.category, thumbnail = product.thumbnail
-
-                )
-            )
+            dao.deleteProductById(product.id)
         }
     }
 

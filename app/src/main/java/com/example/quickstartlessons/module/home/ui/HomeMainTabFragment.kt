@@ -41,7 +41,7 @@ class HomeMainTabFragment : BaseFragment() {
     private var adapter: ProductsRecyclerViewAdapter = ProductsRecyclerViewAdapter(onItemClick = {
         findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalDescriptionFragment(it.id))
     }, updateFavorites = { isFavorite, product ->
-        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProduct(product)
+        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductById(product)
     })
 
     override fun onCreate(savedInstanceState: Bundle?) {

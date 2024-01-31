@@ -1,6 +1,7 @@
 package com.example.quickstartlessons.core.room.data
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "product_table")
