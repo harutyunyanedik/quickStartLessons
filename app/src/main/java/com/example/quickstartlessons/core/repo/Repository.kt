@@ -5,8 +5,11 @@ import com.example.quickstartlessons.core.net.DataSource
 import com.example.quickstartlessons.core.net.getHttpResponse
 import com.example.quickstartlessons.module.product.data.net.response.ProductDto
 import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
+import com.example.quickstartlessons.module.users.data.net.UsersDto
 
 interface Repository {
+
+    suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
 
     suspend fun getProductById(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id: Int)
 
@@ -20,6 +23,12 @@ interface Repository {
 }
 
 class ProductsRepositoryImplementation(private val dataSource: DataSource) : Repository {
+
+    override suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            dataSource.getUsers()
+        }
+    }
 
     override suspend fun getProductById(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id: Int) {
         getHttpResponse(resultCallback, isShowLoader) {

@@ -4,6 +4,8 @@ import com.example.quickstartlessons.module.details.ProductDetailsFragment
 import com.example.quickstartlessons.module.details.ProductDetailsViewModel
 import com.example.quickstartlessons.module.home.HomeMainTabFragment
 import com.example.quickstartlessons.module.home.ProductsViewModel
+import com.example.quickstartlessons.module.launch.SplashActivity
+import com.example.quickstartlessons.module.launch.UsersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -16,5 +18,9 @@ internal val appModule = module {
 
     scope(named<ProductDetailsFragment>()) {
         viewModel { ProductDetailsViewModel(get()) }
+    }
+
+    scope(named<SplashActivity>()) {
+        viewModel { UsersViewModel(get()) }
     }
 }
