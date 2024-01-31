@@ -12,10 +12,13 @@ import com.example.quickstartlessons.core.room.data.ProductEntity
 interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProduct(productEntity: ProductEntity)
+
     @Delete
     suspend fun deleteProduct(productEntity: ProductEntity)
+
     @Query("SELECT* FROM product_table ")
-    fun getAllProduct():LiveData<List<ProductEntity>>
+    fun getAllProduct(): LiveData<List<ProductEntity>>
+
     @Query("DELETE FROM product_table WHERE id = :id")
-    suspend fun deleteProductById(id:Int)
+    suspend fun deleteProductById(id: Int)
 }
