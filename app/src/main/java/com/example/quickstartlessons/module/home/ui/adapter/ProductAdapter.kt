@@ -9,11 +9,15 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.databinding.ItemProductDataBinding
 
-
-class ProductAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(
+    private val onItemClick: (ProductDto) -> Unit,
+    private val updateFavorite: (Boolean, ProductDto) -> Unit
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
+    private val favoriteItems = mutableListOf<Int>()
     private val items: MutableList<ProductDto> = mutableListOf()
+
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -41,19 +45,27 @@ class ProductAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adap
     }
 
     @SuppressLint("NotifyDataSetChanged")
+    fun updateFavorites(item: List<Int>?) {
+        favoriteItems.clear()
+        item?.let {
+            favoriteItems.addAll(item)
+        }
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     inner class ProductViewHolder(private val binding: ItemProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.productConstraintLayout.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
-                    onItemClick.invoke(items[adapterPosition].id)
+                    onItemClick.invoke(items[adapterPosition])
                     notifyDataSetChanged()
                 }
             }
             binding.favoriteProduct.setOnCheckedChangeListener { button, isChecked ->
                 if (button.isPressed) {
                     if (adapterPosition != RecyclerView.NO_POSITION) {
-                        items[adapterPosition].favorite = isChecked
-
+                        updateFavorite.invoke(isChecked, items[adapterPosition])
                     }
                 }
             }
@@ -66,7 +78,7 @@ class ProductAdapter(private val onItemClick: (Int) -> Unit) : RecyclerView.Adap
             binding.productPrice.text = "${item.price} $"
             binding.productTitle.text = item.title
             binding.productDescription.text = item.description
-            binding.favoriteProduct.isChecked = item.favorite
+            binding.favoriteProduct.isChecked = favoriteItems.contains(item.id)
         }
     }
 }

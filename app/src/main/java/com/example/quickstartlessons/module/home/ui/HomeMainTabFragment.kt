@@ -9,20 +9,23 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.adapter.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val adapter = ProductAdapter{
-
-        findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.toString()))
-
-    }
+    private val favoriteManager: FavoriteManager by inject()
+    private val adapter = ProductAdapter(onItemClick = {
+        findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.id.toString()))
+    }, updateFavorite = { isFavorite, product ->
+        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductById(product)
+    })
     private val adapterCategories = CategoriesAdapter { category ->
 
         if (category == getString(R.string.products)) {
@@ -74,6 +77,10 @@ class HomeMainTabFragment : BaseFragment() {
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error data", it.toString())
+        }
+        favoriteManager.getAllProduct().observe(viewLifecycleOwner) {
+            val favoriteIds = it.map { productEntity -> productEntity.id }
+            adapter.updateFavorites(favoriteIds)
         }
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
             val list = it?.toMutableList()

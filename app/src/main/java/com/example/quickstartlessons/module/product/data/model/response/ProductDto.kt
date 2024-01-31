@@ -22,11 +22,11 @@ data class ProductDto(
     @SerializedName("thumbnail")
     val thumbnail: String,
     @SerializedName("discountPercentage")
-    val discountPercentage: Float,
+    val discountPercentage: Double,
     @SerializedName("stock")
     val stock: Int,
     @SerializedName("rating")
-    val rating: Float,
+    val rating: Double,
     @SerializedName("images")
     val image: List<String>,
     var favorite: Boolean = false
