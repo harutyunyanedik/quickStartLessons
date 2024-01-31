@@ -9,20 +9,26 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.CategoriesAdapter
 import com.example.quickstartlessons.module.home.ui.adapters.ProductsAdapter
 import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewModel
 import com.example.quickstartlessons.module.products.details.ProductDetailsFragmentDirections
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
-    private val adapter = ProductsAdapter {
-        findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragment(it))
-    }
+    private val favoriteManager: FavoriteManager by inject()
+    private val adapter = ProductsAdapter(onClickItem = {
+        findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragment(it.id))
+    }, updateFavorite = { isFavorite, product ->
+        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProduct(product)
+
+    })
 
     @SuppressLint("ResourceType")
     private val categoriesAdapter = CategoriesAdapter { category ->
@@ -86,6 +92,11 @@ class HomeMainTabFragment : BaseFragment() {
 
         viewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error Dialog", it ?: "Unknown error")
+        }
+
+        favoriteManager.getAllProducts().observe(viewLifecycleOwner) {
+            val favoriteIds = it.map { productEntity -> productEntity.id }
+            adapter.updateFavorites(favoriteIds)
         }
     }
 }

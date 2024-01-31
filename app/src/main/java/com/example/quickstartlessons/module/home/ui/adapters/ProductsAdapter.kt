@@ -10,8 +10,12 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.databinding.ItemProductBinding
 
-class ProductsAdapter(val onClickItem: (Int) -> Unit) : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
+class ProductsAdapter(
+    val onClickItem: (ProductDto) -> Unit,
+    val updateFavorite: (Boolean, ProductDto) -> Unit
+) : RecyclerView.Adapter<ProductsAdapter.BaseViewHolder>() {
     private val items = mutableListOf<ProductDto>()
+    private val favoriteItems = mutableListOf<Int>()
     private lateinit var inflater: LayoutInflater
     private lateinit var context: Context
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -39,6 +43,15 @@ class ProductsAdapter(val onClickItem: (Int) -> Unit) : RecyclerView.Adapter<Pro
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateFavorites(list: List<Int>?) {
+        favoriteItems.clear()
+        list?.let {
+            favoriteItems.addAll(list)
+        }
+        notifyDataSetChanged()
+    }
+
     abstract class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(item: ProductDto)
     }
@@ -46,25 +59,26 @@ class ProductsAdapter(val onClickItem: (Int) -> Unit) : RecyclerView.Adapter<Pro
     inner class ProductViewHolder(private val binding: ItemProductBinding) : BaseViewHolder(binding.root) {
         init {
             binding.favoriteCheckbox.setOnCheckedChangeListener { button, isChecked ->
-                if (button.isPressed) {
-                    if (adapterPosition != RecyclerView.NO_POSITION) {
-                        items[adapterPosition].isFavorite = isChecked
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    if (button.isPressed) {
+                        updateFavorite.invoke(isChecked, items[adapterPosition])
                     }
                 }
             }
 
             binding.root.setOnClickListener {
-                if (adapterPosition != RecyclerView.NO_POSITION){
-                    onClickItem.invoke(items[adapterPosition].id)
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onClickItem.invoke(items[adapterPosition])
                 }
             }
         }
+
         @SuppressLint("SetTextI18n")
         override fun bind(item: ProductDto) {
             Glide.with(context).load(item.imageUrl).into(binding.imageViewProduct)
             binding.productDescription.text = item.title
             binding.priceTextView.text = "${item.price} $"
-            binding.favoriteCheckbox.isChecked = item.isFavorite
+            binding.favoriteCheckbox.isChecked = favoriteItems.contains(item.id)
         }
     }
 }
