@@ -11,6 +11,7 @@
     <color name="app_background">#000c24</color>
     <color name="myAccentColor">#9C27B0</color>
     <color name="grey">#747475</color>
+    <color name="favorite_color">@color/colorAccent</color>
 
     <color name="colorPrimary">@color/statusBarColor</color>
     <color name="colorPrimaryDark">@color/statusBarColor</color>

@@ -7,6 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".module.favorite.FavoriteMainTabFragment">
 
         <androidx.appcompat.widget.Toolbar
@@ -31,6 +32,21 @@
                 tools:ignore="HardcodedText" />
 
         </androidx.appcompat.widget.Toolbar>
+        <TextView
+            android:id="@+id/favorite_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textAlignment="center"
+            android:textColor="@color/teal_200"
+            android:textSize="@dimen/_36sp"
+            android:textStyle="italic"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:ignore="HardcodedText" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_itemsOfProducts"

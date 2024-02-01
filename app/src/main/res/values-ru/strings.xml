@@ -36,4 +36,6 @@
     <string name="category">Категория: </string>
     <string name="discountPercentage">Процент скидки: </string>
     <string name="rating">Рейтинг: </string>
+    <string name="empty">ПУСТО</string>
+    <string name="personal_data">Личные данные</string>
 </resources>

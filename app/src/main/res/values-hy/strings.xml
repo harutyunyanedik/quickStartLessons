@@ -36,4 +36,6 @@
     <string name="category">Կարգավիճակ: </string>
     <string name="discountPercentage">Զեղչի տոկոսը։ </string>
     <string name="rating">Վարկանիշ: </string>
+    <string name="empty">ԴԱՏԱՐԿ Է</string>
+    <string name="personal_data">Անձնական տվյալներ</string>
 </resources>

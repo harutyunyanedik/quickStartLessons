@@ -23,11 +23,12 @@ import com.example.quickstartlessons.module.base.utils.QSDefaultDialogData
 import com.example.quickstartlessons.module.base.utils.SingleLiveEventData
 import com.example.quickstartlessons.module.base.utils.createDialog
 import com.example.quickstartlessons.module.base.utils.createMessageDialog
+import org.koin.androidx.scope.ScopeActivity
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.util.Stack
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : ScopeActivity() {
     var noConnectionTextView: TextView? = null
 
     private val loadingDialog: Dialog? by lazy {

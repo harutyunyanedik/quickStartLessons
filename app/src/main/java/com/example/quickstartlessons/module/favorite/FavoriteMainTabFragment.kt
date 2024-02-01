@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.quickstartlessons.core.room.FavoriteManager
@@ -11,7 +12,6 @@ import com.example.quickstartlessons.databinding.FragmentFavoriteMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.HomeMainTabFragmentDirections
 import com.example.quickstartlessons.module.home.ui.adapter.ProductsRecyclerViewAdapter
-import com.example.quickstartlessons.module.products.data.response.model.products.Product
 import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
 import org.koin.android.ext.android.inject
 
@@ -22,7 +22,7 @@ class FavoriteMainTabFragment : BaseFragment() {
     private var adapter: ProductsRecyclerViewAdapter = ProductsRecyclerViewAdapter(onItemClick = {
         findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalDescriptionFragment(it.id))
     }, updateFavorites = { isFavorite, product ->
-        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProduct(product)
+        if (isFavorite) favoriteManager.insertProduct(product)  else favoriteManager.deleteProductById(product)
     })
 
     override fun onCreateView(
@@ -56,6 +56,7 @@ class FavoriteMainTabFragment : BaseFragment() {
                 )
             }
             val favoriteIds = it.map { productEntity -> productEntity.id }
+            binding.favoriteText.isVisible = favoriteIds.isEmpty()
             adapter.updateFavorites(favoriteIds)
             adapter.updateData(products)
         }

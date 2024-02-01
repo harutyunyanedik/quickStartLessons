@@ -51,12 +51,13 @@
     <string name="russian" translatable="false">Russian</string>
     <string name="armenian" translatable="false">Armenian</string>
     <string name="languages" translatable="false">languages</string>
-   <string name="description">Description: </string>
+    <string name="description">Description: </string>
     <string name="price">Price: </string>
     <string name="title">Title: </string>
     <string name="brand">Brand: </string>
     <string name="category">Category: </string>
     <string name="discountPercentage">Discount Percentage: </string>
     <string name="rating">Rating: </string>
-
+    <string name="empty">IS EMPTY</string>
+    <string name="personal_data">Personal data</string>
 </resources>
