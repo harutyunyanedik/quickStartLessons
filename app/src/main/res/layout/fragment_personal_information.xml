@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".module.personalinformation.PersonalInformationFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBarPersonalInformation"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/personalInformationTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_back"
+                android:text="@string/personal_information"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_22sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/nameTv"
+            style="@style/personalInformationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/toolBarPersonalInformation" />
+
+        <TextView
+            android:id="@+id/userNameTv"
+            style="@style/personalInformationUserTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Terry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/toolBarPersonalInformation" />
+
+        <TextView
+            android:id="@+id/lastNameTv"
+            style="@style/personalInformationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/nameTv" />
+
+        <TextView
+            android:id="@+id/userLastNameTv"
+            style="@style/personalInformationUserTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Medhurst"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/nameTv" />
+
+        <TextView
+            android:id="@+id/ageTv"
+            style="@style/personalInformationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/age"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/lastNameTv" />
+
+        <TextView
+            android:id="@+id/userAgeTv"
+            style="@style/personalInformationUserTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="23"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/lastNameTv" />
+
+        <TextView
+            android:id="@+id/genderTv"
+            style="@style/personalInformationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/ageTv" />
+
+        <TextView
+            android:id="@+id/userGenderTv"
+            style="@style/personalInformationUserTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Male"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/ageTv" />
+
+        <TextView
+            android:id="@+id/birthDayTv"
+            style="@style/personalInformationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/birthday"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/genderTv" />
+
+        <TextView
+            android:id="@+id/userBirthDayTv"
+            style="@style/personalInformationUserTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="2000-12-25"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderTv" />
+
+        <TextView
+            android:id="@+id/phoneTv"
+            style="@style/personalInformationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/birthDayTv" />
+
+        <TextView
+            android:id="@+id/userPhoneTv"
+            style="@style/personalInformationUserTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="+63 791 675 8914"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/birthDayTv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
