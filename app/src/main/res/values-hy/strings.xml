@@ -6,7 +6,7 @@
     <string name="account">Իմ հաշիվը</string>
 
     <string name="already_have_an_account">Արդեն ունեք հաշիվ?</string>
-    <string name="sign_in_we_are_waiting_for_you">Մուտք համակարգ, մենք ՍՊԱՍՈՒՄ ԵՆՔ ՁԵԶ</string>
+    <string name="sign_in_we_are_waiting_for_you">Մուտք համակարգ</string>
     <string name="email_username">Էլ․փոստ կամ մուտքանուն</string>
     <string name="password">Գաղտնաբառ</string>
     <string name="remember_me">Պահպանել</string>
@@ -42,4 +42,7 @@
     <string name="discountPercentage">Զեղչված տոկոս</string>
     <string name="stock">Առկա քանակ</string>
     <string name="error_data">"Սխալ տվյալներ"</string>
+    <string name="personal_information">Անձնական տվյալներ</string>
+    <string name="there_are_no_favorite_products">Նախընտրելի պրոդուկտներ առկա չեն</string>
+
 </resources>

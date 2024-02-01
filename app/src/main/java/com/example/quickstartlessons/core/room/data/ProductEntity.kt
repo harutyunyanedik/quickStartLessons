@@ -12,5 +12,5 @@ class ProductEntity(
     val price: Int,
     val brand: String,
     val thumbnail: String,
-    var favorite: Boolean = false
+
 )

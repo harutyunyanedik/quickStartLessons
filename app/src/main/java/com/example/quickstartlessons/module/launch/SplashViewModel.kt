@@ -34,4 +34,27 @@ class SplashViewModel  (private val repository: Repository) : BaseObservableView
             }, isShowLoader,id)
         }
     }
-}
+    private val _usersLiveData: MutableLiveData<List<UserDto>?> = MutableLiveData()
+    val usersLiveData: LiveData<List<UserDto>?>
+        get() = _usersLiveData
+    private val _usersErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val usersErrorLiveData: LiveData<String?>
+        get() =_usersErrorLiveData
+
+
+     fun getUsers(isShowLoader: Boolean = true){
+         viewModelScope.launch {
+             repository.getUsers(object :ApiResultCallback<UsersDto?> {
+                 override fun onSuccess(response: UsersDto?) {
+                    _usersLiveData.value=response?.users
+                 }
+
+                 override fun onError(): Boolean {
+                     _usersErrorLiveData.value="Error data"
+                     return true
+                 }
+
+             },isShowLoader)
+             }
+         }
+     }

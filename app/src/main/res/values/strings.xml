@@ -50,5 +50,7 @@
     <string name="discountPercentage">DiscountPercentage</string>
     <string name="stock">Stock</string>
     <string name="error_data">"Error data"</string>
+    <string name="personal_information">Personal information</string>
+    <string name="there_are_no_favorite_products">There are no favorite products</string>
 
 </resources>

@@ -72,11 +72,26 @@
 
 
         <TextView
-            android:id="@+id/notification"
+            android:id="@+id/personalInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16dp"
             android:layout_marginTop="@dimen/_36dp"
+            android:drawablePadding="@dimen/_8dp"
+            android:text="@string/personal_information"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/_24sp"
+            app:drawableStartCompat="@drawable/ic_account_image"
+            app:layout_constraintBottom_toTopOf="@id/notification"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image"
+            tools:ignore="MissingConstraints,SpUsage" />
+        <TextView
+            android:id="@+id/notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
             android:drawablePadding="@dimen/_8dp"
             android:text="@string/Notification"
             android:textColor="@color/color_black"
@@ -84,8 +99,9 @@
             app:drawableStartCompat="@drawable/ic_notifications"
             app:layout_constraintBottom_toTopOf="@id/settings"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_image"
+            app:layout_constraintTop_toBottomOf="@id/personalInformation"
             tools:ignore="MissingConstraints,SpUsage" />
+
 
         <TextView
             android:id="@+id/settings"

@@ -26,28 +26,14 @@ class FavoriteManager(private val dao: ProductDao) {
             )
         }
     }
-
-    fun deleteProduct(product: ProductDto) { // todo delete
+    
+    fun deleteProductById(id: ProductDto) {
         scope.launch {
-            dao.deleteProduct(
-                ProductEntity(
-                    id = product.id,
-                    title = product.title,
-                    description = product.description,
-                    price = product.price,
-                    brand = product.brand,
-                    thumbnail = product.thumbnail
-                )
-            )
-        }
-    }
-
-    fun deleteProductById(product: ProductDto) { // todo use parameter id
-        scope.launch {
-            dao.deleteProductById(product.id)
+            dao.deleteProductById(id.id)
         }
     }
 
     fun getAllProduct() = dao.getAllProduct()
+
 
 }

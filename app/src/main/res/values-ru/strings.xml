@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="home">Главный</string>
-    <string name="favorite">Любимый</string>
-    <string name="account">Счет</string>
+    <string name="favorite">Избранное</string>
+    <string name="account">Аккаунт</string>
 
 
-    <string name="already_have_an_account">Already have an account?</string>
-    <string name="sign_in_we_are_waiting_for_you">SIGN IN, WE ARE WAITING FOR YOU</string>
-    <string name="email_username">Email/Username</string>
-    <string name="password">Password</string>
-    <string name="remember_me">Remember me</string>
-    <string name="sign_in">Sign in</string>
-    <string name="forgot_your_password">FORGOT YOUR PASSWORD?</string>
-    <string name="reset_password">Reset password</string>
-    <string name="reset_password_via_sms">Reset password via SMS</string>
-    <string name="please_enter_phone_number">Please enter phone number</string>
+    <string name="already_have_an_account">У вас уже есть аккаунт?</string>
+    <string name="sign_in_we_are_waiting_for_you">ЗАРЕГИСТРИРУЙТЕСЬ, МЫ ЖДЕМ ВАС</string>
+    <string name="email_username">Эл. почта/имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="remember_me">Запомнить</string>
+    <string name="sign_in">Войти</string>
+    <string name="forgot_your_password">ЗАБЫЛИ ПАРОЛЬ?</string>
+    <string name="reset_password">Сброс пароля</string>
+    <string name="reset_password_via_sms">Сброс пароля через СМС</string>
+    <string name="please_enter_phone_number">Пожалуйста, введите номер телефона</string>
     <string name="_374">+374</string>
     <string name="xx_xxx_xxx">(XX) XXX-XXX</string>
-    <string name="send_sms">Send SMS</string>
-    <string name="resetpassword_via_email">ResetPassword via Email</string>
-    <string name="email">Email</string>
+    <string name="send_sms">Отправить смс</string>
+    <string name="resetpassword_via_email">Сбросить пароль по электронной почте</string>
+    <string name="email">Эл. почта</string>
     <string name="sample_email_com">sample@email.com</string>
     <string name="helper_text">jjjj</string>
-    <string name="invalid_password">Invalid password! Must by bigger 6 Characters!</string>
+    <string name="invalid_password">Неверный пароль! Пароль должно быть больше 6 символов!</string>
     <string name="invalid_email">Invalid or empty Email address or username</string>
     <string name="field_required">The field is required</string>
     <string name="products">Products</string>
@@ -42,4 +42,6 @@
     <string name="discountPercentage">DiscountPercentage</string>
     <string name="stock">Stock</string>
     <string name="error_data">"Error data"</string>
+    <string name="personal_information">Personal information</string>
+    <string name="there_are_no_favorite_products">There are no favorite products</string>
 </resources>

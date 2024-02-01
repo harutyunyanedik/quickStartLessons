@@ -12,10 +12,8 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 class AccountMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentAccountMainTabBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        QSApplication.userProfileLiveData.value
-    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,10 +25,15 @@ class AccountMainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.settings.setOnClickListener {
-          findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalSettingsFragment())
+            findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalSettingsFragment())
         }
-    }
 
 
+        QSApplication.userProfileLiveData.observe(viewLifecycleOwner){
+              it?.get(1)
+            }
+        }
+
     }
+
 

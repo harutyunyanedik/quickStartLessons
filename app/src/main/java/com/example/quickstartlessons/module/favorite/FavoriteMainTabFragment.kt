@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isEmpty
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.quickstartlessons.core.room.FavoriteManager
@@ -46,26 +48,31 @@ class FavoriteMainTabFragment : BaseFragment() {
     }
 
     private fun setupObserve() {
-        favoriteManager.getAllProduct().observe(viewLifecycleOwner) {
+        if (binding.recyclerViewFavorite.isEmpty()) {
+            binding.textView.isVisible=true
+        } else {
+            favoriteManager.getAllProduct().observe(viewLifecycleOwner) {
 
-            val products = it.map { productEntity ->
-                ProductDto(
-                    id = productEntity.id,
-                    title = productEntity.title,
-                    description = productEntity.description,
-                    price = productEntity.price,
-                    brand = productEntity.brand,
-                    thumbnail = productEntity.thumbnail,
-                    stock = 0,
-                    rating = 0.0,
-                    discountPercentage = 0.0,
-                    image = listOf()
-                )
+                val products = it.map { productEntity ->
+                    ProductDto(
+                        id = productEntity.id,
+                        title = productEntity.title,
+                        description = productEntity.description,
+                        price = productEntity.price,
+                        brand = productEntity.brand,
+                        thumbnail = productEntity.thumbnail,
+                        stock = 0,
+                        rating = 0.0,
+                        discountPercentage = 0.0,
+                        image = listOf()
+                    )
 
+                }
+                adapter.updateData(products)
+                val favoriteIds = it.map { productEntity -> productEntity.id }
+
+                adapter.updateFavorites(favoriteIds)
             }
-            adapter.updateData(products)
-            val favoriteIds = it.map { productEntity -> productEntity.id }
-            adapter.updateFavorites(favoriteIds)
         }
     }
 }

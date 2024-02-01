@@ -56,6 +56,7 @@ class ProductAdapter(
     @SuppressLint("NotifyDataSetChanged")
     inner class ProductViewHolder(private val binding: ItemProductDataBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+
             binding.productConstraintLayout.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onItemClick.invoke(items[adapterPosition])
