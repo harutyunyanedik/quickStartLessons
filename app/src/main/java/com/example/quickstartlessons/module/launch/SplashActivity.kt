@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.Toast
+import androidx.browser.trusted.TokenStore
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.quickstartlessons.MainActivity
@@ -25,13 +27,21 @@ class SplashActivity :BaseActivity() {
         binding=DataBindingUtil.setContentView(this, R.layout.activity_splash)
         viewModel.getUsers()
         setupObserve()
-        findNavController(R.id.action_global_accountFragment)
+
     }
+
 
 
     private fun setupObserve(){
         viewModel.usersLiveData.observe(this){
-            QSApplication.userProfileLiveData.setValue(it)
+            QSApplication.userProfileLiveData.value=it
+            if(it!=null) {
+                startActivity(Intent(this, MainActivity::class.java))
+            }else{
+                Toast.makeText(this, "Error data",Toast.LENGTH_SHORT).show()
+            }
+
         }
+
     }
 }

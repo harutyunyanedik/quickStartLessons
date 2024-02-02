@@ -45,7 +45,7 @@ class RepositoryImplementation(private val dataSource: ProductDataSource) : Repo
 
     override suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
-            dataSource.getUsers()
+            dataSource.getAllUsers()
         }
     }
     override suspend fun getUser(resultCallback: ApiResultCallback<UserDto?>, isShowLoader: Boolean, id: Int) {

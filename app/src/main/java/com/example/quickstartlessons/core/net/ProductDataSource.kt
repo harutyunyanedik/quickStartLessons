@@ -21,7 +21,7 @@ interface ProductDataSource {
     @GET("products/category/{categoryName}")
     suspend fun getProductByCategory(@Path("categoryName") id: String): Response<ProductsDto>
     @GET("users")
-    suspend fun getUsers():Response<UsersDto>
+    suspend fun getAllUsers():Response<UsersDto>
     @GET("users/{id}")
     suspend fun getUser(@Path("id") id: Int):Response<UserDto>
 }

@@ -30,7 +30,7 @@ class AccountMainTabFragment : BaseFragment() {
 
 
         QSApplication.userProfileLiveData.observe(viewLifecycleOwner){
-              it?.get(1)
+
             }
         }
 
