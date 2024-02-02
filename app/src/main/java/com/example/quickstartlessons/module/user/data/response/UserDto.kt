@@ -1,8 +1,8 @@
 package com.example.quickstartlessons.module.user.data.response
 
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
+
 data class UsersDto(
     @SerializedName("users")
     val users: List<UserDto>
@@ -15,7 +15,7 @@ data class UserDto(
     val firstName: String,
     @SerializedName("lastName")
     val lastName: String,
-    @SerializedName("maidenName")
+    @SerializedName("maidenName") // todo maidenName
     val maidenName: String,
     @SerializedName("age")
     val age: Int,
@@ -29,7 +29,7 @@ data class UserDto(
     val username: String,
     @SerializedName("password")
     val password: String,
-    @SerializedName("maidenName")
+    @SerializedName("maidenName") // todo maidenName, 2 hat nuyn SerializedName na, dranica
     val birthDate: String
 
 ) :Serializable
