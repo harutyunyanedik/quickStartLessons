@@ -74,4 +74,30 @@
     <action
         android:id="@+id/action_global_personalDataFragment"
         app:destination="@id/personalDataFragment" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.quickstartlessons.module.signin.SignInFragment"
+        android:label="SignInFragment" />
+
+    <action
+        android:id="@+id/action_global_signInFragment"
+        app:destination="@id/signInFragment" />
+
+    <fragment
+        android:id="@+id/resetPasswordViewPagerFragment"
+        android:name="com.example.quickstartlessons.module.resetpassword.ResetPasswordViewPagerFragment"
+        android:label="ResetPasswordViewPagerFragment" />
+
+    <action
+        android:id="@+id/action_global_resetPasswordFragment"
+        app:destination="@id/resetPasswordViewPagerFragment" />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.quickstartlessons.module.launch.SplashFragment"
+        android:label="SplashFragment" />
+
+    <action
+        android:id="@+id/action_global_splashFragment"
+        app:destination="@id/splashFragment" />
 </navigation>

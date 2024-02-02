@@ -1,41 +1,28 @@
 package com.example.quickstartlessons.module.launch
 
 import android.annotation.SuppressLint
-import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import com.example.quickstartlessons.MainActivity
-import com.example.quickstartlessons.QSApplication
+import androidx.annotation.IdRes
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.quickstartlessons.R
-import com.example.quickstartlessons.databinding.ActivitySplashBinding
-import com.example.quickstartlessons.module.base.activity.BaseActivity
-import com.example.quickstartlessons.module.account.viewModel.UsersViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : BaseActivity() {
-
-    private lateinit var binding: ActivitySplashBinding
-    private val viewModel by viewModel<UsersViewModel>()
-
+class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
-        viewModel.getAllUsers()
+        setContentView(R.layout.activity_splash)
 
-       observeLiveData()
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        setConditionalStartDestination(navHostFragment.navController, R.id.splashFragment)
+
     }
 
-    private fun observeLiveData() {
-        viewModel.usersLiveData.observe(this) {
-            QSApplication.userProfileLiveData.value = it
-            if (it != null) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
-            else Toast.makeText(this,"users list is empty",Toast.LENGTH_SHORT).show()
+    private fun setConditionalStartDestination(navController: NavController, @IdRes startDestId: Int, bundle: Bundle? = null) {
+        navController.navInflater.inflate(R.navigation.nav_graph_home_general).apply {
+            setStartDestination(startDestId)
+            navController.setGraph(this, bundle)
         }
     }
 }
-
