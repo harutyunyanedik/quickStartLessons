@@ -32,7 +32,7 @@ class SignInFragment : Fragment() {
 
     private fun setupViews() {
         binding.forgotPasswordTextView.setOnClickListener {
-            findNavController().navigate(R.id.action_signInFragment_to_resetPasswordViewPagerFragment)
+            findNavController().navigate(SignInFragmentDirections.actionGlobalResetPasswordFragment())
         }
 
         binding.signInButton.setOnClickListener {
