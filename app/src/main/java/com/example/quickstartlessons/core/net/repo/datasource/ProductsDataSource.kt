@@ -2,8 +2,8 @@ package com.example.quickstartlessons.core.net.repo.datasource
 
 import com.example.quickstartlessons.module.account.responceModel.UsersDto
 import com.example.quickstartlessons.module.account.responceModel.UsersModel
-import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
-import com.example.quickstartlessons.module.products.data.response.model.products.ProductsModel
+import com.example.quickstartlessons.module.settings.model.products.ProductsDto
+import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

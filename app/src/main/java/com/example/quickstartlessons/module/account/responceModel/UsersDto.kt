@@ -19,5 +19,5 @@ data class UsersDto(
     @SerializedName("gender")
     val gender: String,
     @SerializedName("phone")
-    val phone: Int
+    val phone: String
 ) : Serializable

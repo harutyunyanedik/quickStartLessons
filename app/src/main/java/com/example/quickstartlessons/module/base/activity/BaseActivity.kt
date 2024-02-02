@@ -14,7 +14,6 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import com.example.quickstartlessons.QSApplication.Companion.networkStateLiveData
 import com.example.quickstartlessons.R

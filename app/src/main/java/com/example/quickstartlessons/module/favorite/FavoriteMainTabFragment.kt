@@ -12,7 +12,7 @@ import com.example.quickstartlessons.databinding.FragmentFavoriteMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.HomeMainTabFragmentDirections
 import com.example.quickstartlessons.module.home.ui.adapter.ProductsRecyclerViewAdapter
-import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
+import com.example.quickstartlessons.module.settings.model.products.ProductsDto
 import org.koin.android.ext.android.inject
 
 class FavoriteMainTabFragment : BaseFragment() {

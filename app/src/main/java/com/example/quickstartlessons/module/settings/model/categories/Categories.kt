@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.products.data.response.model.categories
+package com.example.quickstartlessons.module.settings.model.categories
 
 import com.example.quickstartlessons.R
 

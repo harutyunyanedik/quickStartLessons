@@ -5,8 +5,8 @@ import com.example.quickstartlessons.core.net.getHttpResponse
 import com.example.quickstartlessons.core.net.repo.datasource.ProductsDataSource
 import com.example.quickstartlessons.module.account.responceModel.UsersDto
 import com.example.quickstartlessons.module.account.responceModel.UsersModel
-import com.example.quickstartlessons.module.products.data.response.model.products.ProductsDto
-import com.example.quickstartlessons.module.products.data.response.model.products.ProductsModel
+import com.example.quickstartlessons.module.settings.model.products.ProductsDto
+import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 
 interface ProductsRepository {
 

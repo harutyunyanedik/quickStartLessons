@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.products.data.response.model.products
+package com.example.quickstartlessons.module.settings.model.products
 
 data class Product(
     val id: Int,

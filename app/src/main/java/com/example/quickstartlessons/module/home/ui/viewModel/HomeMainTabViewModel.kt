@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
-import com.example.quickstartlessons.module.products.data.response.model.products.ProductsModel
+import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 import kotlinx.coroutines.launch
 
 class HomeMainTabViewModel(private val repo: ProductsRepository) : BaseObservableViewModel() {

@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.settings.languages.ChangeLanguageButtonSheetDialog
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSettingsBinding
 

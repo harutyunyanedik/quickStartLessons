@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.products.data.response.model.products
+package com.example.quickstartlessons.module.settings.model.products
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

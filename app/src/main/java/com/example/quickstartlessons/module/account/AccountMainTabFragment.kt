@@ -22,7 +22,7 @@ class AccountMainTabFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val id = args.id
-        viewModel.getUserById(true, 1)
+        viewModel.getUserById(true, id)
     }
 
     override fun onCreateView(
@@ -40,7 +40,7 @@ class AccountMainTabFragment : BaseFragment() {
         }
 
         binding.personalData.setOnClickListener {
-            findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPersonalDataFragment(id))
+            findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPersonalDataFragment(args.id))
         }
     }
 
