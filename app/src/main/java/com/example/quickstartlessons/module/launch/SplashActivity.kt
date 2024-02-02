@@ -19,7 +19,7 @@ class SplashActivity : BaseActivity() {
         viewModel.getUsers()
         viewModel.usersLiveData.observe(this) {
             if (it != null) {
-                QSApplication.users.value = it
+                QSApplication.usersLiveData.value = it
                 startActivity(Intent(this, MainActivity::class.java))
             }
         }

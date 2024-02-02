@@ -66,9 +66,6 @@
         android:name="com.example.quickstartlessons.module.personalinformation.PersonalInformationFragment"
         android:label="fragment_personal_information"
         tools:layout="@layout/fragment_personal_information" >
-        <argument
-            android:name="user"
-            app:argType="com.example.quickstartlessons.module.users.data.model.User" />
     </fragment>
 
     <action android:id="@+id/action_personalInformationFragment"

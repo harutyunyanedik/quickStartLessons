@@ -86,7 +86,7 @@ class QSApplication : Application(), LifecycleObserver {
         val networkStateLiveData: MutableLiveData<Boolean> = MutableLiveData()
         var isLastNetworkStateWasConnected: Boolean? = null
         var lastNoInternetShownToastTime: Long? = null
-        val users = MutableLiveData<UsersDto>() // todo if property is LiveData it must end with liveData, rename to usersLiveData
+        val usersLiveData = MutableLiveData<UsersDto>()
         const val SHOW_NO_INTERNET_CONNECTION_POPUP_TIME_RANGE = 4000
 
         fun getCoroutineContext() = Dispatchers.Main + SupervisorJob() + BaseCoroutineExceptionHandler(

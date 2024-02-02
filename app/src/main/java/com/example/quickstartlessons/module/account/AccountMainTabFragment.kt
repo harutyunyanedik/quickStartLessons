@@ -30,17 +30,15 @@ class AccountMainTabFragment : BaseFragment() {
 
 
     private fun setupViews() {
-        QSApplication.users.observe(viewLifecycleOwner) {
+        QSApplication.usersLiveData.observe(viewLifecycleOwner) {
             val user = userMapper.userDtoToUser(it.users[0])
             with(binding) {
-                Glide.with(requireContext()).load(user?.image).into(profileImage)
-                textViewName.text = "${user?.name} ${user?.lastName}" // todo handle warnings
-                textViewMail.text = user?.email
+                Glide.with(requireContext()).load(user.image).into(profileImage)
+                textViewName.text = "${user.name} ${user.lastName}"
+                textViewMail.text = user.email
                 personalInformation.setOnClickListener {
                     findNavController().navigate(
-                        AccountMainTabFragmentDirections.actionPersonalInformationFragment(
-                            user!! // todo delete argument, no need to pass argument, because you can observe to usersLiveData in Personal details fragment
-                        )
+                        AccountMainTabFragmentDirections.actionPersonalInformationFragment()
                     )
                 }
             }

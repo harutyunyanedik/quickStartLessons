@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.databinding.FragmentPersonalInformationBinding
 
 class PersonalInformationFragment : Fragment() {
 
     private lateinit var binding: FragmentPersonalInformationBinding
-    private val args: PersonalInformationFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,18 +27,21 @@ class PersonalInformationFragment : Fragment() {
     }
 
     private fun setupViews() {
-        val user = args.user
-        with(binding){
-            userNameTv.text = user.name
-            userLastNameTv.text = user.lastName
-            userAgeTv.text = user.age.toString()
-            userGenderTv.text = user.gender
-            userBirthDayTv.text = user.birthDate
-            userPhoneTv.text = user.phone
-            personalInformationTV.setOnClickListener {
-                findNavController().popBackStack()
+        QSApplication.usersLiveData.observe(viewLifecycleOwner) {
+            val user = it.users[0]
+            with(binding){
+                userNameTv.text = user.firstName
+                userLastNameTv.text = user.lastName
+                userAgeTv.text = user.age.toString()
+                userGenderTv.text = user.gender
+                userBirthDayTv.text = user.birthDate
+                userPhoneTv.text = user.phone
+                personalInformationTV.setOnClickListener {
+                    findNavController().popBackStack()
+                }
             }
         }
+
     }
 
 }
