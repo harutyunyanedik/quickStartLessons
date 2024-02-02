@@ -19,5 +19,5 @@ data class UsersDto(
     @SerializedName("gender")
     val gender: String,
     @SerializedName("phone")
-    val phone: Int
+    val phone: Int // todo java.lang.NumberFormatException: For input string: "+63 791 675 8914"
 ) : Serializable
