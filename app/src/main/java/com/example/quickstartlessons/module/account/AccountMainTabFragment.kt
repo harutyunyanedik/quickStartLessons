@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
+import com.example.quickstartlessons.module.account.personalData.PersonalDataFragmentArgs
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.viewModel.UsersViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,9 +23,9 @@ class AccountMainTabFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val id = args.id
-        viewModel.getUserById(true, id)
-    }
+           viewModel.getUserById(true,1)
+       }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -40,17 +42,21 @@ class AccountMainTabFragment : BaseFragment() {
         }
 
         binding.personalData.setOnClickListener {
-            findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPersonalDataFragment(args.id))
-        }
+                findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPersonalDataFragment(args.id))
+            }
+
     }
 
     @SuppressLint("SetTextI18n")
     private fun observeLiveData() {
-        viewModel.userLiveData.observe(viewLifecycleOwner) {
-            binding.userMail.text = it?.email
-            binding.userName.text = it?.firstName + it?.lastName
-            Glide.with(requireContext()).load(it?.image).into(binding.profileImage)
-        }
+
+        QSApplication.userProfileLiveData.observe(viewLifecycleOwner) {
+            var profile = it.users
+                binding.userMail.text  =profile[args.id].email
+                binding.userName.text = profile[args.id].firstName +profile[args.id].lastName
+                Glide.with(requireContext()).load(profile[args.id].image).into(binding.profileImage)
+            }
+
         viewModel.userErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error Dialog", it)
         }

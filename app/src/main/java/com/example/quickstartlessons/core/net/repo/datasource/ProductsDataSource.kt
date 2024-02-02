@@ -1,7 +1,7 @@
 package com.example.quickstartlessons.core.net.repo.datasource
 
-import com.example.quickstartlessons.module.account.responceModel.UsersDto
-import com.example.quickstartlessons.module.account.responceModel.UsersModel
+import com.example.quickstartlessons.module.account.data.response.UserDto
+import com.example.quickstartlessons.module.account.data.response.UsersDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 import retrofit2.Response
@@ -26,8 +26,8 @@ interface ProductsDataSource {
     suspend fun getProductsByCategory(@Path("categoryName") categoryName: String): Response <ProductsModel>
 
     @GET("users")
-    suspend fun getAllUsers(): Response <UsersModel>
+    suspend fun getAllUsers(): Response <UsersDto>
 
     @GET("users/{id}")
-    suspend fun getUser(@Path("id")id: Int): Response <UsersDto>
+    suspend fun getUser(@Path("id")id: Int): Response <UserDto>
 }

@@ -10,6 +10,7 @@ import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ActivitySplashBinding
+import com.example.quickstartlessons.module.account.AccountMainTabFragment
 import com.example.quickstartlessons.module.base.activity.BaseActivity
 import com.example.quickstartlessons.module.home.ui.viewModel.UsersViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,10 +32,11 @@ class SplashActivity : BaseActivity() {
     private fun observeLiveData() {
         viewModel.usersLiveData.observe(this) {
             QSApplication.userProfileLiveData.value = it
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
             if (it != null) {
-                findNavController(R.id.action_global_accountFragment)
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+               // findNavController(R.id.action_global_accountFragment)
 
             }
             else Toast.makeText(this,"users list is empty",Toast.LENGTH_SHORT).show()

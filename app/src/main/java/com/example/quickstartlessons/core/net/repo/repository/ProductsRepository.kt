@@ -3,8 +3,8 @@ package com.example.quickstartlessons.core.net.repo.repository
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.getHttpResponse
 import com.example.quickstartlessons.core.net.repo.datasource.ProductsDataSource
-import com.example.quickstartlessons.module.account.responceModel.UsersDto
-import com.example.quickstartlessons.module.account.responceModel.UsersModel
+import com.example.quickstartlessons.module.account.data.response.UserDto
+import com.example.quickstartlessons.module.account.data.response.UsersDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 
@@ -20,9 +20,9 @@ interface ProductsRepository {
 
     suspend fun getProductsByCategory(resultCallback: ApiResultCallback<ProductsModel?>, isShowLoader: Boolean, categoryName: String)
 
-    suspend fun getAllUsers(resultCallback: ApiResultCallback<UsersModel?>, isShowLoader: Boolean)
+    suspend fun getAllUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
 
-    suspend fun getUser(resultCallback: ApiResultCallback <UsersDto?>, isShowLoader: Boolean,id:Int)
+    suspend fun getUser(resultCallback: ApiResultCallback <UserDto?>, isShowLoader: Boolean, id:Int)
 
 }
 
@@ -58,13 +58,13 @@ class ProductRepositoryImplementation(private val dataSource: ProductsDataSource
         }
     }
 
-    override suspend fun getAllUsers(resultCallback: ApiResultCallback<UsersModel?>, isShowLoader: Boolean) {
+    override suspend fun getAllUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
             dataSource. getAllUsers()
         }
     }
 
-    override suspend fun getUser(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean, id: Int) {
+    override suspend fun getUser(resultCallback: ApiResultCallback<UserDto?>, isShowLoader: Boolean, id: Int) {
         getHttpResponse(resultCallback, isShowLoader) {
             dataSource.getUser(id)
         }

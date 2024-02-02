@@ -6,14 +6,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
-import com.example.quickstartlessons.module.account.responceModel.UsersDto
-import com.example.quickstartlessons.module.account.responceModel.UsersModel
+import com.example.quickstartlessons.module.account.data.response.UserDto
+import com.example.quickstartlessons.module.account.data.response.UsersDto
 import kotlinx.coroutines.launch
 
 class UsersViewModel(private val repo: ProductsRepository) : BaseObservableViewModel() {
 
-    private val _usersLiveData: MutableLiveData<UsersModel?> = MutableLiveData()
-    val usersLiveData: LiveData<UsersModel?>
+    private val _usersLiveData: MutableLiveData<UsersDto?> = MutableLiveData()
+    val usersLiveData: LiveData<UsersDto?>
         get() = _usersLiveData
 
     private val _usersErrorLiveData: MutableLiveData<String> = MutableLiveData()
@@ -22,8 +22,8 @@ class UsersViewModel(private val repo: ProductsRepository) : BaseObservableViewM
 
     fun getAllUsers(isShoLoader: Boolean = true) {
         viewModelScope.launch {
-            repo.getAllUsers(object : ApiResultCallback<UsersModel?> {
-                override fun onSuccess(response: UsersModel?) {
+            repo.getAllUsers(object : ApiResultCallback<UsersDto?> {
+                override fun onSuccess(response: UsersDto?) {
                     _usersLiveData.value = response
                 }
 
@@ -35,8 +35,8 @@ class UsersViewModel(private val repo: ProductsRepository) : BaseObservableViewM
         }
     }
 
-    private val _userLiveData: MutableLiveData<UsersDto?> = MutableLiveData()
-    val userLiveData: LiveData <UsersDto?>
+    private val _userLiveData: MutableLiveData<UserDto?> = MutableLiveData()
+    val userLiveData: LiveData <UserDto?>
         get() = _userLiveData
 
     private val _userErrorLiveData: MutableLiveData<String> = MutableLiveData()
@@ -45,8 +45,8 @@ class UsersViewModel(private val repo: ProductsRepository) : BaseObservableViewM
 
     fun getUserById(isShoLoader: Boolean = true, id:Int) {
         viewModelScope.launch {
-            repo.getUser(object : ApiResultCallback<UsersDto?> {
-                override fun onSuccess(response: UsersDto?) {
+            repo.getUser(object : ApiResultCallback<UserDto?> {
+                override fun onSuccess(response: UserDto?) {
                     _userLiveData.value = response
                 }
 
