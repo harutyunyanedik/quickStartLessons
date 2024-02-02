@@ -42,7 +42,11 @@
     <string name="discountPercentage">Զեղչված տոկոս</string>
     <string name="stock">Առկա քանակ</string>
     <string name="error_data">"Սխալ տվյալներ"</string>
-    <string name="personal_information">Անձնական տվյալներ</string>
+    <string name="personal_data">Անձնական տվյալներ</string>
     <string name="there_are_no_favorite_products">Նախընտրելի պրոդուկտներ առկա չեն</string>
-
+    <string name="sms">SMS</string>
+    <string name="age">Age</string>
+    <string name="phone">Phone number</string>
+    <string name="gender">Gender</string>
+    <string name="birth_date"></string>
 </resources>

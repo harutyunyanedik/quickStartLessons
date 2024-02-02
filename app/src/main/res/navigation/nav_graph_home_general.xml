@@ -59,5 +59,26 @@
     <action
         android:id="@+id/action_global_productDetailsFragment"
         app:destination="@id/productDetailsFragment" />
+    <fragment
+        android:id="@+id/personalDataFragment"
+        android:name="com.example.quickstartlessons.module.account.person.PersonalDataFragment"
+        android:label="PersonalDataFragment" >
+        <argument
+            android:name="phone"
+            app:argType="string"/>
+        <argument
+            android:name="age"
+            app:argType="string"/>
+        <argument
+            android:name="gender"
+            app:argType="string"/>
+        <argument
+            android:name="birthDate"
+            app:argType="string"/>
+
+    </fragment>
+    <action
+        android:id="@+id/action_global_personalDataFragment"
+        app:destination="@id/personalDataFragment" />
 
 </navigation>

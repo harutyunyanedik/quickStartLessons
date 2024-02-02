@@ -22,9 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ProductDetailsFragment : BaseFragment() {
     private lateinit var binding: FragmentProductDetailsBinding
     private val adapter = ProductImageAdapter()
-
-
-
     private val viewModel by viewModel<ProductDetailsViewModel>()
     private val args: ProductDetailsFragmentArgs by navArgs()
 

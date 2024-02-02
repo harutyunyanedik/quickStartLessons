@@ -13,10 +13,10 @@ data class UserDto(
     val id:Int,
     @SerializedName("firstName")
     val firstName: String,
+    @SerializedName("maidenName")
+    val maidenName: String,
     @SerializedName("lastName")
     val lastName: String,
-    @SerializedName("maidenName") // todo maidenName
-    val maidenName: String,
     @SerializedName("age")
     val age: Int,
     @SerializedName("gender")
@@ -29,7 +29,7 @@ data class UserDto(
     val username: String,
     @SerializedName("password")
     val password: String,
-    @SerializedName("maidenName") // todo maidenName, 2 hat nuyn SerializedName na, dranica
+    @SerializedName("birthDate")
     val birthDate: String
 
 ) :Serializable
