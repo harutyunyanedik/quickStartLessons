@@ -4,7 +4,7 @@ import com.example.quickstartlessons.module.description.ProductDetailsFragment
 import com.example.quickstartlessons.module.description.viewModel.ProductDetailsViewModel
 import com.example.quickstartlessons.module.home.ui.HomeMainTabFragment
 import com.example.quickstartlessons.module.home.ui.viewModel.HomeMainTabViewModel
-import com.example.quickstartlessons.module.home.ui.viewModel.UsersViewModel
+import com.example.quickstartlessons.module.account.viewModel.UsersViewModel
 import com.example.quickstartlessons.module.launch.SplashActivity
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named

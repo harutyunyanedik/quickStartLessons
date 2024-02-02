@@ -34,21 +34,17 @@
         android:id="@+id/accountFragment"
         android:name="com.example.quickstartlessons.module.account.AccountMainTabFragment"
         android:label="AccountFragment"
-        tools:layout="@layout/fragment_account_main_tab">
-        <argument
-        android:name="id"
-        app:argType="integer" />
-    </fragment>
+        tools:layout="@layout/fragment_account_main_tab" />
 
     <action
         android:id="@+id/action_global_accountFragment"
-        app:destination="@id/accountFragment"/>
+        app:destination="@id/accountFragment" />
 
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.quickstartlessons.module.settings.SettingsFragment"
         android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings"/>
+        tools:layout="@layout/fragment_settings" />
 
     <action
         android:id="@+id/action_global_settingsFragment"
@@ -73,11 +69,7 @@
         android:id="@+id/personalDataFragment"
         android:name="com.example.quickstartlessons.module.account.personalData.PersonalDataFragment"
         android:label="PersonalDataFragment"
-        tools:layout="@layout/fragment_personal_data">
-    <argument
-        android:name="id"
-        app:argType="integer" />
-    </fragment>
+        tools:layout="@layout/fragment_personal_data" />
 
     <action
         android:id="@+id/action_global_personalDataFragment"

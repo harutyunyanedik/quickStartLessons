@@ -5,14 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ActivitySplashBinding
-import com.example.quickstartlessons.module.account.AccountMainTabFragment
 import com.example.quickstartlessons.module.base.activity.BaseActivity
-import com.example.quickstartlessons.module.home.ui.viewModel.UsersViewModel
+import com.example.quickstartlessons.module.account.viewModel.UsersViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @SuppressLint("CustomSplashScreen")
@@ -35,9 +33,6 @@ class SplashActivity : BaseActivity() {
             if (it != null) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-
-               // findNavController(R.id.action_global_accountFragment)
-
             }
             else Toast.makeText(this,"users list is empty",Toast.LENGTH_SHORT).show()
         }
