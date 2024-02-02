@@ -39,7 +39,7 @@ class AccountMainTabFragment : BaseFragment() {
             if (user != null) {
                 binding.userName.text = user.firstName + " " + user.lastName
                 binding.personalInformation.setOnClickListener {
-                    findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPersonalDataFragment(user.age.toString(), user.phone, user.birthDate, user.gender)) // todo remove arguments
+                    findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPersonalDataFragment())
                 }
 
             }

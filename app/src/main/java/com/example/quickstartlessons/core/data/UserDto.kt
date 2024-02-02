@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.user.data.response // todo core/data/
+package com.example.quickstartlessons.core.data
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

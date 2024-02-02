@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentPersonalDataBinding
 
 
 class PersonalDataFragment : Fragment() {
     private lateinit var binding: FragmentPersonalDataBinding
-    private val args: PersonalDataFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -36,10 +36,13 @@ class PersonalDataFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun setupPersonData() {
-        binding.age.text = getString(R.string.age) +"։"+ args.age
-        binding.birthDate.text = getString(R.string.birth_date) +"։"+ args.birthDate
-        binding.gender.text = getString(R.string.gender) +"։"+ args.gender
-        binding.phone.text = getString(R.string.phone) + "։"+args.phone
+        QSApplication.userProfileLiveData.observe(viewLifecycleOwner) {
+            val user = it?.users?.get(1)
+            binding.age.text = getString(R.string.age) + "։" + user?.age
+            binding.birthDate.text = getString(R.string.birth_date) + "։" + user?.birthDate
+            binding.gender.text = getString(R.string.gender) + "։" + user?.gender
+            binding.phone.text = getString(R.string.phone) + "։" + user?.phone
+        }
     }
 }
 
