@@ -16,10 +16,6 @@ class PersonalDataFragment : Fragment() {
     private lateinit var binding: FragmentPersonalDataBinding
     private val args: PersonalDataFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

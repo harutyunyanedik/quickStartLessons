@@ -9,14 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
-import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentProductDetailsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.base.utils.QsConstants
-import com.example.quickstartlessons.module.home.ui.HomeMainTabFragmentDirections
-import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
 import com.example.quickstartlessons.module.home.ui.adapter.ProductImageAdapter
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductDetailsFragment : BaseFragment() {

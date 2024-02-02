@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.repository.Repository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.module.user.data.response.UserDto
 import com.example.quickstartlessons.module.user.data.response.UsersDto
 import kotlinx.coroutines.launch

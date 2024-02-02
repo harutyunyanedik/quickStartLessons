@@ -10,7 +10,7 @@ import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.ItemChangeLangugaeBinding
 import com.example.quickstartlessons.module.base.model.LocaleEnum
 import com.example.quickstartlessons.module.base.model.SelectableData
-import com.example.quickstartlessons.module.base.utils.QsConstants
+
 
 class AppLanguageAdapter(private val onItemClick:(LocaleEnum)->Unit) : RecyclerView.Adapter<AppLanguageAdapter.ChangeLanguageViewHolder>() {
     private lateinit var inflater: LayoutInflater

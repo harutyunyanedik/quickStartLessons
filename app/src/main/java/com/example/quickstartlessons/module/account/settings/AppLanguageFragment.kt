@@ -1,12 +1,11 @@
 package com.example.quickstartlessons.module.account.settings
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentAppLanguageBinding
 import com.example.quickstartlessons.module.account.settings.adapter.AppLanguageAdapter
 import com.example.quickstartlessons.module.base.model.LocaleEnum
