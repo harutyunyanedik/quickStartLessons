@@ -24,12 +24,12 @@ data class UserDto(
     @SerializedName("email")
     val email: String,
     @SerializedName("phone")
-    val phone: Int,
+    val phone: String,
     @SerializedName("username")
     val username: String,
     @SerializedName("password")
     val password: String,
     @SerializedName("maidenName")
-    val birthDate: Int
+    val birthDate: String
 
 ) :Serializable
