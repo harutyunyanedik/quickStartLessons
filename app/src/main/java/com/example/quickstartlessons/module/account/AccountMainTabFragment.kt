@@ -28,8 +28,5 @@ class AccountMainTabFragment : BaseFragment() {
         binding.settingsIcon.setOnClickListener {
            findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
         }
-
-
     }
-
 }

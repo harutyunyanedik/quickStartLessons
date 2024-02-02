@@ -20,8 +20,7 @@ class FavoriteMainTabFragment : BaseFragment() {
     private val adapter = ProductsAdapter(onClickItem = {
         findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragment(it.id))
     }, updateFavorite = { isFavorite, product ->
-        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProduct(product)
-
+        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductByID(product)
     })
 
     override fun onCreateView(
