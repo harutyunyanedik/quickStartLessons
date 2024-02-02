@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.core.net
 
+import com.example.quickstartlessons.module.account.users.data.UsersDto
 import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.module.products.data.ProductsDto
 import retrofit2.Call
@@ -8,6 +9,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ProductDataSource {
+    @GET("users")
+    suspend fun getUsers(): Response<UsersDto?>
 
     @GET("products")
     fun getProducts(): Call<ProductsDto>

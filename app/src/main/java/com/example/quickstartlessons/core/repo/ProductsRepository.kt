@@ -4,11 +4,14 @@ import com.example.quickstartlessons.core.ApiResultCallback
 import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.core.getHttpResponse
 import com.example.quickstartlessons.core.net.ProductDataSource
+import com.example.quickstartlessons.module.account.users.data.UsersDto
 import com.example.quickstartlessons.module.products.data.ProductsDto
 import retrofit2.Call
 
 
 interface ProductsRepository {
+
+    suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
     fun getProductsV1(): Call<ProductsDto>
 
     suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
@@ -23,6 +26,12 @@ interface ProductsRepository {
 }
 
 class ProductsRepositoryImplementation(private val productDataSource: ProductDataSource) : ProductsRepository {
+    override suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            productDataSource.getUsers()
+        }
+    }
+
     override fun getProductsV1(): Call<ProductsDto> = productDataSource.getProducts()
 
     override suspend fun getProductsV2(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
