@@ -18,7 +18,7 @@ class SplashViewModel  (private val repository: Repository) : BaseObservableView
     val userErrorLiveData: LiveData<String?>
         get() =_userErrorLiveData
 
-    fun getUser(isShowLoader: Boolean = true,id:Int){
+    fun getUser(isShowLoader: Boolean = true,id:Int){ // todo delete
         viewModelScope.launch {
             repository.getUser(object :ApiResultCallback<UserDto?>{
                 override fun onSuccess(response: UserDto?) {

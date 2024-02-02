@@ -28,10 +28,9 @@ class PersonalDataFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupPersonData()
         binding.toolBar.setOnClickListener {
             findNavController().navigateUp()
-            setupPersonData()
-
         }
     }
 
