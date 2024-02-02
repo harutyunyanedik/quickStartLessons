@@ -1,13 +1,14 @@
 package com.example.quickstartlessons.module.launch
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.module.base.activity.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashActivity() : AppCompatActivity() {
+class SplashActivity() : BaseActivity() {
 
     private val viewModel: UsersViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,10 +16,14 @@ class SplashActivity() : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         viewModel.getUsers()
         viewModel.usersLiveData.observe(this) {
-            QSApplication.users.value = it
+            if (it != null){
+                QSApplication.users.value = it
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+
         }
 
-        findNavController(R.id.action_global_accountFragment)
+
     }
 
 

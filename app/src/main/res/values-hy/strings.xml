@@ -41,4 +41,13 @@
     <string name="save">Պահպանել</string>
     <string name="sign_out">Դուրս գալ</string>
     <string name="choose_language">Ընտրեք լեզուն</string>
+    <string name="sms">SMS</string>
+    <string name="favorites">Ֆավորիտ</string>
+    <string name="personal_information">Անձնական տվյալներ</string>
+    <string name="name">Անուն</string>
+    <string name="last_name">Ազգանուն</string>
+    <string name="age">Տարիք</string>
+    <string name="gender">Սեռ</string>
+    <string name="birthday">Ծննդ․ ամսաթիվ</string>
+    <string name="phone">Հեռ․ համար</string>
 </resources>

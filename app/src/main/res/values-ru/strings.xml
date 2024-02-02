@@ -41,4 +41,13 @@
     <string name="save">Сохранять</string>
     <string name="sign_out">Выйти</string>
     <string name="choose_language">Выберите язык</string>
+    <string name="sms">SMS</string>
+    <string name="favorites">Избранное</string>
+    <string name="personal_information">Персональная информация</string>
+    <string name="name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="age">Возраст</string>
+    <string name="gender">Пол</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="phone">Телефон</string>
 </resources>
