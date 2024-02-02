@@ -34,12 +34,12 @@ class AccountMainTabFragment : BaseFragment() {
             val user = userMapper.userDtoToUser(it.users[0])
             with(binding) {
                 Glide.with(requireContext()).load(user?.image).into(profileImage)
-                textViewName.text = "${user?.name} ${user?.lastName}"
+                textViewName.text = "${user?.name} ${user?.lastName}" // todo handle warnings
                 textViewMail.text = user?.email
                 personalInformation.setOnClickListener {
                     findNavController().navigate(
                         AccountMainTabFragmentDirections.actionPersonalInformationFragment(
-                            user!!
+                            user!! // todo delete argument, no need to pass argument, because you can observe to usersLiveData in Personal details fragment
                         )
                     )
                 }
