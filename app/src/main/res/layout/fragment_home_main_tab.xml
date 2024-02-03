@@ -30,6 +30,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="HardcodedText" />
 
+            <TextView
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8dp"
+                android:checked="false"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/_8dp"
+                android:layout_gravity="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+
         </androidx.appcompat.widget.Toolbar>
 
             <androidx.recyclerview.widget.RecyclerView

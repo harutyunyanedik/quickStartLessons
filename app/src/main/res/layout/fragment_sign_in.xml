@@ -96,9 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
-            android:background="@drawable/button_selector"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
+            android:background="@color/color_green"
             android:text="@string/sign_in"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/rememberMeCheckbox" />

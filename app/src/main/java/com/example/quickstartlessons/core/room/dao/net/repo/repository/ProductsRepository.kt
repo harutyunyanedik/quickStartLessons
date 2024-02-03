@@ -1,10 +1,10 @@
-package com.example.quickstartlessons.core.net.repo.repository
+package com.example.quickstartlessons.core.room.dao.net.repo.repository
 
-import com.example.quickstartlessons.core.net.ApiResultCallback
-import com.example.quickstartlessons.core.net.getHttpResponse
-import com.example.quickstartlessons.core.net.repo.datasource.ProductsDataSource
-import com.example.quickstartlessons.module.account.data.response.UserDto
-import com.example.quickstartlessons.module.account.data.response.UsersDto
+import com.example.quickstartlessons.core.room.dao.net.ApiResultCallback
+import com.example.quickstartlessons.core.room.dao.net.getHttpResponse
+import com.example.quickstartlessons.core.room.dao.net.repo.datasource.ProductsDataSource
+import com.example.quickstartlessons.module.Users.data.response.UserDto
+import com.example.quickstartlessons.module.Users.data.response.UsersDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 
@@ -22,7 +22,7 @@ interface ProductsRepository {
 
     suspend fun getAllUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
 
-    suspend fun getUser(resultCallback: ApiResultCallback <UserDto?>, isShowLoader: Boolean, id:Int)
+    suspend fun getUser(resultCallback: ApiResultCallback<UserDto?>, isShowLoader: Boolean, id:Int)
 
 }
 

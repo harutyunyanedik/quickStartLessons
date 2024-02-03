@@ -10,10 +10,13 @@ import com.bumptech.glide.Glide
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.base.utils.intent
+import com.example.quickstartlessons.module.launch.SplashFragment.Companion.KEY_USERS_ID
 
 class AccountMainTabFragment : BaseFragment() {
 
     private lateinit var binding: FragmentAccountMainTabBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -39,7 +42,8 @@ class AccountMainTabFragment : BaseFragment() {
     private fun observeLiveData() {
 
         QSApplication.userProfileLiveData.observe(viewLifecycleOwner) {
-            val profile = it.users.getOrNull(0)
+            val id =intent.getStringExtra(KEY_USERS_ID)
+            val profile = id?.toInt()?.let { it1 -> it.users.getOrNull(it1) }
             binding.userMail.text = profile?.email
             binding.userName.text = profile?.firstName + profile?.lastName
             Glide.with(requireContext()).load(profile?.image).into(binding.profileImage)

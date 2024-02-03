@@ -2,18 +2,20 @@ package com.example.quickstartlessons.module.signin
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.QsConstants
 
-class SignInFragment : Fragment() {
+
+class SignInFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSignInBinding
 
@@ -28,6 +30,7 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+
     }
 
     private fun setupViews() {
@@ -36,7 +39,9 @@ class SignInFragment : Fragment() {
         }
 
         binding.signInButton.setOnClickListener {
-            validate()
+            if (it.isPressed) {
+                validate()
+            }
         }
     }
 
@@ -44,30 +49,54 @@ class SignInFragment : Fragment() {
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
         when {
-            isValidEmail(email) && isValidPassword(password) -> startActivity(Intent(requireContext(), MainActivity::class.java))
-            !isValidEmail(email) && !isValidPassword(password) -> {
-                binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
-                binding.passwordInputLayout.error = getString(R.string.invalid_password)
-            }
+            isValidEmail(email) && isValidPassword(password) &&  binding.rememberMeCheckbox.isChecked->{
+                        if (binding.emailEditText.text.toString() != PreferencesManager.getUserPasswordFromPref()
+                            && binding.passwordEditText.text.toString() != PreferencesManager.getUserNameFromPref()) {
+                            PreferencesManager.putUserNameToPref(binding.emailEditText.text.toString())
+                            PreferencesManager.putUserPasswordToPref(binding.passwordEditText.text.toString())
+                            Toast.makeText(requireContext(), "Your registration is successful!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(requireContext(), MainActivity::class.java))
+                        } else {
+                            Toast.makeText(requireContext(), "There is already a registration with this username. Try again!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
-            isValidEmail(email) && !isValidPassword(password) -> {
-                binding.emailUsernameInputLayout.error = QsConstants.EMPTY_STRING
-                binding.passwordInputLayout.error = getString(R.string.invalid_password)
-            }
+            isValidEmail(email) && isValidPassword(password) &&  !binding.rememberMeCheckbox.isChecked->{
+                findNavController().navigate(SignInFragmentDirections.actionGlobalSplashFragment())
+                    }
 
-            !isValidEmail(email) && isValidPassword(password) -> {
-                binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
-                binding.passwordInputLayout.error = QsConstants.EMPTY_STRING
-            }
+                    !isValidEmail(email) && !isValidPassword(password) -> {
+                    binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                    binding.passwordInputLayout.error = getString(R.string.invalid_password)
+                }
 
-            email.isEmpty() && password.isEmpty() -> {
-                binding.emailUsernameInputLayout.error = getString(R.string.field_required)
-                binding.passwordInputLayout.error = getString(R.string.field_required)
-            }
+                    isValidEmail(email) && !isValidPassword(password) -> {
+                    binding.emailUsernameInputLayout.error = QsConstants.EMPTY_STRING
+                    binding.passwordInputLayout.error = getString(R.string.invalid_password)
+                }
+
+                    !isValidEmail(email) && isValidPassword(password) -> {
+                    binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                    binding.passwordInputLayout.error = QsConstants.EMPTY_STRING
+                }
+
+                    email.isEmpty() && password.isEmpty() -> {
+                    binding.emailUsernameInputLayout.error = getString(R.string.field_required)
+                    binding.passwordInputLayout.error = getString(R.string.field_required)
+                }
+                }
+        }
+
+        private fun isValidPassword(password: String): Boolean = password.length > 6
+        private fun isValidEmail(email: String): Boolean = email.length > 5
+        // private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+        companion object {
+            const val KEY_USERNAME = "key_username"
+            const val KEY_PASSWORD = "key_password"
+            const val KEY_USERNAME_IS_CHECKED = "key_username_is_checked"
+            const val KEY_PASSWORD_IS_CHECKED = "key_password_is_checked"
         }
     }
 
-    private fun isValidPassword(password: String): Boolean = password.length > 6
 
-    private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-}

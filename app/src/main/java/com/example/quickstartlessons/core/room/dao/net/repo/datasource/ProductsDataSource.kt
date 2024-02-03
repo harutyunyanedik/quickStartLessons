@@ -1,7 +1,7 @@
-package com.example.quickstartlessons.core.net.repo.datasource
+package com.example.quickstartlessons.core.room.dao.net.repo.datasource
 
-import com.example.quickstartlessons.module.account.data.response.UserDto
-import com.example.quickstartlessons.module.account.data.response.UsersDto
+import com.example.quickstartlessons.module.Users.data.response.UserDto
+import com.example.quickstartlessons.module.Users.data.response.UsersDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 import retrofit2.Response

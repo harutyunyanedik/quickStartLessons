@@ -61,6 +61,10 @@ class HomeMainTabFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         observeLiveData()
+
+        binding.search.setOnClickListener {
+            //todo
+        }
     }
 
     private fun setupViews() {

@@ -12,7 +12,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.example.quickstartlessons.core.di.appComponent
-import com.example.quickstartlessons.module.account.data.response.UsersDto
+import com.example.quickstartlessons.module.Users.data.response.UsersDto
 import com.example.quickstartlessons.module.base.coroutine.BaseCoroutineExceptionHandler
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.Prefs

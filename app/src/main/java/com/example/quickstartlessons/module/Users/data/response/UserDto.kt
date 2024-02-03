@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account.data.response
+package com.example.quickstartlessons.module.Users.data.response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -19,5 +19,9 @@ data class UserDto(
     @SerializedName("gender")
     val gender: String,
     @SerializedName("phone")
-    val phone: String
+    val phone: String,
+    @SerializedName("username")
+    val username: String,
+    @SerializedName(" password")
+    val  password: String
 ) : Serializable

@@ -3,8 +3,8 @@ package com.example.quickstartlessons.module.home.ui.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.quickstartlessons.core.net.ApiResultCallback
-import com.example.quickstartlessons.core.net.repo.repository.ProductsRepository
+import com.example.quickstartlessons.core.room.dao.net.ApiResultCallback
+import com.example.quickstartlessons.core.room.dao.net.repo.repository.ProductsRepository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
 import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 import kotlinx.coroutines.launch
