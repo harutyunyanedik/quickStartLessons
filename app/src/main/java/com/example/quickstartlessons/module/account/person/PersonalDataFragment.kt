@@ -37,7 +37,7 @@ class PersonalDataFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setupPersonData() {
         QSApplication.userProfileLiveData.observe(viewLifecycleOwner) {
-            val user = it?.users?.get(1)
+            val user = it
             binding.age.text = getString(R.string.age) + "։" + user?.age
             binding.birthDate.text = getString(R.string.birth_date) + "։" + user?.birthDate
             binding.gender.text = getString(R.string.gender) + "։" + user?.gender

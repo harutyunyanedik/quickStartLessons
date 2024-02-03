@@ -32,4 +32,5 @@ data class UserDto(
     @SerializedName("birthDate")
     val birthDate: String
 
+
 ) :Serializable

@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.example.quickstartlessons.core.data.UserDto
 import com.example.quickstartlessons.core.di.appComponent
 import com.example.quickstartlessons.module.base.coroutine.BaseCoroutineExceptionHandler
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
@@ -88,7 +89,7 @@ class QSApplication : Application(), LifecycleObserver {
         var isLastNetworkStateWasConnected: Boolean? = null
         var lastNoInternetShownToastTime: Long? = null
         const val SHOW_NO_INTERNET_CONNECTION_POPUP_TIME_RANGE = 4000
-        val userProfileLiveData:MutableLiveData<UsersDto?> =MutableLiveData()
+        val userProfileLiveData:MutableLiveData<UserDto?> =MutableLiveData()
         fun getCoroutineContext() = Dispatchers.Main + SupervisorJob() + BaseCoroutineExceptionHandler(
             CoroutineExceptionHandler
         )

@@ -56,5 +56,9 @@
     <string name="age">Age</string>
     <string name="phone">Phone number</string>
     <string name="gender">Gender</string>
-    <string name="birth_date"></string>
+    <string name="birth_date">BirthDate</string>
+    <string name="exit">Do you want to exit?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    
 </resources>

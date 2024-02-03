@@ -34,7 +34,7 @@ class AccountMainTabFragment : BaseFragment() {
     @SuppressLint("SetTextI18n")
     private fun observeLiveData() {
         QSApplication.userProfileLiveData.observe(viewLifecycleOwner) {
-            val user = it?.users?.get(1)
+           val user=it
             binding.emailAddress.text = user?.email
             if (user != null) {
                 binding.userName.text = user.firstName + " " + user.lastName
