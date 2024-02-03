@@ -1,16 +1,19 @@
 package com.example.quickstartlessons.module.launch
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.module.base.activity.BaseActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity() {
+
+    val viewModel by viewModel<SplashViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

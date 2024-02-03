@@ -89,7 +89,7 @@ class QSApplication : Application(), LifecycleObserver {
         var isLastNetworkStateWasConnected: Boolean? = null
         var lastNoInternetShownToastTime: Long? = null
         const val SHOW_NO_INTERNET_CONNECTION_POPUP_TIME_RANGE = 4000
-        val userProfileLiveData:MutableLiveData<UserDto?> =MutableLiveData()
+        val userProfileLiveData: MutableLiveData<UserDto?> = MutableLiveData()
         fun getCoroutineContext() = Dispatchers.Main + SupervisorJob() + BaseCoroutineExceptionHandler(
             CoroutineExceptionHandler
         )

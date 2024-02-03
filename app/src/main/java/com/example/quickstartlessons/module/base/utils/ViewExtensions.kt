@@ -22,6 +22,7 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.module.launch.SplashActivity
 import com.google.android.material.tabs.TabLayout
 import java.util.Calendar
 
@@ -38,6 +39,9 @@ val Fragment.intent: Intent
 
 val Fragment.homeActivity: MainActivity?
     get() = activity as? MainActivity
+
+val Fragment.splashActivity: SplashActivity? // todo es avelacrel em vor fragment um cast chanenq
+    get() = requireActivity() as? SplashActivity
 
 fun Fragment.requireHomeActivity(): MainActivity {
     return requireActivity() as MainActivity

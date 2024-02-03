@@ -1,32 +1,30 @@
 package com.example.quickstartlessons.module.launch
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSplashBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
-import com.example.quickstartlessons.module.home.ui.HomeMainTabViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.example.quickstartlessons.module.base.utils.splashActivity
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
     private lateinit var binding: FragmentSplashBinding
-    private val viewModel by viewModel<SplashViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getUsers()
+        splashActivity?.viewModel?.getUsers()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,19 +33,34 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObserve()
     }
-    private fun setupObserve() {
-        viewModel.usersLiveData.observe(viewLifecycleOwner) { it ->
-            val user = it?.users
-            if (user != null) {
-                for (i in user.indices) {
-                    if (user[i].password == PreferencesManager.getUserName() && user[i].username == PreferencesManager.getUserPassword()) {
-                        QSApplication.userProfileLiveData.value=user[i]
-                        findNavController().navigate(SplashFragmentDirections.actionGlobalAccountFragment())
-                    }else{
-                        findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
-                    }
 
+    private fun setupObserve() {
+        splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) { it -> // todo viewModel e tar el em activity vor sign in um unenanq user neri list e
+//            val user = it?.users // todo your version
+//            if (user != null) {
+//                for (i in user.indices) {
+//                    if (user[i].password == PreferencesManager.getUserName() && user[i].username == PreferencesManager.getUserPassword()) {
+//                        QSApplication.userProfileLiveData.value = user[i]
+//                        findNavController().navigate(SplashFragmentDirections.actionGlobalAccountFragment())
+//                    } else {
+//                        findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
+//                    }
+//
+//                }
+//            }
+
+
+            // todo right version
+            if (PreferencesManager.getUserName() != null && PreferencesManager.getUserPassword() != null) {
+                val user = it?.users?.find {
+                    it.username == PreferencesManager.getUserName()
                 }
+                user?.let {
+                    QSApplication.userProfileLiveData.value = it
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                }
+            } else {
+                findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
             }
         }
     }
