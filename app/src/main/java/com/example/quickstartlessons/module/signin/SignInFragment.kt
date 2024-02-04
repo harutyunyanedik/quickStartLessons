@@ -42,7 +42,7 @@ class SignInFragment : BaseFragment() {
             findNavController().navigate(SignInFragmentDirections.actionGlobalResetPasswordFragment())
         }
         binding.signInButton.setOnClickListener {
-           validate()
+            validate()
         }
     }
 
@@ -51,24 +51,25 @@ class SignInFragment : BaseFragment() {
         val userName = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
         when {
-          isValidEmail(userName) && isValidPassword(password) -> {
+            isValidEmail(userName) && isValidPassword(password) -> {
 
-              val users = splashActivity?.viewModel?.usersLiveData?.value?.users
-              if (users != null) {
-                  for (i in users.indices) {
-                      if (password == users[i].password && userName == users[i].username && binding.rememberMeCheckbox.isChecked) {
-                          PreferencesManager.putUserName(users[i].username)
-                          PreferencesManager.putUserPassword(users[i].password)
-                          QSApplication.userProfileLiveData.value=users[i]
-                          startActivity(Intent(context,MainActivity::class.java))
-                      } else {
-                          password == users[i].password && userName == users[i].username
-                          startActivity(Intent(context, MainActivity::class.java))
+                val users = splashActivity?.viewModel?.usersLiveData?.value?.users
+                if (users != null) {
+                    for (i in users.indices) {
+                        if (password == users[i].password && userName == users[i].username && binding.rememberMeCheckbox.isChecked) {
+                            PreferencesManager.putUserName(users[i].username)
+                            PreferencesManager.putUserPassword(users[i].password)
+                            QSApplication.userProfileLiveData.value = users[i]
+                            startActivity(Intent(context, MainActivity::class.java))
+                        } else {
+                            password == users[i].password && userName == users[i].username
+                            QSApplication.userProfileLiveData.value = users[i]
+                            startActivity(Intent(context, MainActivity::class.java))
 
-                      }
-                  }
-              }
-          }
+                        }
+                    }
+                }
+            }
 
             !isValidEmail(userName) && !isValidPassword(password) -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)

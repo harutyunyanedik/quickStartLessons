@@ -37,21 +37,24 @@
     <string name="russian">Русский</string>
     <string name="change_language">Լեզու</string>
     <string name="app_language">Հավելվածի լեզուն</string>
-    <string name="sign_out">Դուս գալ</string>
+    <string name="sign_out">Դուրս գալ</string>
     <string name="rating">Վարկանիշ</string>
     <string name="discountPercentage">Զեղչված տոկոս</string>
     <string name="stock">Առկա քանակ</string>
-    <string name="error_data">"Սխալ տվյալներ"</string>
+    <string name="error_data">Սխալ տվյալներ</string>
     <string name="personal_data">Անձնական տվյալներ</string>
     <string name="there_are_no_favorite_products">Նախընտրելի պրոդուկտներ առկա չեն</string>
     <string name="sms">SMS</string>
-    <string name="age">Age</string>
-    <string name="phone">Phone number</string>
-    <string name="gender">Gender</string>
-    <string name="birth_date">BirthDate</string>
-    <string name="exit">Do you want to exit?</string>
+    <string name="age">Տարիք</string>
+    <string name="phone">Հեռախոսհամար</string>
+    <string name="gender">Սեռ</string>
+    <string name="birth_date">Ծննդյան օր</string>
+    <string name="exit">Դուք ցանկանու՞մ եք ելք անել</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="show_dialog">Show Dialog</string>
+    <string name="search">որոնել</string>
+    <string name="no_search_result">Արդյունք չկա</string>
 
 
 </resources>

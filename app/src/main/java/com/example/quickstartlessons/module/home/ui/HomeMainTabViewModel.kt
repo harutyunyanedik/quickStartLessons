@@ -76,5 +76,27 @@ class HomeMainTabViewModel(private val repository: Repository) : BaseObservableV
         }
     }
 
+    private val _searchProductLiveData: MutableLiveData<List<ProductDto>?> = MutableLiveData()
+    val searchProductLiveData: LiveData<List<ProductDto>?>
+        get() = _searchProductLiveData
 
+    private val _searchProductErrorLiveData: MutableLiveData<String?> = MutableLiveData()
+    val searchProductErrorLiveData: LiveData<String?>
+        get() = _searchProductErrorLiveData
+
+    fun getSearchProduct(isShoLoader: Boolean=true) {
+        viewModelScope.launch {
+            repository.getSearchProduct(object : ApiResultCallback<ProductsDto?> {
+                override fun onSuccess(response: ProductsDto?) {
+                    _productLiveData.value = response?.products
+                }
+
+                override fun onError(): Boolean {
+                    _productErrorLiveData.value = "Error data"
+                    return true
+                }
+
+            }, isShoLoader)
+        }
+    }
 }

@@ -28,6 +28,7 @@ class FavoriteMainTabFragment : BaseFragment() {
 
         if (isFavorite){ favoriteManager.insertProduct(product)
 
+
         } else
             favoriteManager.deleteProductById(product)
 

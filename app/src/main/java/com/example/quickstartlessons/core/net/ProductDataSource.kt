@@ -23,5 +23,8 @@ interface ProductDataSource {
     @GET("users")
     suspend fun getAllUsers(): Response<UsersDto>
 
+    @GET("products/search?q=Laptop")
+    suspend fun getSearchProduct(): Response<ProductsDto>
+
 
 }

@@ -61,7 +61,9 @@ class HomeMainTabFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupObserve()
-
+        binding.toolBar.setOnClickListener{
+        findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalSearchFragment())
+        }
     }
 
     private fun setupViews() {
@@ -76,7 +78,7 @@ class HomeMainTabFragment : BaseFragment() {
             adapter.updateData(it)
         }
         viewModel.productErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error data", it.toString())
+            showErrorMessageDialog(getString(R.string.error_data), it.toString())
         }
         favoriteManager.getAllProduct().observe(viewLifecycleOwner) {
             val favoriteIds = it.map { productEntity -> productEntity.id }
@@ -89,7 +91,7 @@ class HomeMainTabFragment : BaseFragment() {
         }
 
         viewModel.categoryErrorLiveData.observe(viewLifecycleOwner) {
-            showErrorMessageDialog("Error data", it.toString())
+            showErrorMessageDialog(getString(R.string.error_data), it.toString())
         }
 
     }

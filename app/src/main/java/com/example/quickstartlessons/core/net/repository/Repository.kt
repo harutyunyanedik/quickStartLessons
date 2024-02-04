@@ -14,6 +14,7 @@ interface Repository {
     suspend fun getProductByCategory(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id:String)
     suspend fun getProductById(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id:Int)
     suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
+    suspend fun getSearchProduct(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
 
 }
 
@@ -47,5 +48,11 @@ class RepositoryImplementation(private val dataSource: ProductDataSource) : Repo
             dataSource.getAllUsers()
         }
     }
+
+    override suspend fun getSearchProduct(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            dataSource.getSearchProduct()
+    }
+}
 
 }

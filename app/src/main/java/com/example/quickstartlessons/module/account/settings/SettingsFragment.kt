@@ -41,7 +41,7 @@ class SettingsFragment : Fragment() {
 
     private fun showDialogChangeLanguage() {
         val dialog = AppLanguageFragment()
-        dialog.show(childFragmentManager, "Show Dialog")
+        dialog.show(childFragmentManager, getString(R.string.show_dialog))
     }
   private  fun showDialogSingOut() {
         val dialog = AlertDialog.Builder(requireContext())
