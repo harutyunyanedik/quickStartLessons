@@ -39,9 +39,15 @@ class SettingsFragment : BaseFragment() {
         }
 
         binding.textViewChangeSignOut.setOnClickListener {
-            PreferencesManager.putCurrentUserName(null)
-            PreferencesManager.putCurrentPassword(null)
-            findNavController().navigate(R.id.action_global_signInFragment)
+            val bottomSheetDialog = SignOutBottomSheetDialogFragment {
+                if (it) {
+                    PreferencesManager.putCurrentUserName(null)
+                    PreferencesManager.putCurrentPassword(null)
+                    findNavController().navigate(R.id.action_global_signInFragment)
+                }
+            }
+            bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
+
         }
     }
 

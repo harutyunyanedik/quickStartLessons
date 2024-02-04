@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/app_background"
+        android:background="@color/white"
         android:padding="@dimen/_16dp"
         tools:context=".module.signin.SignInFragment">
 
@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
-            android:textColor="@color/white_10"
+            android:textColor="@color/material_dynamic_neutral_variant20"
             android:textSize="@dimen/_20sp"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16dp"
             android:text="@string/sign_in_we_are_waiting_for_you"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/_22sp"
             app:layout_constraintTop_toBottomOf="@id/haveAccountTextView" />
 
@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:gravity="center_vertical"
+            android:textColorHint="@color/material_dynamic_neutral20"
             android:hint="@string/email_username"
             app:layout_constraintTop_toBottomOf="@id/signInTextView">
 
@@ -45,9 +46,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="start"
+                android:textColor="@color/black"
                 android:inputType="textEmailAddress"
                 android:textAlignment="viewStart"
-                android:textColorHint="@color/white_10" />
+                android:textColorHint="@color/material_dynamic_neutral20" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -58,6 +60,7 @@
             android:layout_marginTop="@dimen/_8dp"
             android:gravity="center_vertical"
             android:hint="@string/password"
+            android:textColorHint="@color/material_dynamic_neutral20"
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +71,11 @@
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:textColor="@color/black"
                 android:gravity="start"
                 android:inputType="textPassword"
                 android:textAlignment="viewStart"
-                android:textColorHint="@color/white_10" />
+                android:textColorHint="@color/material_dynamic_neutral20" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +87,7 @@
             android:button="@drawable/check_box_selector"
             android:padding="@dimen/_8dp"
             android:text="@string/remember_me"
-            android:textColor="@color/color_1_3"
+            android:textColor="@color/material_dynamic_neutral20"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
@@ -105,7 +109,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:text="@string/forgot_your_password"
-            android:textColor="@color/white"
+            android:textColor="@color/material_dynamic_neutral20"
             android:textSize="@dimen/_20sp"
             app:layout_constraintTop_toBottomOf="@id/signInButton" />
 
