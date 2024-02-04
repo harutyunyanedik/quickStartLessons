@@ -35,7 +35,7 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun setupObserve() {
-        splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) {
+        splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) { it ->
             if (PreferencesManager.getUserName() != null && PreferencesManager.getUserPassword() != null) {
                 val user = it?.users?.find {
                     it.username == PreferencesManager.getUserName()
@@ -49,4 +49,5 @@ class SplashFragment : BaseFragment() {
             }
         }
     }
+
 }

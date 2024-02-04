@@ -6,6 +6,7 @@ import android.provider.ContactsContract.CommonDataKinds.Email
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
@@ -52,24 +53,25 @@ class SignInFragment : BaseFragment() {
         val password = binding.passwordEditText.text.toString()
         when {
             isValidEmail(userName) && isValidPassword(password) -> {
-
                 val users = splashActivity?.viewModel?.usersLiveData?.value?.users
-                if (users != null) {
-                    for (i in users.indices) {
-                        if (password == users[i].password && userName == users[i].username && binding.rememberMeCheckbox.isChecked) {
-                            PreferencesManager.putUserName(users[i].username)
-                            PreferencesManager.putUserPassword(users[i].password)
-                            QSApplication.userProfileLiveData.value = users[i]
-                            startActivity(Intent(context, MainActivity::class.java))
-                        } else {
-                            password == users[i].password && userName == users[i].username
-                            QSApplication.userProfileLiveData.value = users[i]
-                            startActivity(Intent(context, MainActivity::class.java))
 
-                        }
+                val user = users?.find { it ->
+                    if (it.username == userName && it.password == password && binding.rememberMeCheckbox.isChecked) {
+                        QSApplication.userProfileLiveData.value = it
+                        PreferencesManager.putUserPassword(it.password)
+                        PreferencesManager.putUserName(it.username)
+                        startActivity(Intent(requireContext(), MainActivity::class.java))
                     }
-                }
+                    if (it.username == userName && it.password == password){
+                        QSApplication.userProfileLiveData.value = it
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                }else
+                       Toast.makeText(requireContext(),getString(R.string.no_user),Toast.LENGTH_SHORT).show()
+                    return
             }
+
+        }
+
 
             !isValidEmail(userName) && !isValidPassword(password) -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
@@ -93,7 +95,7 @@ class SignInFragment : BaseFragment() {
         }
     }
 
-    private fun isValidPassword(password: String): Boolean = password.length > 3
+    private fun isValidPassword(password: String): Boolean = password.length > 6
     private fun isValidEmail(userName: String): Boolean = true
 
 

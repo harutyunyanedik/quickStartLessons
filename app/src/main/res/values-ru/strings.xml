@@ -55,4 +55,5 @@
     <string name="show_dialog">Show Dialog</string>
     <string name="search">поиск</string>
     <string name="no_search_result">No search result</string>
+    <string name="no_user">User is not found</string>
 </resources>

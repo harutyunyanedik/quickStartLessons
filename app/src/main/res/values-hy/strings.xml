@@ -55,6 +55,7 @@
     <string name="show_dialog">Show Dialog</string>
     <string name="search">որոնել</string>
     <string name="no_search_result">Արդյունք չկա</string>
+    <string name="no_user">User is not found</string>
 
 
 </resources>

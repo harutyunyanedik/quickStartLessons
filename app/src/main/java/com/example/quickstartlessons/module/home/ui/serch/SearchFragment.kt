@@ -5,19 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quickstartlessons.R
-import com.example.quickstartlessons.core.room.FavoriteManager
-import com.example.quickstartlessons.databinding.FragmentHomeMainTabBinding
 import com.example.quickstartlessons.databinding.FragmentSearchBinding
-import com.example.quickstartlessons.module.home.ui.HomeMainTabFragmentDirections
-import com.example.quickstartlessons.module.home.ui.HomeMainTabViewModel
-import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.definition.indexKey
+
 
 class SearchFragment : Fragment() {
    private lateinit var binding:FragmentSearchBinding
@@ -26,15 +15,12 @@ class SearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
        binding=FragmentSearchBinding.inflate(inflater,container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-    }
 
 
 }
