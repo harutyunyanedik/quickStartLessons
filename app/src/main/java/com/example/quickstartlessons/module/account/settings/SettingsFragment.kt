@@ -32,14 +32,14 @@ class SettingsFragment : Fragment() {
         }
 
         binding.appLanguage.setOnClickListener {
-            showDialog()
+            showDialogChangeLanguage()
         }
         binding.signOut.setOnClickListener{
         showDialogSingOut()
         }
     }
 
-    private fun showDialog() {
+    private fun showDialogChangeLanguage() {
         val dialog = AppLanguageFragment()
         dialog.show(childFragmentManager, "Show Dialog")
     }
