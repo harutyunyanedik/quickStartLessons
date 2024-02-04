@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.settings.ChangeLanguageBottomSheetDialogFragment
+import com.example.quickstartlessons.module.base.utils.PreferencesManager
 
 class SettingsFragment : BaseFragment() {
 
@@ -35,6 +36,12 @@ class SettingsFragment : BaseFragment() {
         }
         binding.textViewSettings.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.textViewChangeSignOut.setOnClickListener {
+            PreferencesManager.putCurrentUserName(null)
+            PreferencesManager.putCurrentPassword(null)
+            findNavController().navigate(R.id.action_global_signInFragment)
         }
     }
 

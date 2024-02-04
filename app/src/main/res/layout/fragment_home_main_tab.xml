@@ -24,6 +24,14 @@
                 android:text="@string/products"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_36sp" />
+
+            <ImageView
+                android:id="@+id/searchImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/_16dp"
+                android:src="@drawable/ic_search_white"/>
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView

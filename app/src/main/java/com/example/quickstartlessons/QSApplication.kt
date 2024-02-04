@@ -15,7 +15,7 @@ import com.example.quickstartlessons.core.di.appComponent
 import com.example.quickstartlessons.module.base.coroutine.BaseCoroutineExceptionHandler
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.Prefs
-import com.example.quickstartlessons.module.users.data.net.UsersDto
+import com.example.quickstartlessons.module.users.data.net.UserDto
 import com.yariksoffice.lingver.Lingver
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -86,7 +86,7 @@ class QSApplication : Application(), LifecycleObserver {
         val networkStateLiveData: MutableLiveData<Boolean> = MutableLiveData()
         var isLastNetworkStateWasConnected: Boolean? = null
         var lastNoInternetShownToastTime: Long? = null
-        val usersLiveData = MutableLiveData<UsersDto>()
+        val userLiveData = MutableLiveData<UserDto>()
         const val SHOW_NO_INTERNET_CONNECTION_POPUP_TIME_RANGE = 4000
 
         fun getCoroutineContext() = Dispatchers.Main + SupervisorJob() + BaseCoroutineExceptionHandler(

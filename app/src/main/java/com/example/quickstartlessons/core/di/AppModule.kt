@@ -4,6 +4,8 @@ import com.example.quickstartlessons.module.details.ProductDetailsFragment
 import com.example.quickstartlessons.module.details.ProductDetailsViewModel
 import com.example.quickstartlessons.module.home.HomeMainTabFragment
 import com.example.quickstartlessons.module.home.ProductsViewModel
+import com.example.quickstartlessons.module.home.SearchFragment
+import com.example.quickstartlessons.module.home.SearchedProductsViewModel
 import com.example.quickstartlessons.module.launch.SplashActivity
 import com.example.quickstartlessons.module.launch.UsersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -22,5 +24,8 @@ internal val appModule = module {
 
     scope(named<SplashActivity>()) {
         viewModel { UsersViewModel(get()) }
+    }
+    scope(named<SearchFragment>()) {
+        viewModel { SearchedProductsViewModel(get()) }
     }
 }

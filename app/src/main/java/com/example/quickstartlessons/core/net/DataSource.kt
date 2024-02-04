@@ -6,8 +6,12 @@ import com.example.quickstartlessons.module.users.data.net.UsersDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface DataSource {
+
+    @GET("products")
+    suspend fun getProductsByName(@Query("q") name: String) : Response<ProductsDto?>
 
     @GET("users")
     suspend fun getUsers(): Response<UsersDto?>

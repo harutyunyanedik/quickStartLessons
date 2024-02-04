@@ -30,8 +30,8 @@ class AccountMainTabFragment : BaseFragment() {
 
 
     private fun setupViews() {
-        QSApplication.usersLiveData.observe(viewLifecycleOwner) {
-            val user = userMapper.userDtoToUser(it.users[0])
+        QSApplication.userLiveData.observe(viewLifecycleOwner) {
+            val user = userMapper.userDtoToUser(it)
             with(binding) {
                 Glide.with(requireContext()).load(user.image).into(profileImage)
                 textViewName.text = "${user.name} ${user.lastName}"

@@ -57,6 +57,9 @@
     <string name="gender">Gender</string>
     <string name="birthday">Birthday</string>
     <string name="phone">Phone</string>
+    <string name="invalid_username_or_password">Invalid username or password</string>
+    <string name="search">Search</string>
+    <string name="no_search_result">No search result</string>
 
     <string-array name="languages">
         <item>English</item>
