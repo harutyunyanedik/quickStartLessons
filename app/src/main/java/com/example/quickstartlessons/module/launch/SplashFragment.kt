@@ -35,22 +35,7 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun setupObserve() {
-        splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) { it -> // todo viewModel e tar el em activity vor sign in um unenanq user neri list e
-//            val user = it?.users // todo your version
-//            if (user != null) {
-//                for (i in user.indices) {
-//                    if (user[i].password == PreferencesManager.getUserName() && user[i].username == PreferencesManager.getUserPassword()) {
-//                        QSApplication.userProfileLiveData.value = user[i]
-//                        findNavController().navigate(SplashFragmentDirections.actionGlobalAccountFragment())
-//                    } else {
-//                        findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
-//                    }
-//
-//                }
-//            }
-
-
-            // todo right version
+        splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) {
             if (PreferencesManager.getUserName() != null && PreferencesManager.getUserPassword() != null) {
                 val user = it?.users?.find {
                     it.username == PreferencesManager.getUserName()

@@ -52,6 +52,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/there_are_no_favorite_products"
+            android:textColor="@color/color_black_40"
             android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

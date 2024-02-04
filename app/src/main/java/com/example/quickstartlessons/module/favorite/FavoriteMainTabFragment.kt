@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.module.favorite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import org.koin.android.ext.android.inject
 
+@Suppress("UNUSED_EXPRESSION")
 class FavoriteMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentFavoriteMainTabBinding
     private val favoriteManager: FavoriteManager by inject()
@@ -23,7 +25,13 @@ class FavoriteMainTabFragment : BaseFragment() {
     private val adapter = ProductAdapter(onItemClick = {
         findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.id.toString()))
     }, updateFavorite = { isFavorite, product ->
-        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductById(product)
+
+        if (isFavorite){ favoriteManager.insertProduct(product)
+
+        } else
+            favoriteManager.deleteProductById(product)
+
+
     })
 
     override fun onCreateView(
@@ -47,32 +55,37 @@ class FavoriteMainTabFragment : BaseFragment() {
         binding.recyclerViewFavorite.layoutManager = GridLayoutManager(requireContext(), 2)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setupObserve() {
-        if (binding.recyclerViewFavorite.isEmpty()) {
-            binding.textView.isVisible=true
-        } else {
-            favoriteManager.getAllProduct().observe(viewLifecycleOwner) {
+        favoriteManager.getAllProduct().observe(viewLifecycleOwner) {
+            val products = it.map { productEntity ->
+                ProductDto(
+                    id = productEntity.id,
+                    title = productEntity.title,
+                    description = productEntity.description,
+                    price = productEntity.price,
+                    brand = productEntity.brand,
+                    thumbnail = productEntity.thumbnail,
+                    stock = 0,
+                    rating = 0.0,
+                    discountPercentage = 0.0,
+                    image = listOf()
+                )
 
-                val products = it.map { productEntity ->
-                    ProductDto(
-                        id = productEntity.id,
-                        title = productEntity.title,
-                        description = productEntity.description,
-                        price = productEntity.price,
-                        brand = productEntity.brand,
-                        thumbnail = productEntity.thumbnail,
-                        stock = 0,
-                        rating = 0.0,
-                        discountPercentage = 0.0,
-                        image = listOf()
-                    )
-
-                }
-                adapter.updateData(products)
-                val favoriteIds = it.map { productEntity -> productEntity.id }
-
-                adapter.updateFavorites(favoriteIds)
             }
+            adapter.updateData(products)
+            val favoriteIds = it.map { productEntity -> productEntity.id }
+            adapter.updateFavorites(favoriteIds)
+
+         if(favoriteIds.isEmpty()){
+             binding.textView.isVisible=true
+
+         }else{
+                 false
+
+
+         }
+
         }
     }
 }

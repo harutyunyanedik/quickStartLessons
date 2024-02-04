@@ -2,6 +2,7 @@ package com.example.quickstartlessons.module.signin
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Email
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.QsConstants
 import com.example.quickstartlessons.module.base.utils.splashActivity
+import com.example.quickstartlessons.module.launch.SplashFragmentDirections
+import java.util.regex.Pattern
 
 
 class SignInFragment : BaseFragment() {
@@ -30,26 +33,42 @@ class SignInFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViews()
-        setupObserve()
+        setupListener()
+
     }
 
-    private fun setupViews() { //todo setupView i mej drel es click
+    private fun setupListener() {
         binding.forgotPasswordTextView.setOnClickListener {
             findNavController().navigate(SignInFragmentDirections.actionGlobalResetPasswordFragment())
         }
+        binding.signInButton.setOnClickListener {
+           validate()
+        }
     }
 
-    private val userName = binding.emailEditText.text.toString() // todo senc ban ches kara anes qani binding e init chi exel esa exception e (Caused by: kotlin.UninitializedPropertyAccessException: lateinit property binding has not been initialized), global ches kara pahes tar fun i mej
-    private val password = binding.passwordEditText.text.toString()
-    private fun validate() {
-        when {
-            isValidEmail(userName) && isValidPassword(password) -> {
-                //todo livedata in stex petq chi observe linel es eje bacveluya erb vor liveData n arjeq unena, aysinwn stex karas uxxaki arjeqe vercnes splashActivity.viewModel.usersLiveData.value.users
-                // todo stex arden piti qo logikan, petqa stex stuges userneri listum ka qo username password ov user te che
 
-                val users = splashActivity?.viewModel?.usersLiveData?.value?.users
-            }
+    private fun validate() {
+        val userName = binding.emailEditText.text.toString()
+        val password = binding.passwordEditText.text.toString()
+        when {
+          isValidEmail(userName) && isValidPassword(password) -> {
+
+              val users = splashActivity?.viewModel?.usersLiveData?.value?.users
+              if (users != null) {
+                  for (i in users.indices) {
+                      if (password == users[i].password && userName == users[i].username && binding.rememberMeCheckbox.isChecked) {
+                          PreferencesManager.putUserName(users[i].username)
+                          PreferencesManager.putUserPassword(users[i].password)
+                          QSApplication.userProfileLiveData.value=users[i]
+                          startActivity(Intent(context,MainActivity::class.java))
+                      } else {
+                          password == users[i].password && userName == users[i].username
+                          startActivity(Intent(context, MainActivity::class.java))
+
+                      }
+                  }
+              }
+          }
 
             !isValidEmail(userName) && !isValidPassword(password) -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
@@ -77,34 +96,7 @@ class SignInFragment : BaseFragment() {
     private fun isValidEmail(userName: String): Boolean = true
 
 
-    private fun setupObserve() { // todo setupObserve i mej drel es listener
-        binding.signInButton.setOnClickListener { view ->
-            // todo observe es anum listener i mej, sxala, du unes validate fun, dra mej petqa stugum e anes, u observe i kariq chka, karas miangamic liveData i value n vercnes
-
-
-            // todo QSApplication.userProfileLiveData es qez talisa mi hat user, heto es kara null lini, es arjeq a unenalu en depqum erb vor du mi angam login anes, qez petqa endhanur userneri liste
-            QSApplication.userProfileLiveData.observe(viewLifecycleOwner) {
-                if (it != null) {
-                    if (password == it.password && userName == it.username && binding.rememberMeCheckbox.isChecked) {
-                        PreferencesManager.putUserName(it.username)
-                        PreferencesManager.putUserPassword(it.password)
-
-                        findNavController().navigate(SignInFragmentDirections.actionGlobalAccountFragment()) // todo petqa voch te baces account ayl start anes MainActivity
-                    } else {
-                        if (password == it.password && userName == it.username && !binding.rememberMeCheckbox.isChecked) {
-                            binding.signInButton.setOnClickListener {
-                                findNavController().navigate(SignInFragmentDirections.actionGlobalAccountFragment())
-                            }
-                        } else {
-                            validate()
-                        }
-                    }
-                }
-
-                // todo mi xosqov es gice lriv sxala
-            }
-        }
-    }
 }
+
 
 

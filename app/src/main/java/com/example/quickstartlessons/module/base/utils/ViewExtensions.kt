@@ -40,7 +40,7 @@ val Fragment.intent: Intent
 val Fragment.homeActivity: MainActivity?
     get() = activity as? MainActivity
 
-val Fragment.splashActivity: SplashActivity? // todo es avelacrel em vor fragment um cast chanenq
+val Fragment.splashActivity: SplashActivity?
     get() = requireActivity() as? SplashActivity
 
 fun Fragment.requireHomeActivity(): MainActivity {
