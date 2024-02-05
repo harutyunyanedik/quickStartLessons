@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account.personalData
+package com.example.quickstartlessons.module.account.users.personalData
 
 import android.os.Bundle
 import android.view.LayoutInflater

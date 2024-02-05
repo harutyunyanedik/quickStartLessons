@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home.ui
+package com.example.quickstartlessons.module.home.ui.searchedProducts
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

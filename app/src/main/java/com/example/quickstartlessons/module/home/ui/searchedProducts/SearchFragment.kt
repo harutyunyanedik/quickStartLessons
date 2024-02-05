@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home.ui
+package com.example.quickstartlessons.module.home.ui.searchedProducts
 
 import android.os.Bundle
 

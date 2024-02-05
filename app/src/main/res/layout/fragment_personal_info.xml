@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".module.account.personalData.PersonalInfoFragment">
+        tools:context=".module.account.users.personalData.PersonalInfoFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBarPersonalInfo"
