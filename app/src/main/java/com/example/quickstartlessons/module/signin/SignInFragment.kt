@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
@@ -46,57 +47,67 @@ class SignInFragment : BaseFragment() {
     }
 
     private fun validate() {
-        val email = binding.emailEditText.text.toString()
+        val username = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
         when {
-            isValidEmail(email) && isValidPassword(password) &&  binding.rememberMeCheckbox.isChecked->{
-                        if (binding.emailEditText.text.toString() != PreferencesManager.getUserPasswordFromPref()
-                            && binding.passwordEditText.text.toString() != PreferencesManager.getUserNameFromPref()) {
-                            PreferencesManager.putUserNameToPref(binding.emailEditText.text.toString())
-                            PreferencesManager.putUserPasswordToPref(binding.passwordEditText.text.toString())
+            isValidEmail(username) && isValidPassword(password) -> {
+                val users = QSApplication.userProfileLiveData.value
+                if (users != null) {
+                    for (i in 0..users.users.size) {
+                        if ((username == users.users[i].username) && (password == users.users[i].password) && binding.rememberMeCheckbox.isChecked) {
+
+                            PreferencesManager.putUserNameToPref(username)
+                            PreferencesManager.putUserPasswordToPref(password)
+
+                            val user =   users.users.find {
+                                it.username == PreferencesManager.getUserNameFromPref() &&
+                                        it.password == PreferencesManager.getUserPasswordFromPref()
+                            }
+                            QSApplication.usersProfile.value = users.users[i]
+                            startActivity(Intent(requireContext(), MainActivity::class.java))
                             Toast.makeText(requireContext(), "Your registration is successful!", Toast.LENGTH_SHORT).show()
+
+                        } else if (username == users.users[i].username && password == users.users[i].password && !binding.rememberMeCheckbox.isChecked) {
+                            val user =   users.users.find {
+                                it.username == PreferencesManager.getUserNameFromPref() &&
+                                        it.password == PreferencesManager.getUserPasswordFromPref()
+                            }
+                            QSApplication.usersProfile.value = user
                             startActivity(Intent(requireContext(), MainActivity::class.java))
                         } else {
-                            Toast.makeText(requireContext(), "There is already a registration with this username. Try again!", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(SignInFragmentDirections.actionGlobalSplashFragment())
+                            //Toast.makeText(requireContext(), "Invalid password / username!", Toast.LENGTH_SHORT).show()
                         }
                     }
-
-            isValidEmail(email) && isValidPassword(password) &&  !binding.rememberMeCheckbox.isChecked->{
-                findNavController().navigate(SignInFragmentDirections.actionGlobalSplashFragment())
-                    }
-
-                    !isValidEmail(email) && !isValidPassword(password) -> {
-                    binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
-                    binding.passwordInputLayout.error = getString(R.string.invalid_password)
                 }
+            }
 
-                    isValidEmail(email) && !isValidPassword(password) -> {
-                    binding.emailUsernameInputLayout.error = QsConstants.EMPTY_STRING
-                    binding.passwordInputLayout.error = getString(R.string.invalid_password)
-                }
+            !isValidEmail(username) && !isValidPassword(password) -> {
+                binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                binding.passwordInputLayout.error = getString(R.string.invalid_password)
+            }
 
-                    !isValidEmail(email) && isValidPassword(password) -> {
-                    binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
-                    binding.passwordInputLayout.error = QsConstants.EMPTY_STRING
-                }
+            isValidEmail(username) && !isValidPassword(password) -> {
+                binding.emailUsernameInputLayout.error = QsConstants.EMPTY_STRING
+                binding.passwordInputLayout.error = getString(R.string.invalid_password)
+            }
 
-                    email.isEmpty() && password.isEmpty() -> {
-                    binding.emailUsernameInputLayout.error = getString(R.string.field_required)
-                    binding.passwordInputLayout.error = getString(R.string.field_required)
-                }
-                }
-        }
+            !isValidEmail(username) && isValidPassword(password) -> {
+                binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
+                binding.passwordInputLayout.error = QsConstants.EMPTY_STRING
+            }
 
-        private fun isValidPassword(password: String): Boolean = password.length > 6
-        private fun isValidEmail(email: String): Boolean = email.length > 5
-        // private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-
-        companion object {
-            const val KEY_USERNAME = "key_username"
-            const val KEY_PASSWORD = "key_password"
-            const val KEY_USERNAME_IS_CHECKED = "key_username_is_checked"
-            const val KEY_PASSWORD_IS_CHECKED = "key_password_is_checked"
+            username.isEmpty() && password.isEmpty() -> {
+                binding.emailUsernameInputLayout.error = getString(R.string.field_required)
+                binding.passwordInputLayout.error = getString(R.string.field_required)
+            }
         }
     }
+
+    private fun isValidPassword(password: String): Boolean = password.length > 6
+    private fun isValidEmail(email: String): Boolean = email.length > 5
+    // private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+}
 
 

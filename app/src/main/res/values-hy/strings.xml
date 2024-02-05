@@ -38,4 +38,6 @@
     <string name="rating">Վարկանիշ: </string>
     <string name="empty">ԴԱՏԱՐԿ Է</string>
     <string name="personal_data">Անձնական տվյալներ</string>
+    <string name="search">Փնտրել</string>
+    <string name="search_text">Որոնման արդյունք չկա</string>
 </resources>

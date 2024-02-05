@@ -63,7 +63,7 @@ class HomeMainTabFragment : BaseFragment() {
         observeLiveData()
 
         binding.search.setOnClickListener {
-            //todo
+            findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalSearchFragment())
         }
     }
 

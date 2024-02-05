@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.databinding.FragmentPersonalDataBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.base.utils.intent
-import com.example.quickstartlessons.module.launch.SplashFragment
 
 class PersonalDataFragment : BaseFragment() {
     private lateinit var binding: FragmentPersonalDataBinding
@@ -25,13 +24,14 @@ class PersonalDataFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLiveData()
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private fun observeLiveData() {
-        QSApplication.userProfileLiveData.observe(viewLifecycleOwner) {
-            val id =intent.getStringExtra(SplashFragment.KEY_USERS_ID)
-            val user = id?.toInt()?.let { it1 -> it.users.getOrNull(it1) }
+        QSApplication.usersProfile.observe(viewLifecycleOwner) {user->
             binding.userMail.text = user?.email
             binding.userName.text = user?.firstName +" " + user?.lastName
             binding.birthDate.text = user?.birthDate

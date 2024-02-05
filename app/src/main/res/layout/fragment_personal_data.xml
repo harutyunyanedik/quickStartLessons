@@ -16,6 +16,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_35dp"
+            android:layout_height="@dimen/_35dp"
+            android:background="@drawable/ic_back"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/profile"
@@ -62,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16dp"
             android:paddingLeft="@dimen/_8dp"
-            android:text="phone"
+            android:text="(+374)94 607290"
             android:textColor="@color/black"
             android:textSize="@dimen/_20sp"
             app:layout_constraintTop_toBottomOf="@+id/userMail"
@@ -74,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_16dp"
         android:paddingLeft="@dimen/_8dp"
-        android:text="gender"
+        android:text="W"
         android:textColor="@color/black"
         android:textSize="@dimen/_18sp"
         app:layout_constraintTop_toBottomOf="@+id/phone"
@@ -86,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_16dp"
         android:paddingLeft="@dimen/_8dp"
-        android:text="birth date"
+        android:text="28.06.1985"
         android:textColor="@color/black"
         android:textSize="@dimen/_20sp"
         app:layout_constraintTop_toBottomOf="@+id/gender"

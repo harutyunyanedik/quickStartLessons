@@ -14,6 +14,7 @@ import com.example.quickstartlessons.databinding.FragmentSplashBinding
 import com.example.quickstartlessons.module.Users.viewModel.UsersViewModel
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
+import com.example.quickstartlessons.module.base.utils.Prefs
 
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,36 +39,30 @@ class SplashFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
         observeLiveData()
     }
 
     @SuppressLint("SuspiciousIndentation")
     private fun observeLiveData() {
-        viewModel.usersLiveData.observe(viewLifecycleOwner) {
-            QSApplication.userProfileLiveData.value = it
-            if (it != null) {
-                for (i in 0..it.users.size) {
-                    if (it.users[i].username != PreferencesManager.getUserNameFromPref()
-                        && it.users[i].password != PreferencesManager.getUserPasswordFromPref()
-                    ) {
-                        Toast.makeText(requireContext(), "Invalid password / username!", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
-                    }else{
-                        findNavController().navigate(SplashFragmentDirections.actionGlobalAccountFragment())
+        viewModel.usersLiveData.observe(viewLifecycleOwner) { users ->
+            if (users != null) {
+                QSApplication.userProfileLiveData.value = users
+                if (PreferencesManager.getUserPasswordFromPref() != null && PreferencesManager.getUserNameFromPref() != null) {
+                 val user =   users.users.find {
+                        it.username == PreferencesManager.getUserNameFromPref() &&
+                                it.password == PreferencesManager.getUserPasswordFromPref()
                     }
+                    QSApplication.usersProfile.value = user
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                } else {
+                    findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
                 }
             } else Toast.makeText(requireContext(), "Users list is empty", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(requireContext(), MainActivity::class.java))
         }
         viewModel.usersErrorLiveData.observe(viewLifecycleOwner)
         {
             showErrorMessageDialog("Error Dialog", it)
         }
-    }
-
-    companion object {
-        const val KEY_USERS_ID = "key_users_id"
     }
 }
 

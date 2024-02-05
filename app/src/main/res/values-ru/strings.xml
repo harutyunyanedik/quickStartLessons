@@ -38,4 +38,6 @@
     <string name="rating">Рейтинг: </string>
     <string name="empty">ПУСТО</string>
     <string name="personal_data">Личные данные</string>
+    <string name="search">Искать</string>
+    <string name="search_text">Нет результатов поиска</string>
 </resources>

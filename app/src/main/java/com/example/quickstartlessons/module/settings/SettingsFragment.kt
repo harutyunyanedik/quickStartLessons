@@ -34,16 +34,15 @@ class SettingsFragment : BaseFragment() {
         }
 
         binding.signOut.setOnClickListener {
-            val it = QSApplication.userProfileLiveData.value
-            if (it != null) {
-                for (i in 0..it.users.size) {
-                    val deletePassword = it.users[id].password
-                    val deleteUsername = it.users[id].username
-                    if (deletePassword == getUserPasswordFromPref()) Prefs.clear()
+                if (QSApplication.usersProfile.value != null) {
+                    val deletePassword = QSApplication.usersProfile.value?.password
+                    val deleteUsername = QSApplication.usersProfile.value?.username
+
+                    if (deletePassword == getUserPasswordFromPref()) getUserPasswordFromPref()
                     if (deleteUsername == getUserNameFromPref()) Prefs.clear()
-                    findNavController().navigate(SettingsFragmentDirections.actionGlobalSignInFragment())
+                    QSApplication.usersProfile.value = null
                 }
-            }
+            findNavController().navigate(SettingsFragmentDirections.actionGlobalSignInFragment())
         }
     }
 

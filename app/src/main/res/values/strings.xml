@@ -60,4 +60,6 @@
     <string name="rating">Rating: </string>
     <string name="empty">IS EMPTY</string>
     <string name="personal_data">Personal data</string>
+    <string name="search">Search</string>
+    <string name="search_text">No search result</string>
 </resources>
