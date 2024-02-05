@@ -42,5 +42,5 @@ class SettingsFragment : Fragment() {
             findNavController().navigate(R.id.action_global_signInFragment)
         }
     }
-    }
 }
+
