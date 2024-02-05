@@ -55,17 +55,18 @@ class SignInFragment : BaseFragment() {
                 if (users != null) {
                     for (i in 0..users.users.size) {
                         if ((username == users.users[i].username) && (password == users.users[i].password) && binding.rememberMeCheckbox.isChecked) {
-
+                            PreferencesManager.getUserPasswordFromPref().removeRange(0..2)
+                            PreferencesManager.getUserNameFromPref().removeRange(0..2)
                             PreferencesManager.putUserNameToPref(username)
                             PreferencesManager.putUserPasswordToPref(password)
 
                             val user =   users.users.find {
-                                it.username == PreferencesManager.getUserNameFromPref() &&
-                                        it.password == PreferencesManager.getUserPasswordFromPref()
+                                it.username == username &&
+                                        it.password == password
                             }
-                            QSApplication.usersProfile.value = users.users[i]
-                            startActivity(Intent(requireContext(), MainActivity::class.java))
+                            QSApplication.usersProfile.value = user
                             Toast.makeText(requireContext(), "Your registration is successful!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(requireContext(), MainActivity::class.java))
 
                         } else if (username == users.users[i].username && password == users.users[i].password && !binding.rememberMeCheckbox.isChecked) {
                             val user =   users.users.find {

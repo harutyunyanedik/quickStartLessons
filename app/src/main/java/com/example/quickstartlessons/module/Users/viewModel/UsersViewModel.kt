@@ -35,6 +35,7 @@ class UsersViewModel(private val repo: ProductsRepository) : BaseObservableViewM
         }
     }
     private val _userLiveData: MutableLiveData<UserDto> = MutableLiveData()
-    val userLiveData: LiveData<UserDto>
+    val userLiveData: MutableLiveData<UserDto>
         get() = _userLiveData
+
 }

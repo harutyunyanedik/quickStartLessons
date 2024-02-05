@@ -47,15 +47,19 @@ class SplashFragment : BaseFragment() {
         viewModel.usersLiveData.observe(viewLifecycleOwner) { users ->
             if (users != null) {
                 QSApplication.userProfileLiveData.value = users
-                if (PreferencesManager.getUserPasswordFromPref() != null && PreferencesManager.getUserNameFromPref() != null) {
-                 val user =   users.users.find {
-                        it.username == PreferencesManager.getUserNameFromPref() &&
-                                it.password == PreferencesManager.getUserPasswordFromPref()
+                for (i in 1..users.users.size) {
+
+                    if (PreferencesManager.getUserPasswordFromPref() != null && PreferencesManager.getUserNameFromPref() != null) {
+                        val user = users.users.find {
+                            it.username == PreferencesManager.getUserNameFromPref()
+                                    && it.password == PreferencesManager.getUserPasswordFromPref()
+                        }
+                        viewModel.userLiveData.value = user
+                        QSApplication.usersProfile.value = viewModel.userLiveData.value
+                        startActivity(Intent(requireContext(), MainActivity::class.java))
+                    } else {
+                        findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
                     }
-                    QSApplication.usersProfile.value = user
-                    startActivity(Intent(requireContext(), MainActivity::class.java))
-                } else {
-                    findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
                 }
             } else Toast.makeText(requireContext(), "Users list is empty", Toast.LENGTH_SHORT).show()
         }

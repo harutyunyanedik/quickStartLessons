@@ -86,7 +86,7 @@ class QSApplication : Application(), LifecycleObserver {
         lateinit var instance: Application
         val networkStateLiveData: MutableLiveData<Boolean> = MutableLiveData()
         val userProfileLiveData: MutableLiveData<UsersDto> = MutableLiveData()
-        val usersProfile: MutableLiveData<UserDto> = MutableLiveData()
+        var usersProfile: MutableLiveData<UserDto> = MutableLiveData()
         var isLastNetworkStateWasConnected: Boolean? = null
         var lastNoInternetShownToastTime: Long? = null
         const val SHOW_NO_INTERNET_CONNECTION_POPUP_TIME_RANGE = 4000

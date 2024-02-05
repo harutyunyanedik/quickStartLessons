@@ -38,11 +38,12 @@ class SettingsFragment : BaseFragment() {
                     val deletePassword = QSApplication.usersProfile.value?.password
                     val deleteUsername = QSApplication.usersProfile.value?.username
 
-                    if (deletePassword == getUserPasswordFromPref()) getUserPasswordFromPref()
-                    if (deleteUsername == getUserNameFromPref()) Prefs.clear()
+                    if (deletePassword == getUserPasswordFromPref()) getUserPasswordFromPref().removeRange(0..2)
+                    if (deleteUsername == getUserNameFromPref()) getUserNameFromPref().removeRange(0..2)
                     QSApplication.usersProfile.value = null
+
+                    findNavController().navigate(SettingsFragmentDirections.actionGlobalSignInFragment())
                 }
-            findNavController().navigate(SettingsFragmentDirections.actionGlobalSignInFragment())
         }
     }
 
