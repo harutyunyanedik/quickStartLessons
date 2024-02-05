@@ -26,9 +26,10 @@ class FavoriteMainTabFragment : BaseFragment() {
         findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.id.toString()))
     }, updateFavorite = { isFavorite, product ->
 
-        if (isFavorite){ favoriteManager.insertProduct(product)
+        if (isFavorite) {
+            favoriteManager.insertProduct(product)
 
-
+            binding.textView.isVisible = false
         } else
             favoriteManager.deleteProductById(product)
 
@@ -78,15 +79,16 @@ class FavoriteMainTabFragment : BaseFragment() {
             val favoriteIds = it.map { productEntity -> productEntity.id }
             adapter.updateFavorites(favoriteIds)
 
-         if(favoriteIds.isEmpty()){
-             binding.textView.isVisible=true
-
-         }else{
-                 false
-
-
-         }
+            if (products.isEmpty() && favoriteIds.isEmpty()) {
+                binding.textView.isVisible = true
+            } else{
+                products.isNotEmpty() || favoriteIds.isNotEmpty()
+                binding.textView.isVisible=false
+                }
+            }
 
         }
+
     }
-}
+
+

@@ -61,7 +61,6 @@ class ProductDetailsFragment : BaseFragment() {
             binding.stockTextView.text = getString(R.string.stock) + ":"+it?.stock.toString()
             binding.descriptionTextView.text = it?.description
             binding.priceTextView.text = "${it?.price} $"
-            binding.favoriteProductCheckbox.isChecked = it?.favorite == true
             adapter.updateData(it?.image)
             binding.toolBar.title=it?.title
         }

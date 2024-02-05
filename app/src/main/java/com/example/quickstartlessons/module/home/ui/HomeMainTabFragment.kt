@@ -61,8 +61,12 @@ class HomeMainTabFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupObserve()
-        binding.toolBar.setOnClickListener{
-        findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalSearchFragment())
+        setupListener()
+    }
+
+    private fun setupListener() {
+        binding.toolBar.setOnClickListener {
+            findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalSearchFragment())
         }
     }
 
