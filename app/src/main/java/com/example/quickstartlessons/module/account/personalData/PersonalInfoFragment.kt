@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.account
+package com.example.quickstartlessons.module.account.personalData
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,7 +28,7 @@ class PersonalInfoFragment : Fragment() {
 
     private fun setupViews() {
         QSApplication.users.observe(viewLifecycleOwner) {
-            val user = it.users.getOrNull(0)
+            val user = it
             with(binding) {
                 userName.text = user?.firstName
                 userLastName.text = user?.lastName

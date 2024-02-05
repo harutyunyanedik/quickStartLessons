@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
+import com.example.quickstartlessons.module.base.utils.PreferencesManager
 
 class SettingsFragment : Fragment() {
 
@@ -33,5 +35,12 @@ class SettingsFragment : Fragment() {
         binding.backButton.setOnClickListener {
             findNavController().navigateUp()
         }
+
+        binding.textViewChangeSignOut.setOnClickListener {
+            PreferencesManager.putCurrentUserName(null)
+            PreferencesManager.putCurrentPassword(null)
+            findNavController().navigate(R.id.action_global_signInFragment)
+        }
+    }
     }
 }

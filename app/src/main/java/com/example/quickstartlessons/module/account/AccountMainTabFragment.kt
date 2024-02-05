@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 
@@ -25,8 +27,25 @@ class AccountMainTabFragment : BaseFragment() {
     }
 
     private fun setUpViews() {
-        binding.settingsIcon.setOnClickListener {
-           findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
+        QSApplication.userLiveData.observe(viewLifecycleOwner) {
+            val user = userMapper.userDtoToUser(it)
+            with(binding) {
+                Glide.with(requireContext()).load(user.image).into(userImage)
+                userName.text = "${user.name} ${user.lastName}"
+                email.text = user.email
+                personalInformation.setOnClickListener {
+                    findNavController().navigate(
+                        AccountMainTabFragmentDirections.actionPersonalInformationFragment()
+                    )
+                }
+            }
         }
+
+        binding.settingsIcon.setOnClickListener {
+            findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
+
+
+        }
+
     }
 }

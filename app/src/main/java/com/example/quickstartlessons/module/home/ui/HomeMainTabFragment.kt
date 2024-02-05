@@ -72,6 +72,9 @@ class HomeMainTabFragment : BaseFragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCategories.adapter = categoriesAdapter
         binding.rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.searchImageView.setOnClickListener {
+            findNavController().navigate(R.id.action_global_searchFragment)
+        }
     }
 
     private fun observeLivedata() {

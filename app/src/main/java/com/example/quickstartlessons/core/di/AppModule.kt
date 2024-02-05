@@ -1,6 +1,8 @@
 package com.example.quickstartlessons.core.di
 
 import com.example.quickstartlessons.module.home.ui.HomeMainTabFragment
+import com.example.quickstartlessons.module.home.ui.SearchFragment
+import com.example.quickstartlessons.module.home.ui.SearchedProductsViewModel
 import com.example.quickstartlessons.module.home.ui.viewmodel.HomeMainTabViewModel
 import com.example.quickstartlessons.module.launch.SplashActivity
 import com.example.quickstartlessons.module.launch.UsersViewModel
@@ -22,5 +24,9 @@ internal val appModule = module {
 
     scope(named<SplashActivity>()) {
         viewModel { UsersViewModel(get()) }
+    }
+
+    scope(named<SearchFragment>()) {
+        viewModel { SearchedProductsViewModel(get()) }
     }
 }
