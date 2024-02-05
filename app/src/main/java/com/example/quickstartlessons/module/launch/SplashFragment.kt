@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
+import com.example.quickstartlessons.module.account.users.data.UserDto
+import com.example.quickstartlessons.module.account.users.data.UsersDto
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 
@@ -44,7 +46,7 @@ class SplashFragment : BaseFragment() {
         (requireActivity() as SplashActivity).viewModel.usersLiveData.observe(viewLifecycleOwner) {
             if (it != null){
                 if (checkUser(it) != null){
-                    QSApplication.userLiveData.value = checkUser(it)
+                    QSApplication.usersLiveData.value = checkUser(it)
                     startActivity(Intent(requireActivity(), MainActivity::class.java))
                 } else {
                     findNavController().navigate(R.id.action_global_signInFragment)

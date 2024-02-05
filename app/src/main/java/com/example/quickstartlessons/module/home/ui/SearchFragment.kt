@@ -23,10 +23,10 @@ class SearchFragment : BaseFragment() {
     private val favoriteManager: FavoriteManager by inject()
     private val viewModel: SearchedProductsViewModel by viewModel()
     private val productsAdapter = ProductsAdapter (onClickItem = {
-        findNavController().navigate(ProductDetailsFragmentDirections.actionDetailsFragment(it.id))
+        findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragment(it.id))
 
-    }, favoriteUpdate = {isFavorite, product ->
-        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProduct(product.id)
+    }, updateFavorite = {isFavorite, product ->
+        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductByID(product)
     })
 
     override fun onCreateView(

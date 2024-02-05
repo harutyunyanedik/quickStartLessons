@@ -36,7 +36,7 @@ class SettingsFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        binding.textViewChangeSignOut.setOnClickListener {
+        binding.signOut.setOnClickListener {
             PreferencesManager.putCurrentUserName(null)
             PreferencesManager.putCurrentPassword(null)
             findNavController().navigate(R.id.action_global_signInFragment)

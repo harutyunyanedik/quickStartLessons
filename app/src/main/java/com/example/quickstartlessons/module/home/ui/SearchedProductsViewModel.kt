@@ -11,7 +11,6 @@ import com.example.quickstartlessons.module.products.data.ProductsDto
 import kotlinx.coroutines.launch
 
 class SearchedProductsViewModel(private val repo: ProductsRepository) : BaseObservableViewModel() {
-    private val mapper = ProductMapper()
 
     private val _searchedProductLiveData = MutableLiveData<List<ProductDto>?>()
     val searchedProductsLiveData: LiveData<List<ProductDto>?>
@@ -25,7 +24,7 @@ class SearchedProductsViewModel(private val repo: ProductsRepository) : BaseObse
         viewModelScope.launch {
             repo.getProductsByName(object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
-                    _searchedProductLiveData.value = mapper.listProductsDtoToListProducts(response)
+                    _searchedProductLiveData.value = response?.products
                 }
 
                 override fun onError(): Boolean {

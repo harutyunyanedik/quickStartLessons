@@ -27,7 +27,7 @@ class PersonalInfoFragment : Fragment() {
     }
 
     private fun setupViews() {
-        QSApplication.users.observe(viewLifecycleOwner) {
+        QSApplication.usersLiveData.observe(viewLifecycleOwner) {
             val user = it
             with(binding) {
                 userName.text = user?.firstName

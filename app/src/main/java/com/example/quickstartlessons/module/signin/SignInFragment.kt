@@ -66,12 +66,12 @@ class SignInFragment : BaseFragment() {
             checkUser(email, password) != null && binding.rememberMeCheckbox.isChecked -> {
                 PreferencesManager.putCurrentUserName(email)
                 PreferencesManager.putCurrentPassword(password)
-                QSApplication.userLiveData.value = checkUser(email, password)
+                QSApplication.usersLiveData.value = checkUser(email, password)
                 return true
             }
 
             checkUser(email, password) != null && !binding.rememberMeCheckbox.isChecked -> {
-                QSApplication.userLiveData.value = checkUser(email, password)
+                QSApplication.usersLiveData.value = checkUser(email, password)
                 return true
             }
 
