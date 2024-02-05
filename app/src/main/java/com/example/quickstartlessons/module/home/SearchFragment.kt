@@ -20,10 +20,10 @@ class SearchFragment : BaseFragment() {
     private lateinit var binding: FragmentSearchBinding
     private val favoriteManager: FavoriteManager by inject()
     private val viewModel: SearchedProductsViewModel by viewModel()
-    private val productsAdapter = ProductsAdapter (onClickItem = {
+    private val productsAdapter = ProductsAdapter(onClickItem = {
         findNavController().navigate(ProductDetailsFragmentDirections.actionDetailsFragment(it.id))
 
-    }, favoriteUpdate = {isFavorite, product ->
+    }, favoriteUpdate = { isFavorite, product ->
         if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProduct(product.id)
     })
 
@@ -42,7 +42,7 @@ class SearchFragment : BaseFragment() {
         setupListeners()
     }
 
-    private fun setupViews(){
+    private fun setupViews() {
         binding.rvSearchedProducts.adapter = productsAdapter
         binding.rvSearchedProducts.layoutManager = GridLayoutManager(requireContext(), 2)
     }
@@ -52,14 +52,20 @@ class SearchFragment : BaseFragment() {
             findNavController().popBackStack()
         }
         binding.editTextSearch.doAfterTextChanged {
-            viewModel.getSearchedProductsByName(name=it.toString())
+            it?.length?.let {  _length ->
+                if (_length > 2) {
+                    viewModel.search(name = it.toString())
+                } else {
+                    viewModel.clearValue()
+                }
+            }
         }
     }
 
     private fun observeLiveData() {
         viewModel.searchedProductsLiveData.observe(viewLifecycleOwner) {
             productsAdapter.updateData(it)
-            binding.noResultTV.isVisible = it == null
+            binding.noResultTV.isVisible = it.isNullOrEmpty()
         }
     }
 

@@ -12,14 +12,12 @@ import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
-import com.example.quickstartlessons.module.launch.SplashActivity
+import com.example.quickstartlessons.module.base.utils.splashActivity
 import com.example.quickstartlessons.module.users.data.net.UserDto
-import com.example.quickstartlessons.module.users.data.net.UsersDto
 
 class SignInFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSignInBinding
-    private var users: UsersDto? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,14 +30,7 @@ class SignInFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeLiveData()
         setupViews()
-    }
-
-    private fun observeLiveData() {
-        (requireActivity() as SplashActivity).viewModel.usersLiveData.observe(viewLifecycleOwner) {
-            users = it
-        }
     }
 
     private fun setupViews() {
@@ -47,8 +38,9 @@ class SignInFragment : BaseFragment() {
             findNavController().navigate(SignInFragmentDirections.actionGlobalResetPasswordFragment())
         }
         binding.signInButton.setOnClickListener {
-            if (validate()){
+            if (validate()) {
                 startActivity(Intent(requireActivity(), MainActivity::class.java))
+                splashActivity?.finish()
             }
         }
     }
@@ -57,12 +49,12 @@ class SignInFragment : BaseFragment() {
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
         when {
-
             email.isEmpty() && password.isEmpty() -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.field_required)
                 binding.passwordInputLayout.error = getString(R.string.field_required)
                 return false
             }
+
             checkUser(email, password) != null && binding.rememberMeCheckbox.isChecked -> {
                 PreferencesManager.putCurrentUserName(email)
                 PreferencesManager.putCurrentPassword(password)
@@ -80,21 +72,11 @@ class SignInFragment : BaseFragment() {
                 binding.passwordInputLayout.error = getString(R.string.invalid_username_or_password)
                 return false
             }
-
-
         }
         return false
     }
-    private fun checkUser(email: String, password: String): UserDto? {
-        users?.let {
-            for (user in it.users) {
-                if (email == user.userName && password == user.password){
-                    return user
-                }
-            }
-            return null
-        }
-        return null
-    }
 
+    private fun checkUser(email: String, password: String): UserDto? = splashActivity?.viewModel?.usersLiveData?.value?.users?.find {
+        it.userName == email && it.password == password
+    }
 }

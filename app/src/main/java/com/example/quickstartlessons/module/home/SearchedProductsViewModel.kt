@@ -22,9 +22,9 @@ class SearchedProductsViewModel(private val repo: Repository) : BaseObservableVi
     val searchedProductErrorLiveData: LiveData<String?>
         get() = _searchedProductErrorLiveData
 
-    fun getSearchedProductsByName(isShowLoader: Boolean = false, name: String) {
+    fun search(isShowLoader: Boolean = false, name: String) {
         viewModelScope.launch {
-            repo.getProductsByName(object : ApiResultCallback<ProductsDto?> {
+            repo.search(object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
                     _searchedProductLiveData.value = mapper.listProductsDtoToListProducts(response)
                 }
@@ -35,5 +35,9 @@ class SearchedProductsViewModel(private val repo: Repository) : BaseObservableVi
                 }
             },isShowLoader, name)
         }
+    }
+
+    fun clearValue() {
+        _searchedProductLiveData.value = emptyList()
     }
 }

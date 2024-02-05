@@ -11,13 +11,8 @@ import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
-import com.example.quickstartlessons.module.users.data.net.UserDto
-import com.example.quickstartlessons.module.users.data.net.UsersDto
 
 class SplashFragment : BaseFragment() {
-
-    private var currentUserName: String? = null
-    private var currentPassword: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,35 +29,23 @@ class SplashFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViews()
         observeLiveData()
     }
 
-    private fun setupViews() {
-        currentUserName = PreferencesManager.getCurrentUserName()
-        currentPassword = PreferencesManager.getCurrentPassword()
-    }
-
     private fun observeLiveData() {
-        (requireActivity() as SplashActivity).viewModel.usersLiveData.observe(viewLifecycleOwner) {
-            if (it != null){
-                if (checkUser(it) != null){
-                    QSApplication.userLiveData.value = checkUser(it)
+        (requireActivity() as SplashActivity).viewModel.usersLiveData.observe(viewLifecycleOwner) { users ->
+            if (users != null) {
+                val user = users.users.find { user ->
+                    user.userName == PreferencesManager.getCurrentUserName() && user.password == PreferencesManager.getCurrentPassword()
+                }
+
+                user?.let {
+                    QSApplication.userLiveData.value = it
                     startActivity(Intent(requireActivity(), MainActivity::class.java))
-                } else {
+                } ?: run {
                     findNavController().navigate(R.id.action_global_signInFragment)
                 }
             }
         }
-    }
-
-    private fun checkUser(users: UsersDto): UserDto? {
-        if (currentUserName == null && currentPassword == null) return null
-        for (user in users.users){
-            if (user.userName == currentUserName && user.password == currentPassword){
-                return user
-            }
-        }
-        return null
     }
 }

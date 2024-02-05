@@ -10,7 +10,7 @@ import com.example.quickstartlessons.module.users.data.net.UsersDto
 interface Repository {
 
 
-    suspend fun getProductsByName(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String)
+    suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String)
     suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
 
     suspend fun getProductById(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id: Int)
@@ -26,9 +26,9 @@ interface Repository {
 
 class ProductsRepositoryImplementation(private val dataSource: DataSource) : Repository {
 
-    override suspend fun getProductsByName(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String) {
+    override suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String) {
         getHttpResponse(resultCallback, isShowLoader){
-            dataSource.getProductsByName(name)
+            dataSource.search(name)
         }
     }
 

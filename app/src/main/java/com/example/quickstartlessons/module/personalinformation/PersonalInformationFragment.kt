@@ -30,12 +30,12 @@ class PersonalInformationFragment : Fragment() {
         QSApplication.userLiveData.observe(viewLifecycleOwner) {
             val user = it
             with(binding){
-                userNameTv.text = user.firstName
-                userLastNameTv.text = user.lastName
-                userAgeTv.text = user.age.toString()
-                userGenderTv.text = user.gender
-                userBirthDayTv.text = user.birthDate
-                userPhoneTv.text = user.phone
+                userNameTv.text = user?.firstName
+                userLastNameTv.text = user?.lastName
+                userAgeTv.text = user?.age.toString()
+                userGenderTv.text = user?.gender
+                userBirthDayTv.text = user?.birthDate
+                userPhoneTv.text = user?.phone
                 personalInformationTV.setOnClickListener {
                     findNavController().popBackStack()
                 }

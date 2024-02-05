@@ -10,8 +10,8 @@ import retrofit2.http.Query
 
 interface DataSource {
 
-    @GET("products")
-    suspend fun getProductsByName(@Query("q") name: String) : Response<ProductsDto?>
+    @GET("products/search")
+    suspend fun search(@Query("q") name: String) : Response<ProductsDto?>
 
     @GET("users")
     suspend fun getUsers(): Response<UsersDto?>

@@ -22,6 +22,7 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.module.launch.SplashActivity
 import com.google.android.material.tabs.TabLayout
 import java.util.Calendar
 
@@ -42,6 +43,9 @@ val Fragment.homeActivity: MainActivity?
 fun Fragment.requireHomeActivity(): MainActivity {
     return requireActivity() as MainActivity
 }
+
+val Fragment.splashActivity: SplashActivity?
+    get() = activity as? SplashActivity
 
 fun Spinner.onItemSelected(
     onNothingSelected: (AdapterView<*>?) -> Unit = {},

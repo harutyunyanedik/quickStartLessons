@@ -12,9 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity() {
 
-
     val viewModel : UsersViewModel by viewModel()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

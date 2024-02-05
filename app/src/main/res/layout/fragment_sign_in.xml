@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
-            android:textColor="@color/material_dynamic_neutral_variant20"
+            android:textColor="@color/black"
             android:textSize="@dimen/_20sp"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:gravity="center_vertical"
-            android:textColorHint="@color/material_dynamic_neutral20"
+            android:textColorHint="@color/black"
             android:hint="@string/email_username"
             app:layout_constraintTop_toBottomOf="@id/signInTextView">
 
@@ -46,10 +46,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="start"
+                android:text="atuny0"
                 android:textColor="@color/black"
                 android:inputType="textEmailAddress"
                 android:textAlignment="viewStart"
-                android:textColorHint="@color/material_dynamic_neutral20" />
+                android:textColorHint="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -60,7 +61,7 @@
             android:layout_marginTop="@dimen/_8dp"
             android:gravity="center_vertical"
             android:hint="@string/password"
-            android:textColorHint="@color/material_dynamic_neutral20"
+            android:textColorHint="@color/black"
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,9 +74,10 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
                 android:gravity="start"
+                android:text="9uQFF1Lh"
                 android:inputType="textPassword"
                 android:textAlignment="viewStart"
-                android:textColorHint="@color/material_dynamic_neutral20" />
+                android:textColorHint="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +89,7 @@
             android:button="@drawable/check_box_selector"
             android:padding="@dimen/_8dp"
             android:text="@string/remember_me"
-            android:textColor="@color/material_dynamic_neutral20"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
@@ -109,7 +111,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:text="@string/forgot_your_password"
-            android:textColor="@color/material_dynamic_neutral20"
+            android:textColor="@color/black"
             android:textSize="@dimen/_20sp"
             app:layout_constraintTop_toBottomOf="@id/signInButton" />
 

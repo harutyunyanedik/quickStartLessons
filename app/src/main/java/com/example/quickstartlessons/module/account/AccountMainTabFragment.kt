@@ -31,15 +31,17 @@ class AccountMainTabFragment : BaseFragment() {
 
     private fun setupViews() {
         QSApplication.userLiveData.observe(viewLifecycleOwner) {
-            val user = userMapper.userDtoToUser(it)
-            with(binding) {
-                Glide.with(requireContext()).load(user.image).into(profileImage)
-                textViewName.text = "${user.name} ${user.lastName}"
-                textViewMail.text = user.email
-                personalInformation.setOnClickListener {
-                    findNavController().navigate(
-                        AccountMainTabFragmentDirections.actionPersonalInformationFragment()
-                    )
+            it?.let { _user ->
+                val user = userMapper.userDtoToUser(it)
+                with(binding) {
+                    Glide.with(requireContext()).load(user.image).into(profileImage)
+                    textViewName.text = "${user.name} ${user.lastName}"
+                    textViewMail.text = user.email
+                    personalInformation.setOnClickListener {
+                        findNavController().navigate(
+                            AccountMainTabFragmentDirections.actionPersonalInformationFragment()
+                        )
+                    }
                 }
             }
         }
