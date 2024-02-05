@@ -64,4 +64,5 @@
     <string name="search">search</string>
     <string name="no_search_result">No search result</string>
     <string name="no_user">User is not found</string>
+    <string name="favorite_products">Favorite products</string>
 </resources>

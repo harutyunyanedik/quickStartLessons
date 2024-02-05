@@ -56,6 +56,7 @@
     <string name="search">որոնել</string>
     <string name="no_search_result">Արդյունք չկա</string>
     <string name="no_user">User is not found</string>
+    <string name="favorite_products">Նախընտրելի պրոդուկտներ</string>
 
 
 </resources>
