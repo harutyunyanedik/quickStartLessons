@@ -62,7 +62,7 @@ class SearchFragment : BaseFragment() {
     private fun observeLiveData() {
         viewModel.searchedProductsLiveData.observe(viewLifecycleOwner) {
             productsAdapter.updateData(it)
-            binding.noResultTV.isVisible = it == null
+            binding.noResultTV.isVisible = it ==null
         }
     }
 

@@ -32,5 +32,5 @@ interface ProductDataSource {
     suspend fun getProductsByCategory(@Path("categoryName") name: String): Response<ProductsDto>
 
     @GET("products")
-    suspend fun getProductsByName(@Query("q") name: String) : Response<ProductsDto?>
+    suspend fun getProductsByName(@Query(" ") name: String) : Response<ProductsDto?>
 }

@@ -35,7 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_margin="@dimen/_16dp"
-            android:src="@drawable/ic_search_white"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/products"
+            tools:ignore="MissingConstraints" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCategories"
