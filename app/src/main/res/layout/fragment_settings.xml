@@ -39,7 +39,7 @@
             android:drawablePadding="@dimen/_8dp"
             android:text="@string/app_language"
             android:textColor="@color/black"
-            android:textSize="@dimen/_24sp"
+            android:textSize="@dimen/_20sp"
             app:drawableStartCompat="@drawable/language"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolBar" />
@@ -53,7 +53,7 @@
             android:padding="@dimen/_16dp"
             android:text="@string/sign_out"
             android:textColor="@color/black"
-            android:textSize="@dimen/_24sp"
+            android:textSize="@dimen/_20sp"
             app:drawableStartCompat="@drawable/ic_logout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appLanguage" />
