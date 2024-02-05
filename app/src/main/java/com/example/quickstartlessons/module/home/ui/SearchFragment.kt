@@ -14,6 +14,7 @@ import com.example.quickstartlessons.databinding.FragmentSearchBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.adapters.ProductsAdapter
 import com.example.quickstartlessons.module.products.details.ProductDetailsFragmentDirections
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.android.ext.android.inject
 
 
