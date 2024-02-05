@@ -55,14 +55,20 @@ class SearchFragment : BaseFragment() {
             findNavController().popBackStack()
         }
         binding.editTextSearch.doAfterTextChanged {
-            viewModel.getSearchedProductsByName(name=it.toString())
+            it?.length?.let {  _length ->
+                if (_length > 2) {
+                    viewModel.getSearchedProductsByName(name = toString())
+                } else {
+                    viewModel.clearValue()
+                }
+            }
         }
     }
 
     private fun observeLiveData() {
         viewModel.searchedProductsLiveData.observe(viewLifecycleOwner) {
             productsAdapter.updateData(it)
-            binding.noResultTV.isVisible = it ==null
+            binding.noResultTV.isVisible = it.isNullOrEmpty()
         }
     }
 

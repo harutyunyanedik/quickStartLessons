@@ -1,6 +1,7 @@
 package com.example.quickstartlessons.core.net
 
 import com.example.quickstartlessons.module.account.users.data.UsersDto
+import com.example.quickstartlessons.module.posts.data.PostDto
 import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.module.products.data.ProductsDto
 import retrofit2.Call
@@ -10,6 +11,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ProductDataSource {
+    @GET("posts")
+    suspend fun getPosts():Response<PostDto>
     @GET("users")
     suspend fun getUsers(): Response<UsersDto?>
 
@@ -31,6 +34,6 @@ interface ProductDataSource {
     @GET("products/category/{categoryName}")
     suspend fun getProductsByCategory(@Path("categoryName") name: String): Response<ProductsDto>
 
-    @GET("products")
-    suspend fun getProductsByName(@Query(" ") name: String) : Response<ProductsDto?>
+    @GET("products/search")
+    suspend fun search(@Query("q") name: String) : Response<ProductsDto?>
 }

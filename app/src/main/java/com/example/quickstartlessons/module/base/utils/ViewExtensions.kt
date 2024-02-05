@@ -5,8 +5,6 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.SparseArray
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +20,7 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.example.quickstartlessons.MainActivity
+import com.example.quickstartlessons.module.launch.SplashActivity
 import com.google.android.material.tabs.TabLayout
 import java.util.Calendar
 
@@ -38,6 +37,9 @@ val Fragment.intent: Intent
 
 val Fragment.homeActivity: MainActivity?
     get() = activity as? MainActivity
+
+val Fragment.splashActivity: SplashActivity?
+    get() = activity as? SplashActivity
 
 fun Fragment.requireHomeActivity(): MainActivity {
     return requireActivity() as MainActivity

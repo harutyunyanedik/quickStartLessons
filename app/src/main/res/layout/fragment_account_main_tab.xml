@@ -59,13 +59,13 @@
             app:layout_constraintTop_toBottomOf="@id/userName" />
 
         <TextView
-            android:id="@+id/notificationIcon"
+            android:id="@+id/postsIcon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16dp"
             android:drawableStart="@drawable/ic_notification_unchecked"
             android:padding="@dimen/_8dp"
-            android:text="@string/notifications"
+            android:text="@string/posts"
             android:textColor="@color/black"
             android:textSize="@dimen/_24sp"
             android:textStyle="bold"
@@ -85,7 +85,7 @@
             android:textSize="@dimen/_24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/notificationIcon"
+            app:layout_constraintTop_toBottomOf="@id/postsIcon"
             tools:ignore="UseCompatTextViewDrawableXml" />
 
         <TextView

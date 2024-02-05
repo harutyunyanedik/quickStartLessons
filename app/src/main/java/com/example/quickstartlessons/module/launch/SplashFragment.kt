@@ -9,8 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
-import com.example.quickstartlessons.module.account.users.data.UserDto
-import com.example.quickstartlessons.module.account.users.data.UsersDto
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 
@@ -43,25 +41,19 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun observeLiveData() {
-        (requireActivity() as SplashActivity).viewModel.usersLiveData.observe(viewLifecycleOwner) {
-            if (it != null){
-                if (checkUser(it) != null){
-                    QSApplication.usersLiveData.value = checkUser(it)
+        (requireActivity() as SplashActivity).viewModel.usersLiveData.observe(viewLifecycleOwner) { users ->
+            if (users != null) {
+                val user = users.users.find { user ->
+                    user.userName == PreferencesManager.getCurrentUserName() && user.password == PreferencesManager.getCurrentPassword()
+                }
+
+                user?.let {
+                    QSApplication.usersLiveData.value = it
                     startActivity(Intent(requireActivity(), MainActivity::class.java))
-                } else {
+                } ?: run {
                     findNavController().navigate(R.id.action_global_signInFragment)
                 }
             }
         }
-    }
-
-    private fun checkUser(users: UsersDto): UserDto? {
-        if (currentUserName == null && currentPassword == null) return null
-        for (user in users.users){
-            if (user.userName == currentUserName && user.password == currentPassword){
-                return user
-            }
-        }
-        return null
     }
 }

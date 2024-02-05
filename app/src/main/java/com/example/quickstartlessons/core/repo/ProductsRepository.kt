@@ -5,11 +5,14 @@ import com.example.quickstartlessons.module.products.data.ProductDto
 import com.example.quickstartlessons.core.getHttpResponse
 import com.example.quickstartlessons.core.net.ProductDataSource
 import com.example.quickstartlessons.module.account.users.data.UsersDto
+import com.example.quickstartlessons.module.posts.data.PostDto
 import com.example.quickstartlessons.module.products.data.ProductsDto
 import retrofit2.Call
 
 
 interface ProductsRepository {
+
+    suspend fun getPosts(resultCallback: ApiResultCallback<PostDto?>, isShowLoader: Boolean)
 
     suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
     fun getProductsV1(): Call<ProductsDto>
@@ -24,10 +27,16 @@ interface ProductsRepository {
 
     suspend fun getProductsByCategory(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, category: String)
 
-    suspend fun getProductsByName(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String)
+    suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String)
 }
 
 class ProductsRepositoryImplementation(private val productDataSource: ProductDataSource) : ProductsRepository {
+    override suspend fun getPosts(resultCallback: ApiResultCallback<PostDto?>, isShowLoader: Boolean) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            productDataSource.getPosts()
+        }
+    }
+
     override suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean) {
         getHttpResponse(resultCallback, isShowLoader) {
             productDataSource.getUsers()
@@ -63,9 +72,9 @@ class ProductsRepositoryImplementation(private val productDataSource: ProductDat
         }
     }
 
-    override suspend fun getProductsByName(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String) {
-        getHttpResponse(resultCallback, isShowLoader){
-            productDataSource.getProductsByName(name)
+    override suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            productDataSource.search(name)
         }
     }
 }

@@ -14,6 +14,7 @@ import com.example.quickstartlessons.module.account.users.data.UserDto
 import com.example.quickstartlessons.module.account.users.data.UsersDto
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
+import com.example.quickstartlessons.module.base.utils.splashActivity
 import com.example.quickstartlessons.module.launch.SplashActivity
 
 class SignInFragment : BaseFragment() {
@@ -47,8 +48,9 @@ class SignInFragment : BaseFragment() {
             findNavController().navigate(SignInFragmentDirections.actionGlobalResetPasswordFragment())
         }
         binding.signInButton.setOnClickListener {
-            if (validate()){
+            if (validate()) {
                 startActivity(Intent(requireActivity(), MainActivity::class.java))
+                splashActivity?.finish()
             }
         }
     }
@@ -63,6 +65,7 @@ class SignInFragment : BaseFragment() {
                 binding.passwordInputLayout.error = getString(R.string.field_required)
                 return false
             }
+
             checkUser(email, password) != null && binding.rememberMeCheckbox.isChecked -> {
                 PreferencesManager.putCurrentUserName(email)
                 PreferencesManager.putCurrentPassword(password)
@@ -85,16 +88,8 @@ class SignInFragment : BaseFragment() {
         }
         return false
     }
-    private fun checkUser(email: String, password: String): UserDto? {
-        users?.let {
-            for (user in it.users) {
-                if (email == user.userName && password == user.password){
-                    return user
-                }
-            }
-            return null
-        }
-        return null
-    }
 
+    private fun checkUser(email: String, password: String): UserDto? = splashActivity?.viewModel?.usersLiveData?.value?.users?.find {
+        it.userName == email && it.password == password
+    }
 }

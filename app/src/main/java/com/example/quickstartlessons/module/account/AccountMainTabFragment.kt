@@ -30,24 +30,30 @@ class AccountMainTabFragment : BaseFragment() {
     @SuppressLint("SetTextI18n")
     private fun setUpViews() {
         QSApplication.usersLiveData.observe(viewLifecycleOwner) {
-            val user = it.userDtoToUser(it)
-            with(binding) {
-                Glide.with(requireContext()).load(user.image).into(userImage)
-                userName.text = "${user.name} ${user.lastName}"
-                email.text = user.email
-                personalInformation.setOnClickListener {
-                    findNavController().navigate(
-                        AccountMainTabFragmentDirections.actionPersonalInformationFragment()
-                    )
+            it?.let { _user ->
+                val user = it.userDtoToUser(it)
+                with(binding) {
+                    Glide.with(requireContext()).load(user.image).into(userImage)
+                    userName.text = "${user.name} ${user.lastName}"
+                    email.text = user.email
+                    personalInformation.setOnClickListener {
+                        findNavController().navigate(
+                            AccountMainTabFragmentDirections.actionPersonalInformationFragment()
+                        )
+                    }
                 }
             }
+
+            binding.settingsIcon.setOnClickListener {
+                findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
+
+
+            }
+
+            binding.postsIcon.setOnClickListener {
+                findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPostsFragment())
+            }
+
         }
-
-        binding.settingsIcon.setOnClickListener {
-            findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
-
-
-        }
-
     }
 }

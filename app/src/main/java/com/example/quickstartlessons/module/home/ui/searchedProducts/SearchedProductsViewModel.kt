@@ -22,7 +22,7 @@ class SearchedProductsViewModel(private val repo: ProductsRepository) : BaseObse
 
     fun getSearchedProductsByName(isShowLoader: Boolean = false, name: String) {
         viewModelScope.launch {
-            repo.getProductsByName(object : ApiResultCallback<ProductsDto?> {
+            repo.search(object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
                     _searchedProductLiveData.value = response?.products
                 }
@@ -34,4 +34,8 @@ class SearchedProductsViewModel(private val repo: ProductsRepository) : BaseObse
             },isShowLoader, name)
         }
     }
+    fun clearValue() {
+        _searchedProductLiveData.value = emptyList()
+    }
+
 }

@@ -9,8 +9,10 @@ object PreferencesManager {
     fun getCurrentLanguage() = Prefs.getString(PREF_KEY_CURRENT_LANGUAGE, "en") ?: "en"
 
     fun putCurrentUserName(userName: String?) = Prefs.put(PREF_KEY_CURRENT_USERNAME, userName)
-    fun putCurrentPassword(password: String?) = Prefs.put(PREF_KEY_CURRENT_PASSWORD, password)
     fun getCurrentUserName() = Prefs.getString(PREF_KEY_CURRENT_USERNAME, null)
-    fun getCurrentPassword() = Prefs.getString(PREF_KEY_CURRENT_PASSWORD, null)
+    fun removeCurrentUserName() = Prefs.remove(PREF_KEY_CURRENT_USERNAME)
 
+    fun putCurrentPassword(password: String?) = Prefs.put(PREF_KEY_CURRENT_PASSWORD, password)
+    fun getCurrentPassword() = Prefs.getString(PREF_KEY_CURRENT_PASSWORD, null)
+    fun removeCurrentPassword() = Prefs.remove(PREF_KEY_CURRENT_PASSWORD)
 }
