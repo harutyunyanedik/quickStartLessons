@@ -30,4 +30,5 @@
     <dimen name="_250dp">250dp</dimen>
     <dimen name="_10dp">10dp</dimen>
     <dimen name="_300dp">300dp</dimen>
+    <dimen name="_70dp">70dp</dimen>
 </resources>

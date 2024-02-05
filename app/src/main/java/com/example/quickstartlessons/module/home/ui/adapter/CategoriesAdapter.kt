@@ -67,7 +67,7 @@ class CategoriesAdapter(private val onItemClick: (String) -> Unit) : RecyclerVie
             val color = if (isSelected == adapterPosition) {
                 R.color.purple_200
             } else {
-                R.color.white
+                R.color.color_1_40
             }
             binding.constraintByCategory.background = ContextCompat.getDrawable(context, color)
         }

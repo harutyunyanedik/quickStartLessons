@@ -4,7 +4,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewCategories"
-        android:layout_width="@dimen/_205dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_3dp"
@@ -14,7 +14,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintByCategory"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_80dp"
+            android:layout_height="@dimen/_70dp"
             android:text="@string/products"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
