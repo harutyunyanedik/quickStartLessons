@@ -57,7 +57,7 @@ class SearchFragment : BaseFragment() {
         binding.editTextSearch.doAfterTextChanged {
             it?.length?.let {  _length ->
                 if (_length > 2) {
-                    viewModel.getSearchedProductsByName(name = toString())
+                    viewModel.search(name = toString())
                 } else {
                     viewModel.clearValue()
                 }

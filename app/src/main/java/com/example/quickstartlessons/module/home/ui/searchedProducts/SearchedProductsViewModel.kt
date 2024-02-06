@@ -20,7 +20,7 @@ class SearchedProductsViewModel(private val repo: ProductsRepository) : BaseObse
     val searchedProductErrorLiveData: LiveData<String?>
         get() = _searchedProductErrorLiveData
 
-    fun getSearchedProductsByName(isShowLoader: Boolean = false, name: String) {
+    fun search(isShowLoader: Boolean = false, name: String) {
         viewModelScope.launch {
             repo.search(object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {

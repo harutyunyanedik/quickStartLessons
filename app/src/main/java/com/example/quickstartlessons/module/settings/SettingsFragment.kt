@@ -1,15 +1,18 @@
 package com.example.quickstartlessons.module.settings
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
+import com.example.quickstartlessons.module.base.utils.homeActivity
+import com.example.quickstartlessons.module.launch.SplashActivity
+import com.example.quickstartlessons.module.signin.signout.SignOutBottomSheetDialogFragment
 
 class SettingsFragment : Fragment() {
 
@@ -38,9 +41,15 @@ class SettingsFragment : Fragment() {
         }
 
         binding.signOut.setOnClickListener {
-            PreferencesManager.putCurrentUserName(null)
-            PreferencesManager.putCurrentPassword(null)
-            findNavController().navigate(R.id.action_global_signInFragment)
+            val bottomSheetDialog = SignOutBottomSheetDialogFragment {
+                if (it) {
+                    PreferencesManager.removeCurrentPassword()
+                    PreferencesManager.removeCurrentUserName()
+                    startActivity(Intent(requireContext(), SplashActivity::class.java))
+                    homeActivity?.finish()
+                }
+            }
+            bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
         }
     }
 }
