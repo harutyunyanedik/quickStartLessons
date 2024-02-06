@@ -19,14 +19,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageViewSearchBack"
+                android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:src="@drawable/ic_back" />
 
             <EditText
-                android:id="@+id/editTextSearch"
+                android:id="@+id/searchText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8dp"

@@ -43,15 +43,11 @@ class AccountMainTabFragment : BaseFragment() {
                     }
                 }
             }
-
             binding.settingsIcon.setOnClickListener {
                 findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
-
-
             }
-
             binding.postsIcon.setOnClickListener {
-                findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPostsFragment())
+                findNavController().navigate(AccountMainTabFragmentDirections.actionPostsFragment())
             }
 
         }

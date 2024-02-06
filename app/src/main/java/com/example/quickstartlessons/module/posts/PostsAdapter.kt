@@ -31,10 +31,10 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.BaseViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(list: List<PostDto>) {
+    fun updateData(list: PostDto) {
         items.clear()
         list.let {
-            items.addAll(list)
+            items.addAll(listOf(it))
         }
         notifyDataSetChanged()
 
@@ -46,10 +46,8 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.BaseViewHolder>() {
 
     inner class PostsViewHolder(private val binding: ItemPostBinding) : BaseViewHolder(binding.root) {
         override fun bind(item: PostDto) {
-            binding.postsId.text = item.id.toString()
+            binding.postsId.text = item.body
             binding.postsDescription.text = item.description
-
         }
-
     }
 }

@@ -108,7 +108,7 @@
         android:id="@+id/postsFragment"
         android:name="com.example.quickstartlessons.module.posts.PostsFragment"
         android:label="PostsFragment" />
-    <action android:id="@+id/action_global_postsFragment"
+    <action android:id="@+id/action_postsFragment"
         app:destination="@id/postsFragment"/>
 
 </navigation>

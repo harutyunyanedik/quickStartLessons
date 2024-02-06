@@ -62,7 +62,7 @@
             android:id="@+id/postsIcon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginTop="12dp"
             android:drawableStart="@drawable/ic_notification_unchecked"
             android:padding="@dimen/_8dp"
             android:text="@string/posts"
@@ -70,8 +70,7 @@
             android:textSize="@dimen/_24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userImage"
-            tools:ignore="UseCompatTextViewDrawableXml" />
+            app:layout_constraintTop_toBottomOf="@id/userImage" />
 
         <TextView
             android:id="@+id/settingsIcon"

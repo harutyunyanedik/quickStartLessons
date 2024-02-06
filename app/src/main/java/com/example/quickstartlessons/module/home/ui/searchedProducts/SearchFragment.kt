@@ -51,10 +51,10 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun setupListeners() {
-        binding.imageViewSearchBack.setOnClickListener {
+        binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.editTextSearch.doAfterTextChanged {
+        binding.searchText.doAfterTextChanged {
             it?.length?.let {  _length ->
                 if (_length > 2) {
                     viewModel.search(name = toString())

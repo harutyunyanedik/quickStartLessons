@@ -10,20 +10,19 @@ import com.example.quickstartlessons.module.posts.data.PostDto
 import kotlinx.coroutines.launch
 
 class PostsViewModel(private val repository: ProductsRepository) : BaseObservableViewModel() {
-    private val _postsLiveData = MutableLiveData<List<PostDto?>>()
-    val postsLiveData: LiveData<List<PostDto?>>
+    private val _postsLiveData = MutableLiveData<PostDto?>()
+    val postsLiveData: LiveData<PostDto?>
         get() = _postsLiveData
 
     private val _postsErrorLiveData: MutableLiveData<String?> = MutableLiveData()
     val postsErrorLiveData: LiveData<String?>
         get() = _postsErrorLiveData
 
-    fun getProducts(isShowLoader: Boolean = true) {
+    fun getPosts(isShowLoader: Boolean = true) {
         viewModelScope.launch {
             repository.getPosts((object : ApiResultCallback<PostDto?> {
                 override fun onSuccess(response: PostDto?) {
-                    _postsLiveData.value = listOf(response)
-
+                    _postsLiveData.value = response
                 }
 
                 override fun onError(): Boolean {

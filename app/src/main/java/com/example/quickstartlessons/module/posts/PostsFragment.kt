@@ -14,6 +14,7 @@ class PostsFragment : BaseFragment() {
     private lateinit var adapter: PostsAdapter
     private val viewModel by viewModel<PostsViewModel>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +25,7 @@ class PostsFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getProducts()
+        viewModel.getPosts()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,7 +42,9 @@ class PostsFragment : BaseFragment() {
 
     private fun observeLivedata() {
         viewModel.postsLiveData.observe(viewLifecycleOwner) {
-            adapter.updateData(listOf())
+            if (it != null) {
+                adapter.updateData(it)
+            }
         }
         viewModel.postsErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog("Error Dialog", it ?: "Unknown error")

@@ -44,8 +44,6 @@
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:gravity="start"
                 android:inputType="textEmailAddress"
                 android:textAlignment="viewStart"
@@ -98,8 +96,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
             android:background="@drawable/button_selector"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:text="@string/sign_in"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/rememberMeCheckbox" />
