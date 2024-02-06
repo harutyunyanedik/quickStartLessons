@@ -55,23 +55,24 @@ class SignInFragment : BaseFragment() {
             isValidEmail(userName) && isValidPassword(password) -> {
                 val users = splashActivity?.viewModel?.usersLiveData?.value?.users
 
-                val user = users?.find { it ->
-                    if (it.username == userName && it.password == password && binding.rememberMeCheckbox.isChecked) {
-                        QSApplication.userProfileLiveData.value = it
+                val user = users?.find {
+                    it.username == userName && it.password == password
+                }
+                user?.let {
+                    if (binding.rememberMeCheckbox.isChecked) {
                         PreferencesManager.putUserPassword(it.password)
                         PreferencesManager.putUserName(it.username)
-                        startActivity(Intent(requireContext(), MainActivity::class.java))
-                    }
-                    if (it.username == userName && it.password == password){
                         QSApplication.userProfileLiveData.value = it
+                        startActivity(Intent(requireContext(), MainActivity::class.java))
+                    } else
+
+                        !binding.rememberMeCheckbox.isChecked
+                    QSApplication.userProfileLiveData.value = it
                     startActivity(Intent(requireContext(), MainActivity::class.java))
-                }else
-                       Toast.makeText(requireContext(),getString(R.string.no_user),Toast.LENGTH_SHORT).show()
-                    return
+
+
+                }
             }
-
-        }
-
 
             !isValidEmail(userName) && !isValidPassword(password) -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)

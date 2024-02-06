@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.core.net.repository
 
+import com.example.quickstartlessons.core.data.PostsDto
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.ProductDataSource
 import com.example.quickstartlessons.module.product.data.model.response.ProductsDto
@@ -14,8 +15,8 @@ interface Repository {
     suspend fun getProductByCategory(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, id:String)
     suspend fun getProductById(resultCallback: ApiResultCallback<ProductDto?>, isShowLoader: Boolean, id:Int)
     suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
-    suspend fun getSearchProduct(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean)
-
+    suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean,name:String)
+    suspend fun posts(resultCallback: ApiResultCallback<PostsDto?>, isShowLoader: Boolean)
 }
 
 class RepositoryImplementation(private val dataSource: ProductDataSource) : Repository {
@@ -49,10 +50,15 @@ class RepositoryImplementation(private val dataSource: ProductDataSource) : Repo
         }
     }
 
-    override suspend fun getSearchProduct(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean) {
-        getHttpResponse(resultCallback, isShowLoader) {
-            dataSource.getSearchProduct()
+    override suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String) {
+       getHttpResponse(resultCallback, isShowLoader){
+           dataSource.getSearchProduct(name)
+       }
     }
-}
 
+    override suspend fun posts(resultCallback: ApiResultCallback<PostsDto?>, isShowLoader: Boolean) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            dataSource.getUserPosts()
+        }
+    }
 }

@@ -28,7 +28,9 @@ class AccountMainTabFragment : BaseFragment() {
             findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalSettingsFragment())
         }
         observeLiveData()
-
+       binding.posts.setOnClickListener{
+           findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPostFragment())
+       }
     }
 
     @SuppressLint("SetTextI18n")

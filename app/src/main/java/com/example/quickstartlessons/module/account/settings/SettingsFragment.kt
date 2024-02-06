@@ -1,6 +1,7 @@
 package com.example.quickstartlessons.module.account.settings
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.R
 
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
+import com.example.quickstartlessons.module.base.utils.PreferencesManager
+import com.example.quickstartlessons.module.launch.SplashActivity
 
 
 class SettingsFragment : Fragment() {
@@ -49,6 +52,9 @@ class SettingsFragment : Fragment() {
 
                 .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
                     dialog.dismiss()
+                    startActivity(Intent(requireContext(),SplashActivity::class.java))
+                    PreferencesManager.removePassword()
+                    PreferencesManager.removeUserName()
                   requireActivity().finish()
                 }
                 .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->

@@ -23,15 +23,26 @@
                 android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white_10"
                 android:drawableStart="@drawable/ic_search"
-                style="@style/TextInputEditText"
                 android:gravity="start"
-                android:background="@color/color_1_19"
                 android:hint="@string/search"
                 android:padding="@dimen/_8dp"
                 android:textSize="@dimen/_16sp"
+                android:textColor="@color/black"
                 tools:ignore="MissingConstraints" />
         </androidx.appcompat.widget.Toolbar>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
+            />
 
         <TextView
             android:id="@+id/textView"
@@ -44,17 +55,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchEditText"
-            tools:listitem="@layout/item_product_data" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

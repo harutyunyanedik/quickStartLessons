@@ -82,18 +82,18 @@
             android:textColor="@color/color_black"
             android:textSize="@dimen/_20sp"
             app:drawableStartCompat="@drawable/ic_account_image"
-            app:layout_constraintBottom_toTopOf="@id/notification"
+            app:layout_constraintBottom_toTopOf="@id/posts"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_image"
             tools:ignore="MissingConstraints,SpUsage" />
         <TextView
-            android:id="@+id/notification"
+            android:id="@+id/posts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16dp"
             android:layout_marginTop="@dimen/_16dp"
             android:drawablePadding="@dimen/_8dp"
-            android:text="@string/Notification"
+            android:text="@string/post"
             android:textColor="@color/color_black"
             android:textSize="@dimen/_20sp"
             app:drawableStartCompat="@drawable/ic_notifications"
@@ -115,7 +115,7 @@
             android:textSize="@dimen/_20sp"
             app:drawableStartCompat="@drawable/ic_setting"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/notification"
+            app:layout_constraintTop_toBottomOf="@id/posts"
             tools:ignore="MissingConstraints,SpUsage">
 
         </TextView>

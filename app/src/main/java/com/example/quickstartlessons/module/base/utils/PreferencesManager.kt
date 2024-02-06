@@ -15,4 +15,7 @@ object PreferencesManager {
 
     fun putUserPassword(password: String) = Prefs.put(PREF_USER_PASSWORD, password)
     fun getUserPassword() = Prefs.getString(PREF_USER_PASSWORD)
+
+    fun removeUserName() = Prefs.remove(PREF_USER_NAME)
+    fun removePassword() = Prefs.remove(PREF_USER_PASSWORD)
 }

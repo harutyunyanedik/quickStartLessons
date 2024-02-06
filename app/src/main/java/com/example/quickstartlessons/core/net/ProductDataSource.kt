@@ -1,11 +1,13 @@
 package com.example.quickstartlessons.core.net
 
+import com.example.quickstartlessons.core.data.PostsDto
 import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.module.product.data.model.response.ProductsDto
 import com.example.quickstartlessons.core.data.UsersDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ProductDataSource {
     @GET("products")
@@ -23,8 +25,10 @@ interface ProductDataSource {
     @GET("users")
     suspend fun getAllUsers(): Response<UsersDto>
 
-    @GET("products/search?q=Laptop")
-    suspend fun getSearchProduct(): Response<ProductsDto>
+    @GET("products/search")
+    suspend fun getSearchProduct(@Query("q")name :String): Response<ProductsDto>
 
+    @GET("posts")
+    suspend fun getUserPosts(): Response<PostsDto>
 
 }

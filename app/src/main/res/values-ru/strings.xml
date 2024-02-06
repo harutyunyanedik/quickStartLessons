@@ -22,7 +22,7 @@
     <string name="email">Эл. почта</string>
     <string name="sample_email_com">sample@email.com</string>
     <string name="helper_text">jjjj</string>
-    <string name="invalid_password">Неверный пароль! Пароль должно быть больше 6 символов!</string>
+    <string name="invalid_password">Неверный пароль! </string>
     <string name="invalid_email">Invalid or empty Email address or username</string>
     <string name="field_required">The field is required</string>
     <string name="products">Products</string>
@@ -57,4 +57,5 @@
     <string name="no_search_result">No search result</string>
     <string name="no_user">User is not found</string>
     <string name="favorite_products">Favorite products</string>
+    <string name="post">Post</string>
 </resources>
