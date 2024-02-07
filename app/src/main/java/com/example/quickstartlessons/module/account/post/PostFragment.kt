@@ -18,7 +18,7 @@ class PostFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.post()
+       // viewModel.post()
     }
 
     override fun onCreateView(

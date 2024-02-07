@@ -55,14 +55,14 @@ class SearchFragment : Fragment() {
 
     private fun setupListener() {
         binding.toolBar.setOnClickListener {
-            findNavController().navigateUp()
+           findNavController().navigateUp()
         }
         binding.searchEditText.doAfterTextChanged { it ->
-           // if (it != null && it.length > 2) {
+            if (it != null && it.length > 2) {
                 viewModel.search(true, it.toString())
-           // } else {
-             //   viewModel.clearValue()
-           // }
+           } else {
+                viewModel.clearValue()
+            }
         }
     }
 
