@@ -29,7 +29,7 @@ internal val appModule = module {
         viewModel { SearchViewModel(get()) }
     }
 
-        scope(named<PostFragment>()) {
-            viewModel { PostViewModel(get()) }
-        }
+    scope(named<PostFragment>()) {
+        viewModel { PostViewModel(get()) }
     }
+}

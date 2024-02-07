@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentPostBinding
-import com.example.quickstartlessons.module.home.ui.serch.SearchViewModel
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PostFragment : Fragment() {
@@ -20,11 +20,12 @@ class PostFragment : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel.post()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentPostBinding.inflate(inflater,container, false)
+        binding = FragmentPostBinding.inflate(inflater, container, false)
         return inflater.inflate(R.layout.fragment_post, container, false)
     }
 
@@ -34,13 +35,18 @@ class PostFragment : Fragment() {
         setupView()
         observe()
     }
+
     private fun setupView() {
-     binding.recyclerView.adapter=adapter
-        binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
-   private fun observe(){
-       viewModel.postLiveData.observe(viewLifecycleOwner){
-           adapter.updateData(it)
-       }
-   }
+
+    private fun observe() {
+        viewModel.postLiveData.observe(viewLifecycleOwner) {
+            adapter.updateData(it)
+        }
+        viewModel.postErrorLiveData.observe(viewLifecycleOwner) {
+            BaseFragment.showErrorMessageDialog(getString(R.string.error_data), it.toString())
+        }
+    }
 }

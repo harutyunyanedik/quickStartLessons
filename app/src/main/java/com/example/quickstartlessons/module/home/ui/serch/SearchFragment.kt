@@ -11,13 +11,24 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quickstartlessons.R
+import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentSearchBinding
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.home.ui.HomeMainTabFragmentDirections
+import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
-    private val adapter = SearchAdapter()
+    private val favoriteManager: FavoriteManager by inject()
+    private val adapter = ProductAdapter(onItemClick = {
+        findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.id.toString()))
+    }, updateFavorite = { isFavorite, product ->
+        if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductById(product)
+    })
     private val viewModel by viewModel<SearchViewModel>()
 
 
@@ -31,9 +42,9 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // setupListener()
-       // setupView()
-       // observerSearch()
+        setupListener()
+        setupView()
+        observerSearch()
     }
 
 
@@ -47,11 +58,11 @@ class SearchFragment : Fragment() {
             findNavController().navigateUp()
         }
         binding.searchEditText.doAfterTextChanged { it ->
-            if (it != null && it.length > 2) {
-                viewModel.search(true,it.toString())
-            }else{
-                viewModel.clearValue()
-            }
+           // if (it != null && it.length > 2) {
+                viewModel.search(true, it.toString())
+           // } else {
+             //   viewModel.clearValue()
+           // }
         }
     }
 
@@ -59,6 +70,9 @@ class SearchFragment : Fragment() {
         viewModel.searchProductLiveData.observe(viewLifecycleOwner) { it ->
             adapter.updateData(it)
             binding.textView.isVisible = it.isNullOrEmpty()
+        }
+        viewModel.searchProductErrorLiveData.observe(viewLifecycleOwner) {
+            BaseFragment.showErrorMessageDialog(getString(R.string.error_data), it.toString())
         }
     }
 }
