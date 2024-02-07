@@ -3,11 +3,11 @@ package com.example.quickstartlessons.module.home.ui.serch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.quickstartlessons.core.data.ProductDto
+import com.example.quickstartlessons.core.data.ProductsDto
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.repository.Repository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
-import com.example.quickstartlessons.module.product.data.model.response.ProductsDto
 import kotlinx.coroutines.launch
 
 class SearchViewModel (private val repository: Repository) : BaseObservableViewModel() {

@@ -8,8 +8,6 @@ import com.example.quickstartlessons.core.data.PostsDto
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.repository.Repository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
-import com.example.quickstartlessons.module.product.data.model.response.ProductsDto
 import kotlinx.coroutines.launch
 
 class PostViewModel(private val repository: Repository) : BaseObservableViewModel() {

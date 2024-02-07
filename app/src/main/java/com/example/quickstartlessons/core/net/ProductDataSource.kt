@@ -1,8 +1,8 @@
 package com.example.quickstartlessons.core.net
 
 import com.example.quickstartlessons.core.data.PostsDto
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
-import com.example.quickstartlessons.module.product.data.model.response.ProductsDto
+import com.example.quickstartlessons.core.data.ProductDto
+import com.example.quickstartlessons.core.data.ProductsDto
 import com.example.quickstartlessons.core.data.UsersDto
 import retrofit2.Response
 import retrofit2.http.GET

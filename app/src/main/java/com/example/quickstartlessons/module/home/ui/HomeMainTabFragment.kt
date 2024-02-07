@@ -21,6 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeMainTabFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeMainTabBinding
     private val favoriteManager: FavoriteManager by inject()
+    private val viewModel by viewModel<HomeMainTabViewModel>()
     private val adapter = ProductAdapter(onItemClick = {
         findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.id.toString()))
     }, updateFavorite = { isFavorite, product ->
@@ -38,12 +39,11 @@ class HomeMainTabFragment : BaseFragment() {
         }
 
     }
-    private val viewModel by viewModel<HomeMainTabViewModel>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         viewModel.getProduct()
         viewModel.getCategories()
     }

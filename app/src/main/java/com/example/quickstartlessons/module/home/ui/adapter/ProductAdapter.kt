@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
+import com.example.quickstartlessons.core.data.ProductDto
 import com.example.quickstartlessons.databinding.ItemProductDataBinding
 
 class ProductAdapter(

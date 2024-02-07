@@ -1,8 +1,8 @@
 package com.example.quickstartlessons.core.room
 
+import com.example.quickstartlessons.core.data.ProductDto
 import com.example.quickstartlessons.core.room.dao.ProductDao
 import com.example.quickstartlessons.core.room.data.ProductEntity
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

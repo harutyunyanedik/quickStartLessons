@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.quickstartlessons.core.data.ProductDto
 import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentFavoriteMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.HomeMainTabFragmentDirections
 import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import org.koin.android.ext.android.inject
 
 
@@ -23,7 +23,7 @@ class FavoriteMainTabFragment : BaseFragment() {
 
     private val adapter = ProductAdapter(onItemClick = {
         findNavController().navigate(HomeMainTabFragmentDirections.actionGlobalProductDetailsFragment(it.id.toString()))
-    }, updateFavorite = { isFavorite, product ->
+    }, updateFavorite = { isFavorite,product->
         if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductById(product)
     })
 

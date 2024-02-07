@@ -1,11 +1,11 @@
 package com.example.quickstartlessons.core.net.repository
 
 import com.example.quickstartlessons.core.data.PostsDto
+import com.example.quickstartlessons.core.data.ProductDto
+import com.example.quickstartlessons.core.data.ProductsDto
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.ProductDataSource
-import com.example.quickstartlessons.module.product.data.model.response.ProductsDto
 import com.example.quickstartlessons.core.net.getHttpResponse
-import com.example.quickstartlessons.module.product.data.model.response.ProductDto
 import com.example.quickstartlessons.core.data.UsersDto
 
 
