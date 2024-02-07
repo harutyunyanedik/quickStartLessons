@@ -8,6 +8,8 @@ import com.example.quickstartlessons.module.home.SearchFragment
 import com.example.quickstartlessons.module.home.SearchedProductsViewModel
 import com.example.quickstartlessons.module.launch.SplashActivity
 import com.example.quickstartlessons.module.launch.UsersViewModel
+import com.example.quickstartlessons.module.posts.PostsFragment
+import com.example.quickstartlessons.module.posts.PostsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -27,5 +29,9 @@ internal val appModule = module {
     }
     scope(named<SearchFragment>()) {
         viewModel { SearchedProductsViewModel(get()) }
+    }
+
+    scope(named<PostsFragment>()) {
+        viewModel { PostsViewModel(get()) }
     }
 }

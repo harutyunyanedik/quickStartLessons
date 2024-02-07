@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.quickstartlessons.QSApplication
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentAccountMainTabBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.mappers.UserMapper
@@ -50,6 +51,9 @@ class AccountMainTabFragment : BaseFragment() {
             findNavController().navigate(AccountMainTabFragmentDirections.actionSettingsFragment())
 
 
+        }
+        binding.checkboxNotifications.setOnClickListener {
+            findNavController().navigate(R.id.action_global_postsFragment)
         }
 
     }

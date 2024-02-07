@@ -71,7 +71,7 @@
             android:drawableStart="@drawable/notification_unchecked"
             android:gravity="center"
             android:padding="@dimen/_8dp"
-            android:text="@string/notifications"
+            android:text="@string/posts"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textStyle="bold"

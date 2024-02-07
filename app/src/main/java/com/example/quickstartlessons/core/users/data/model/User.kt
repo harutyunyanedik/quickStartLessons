@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.users.data.model
+package com.example.quickstartlessons.core.users.data.model
 
 import java.io.Serializable
 

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
@@ -52,6 +51,8 @@ class SettingsFragment : BaseFragment() {
             }
             bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
         }
+
+
     }
 
 }

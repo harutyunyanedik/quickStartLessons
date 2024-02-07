@@ -1,7 +1,7 @@
 package com.example.quickstartlessons.module.mappers
 
-import com.example.quickstartlessons.module.users.data.model.User
-import com.example.quickstartlessons.module.users.data.net.UserDto
+import com.example.quickstartlessons.core.users.data.model.User
+import com.example.quickstartlessons.core.users.data.net.UserDto
 
 class UserMapper {
 

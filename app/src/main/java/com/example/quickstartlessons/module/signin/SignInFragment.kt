@@ -13,7 +13,7 @@ import com.example.quickstartlessons.databinding.FragmentSignInBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.splashActivity
-import com.example.quickstartlessons.module.users.data.net.UserDto
+import com.example.quickstartlessons.core.users.data.net.UserDto
 
 class SignInFragment : BaseFragment() {
 

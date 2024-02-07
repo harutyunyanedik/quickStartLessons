@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.users.data.net
+package com.example.quickstartlessons.core.users.data.net
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

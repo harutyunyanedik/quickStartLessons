@@ -3,12 +3,14 @@ package com.example.quickstartlessons.core.repo
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.net.DataSource
 import com.example.quickstartlessons.core.net.getHttpResponse
+import com.example.quickstartlessons.module.postsmodel.data.net.responce.PostsDto
 import com.example.quickstartlessons.module.product.data.net.response.ProductDto
 import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
-import com.example.quickstartlessons.module.users.data.net.UsersDto
+import com.example.quickstartlessons.core.users.data.net.UsersDto
 
 interface Repository {
 
+    suspend fun getPosts(resultCallback: ApiResultCallback<PostsDto?>, isShowLoader: Boolean)
 
     suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String)
     suspend fun getUsers(resultCallback: ApiResultCallback<UsersDto?>, isShowLoader: Boolean)
@@ -25,6 +27,12 @@ interface Repository {
 }
 
 class ProductsRepositoryImplementation(private val dataSource: DataSource) : Repository {
+
+    override suspend fun getPosts(resultCallback: ApiResultCallback<PostsDto?>, isShowLoader: Boolean) {
+        getHttpResponse(resultCallback, isShowLoader){
+            dataSource.getPosts()
+        }
+    }
 
     override suspend fun search(resultCallback: ApiResultCallback<ProductsDto?>, isShowLoader: Boolean, name: String) {
         getHttpResponse(resultCallback, isShowLoader){

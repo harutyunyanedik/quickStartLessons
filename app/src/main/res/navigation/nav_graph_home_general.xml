@@ -104,4 +104,10 @@
         android:label="SearchFragment" />
     <action android:id="@+id/action_global_searchFragment"
         app:destination="@id/searchFragment"/>
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.example.quickstartlessons.module.posts.PostsFragment"
+        android:label="PostsFragment" />
+    <action android:id="@+id/action_global_postsFragment"
+        app:destination="@id/postsFragment"/>
 </navigation>

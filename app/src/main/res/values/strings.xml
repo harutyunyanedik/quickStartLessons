@@ -63,6 +63,8 @@
     <string name="are_you_sure_you_want_to_sign_out">Are you sure you want to sign out?</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
+    <string name="posts">Posts</string>
+    <string name="body">His mother had always taught him not to ever think of himself as better than others. He\'d tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind</string>
 
     <string-array name="languages">
         <item>English</item>

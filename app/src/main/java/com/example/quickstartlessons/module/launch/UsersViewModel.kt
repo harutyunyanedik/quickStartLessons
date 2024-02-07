@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.net.ApiResultCallback
 import com.example.quickstartlessons.core.repo.Repository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
-import com.example.quickstartlessons.module.users.data.net.UsersDto
+import com.example.quickstartlessons.core.users.data.net.UsersDto
 import kotlinx.coroutines.launch
 
 class UsersViewModel(private val repo: Repository) : BaseObservableViewModel() {

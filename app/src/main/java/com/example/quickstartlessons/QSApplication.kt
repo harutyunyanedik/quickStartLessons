@@ -15,7 +15,7 @@ import com.example.quickstartlessons.core.di.appComponent
 import com.example.quickstartlessons.module.base.coroutine.BaseCoroutineExceptionHandler
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.Prefs
-import com.example.quickstartlessons.module.users.data.net.UserDto
+import com.example.quickstartlessons.core.users.data.net.UserDto
 import com.yariksoffice.lingver.Lingver
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers

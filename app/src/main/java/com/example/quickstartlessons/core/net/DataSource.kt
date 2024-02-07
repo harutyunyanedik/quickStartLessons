@@ -1,14 +1,18 @@
 package com.example.quickstartlessons.core.net
 
+import com.example.quickstartlessons.module.postsmodel.data.net.responce.PostsDto
 import com.example.quickstartlessons.module.product.data.net.response.ProductDto
 import com.example.quickstartlessons.module.product.data.net.response.ProductsDto
-import com.example.quickstartlessons.module.users.data.net.UsersDto
+import com.example.quickstartlessons.core.users.data.net.UsersDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface DataSource {
+
+    @GET("posts")
+    suspend fun getPosts() : Response<PostsDto?>
 
     @GET("products/search")
     suspend fun search(@Query("q") name: String) : Response<ProductsDto?>
