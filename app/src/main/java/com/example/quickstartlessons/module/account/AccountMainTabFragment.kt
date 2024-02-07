@@ -34,16 +34,20 @@ class AccountMainTabFragment : BaseFragment() {
             findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPersonalDataFragment())
         }
 
+        binding.posts.setOnClickListener {
+            findNavController().navigate(AccountMainTabFragmentDirections.actionGlobalPostsFragment())
+        }
+
     }
 
     @SuppressLint("SetTextI18n")
     private fun observeLiveData() {
-
-        QSApplication.usersProfile.observe(viewLifecycleOwner) {user->
-            binding.userMail.text = user?.email
-            binding.userName.text = user?.firstName + user?.lastName
-            Glide.with(requireContext()).load(user?.image).into(binding.profileImage)
+        QSApplication.userLiveData.observe(viewLifecycleOwner) { user ->
+            if (user != null) {
+                binding.userMail.text = user.email
+                binding.userName.text = user.firstName + user.lastName
+                Glide.with(requireContext()).load(user.image).into(binding.profileImage)
+            }
         }
-
     }
 }

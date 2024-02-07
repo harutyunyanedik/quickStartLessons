@@ -11,22 +11,17 @@ import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.databinding.FragmentSplashBinding
-import com.example.quickstartlessons.module.Users.viewModel.UsersViewModel
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
-import com.example.quickstartlessons.module.base.utils.Prefs
-
-
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.example.quickstartlessons.module.base.utils.splashActivity
 
 class SplashFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSplashBinding
-    private val viewModel by viewModel<UsersViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getAllUsers()
+        splashActivity?.viewModel?.getAllUsers()
     }
 
     override fun onCreateView(
@@ -44,28 +39,19 @@ class SplashFragment : BaseFragment() {
 
     @SuppressLint("SuspiciousIndentation")
     private fun observeLiveData() {
-        viewModel.usersLiveData.observe(viewLifecycleOwner) { users ->
+        splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) { users ->
             if (users != null) {
-                QSApplication.userProfileLiveData.value = users
-                for (i in 1..users.users.size) {
-
-                    if (PreferencesManager.getUserPasswordFromPref() != null && PreferencesManager.getUserNameFromPref() != null) {
-                        val user = users.users.find {
-                            it.username == PreferencesManager.getUserNameFromPref()
-                                    && it.password == PreferencesManager.getUserPasswordFromPref()
-                        }
-                        viewModel.userLiveData.value = user
-                        QSApplication.usersProfile.value = viewModel.userLiveData.value
-                        startActivity(Intent(requireContext(), MainActivity::class.java))
-                    } else {
-                        findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
-                    }
+                val user = users.users.find {
+                    it.username == PreferencesManager.getUserNameFromPref()
+                            && it.password == PreferencesManager.getUserPasswordFromPref()
+                }
+                user?.let {
+                    QSApplication.userLiveData.value = it
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                }?:run{
+                    findNavController().navigate(SplashFragmentDirections.actionGlobalSignInFragment())
                 }
             } else Toast.makeText(requireContext(), "Users list is empty", Toast.LENGTH_SHORT).show()
-        }
-        viewModel.usersErrorLiveData.observe(viewLifecycleOwner)
-        {
-            showErrorMessageDialog("Error Dialog", it)
         }
     }
 }

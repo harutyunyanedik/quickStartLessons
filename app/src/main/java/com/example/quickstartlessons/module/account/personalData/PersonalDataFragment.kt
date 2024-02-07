@@ -31,13 +31,14 @@ class PersonalDataFragment : BaseFragment() {
 
     @SuppressLint("SetTextI18n")
     private fun observeLiveData() {
-        QSApplication.usersProfile.observe(viewLifecycleOwner) {user->
-            binding.userMail.text = user?.email
-            binding.userName.text = user?.firstName +" " + user?.lastName
-            binding.birthDate.text = user?.birthDate
-            binding.gender.text = user?.gender
-            binding.phone.text = user?.phone
-
+        QSApplication.userLiveData.observe(viewLifecycleOwner) { user->
+            if (user != null) {
+                binding.userMail.text = user.email
+                binding.userName.text = user.firstName + " " + user.lastName
+                binding.birthDate.text = user.birthDate
+                binding.gender.text = user.gender
+                binding.phone.text = user.phone
+            }
         }
     }
 }

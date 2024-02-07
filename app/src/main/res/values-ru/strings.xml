@@ -23,7 +23,7 @@
     <string name="products_header">Все продукты</string>
     <string name="categories">Категории</string>
     <string name="profile_text">Профиль</string>
-    <string name="notification_text">Уведомления</string>
+    <string name="post_text">Посты</string>
     <string name="settings_text">Настройки</string>
     <string name="account_user_name">Наре Исаакян</string>
     <string name="choose_language">Выберите язык</string>

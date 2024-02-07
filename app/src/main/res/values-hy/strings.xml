@@ -23,7 +23,7 @@
     <string name="products_header">Բոլոր ապրանքները </string>
     <string name="categories">Կատեգորիաներ</string>
     <string name="profile_text">Անձնական էջ</string>
-    <string name="notification_text">Ծանուցումներ</string>
+    <string name="post_text">Գրառումներ</string>
     <string name="settings_text">Կարգավորումներ</string>
     <string name="account_user_name">Նարե Իսահակյան</string>
     <string name="choose_language">Ընտրեք լեզուն</string>

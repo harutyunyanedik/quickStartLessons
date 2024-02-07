@@ -1,16 +1,16 @@
 package com.example.quickstartlessons.module.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.databinding.FragmentSettingsBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
-import com.example.quickstartlessons.module.base.utils.PreferencesManager.getUserNameFromPref
-import com.example.quickstartlessons.module.base.utils.PreferencesManager.getUserPasswordFromPref
-import com.example.quickstartlessons.module.base.utils.Prefs
+import com.example.quickstartlessons.module.base.utils.PreferencesManager
+import com.example.quickstartlessons.module.base.utils.homeActivity
+import com.example.quickstartlessons.module.launch.SplashActivity
 import com.example.quickstartlessons.module.settings.languages.ChangeLanguageButtonSheetDialog
 
 class SettingsFragment : BaseFragment() {
@@ -34,22 +34,15 @@ class SettingsFragment : BaseFragment() {
         }
 
         binding.signOut.setOnClickListener {
-                if (QSApplication.usersProfile.value != null) {
-                    val deletePassword = QSApplication.usersProfile.value?.password
-                    val deleteUsername = QSApplication.usersProfile.value?.username
-
-                    if (deletePassword == getUserPasswordFromPref()) getUserPasswordFromPref().removeRange(0..2)
-                    if (deleteUsername == getUserNameFromPref()) getUserNameFromPref().removeRange(0..2)
-                    QSApplication.usersProfile.value = null
-
-                    findNavController().navigate(SettingsFragmentDirections.actionGlobalSignInFragment())
-                }
+            PreferencesManager.removePassword()
+            PreferencesManager.removeUserName()
+            startActivity(Intent(requireContext(), SplashActivity::class.java))
+            homeActivity?.finish()
         }
     }
 
     private fun showBottomSheetDialog() {
         val chooseLanguageFragment = ChangeLanguageButtonSheetDialog {
-
         }
         chooseLanguageFragment.show(childFragmentManager, chooseLanguageFragment.tag)
     }

@@ -5,6 +5,7 @@ import com.example.quickstartlessons.core.room.dao.net.getHttpResponse
 import com.example.quickstartlessons.core.room.dao.net.repo.datasource.ProductsDataSource
 import com.example.quickstartlessons.module.Users.data.response.UserDto
 import com.example.quickstartlessons.module.Users.data.response.UsersDto
+import com.example.quickstartlessons.module.posts.data.response.PostsDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsDto
 import com.example.quickstartlessons.module.settings.model.products.ProductsModel
 
@@ -24,6 +25,9 @@ interface ProductsRepository {
 
     suspend fun getUser(resultCallback: ApiResultCallback<UserDto?>, isShowLoader: Boolean, id:Int)
 
+    suspend fun getAllPosts(resultCallback: ApiResultCallback<PostsDto?>, isShowLoader: Boolean)
+
+    suspend fun search(resultCallback: ApiResultCallback<ProductsModel?>, isShowLoader: Boolean, name:String)
 }
 
 class ProductRepositoryImplementation(private val dataSource: ProductsDataSource) : ProductsRepository {
@@ -68,6 +72,16 @@ class ProductRepositoryImplementation(private val dataSource: ProductsDataSource
         getHttpResponse(resultCallback, isShowLoader) {
             dataSource.getUser(id)
         }
+    }
+
+    override suspend fun getAllPosts(resultCallback: ApiResultCallback<PostsDto?>, isShowLoader: Boolean) {
+        getHttpResponse(resultCallback, isShowLoader) {
+            dataSource.getAllPosts()
+        }
+    }
+
+    override suspend fun search(resultCallback: ApiResultCallback<ProductsModel?>, isShowLoader: Boolean, name:String) {
+        dataSource.search(name)
     }
 
 }

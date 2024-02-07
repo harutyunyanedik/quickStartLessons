@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.quickstartlessons.core.room.dao.net.ApiResultCallback
 import com.example.quickstartlessons.core.room.dao.net.repo.repository.ProductsRepository
-import com.example.quickstartlessons.module.Users.data.response.UserDto
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
 import com.example.quickstartlessons.module.Users.data.response.UsersDto
 import kotlinx.coroutines.launch
@@ -34,8 +33,4 @@ class UsersViewModel(private val repo: ProductsRepository) : BaseObservableViewM
             }, isShoLoader)
         }
     }
-    private val _userLiveData: MutableLiveData<UserDto> = MutableLiveData()
-    val userLiveData: MutableLiveData<UserDto>
-        get() = _userLiveData
-
 }

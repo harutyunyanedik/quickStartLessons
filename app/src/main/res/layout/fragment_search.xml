@@ -6,10 +6,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/teal_700"
-        tools:context=".module.account.search.SearchFragment">
-        <androidx.appcompat.widget.Toolbar
+        android:background="@color/white">
 
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
@@ -20,48 +19,39 @@
 
             <Button
                 android:id="@+id/backButton"
-                android:layout_width="@dimen/_35dp"
-                android:layout_height="@dimen/_35dp"
+                android:layout_width="@dimen/_30dp"
+                android:layout_height="@dimen/_30dp"
                 android:background="@drawable/ic_back"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_16dp"
-                android:text="@string/products"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_36sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="HardcodedText" />
 
-        </androidx.appcompat.widget.Toolbar>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/searchInputLayout"
-            style="@style/TextInput"
-            app:startIconDrawable="@drawable/ic_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:gravity="center_vertical"
-            android:hint="@string/search"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/searchText"
-                style="@style/TextInputEditText"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchInputLayout"
+                app:startIconDrawable="@drawable/ic_search_2"
+                app:startIconTint="@color/grey"
+                android:textColorHint="@color/grey"
+                android:background ="@color/teal_300"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:gravity="start"
-                android:inputType="text"
-                android:textAlignment="viewStart"
-                android:textColorHint="@color/white_10" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="fill_vertical">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@null"
+                    android:background ="@color/teal_300"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxStrokeColor="@color/grey"
+                    app:errorIconDrawable="@null"
+                    android:textColor="@color/grey"
+                    android:hint="@string/search"
+                    android:gravity="fill_vertical"
+                    android:inputType="text"
+                    android:textColorHint="@color/grey" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:id="@+id/result_text"
@@ -69,15 +59,25 @@
             android:layout_height="wrap_content"
             android:text="@string/search_text"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            app:errorIconDrawable="@null"
+            android:textColor="@color/grey"
             android:textSize="@dimen/_36sp"
             android:textStyle="italic"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:ignore="HardcodedText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_itemOfProducts"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

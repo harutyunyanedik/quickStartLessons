@@ -1,5 +1,6 @@
 package com.example.quickstartlessons.module.signin
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +12,12 @@ import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentSignInBinding
+import com.example.quickstartlessons.module.Users.data.response.UserDto
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.QsConstants
+import com.example.quickstartlessons.module.base.utils.splashActivity
+import com.example.quickstartlessons.module.launch.SplashFragmentDirections
 
 
 class SignInFragment : BaseFragment() {
@@ -40,75 +44,67 @@ class SignInFragment : BaseFragment() {
         }
 
         binding.signInButton.setOnClickListener {
-            if (it.isPressed) {
-                validate()
+            if (validate()) {
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                splashActivity?.finish()
             }
         }
     }
 
-    private fun validate() {
+    private fun validate(): Boolean {
         val username = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
         when {
             isValidEmail(username) && isValidPassword(password) -> {
-                val users = QSApplication.userProfileLiveData.value
-                if (users != null) {
-                    for (i in 0..users.users.size) {
-                        if ((username == users.users[i].username) && (password == users.users[i].password) && binding.rememberMeCheckbox.isChecked) {
-                            PreferencesManager.getUserPasswordFromPref().removeRange(0..2)
-                            PreferencesManager.getUserNameFromPref().removeRange(0..2)
-                            PreferencesManager.putUserNameToPref(username)
-                            PreferencesManager.putUserPasswordToPref(password)
-
-                            val user =   users.users.find {
-                                it.username == username &&
-                                        it.password == password
-                            }
-                            QSApplication.usersProfile.value = user
-                            Toast.makeText(requireContext(), "Your registration is successful!", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(requireContext(), MainActivity::class.java))
-
-                        } else if (username == users.users[i].username && password == users.users[i].password && !binding.rememberMeCheckbox.isChecked) {
-                            val user =   users.users.find {
-                                it.username == PreferencesManager.getUserNameFromPref() &&
-                                        it.password == PreferencesManager.getUserPasswordFromPref()
-                            }
-                            QSApplication.usersProfile.value = user
-                            startActivity(Intent(requireContext(), MainActivity::class.java))
-                        } else {
-                            findNavController().navigate(SignInFragmentDirections.actionGlobalSplashFragment())
-                            //Toast.makeText(requireContext(), "Invalid password / username!", Toast.LENGTH_SHORT).show()
-                        }
+                splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) { users ->
+                    if (checkUser(username, password) != null && users != null && binding.rememberMeCheckbox.isChecked) {
+                        PreferencesManager.putUserNameToPref(username)
+                        PreferencesManager.putUserPasswordToPref(password)
+                        QSApplication.userLiveData.value = checkUser(username, password)
+                        Toast.makeText(requireContext(), "Your registration is successful!", Toast.LENGTH_SHORT).show()
+                    }
+                    if (checkUser(username, password) != null && users != null && !binding.rememberMeCheckbox.isChecked) {
+                        QSApplication.userLiveData.value = checkUser(username, password)
                     }
                 }
+                return true
             }
 
             !isValidEmail(username) && !isValidPassword(password) -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
                 binding.passwordInputLayout.error = getString(R.string.invalid_password)
+                return false
             }
 
             isValidEmail(username) && !isValidPassword(password) -> {
                 binding.emailUsernameInputLayout.error = QsConstants.EMPTY_STRING
                 binding.passwordInputLayout.error = getString(R.string.invalid_password)
+                return false
             }
 
             !isValidEmail(username) && isValidPassword(password) -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.invalid_email)
                 binding.passwordInputLayout.error = QsConstants.EMPTY_STRING
+                return false
             }
 
             username.isEmpty() && password.isEmpty() -> {
                 binding.emailUsernameInputLayout.error = getString(R.string.field_required)
                 binding.passwordInputLayout.error = getString(R.string.field_required)
+                return false
             }
         }
+        return false
     }
 
-    private fun isValidPassword(password: String): Boolean = password.length > 6
-    private fun isValidEmail(email: String): Boolean = email.length > 5
-    // private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
+    private fun isValidPassword(password: String): Boolean = password.length > 3
+    private fun isValidEmail(email: String): Boolean = email.length > 4
+// private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+    private fun checkUser(username: String, password: String): UserDto? = splashActivity?.viewModel?.usersLiveData?.value?.users?.find {
+        it.username == username && it.password == password
+    }
 }
 
 
