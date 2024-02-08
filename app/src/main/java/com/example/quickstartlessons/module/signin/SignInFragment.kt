@@ -2,11 +2,9 @@ package com.example.quickstartlessons.module.signin
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.quickstartlessons.MainActivity
 import com.example.quickstartlessons.QSApplication
@@ -16,8 +14,6 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.QsConstants
 import com.example.quickstartlessons.module.base.utils.splashActivity
-import com.example.quickstartlessons.module.launch.SplashFragmentDirections
-import java.util.regex.Pattern
 
 
 class SignInFragment : BaseFragment() {

@@ -1,16 +1,20 @@
 package com.example.quickstartlessons.module.account.post
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentPostBinding
-import com.example.quickstartlessons.module.base.fragment.BaseFragment
+import com.example.quickstartlessons.module.base.fragment.BaseFragment.Companion.showErrorMessageDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
+/**
+ *  todo  petqa jaranges BaseFragment ic, qo mot hima crash a linum vortev du viewModel e sarqel es PostFragment i scop ov,
+ */
 class PostFragment : Fragment() {
     private lateinit var binding: FragmentPostBinding
     private val adapter = PostAdapter()
@@ -18,22 +22,22 @@ class PostFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // viewModel.post()
+        viewModel.post()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPostBinding.inflate(inflater, container, false)
-        return inflater.inflate(R.layout.fragment_post, container, false)
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
-        observe()
+        observe() // todo rename observeLiveData
     }
 
     private fun setupView() {
@@ -46,7 +50,7 @@ class PostFragment : Fragment() {
             adapter.updateData(it)
         }
         viewModel.postErrorLiveData.observe(viewLifecycleOwner) {
-            BaseFragment.showErrorMessageDialog(getString(R.string.error_data), it.toString())
+            showErrorMessageDialog(getString(R.string.error_data), it.toString())
         }
     }
 }
