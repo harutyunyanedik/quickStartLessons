@@ -6,26 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentSearchBinding
-import com.example.quickstartlessons.module.base.fragment.BaseFragment.Companion.showErrorMessageDialog
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.home.ui.HomeMainTabFragmentDirections
 import com.example.quickstartlessons.module.home.ui.adapter.ProductAdapter
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-/**
- *  todo  petqa jaranges BaseFragment ic, qo mot hima crash a linum vortev du viewModel e sarqel es SearchFragment i scop ov,
- *  isk Search Fragmente chi jarangum ScopeFragment ic
- *  jaranges BaseFragment ic kuxxvi, vortec base e jaranguma Scope Fragment ic
- */
 
-class SearchFragment : Fragment() {
+class SearchFragment : BaseFragment() {
     private lateinit var binding: FragmentSearchBinding
     private val favoriteManager: FavoriteManager by inject()
     private val adapter = ProductAdapter(onItemClick = {
@@ -48,7 +42,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupListener()
         setupView()
-        observerSearch() // todo rename observeLiveData
+        observerLiveData()
     }
 
 
@@ -70,7 +64,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun observerSearch() {
+    private fun observerLiveData() {
         viewModel.searchProductLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
             binding.textView.isVisible = it.isNullOrEmpty()

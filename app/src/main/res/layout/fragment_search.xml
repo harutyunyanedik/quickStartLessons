@@ -23,7 +23,7 @@
                 android:id="@+id/searchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white_10"
+                android:background="@color/color_1"
                 android:drawableStart="@drawable/ic_search"
                 android:gravity="start"
                 android:hint="@string/search"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="@string/no_search_result"
             android:textColor="@color/color_black_40"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,4 +58,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

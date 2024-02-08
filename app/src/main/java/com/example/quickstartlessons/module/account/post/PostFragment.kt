@@ -4,18 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentPostBinding
-import com.example.quickstartlessons.module.base.fragment.BaseFragment.Companion.showErrorMessageDialog
+import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-/**
- *  todo  petqa jaranges BaseFragment ic, qo mot hima crash a linum vortev du viewModel e sarqel es PostFragment i scop ov,
- */
-class PostFragment : Fragment() {
+
+class PostFragment : BaseFragment() {
     private lateinit var binding: FragmentPostBinding
     private val adapter = PostAdapter()
     private val viewModel by viewModel<PostViewModel>()
@@ -37,7 +34,7 @@ class PostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
-        observe() // todo rename observeLiveData
+        observeLiveData()
     }
 
     private fun setupView() {
@@ -45,7 +42,7 @@ class PostFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun observe() {
+    private fun observeLiveData() {
         viewModel.postLiveData.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }
