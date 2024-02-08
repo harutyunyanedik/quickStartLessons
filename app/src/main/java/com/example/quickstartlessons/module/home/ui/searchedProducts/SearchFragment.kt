@@ -57,7 +57,7 @@ class SearchFragment : BaseFragment() {
         binding.searchText.doAfterTextChanged {
             it?.length?.let {  _length ->
                 if (_length > 2) {
-                    viewModel.search(name = toString())
+                    viewModel.search(name = toString()) // todo inchnes toString anum, uxxaki vor kanchel es toString fun e et taluya fragment i reference, petqa lini it.toString()
                 } else {
                     viewModel.clearValue()
                 }

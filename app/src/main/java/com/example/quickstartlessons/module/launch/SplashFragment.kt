@@ -14,8 +14,8 @@ import com.example.quickstartlessons.module.base.utils.PreferencesManager
 
 class SplashFragment : BaseFragment() {
 
-    private var currentUserName: String? = null
-    private var currentPassword: String? = null
+    private var currentUserName: String? = null // todo jnji sranq petq chi
+    private var currentPassword: String? = null  // todo jnji sranq petq chi
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

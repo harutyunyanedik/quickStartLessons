@@ -46,8 +46,10 @@
                 android:layout_height="match_parent"
                 android:gravity="start"
                 android:inputType="textEmailAddress"
+                android:text="atuny0"
                 android:textAlignment="viewStart"
-                android:textColorHint="@color/white_10" />
+                android:textColorHint="@color/white_10"
+                tools:ignore="HardcodedText" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -58,7 +60,6 @@
             android:layout_marginTop="@dimen/_8dp"
             android:gravity="center_vertical"
             android:hint="@string/password"
-            android:text="123456"
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,8 +74,10 @@
                 android:focusableInTouchMode="true"
                 android:gravity="start"
                 android:inputType="textPassword"
+                android:text="9uQFF1Lh"
                 android:textAlignment="viewStart"
-                android:textColorHint="@color/white_10" />
+                android:textColorHint="@color/white_10"
+                tools:ignore="HardcodedText" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

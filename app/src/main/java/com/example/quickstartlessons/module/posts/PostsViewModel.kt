@@ -9,7 +9,7 @@ import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewMod
 import com.example.quickstartlessons.module.posts.data.PostDto
 import kotlinx.coroutines.launch
 
-class PostsViewModel(private val repository: ProductsRepository) : BaseObservableViewModel() {
+class PostsViewModel(private val repository: ProductsRepository) : BaseObservableViewModel() { // todo viewModel i instance ches sarqel koin um
     private val _postsLiveData = MutableLiveData<PostDto?>()
     val postsLiveData: LiveData<PostDto?>
         get() = _postsLiveData
