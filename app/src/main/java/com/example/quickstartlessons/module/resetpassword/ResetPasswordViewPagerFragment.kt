@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentResetPasswordViewPagerBinding
 import com.example.quickstartlessons.module.resetpassword.email.ResetPasswordEmailFragment
 import com.example.quickstartlessons.module.resetpassword.sms.ResetPasswordSMSFragment
@@ -43,13 +44,10 @@ class ResetPasswordViewPagerFragment : Fragment() {
         adapter.updateData(fragments)
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (fragments[position]) {
-                is ResetPasswordSMSFragment -> tab.text = "SMS" //todo move to res
-                is ResetPasswordEmailFragment -> tab.text = "Email"  // todo move to res
+                is ResetPasswordSMSFragment -> tab.text = getString(R.string.sms) //todo move to res
+                is ResetPasswordEmailFragment -> tab.text = getString(R.string.email)  // todo move to res
             }
         }.attach()
     }
 
-    companion object {
-        fun newInstance() = ResetPasswordViewPagerFragment()
-    }
 }

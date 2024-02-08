@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--todo rename layout name to item_product_images-->
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/item_product_images"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_300dp"
         android:layout_margin="@dimen/_6dp"

@@ -22,6 +22,6 @@ data class UserDto(
     val phone: String,
     @SerializedName("username")
     val username: String,
-    @SerializedName(" password") // todo stex " password" key i mej probel unes dra hamar chisht chi ashxatum
-    val  password: String
+    @SerializedName("password")
+    val password: String
 ) : Serializable

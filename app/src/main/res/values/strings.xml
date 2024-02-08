@@ -46,6 +46,7 @@
     <string name="choose_language">Choose language</string>
     <string name="app_language">App language</string>
     <string name="sign_out">Sign Out</string>
+    <string name="sms" translatable="false">SMS</string>
 
     <string name="english" translatable="false">English</string>
     <string name="russian" translatable="false">Russian</string>

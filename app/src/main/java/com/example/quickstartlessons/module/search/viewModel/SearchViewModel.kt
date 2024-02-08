@@ -19,7 +19,7 @@ class SearchViewModel(private val repo: ProductsRepository) : BaseObservableView
     val searchProductsErrorLiveData: LiveData<String>
         get() = _searchProductsErrorLiveData
 
-    fun Search(isShoLoader: Boolean = true,name:String) {
+    fun search(isShoLoader: Boolean = true,name:String) {
         viewModelScope.launch {
             repo.search(object : ApiResultCallback<ProductsModel?> {
                 override fun onSuccess(response: ProductsModel?) {

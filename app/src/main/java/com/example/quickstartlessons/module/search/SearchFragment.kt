@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.quickstartlessons.core.room.FavoriteManager
@@ -17,12 +16,8 @@ import com.example.quickstartlessons.module.search.viewModel.SearchViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- *  todo  petqa jaranges BaseFragment ic, qo mot hima crash a linum vortev du viewModel e sarqel es SearchFragment i scop ov,
- *  isk Search Fragmente chi jarangum ScopeFragment ic
- *  jaranges BaseFragment ic kuxxvi, vortec base e jaranguma Scope Fragment ic
- */
-class SearchFragment : Fragment() {
+
+class SearchFragment : BaseFragment() {
     private lateinit var binding: FragmentSearchBinding
     private val viewModel by viewModel<SearchViewModel>()
     private val favoriteManager: FavoriteManager by inject()
@@ -33,11 +28,6 @@ class SearchFragment : Fragment() {
         if (isFavorite) favoriteManager.insertProduct(product) else favoriteManager.deleteProductById(product)
     })
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val it = binding.searchText.text.toString() // todo onCreate um binding e der init exac chi stex ches kara senc ban anes, searchi request e petqa anes SearchEditText i aftertextChanged i mej
-        viewModel.Search(name = it)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
@@ -46,13 +36,9 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpListeners()
         setupViews()
         observeLiveData()
-        setUpViewModel()
-        binding.backButton.setOnClickListener { // todo tar setupListeners fun i mej
-            findNavController().navigateUp()
-        }
-
     }
 
     private fun setupViews() {
@@ -69,7 +55,7 @@ class SearchFragment : Fragment() {
             binding.resultText.isVisible = binding.searchText.text.toString().isEmpty()
         }
         viewModel.searchProductsErrorLiveData.observe(viewLifecycleOwner) {
-            BaseFragment.showErrorMessageDialog("Error Dialog", it)
+            showErrorMessageDialog("Error Dialog", it)
         }
         favoriteManager.getAllProducts().observe(viewLifecycleOwner) {
             adapter.updateFavorites(it.map { productEntity ->
@@ -78,14 +64,17 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun setUpViewModel() { // todo inch kap uni setUpViewModel anune editText in listener set anelu het? sarqi setupListeners fun u tar meje
+    private fun setUpListeners() {
         binding.searchText.doAfterTextChanged {
+
             it?.length?.let { length ->
                 if (length > 2) {
-                    viewModel.Search(name = it.toString())
+                    viewModel.search(name = it.toString())
                 }
             }
         }
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
-
 }

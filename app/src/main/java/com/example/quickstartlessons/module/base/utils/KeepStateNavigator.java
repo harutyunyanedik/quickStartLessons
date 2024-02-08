@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-
 import androidx.annotation.CallSuper;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -21,9 +20,7 @@ import androidx.navigation.NavOptions;
 import androidx.navigation.Navigator;
 import androidx.navigation.NavigatorProvider;
 import androidx.navigation.fragment.FragmentNavigator;
-
 import com.example.quickstartlessons.R;
-
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.LinkedHashMap;

@@ -77,7 +77,8 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.quickstartlessons.module.signin.SignInFragment"
-        android:label="SignInFragment" />
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in"/>
 
     <action
         android:id="@+id/action_global_signInFragment"
@@ -86,7 +87,8 @@
     <fragment
         android:id="@+id/resetPasswordViewPagerFragment"
         android:name="com.example.quickstartlessons.module.resetpassword.ResetPasswordViewPagerFragment"
-        android:label="ResetPasswordViewPagerFragment" />
+        android:label="ResetPasswordViewPagerFragment"
+        tools:layout="@layout/fragment_reset_password_view_pager"/>
 
     <action
         android:id="@+id/action_global_resetPasswordFragment"
@@ -95,7 +97,8 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.quickstartlessons.module.launch.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash"/>
 
     <action
         android:id="@+id/action_global_splashFragment"
@@ -104,7 +107,8 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.quickstartlessons.module.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search"/>
 
     <action
         android:id="@+id/action_global_searchFragment"
@@ -113,7 +117,8 @@
     <fragment
         android:id="@+id/postsFragment"
         android:name="com.example.quickstartlessons.module.posts.PostsFragment"
-        android:label="PostsFragment" />
+        android:label="PostsFragment"
+        tools:layout="@layout/fragment_posts"/>
 
     <action
         android:id="@+id/action_global_postsFragment"
