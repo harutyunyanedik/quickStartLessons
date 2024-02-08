@@ -10,7 +10,7 @@ import com.example.quickstartlessons.core.net.repository.Repository
 import com.example.quickstartlessons.module.base.viewmodel.BaseObservableViewModel
 import kotlinx.coroutines.launch
 
-class SearchViewModel (private val repository: Repository) : BaseObservableViewModel() {
+class SearchViewModel(private val repository: Repository) : BaseObservableViewModel() {
     private val _searchProductLiveData: MutableLiveData<List<ProductDto>?> = MutableLiveData()
     val searchProductLiveData: LiveData<List<ProductDto>?>
         get() = _searchProductLiveData
@@ -19,22 +19,23 @@ class SearchViewModel (private val repository: Repository) : BaseObservableViewM
     val searchProductErrorLiveData: LiveData<String?>
         get() = _searchProductErrorLiveData
 
-    fun search(isShowLoader:Boolean=true, name:String){
+    fun search(isShowLoader: Boolean = true, name: String) {
         viewModelScope.launch {
-            repository.search(object :ApiResultCallback<ProductsDto?>{
+            repository.search(object : ApiResultCallback<ProductsDto?> {
                 override fun onSuccess(response: ProductsDto?) {
-                    _searchProductLiveData.value=response?.products
+                    _searchProductLiveData.value = response?.products
                 }
 
                 override fun onError(): Boolean {
-                   _searchProductErrorLiveData.value="No result"
+                    _searchProductErrorLiveData.value = "No result"
                     return true
                 }
 
-            },isShowLoader, name)
+            }, isShowLoader, name)
         }
     }
-fun clearValue(){
-    _searchProductLiveData.value= emptyList()
-}
+
+    fun clearValue() {
+        _searchProductLiveData.value = emptyList()
+    }
 }

@@ -56,13 +56,13 @@ class ProductDetailsFragment : BaseFragment() {
     private fun observeLiveData() {
         viewModel.productByIdLiveData.observe(viewLifecycleOwner) {
             binding.titleTextView.text = it?.title
-            binding.ratingTextView.text = getString(R.string.rating) +":" + it?.rating.toString()
-            binding.discountPercentageTextView.text = getString(R.string.discountPercentage)+":"+it?.discountPercentage.toString()+"%"
-            binding.stockTextView.text = getString(R.string.stock) + ":"+it?.stock.toString()
+            binding.ratingTextView.text = getString(R.string.rating) + ":" + it?.rating.toString()
+            binding.discountPercentageTextView.text = getString(R.string.discountPercentage) + ":" + it?.discountPercentage.toString() + "%"
+            binding.stockTextView.text = getString(R.string.stock) + ":" + it?.stock.toString()
             binding.descriptionTextView.text = it?.description
             binding.priceTextView.text = "${it?.price} $"
             adapter.updateData(it?.image)
-            binding.toolBar.title=it?.title
+            binding.toolBar.title = it?.title
         }
         viewModel.productByIdErrorLiveData.observe(viewLifecycleOwner) {
             showErrorMessageDialog(getString(R.string.error_data), it.toString())

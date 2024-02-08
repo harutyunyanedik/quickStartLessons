@@ -18,7 +18,6 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-
 class SearchFragment : BaseFragment() {
     private lateinit var binding: FragmentSearchBinding
     private val favoriteManager: FavoriteManager by inject()

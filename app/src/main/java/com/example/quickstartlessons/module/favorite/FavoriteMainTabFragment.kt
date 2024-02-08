@@ -39,6 +39,7 @@ class FavoriteMainTabFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupObserve()
+
     }
 
     private fun setupViews() {

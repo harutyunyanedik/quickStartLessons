@@ -15,6 +15,7 @@
             android:layout_height="?actionBarSize"
             android:background="@color/purple_700"
             app:layout_constraintEnd_toEndOf="parent"
+            app:navigationIcon="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

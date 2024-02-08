@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickstartlessons.R
 import com.example.quickstartlessons.databinding.FragmentPostBinding
@@ -35,6 +36,9 @@ class PostFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupView()
         observeLiveData()
+        binding.toolBar.setOnClickListener{
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupView() {
