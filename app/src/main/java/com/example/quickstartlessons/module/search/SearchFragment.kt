@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home
+package com.example.quickstartlessons.module.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import com.example.quickstartlessons.core.room.FavoriteManager
 import com.example.quickstartlessons.databinding.FragmentSearchBinding
 import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.details.ProductDetailsFragmentDirections
+import com.example.quickstartlessons.module.home.ProductsAdapter
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

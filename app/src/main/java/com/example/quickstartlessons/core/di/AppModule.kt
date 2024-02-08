@@ -4,8 +4,8 @@ import com.example.quickstartlessons.module.details.ProductDetailsFragment
 import com.example.quickstartlessons.module.details.ProductDetailsViewModel
 import com.example.quickstartlessons.module.home.HomeMainTabFragment
 import com.example.quickstartlessons.module.home.ProductsViewModel
-import com.example.quickstartlessons.module.home.SearchFragment
-import com.example.quickstartlessons.module.home.SearchedProductsViewModel
+import com.example.quickstartlessons.module.search.SearchFragment
+import com.example.quickstartlessons.module.search.SearchedProductsViewModel
 import com.example.quickstartlessons.module.launch.SplashActivity
 import com.example.quickstartlessons.module.launch.UsersViewModel
 import com.example.quickstartlessons.module.posts.PostsFragment

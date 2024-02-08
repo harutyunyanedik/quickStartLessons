@@ -1,4 +1,4 @@
-package com.example.quickstartlessons.module.home
+package com.example.quickstartlessons.module.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
