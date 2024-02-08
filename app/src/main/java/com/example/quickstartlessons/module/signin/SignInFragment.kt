@@ -17,7 +17,6 @@ import com.example.quickstartlessons.module.base.fragment.BaseFragment
 import com.example.quickstartlessons.module.base.utils.PreferencesManager
 import com.example.quickstartlessons.module.base.utils.QsConstants
 import com.example.quickstartlessons.module.base.utils.splashActivity
-import com.example.quickstartlessons.module.launch.SplashFragmentDirections
 
 
 class SignInFragment : BaseFragment() {
