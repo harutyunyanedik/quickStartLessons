@@ -55,16 +55,15 @@ class SignInFragment : BaseFragment() {
         val password = binding.passwordEditText.text.toString()
         when {
             isValidEmail(username) && isValidPassword(password) -> {
-                splashActivity?.viewModel?.usersLiveData?.observe(viewLifecycleOwner) { users ->
-                    if (checkUser(username, password) != null && users != null && binding.rememberMeCheckbox.isChecked) {
-                        PreferencesManager.putUserNameToPref(username)
-                        PreferencesManager.putUserPasswordToPref(password)
-                        QSApplication.userLiveData.value = checkUser(username, password)
-                        Toast.makeText(requireContext(), "Your registration is successful!", Toast.LENGTH_SHORT).show()
-                    }
-                    if (checkUser(username, password) != null && users != null && !binding.rememberMeCheckbox.isChecked) {
-                        QSApplication.userLiveData.value = checkUser(username, password)
-                    }
+                val users = splashActivity?.viewModel?.usersLiveData?.value?.users
+                if (checkUser(username, password) != null && users != null && binding.rememberMeCheckbox.isChecked) {
+                    PreferencesManager.putUserNameToPref(username)
+                    PreferencesManager.putUserPasswordToPref(password)
+                    QSApplication.userLiveData.value = checkUser(username, password)
+                    Toast.makeText(requireContext(), "Your registration is successful!", Toast.LENGTH_SHORT).show()
+                }
+                if (checkUser(username, password) != null && users != null && !binding.rememberMeCheckbox.isChecked) {
+                    QSApplication.userLiveData.value = checkUser(username, password)
                 }
                 return true
             }

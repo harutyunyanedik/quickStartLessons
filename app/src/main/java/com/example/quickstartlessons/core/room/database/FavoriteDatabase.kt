@@ -5,8 +5,8 @@ import androidx.room.RoomDatabase
 import com.example.quickstartlessons.core.room.dao.ProductDao
 import com.example.quickstartlessons.core.room.data.ProductEntity
 
-@Database(entities = [ProductEntity::class], version = 1)
-abstract class FavoriteDatabase : RoomDatabase(){
+@Database(entities = [ProductEntity::class], version = 2) // todo room i mej ban eir poxel bayc version e cheir barcracrel
+abstract class FavoriteDatabase : RoomDatabase() {
 
     abstract val dao: ProductDao
 
