@@ -44,8 +44,8 @@ class ResetPasswordViewPagerFragment : Fragment() {
         adapter.updateData(fragments)
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (fragments[position]) {
-                is ResetPasswordSMSFragment -> tab.text = getString(R.string.sms) //todo move to res
-                is ResetPasswordEmailFragment -> tab.text = getString(R.string.email)  // todo move to res
+                is ResetPasswordSMSFragment -> tab.text = getString(R.string.sms)
+                is ResetPasswordEmailFragment -> tab.text = getString(R.string.email)
             }
         }.attach()
     }
